@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-WoW: Forever guild bot v1.6 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
+WoW: Forever guild bot v1.7 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
 
 Guild additions over the upstream tracker:
   - the character list comes from the in-game guild roster
@@ -1281,7 +1281,7 @@ def build_inactive_report(characters, state, settings):
         "title": f"Quiet for {days}+ days",
         "description": "\n".join(r[1] for r in rows[:30]) + (f"\n…and {len(rows) - 30} more" if len(rows) > 30 else ""),
         "color": 0x95A5A6,
-        "footer": {"text": "Officers only · from Blizzard last-login · posted with the weekly recap"},
+        "footer": {"text": "Officers only · based on last login · posted with the weekly recap"},
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
