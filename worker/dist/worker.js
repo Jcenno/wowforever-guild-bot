@@ -227,14 +227,18 @@ async function onGive(i, env, ctx) {
   }
   if (!item) return json({ type: R.MESSAGE, data: { content: S.itemNotFound, flags: FLAGS.EPHEMERAL } });
   const t = now(), exp = t + Number(env.CLAIM_HOURS || 24) * 3600;
-  const ins = await env.DB.prepare(`INSERT INTO gifts (giver_id,giver_name,item_id,item_name,item_icon,item_level,slot,armor,quality,req_level,classes,channel_id,token,created_at,expires_at)
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).bind(giver.id, giverName, item.id, item.name, item.icon, item.level, item.slot, item.armor, item.quality, item.req_level,
-    item.classes ? JSON.stringify(item.classes) : null, i.channel_id, i.token, t, exp).run();
-  const g = { id: ins.meta.last_row_id, giver_id: giver.id, giver_name: giverName, ...item, item_name: item.name, item_icon: item.icon, item_level: item.level, expires_at: exp };
-  // After we answer, fetch the message id of what we just posted so expiry can edit it.
+  const row = await env.DB.prepare(`INSERT INTO gifts (giver_id,giver_name,item_id,item_name,item_icon,item_level,slot,armor,quality,req_level,classes,channel_id,token,created_at,expires_at)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id`).bind(giver.id, giverName, item.id, item.name, item.icon, item.level, item.slot, item.armor, item.quality, item.req_level,
+    item.classes ? JSON.stringify(item.classes) : null, i.channel_id, i.token, t, exp).first();
+  const g = { id: row.id, giver_id: giver.id, giver_name: giverName, ...item, item_name: item.name, item_icon: item.icon, item_level: item.level, expires_at: exp };
+  // After we answer, fetch the id of the message we just posted so expiry can edit it. Discord needs a moment.
   ctx.waitUntil((async () => {
-    const m = await fetch(`${API}/webhooks/${env.DISCORD_APP_ID}/${i.token}/messages/@original`).then((r) => (r.ok ? r.json() : null));
-    if (m?.id) await env.DB.prepare("UPDATE gifts SET message_id=? WHERE id=?").bind(m.id, g.id).run();
+    for (let attempt = 0; attempt < 4; attempt++) {
+      await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+      const m = await fetch(`${API}/webhooks/${env.DISCORD_APP_ID}/${i.token}/messages/@original`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+      if (m?.id) { await env.DB.prepare("UPDATE gifts SET message_id=? WHERE id=?").bind(m.id, g.id).run(); return; }
+    }
+    console.log(`[give] no message id for gift ${g.id}`);
   })());
   return json({ type: R.MESSAGE, data: card(g, { need: 0, greed: 0 }) });
 }
@@ -247,6 +251,7 @@ async function onAutocomplete(i, env) {
 
 async function onButton(i, env) {
   const [action, idStr] = i.data.custom_id.split(":"); const id = Number(idStr);
+  console.log(`[button] ${i.data.custom_id} by ${who(i)?.id}`);
   const g = await env.DB.prepare("SELECT * FROM gifts WHERE id=?").bind(id).first();
   const u = who(i), uname = display(i);
   const eph = (content) => json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL } });
