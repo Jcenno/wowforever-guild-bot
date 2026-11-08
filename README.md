@@ -10,8 +10,8 @@ About every 15 minutes (GitHub's scheduler can run late) it reads the guild rost
 - Guild firsts: the first character in the guild recorded clearing each dungeon, killing each raid boss, or clearing a raid (Blizzard publishes with 20 to 40 minutes of lag, so two people in the same window are ordered by when the bot saw them)
 - New member joined the guild
 
-**Progress digest (one card per run, silent)**
-- Other level-ups, professions learned and 75/150/225/300 skill marks, item level 40/50/60/70
+**Progress digest (one card per run, silent, posted in #roster when a roster webhook exists)**
+- Professions learned and 75/150/225/300 skill marks, item level 40/50/60/70
 - First clear of each dungeon, first kill of each raid boss, achievements
 - Every epic equipped, each character's first blue, reputation milestones, new mounts
 - Member left the guild

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-WoW: Forever guild bot v1.7 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
+WoW: Forever guild bot v1.8 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
 
 Guild additions over the upstream tracker:
   - the character list comes from the in-game guild roster
@@ -610,10 +610,8 @@ def find_changes(key, old, new, settings, group, hype=None):
                 big = crossed[-1]
                 lines.append(f"Reached **{big}**" + (f" (now {level})" if level != big else ""))
                 hype.append(("milestone", {"level": big, "key": key}))
-            elif level - old_level == 1:
-                lines.append(f"Level **{level}**")
-            else:
-                lines.append(f"Level **{old_level} → {level}**")
+            # Ordinary level-ups below the first milestone are not posted; the
+            # roster board shows current levels, and the digest stays quiet.
 
     # Professions
     old_p, new_p = old.get("professions"), new.get("professions")
@@ -1618,7 +1616,10 @@ def main():
                 post_to_discord(staff_hook, item["embeds"])
             else:
                 print("[info] DISCORD_STAFF_WEBHOOK_URL not set; skipped the officers-only inactive list.")
-        elif kind in ("updates", "recap"):
+        elif kind == "updates":
+            # Quiet digest goes to the roster channel when one exists; #general keeps milestones and the recap.
+            post_to_discord(os.environ.get("DISCORD_ROSTER_WEBHOOK_URL", "").strip() or webhook, item["embeds"])
+        elif kind == "recap":
             post_to_discord(webhook, item["embeds"])
         posted[kind] = posted.get(kind, 0) + len(item.get("embeds") or [])
         state["pending"].pop(0)
