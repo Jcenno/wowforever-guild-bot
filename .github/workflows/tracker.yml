@@ -1,0 +1,56 @@
+name: WoW Forever guild bot
+
+on:
+  schedule:
+    # Every 15 minutes, offset from the top of the hour when GitHub is busiest.
+    - cron: "4,19,34,49 * * * *"
+  workflow_dispatch:
+    inputs:
+      test_webhook:
+        description: "Only send a test message to Discord"
+        type: boolean
+        default: false
+      recap_now:
+        description: "Also post the weekly recap now"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wow-forever-guild-bot
+  cancel-in-progress: false
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Always load the latest saved progress, not the copy from when this
+          # run was triggered. A run that waited in GitHub's queue would
+          # otherwise re-post updates the previous run already posted.
+          ref: main
+
+      - name: Check guild and post milestones
+        env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_ROSTER_WEBHOOK_URL: ${{ secrets.DISCORD_ROSTER_WEBHOOK_URL }}
+          PROFILE_NAMESPACE: ${{ vars.PROFILE_NAMESPACE }}
+        run: python3 tracker.py ${{ inputs.test_webhook && '--test-webhook' || '' }} ${{ inputs.recap_now && '--recap-now' || '' }}
+
+      - name: Save progress
+        run: |
+          if [ -n "$(git status --porcelain state.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+            git add state.json
+            git commit -m "Update bot state [skip ci]"
+            git push || { git pull --rebase origin main && git push; }
+          else
+            echo "No changes to save."
+          fi

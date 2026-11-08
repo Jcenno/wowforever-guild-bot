@@ -1,0 +1,73 @@
+{
+  "region": "us",
+  "guild": {
+    "slug": "REPLACE-WITH-GUILD-NAME-SLUG",
+    "region": "us",
+    "min_level": 1,
+    "ranks": null,
+    "rank_names": {
+      "0": "Guild Master",
+      "1": "Officer",
+      "2": "Veteran",
+      "3": "Member",
+      "4": "Initiate"
+    }
+  },
+  "settings": {
+    "max_level": 60,
+    "milestone_levels": [
+      30,
+      40,
+      50,
+      60
+    ],
+    "epic_riding_skill": 150,
+    "epic_mount_names": [
+      "Swift "
+    ],
+    "hype_ping_role_id": "1568797227747643493",
+    "hype_events": [
+      "milestone",
+      "max_level",
+      "epic_mount",
+      "guild_join"
+    ],
+    "roster_board": true,
+    "announce_guild_changes": true,
+    "track_levels": true,
+    "track_professions": true,
+    "profession_milestones": [
+      75,
+      150,
+      225,
+      300
+    ],
+    "track_dungeons": true,
+    "track_raids": true,
+    "track_achievements": true,
+    "track_gear": true,
+    "track_mounts": true,
+    "track_reputation": true,
+    "reputation_milestones": [
+      "Honored",
+      "Revered",
+      "Exalted"
+    ],
+    "weekly_recap": true,
+    "recap_day": "sunday",
+    "recap_hour": 19,
+    "timezone": "America/Chicago",
+    "class_emojis": {}
+  },
+  "friends": [
+    {
+      "owner": "Joe",
+      "characters": [
+        {
+          "name": "Steel",
+          "surname": "Appeal"
+        }
+      ]
+    }
+  ]
+}
