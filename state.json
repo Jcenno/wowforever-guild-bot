@@ -1,28 +1,106 @@
 {
   "characters": {
     "us:steel-appeal": {
-      "achievements": {},
-      "avatar": null,
-      "boss_kills": {},
+      "achievements": {
+        "842": "Explore Teldrassil"
+      },
+      "avatar": "https://render.worldofwarcraft.com/forever-us/character/15/5623311-avatar.jpg",
+      "boss_kills": {
+        "15027": {
+          "boss": "Bazzalan",
+          "count": 1,
+          "instance": "Ragefire Chasm"
+        },
+        "63573": {
+          "boss": "Durgen Dirgehammer",
+          "count": 1,
+          "instance": "Hall of Thanes"
+        }
+      },
       "class": "Warrior",
       "dungeons": {},
       "first_seen": 1794152175,
-      "gear": {},
-      "ilvl": 4,
-      "last_login": 1794167045000,
-      "level": 12,
+      "gear": {
+        "270229": {
+          "name": "Treads of the Protector Golem",
+          "quality": "RARE"
+        },
+        "270230": {
+          "name": "Kindlegem Girdle",
+          "quality": "RARE"
+        }
+      },
+      "ilvl": 8,
+      "last_login": 1794180331000,
+      "level": 14,
       "level_at": {
         "10": 1794152175,
-        "12": 1794167884
+        "12": 1794167884,
+        "14": 1794180366
       },
       "professions": {
+        "Blacksmithing": 66,
         "Cooking": 5,
         "First Aid": 53,
-        "Mining": 43
+        "Mining": 70
       },
       "race": "Night Elf",
       "raids": {},
       "recipes": {
+        "Blacksmithing": [
+          {
+            "id": 1798,
+            "name": "Rough Weightstone"
+          },
+          {
+            "id": 1800,
+            "name": "Coarse Weightstone"
+          },
+          {
+            "id": 1856,
+            "name": "Rough Grinding Stone"
+          },
+          {
+            "id": 1859,
+            "name": "Runed Copper Pants"
+          },
+          {
+            "id": 1861,
+            "name": "Coarse Grinding Stone"
+          },
+          {
+            "id": 6636,
+            "name": "Rough Copper Vest"
+          },
+          {
+            "id": 1631,
+            "name": "Rough Sharpening Stone"
+          },
+          {
+            "id": 1632,
+            "name": "Copper Chain Belt"
+          },
+          {
+            "id": 1634,
+            "name": "Copper Bracers"
+          },
+          {
+            "id": 1636,
+            "name": "Coarse Sharpening Stone"
+          },
+          {
+            "id": 1637,
+            "name": "Runed Copper Belt"
+          },
+          {
+            "id": 1652,
+            "name": "Copper Shortsword"
+          },
+          {
+            "id": 54212,
+            "name": "Copper Rod"
+          }
+        ],
         "Cooking": [
           {
             "id": 1535,
@@ -31,6 +109,10 @@
           {
             "id": 1537,
             "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 4354,
+            "name": "Slitherskin Mackerel"
           },
           {
             "id": 4786,
@@ -61,61 +143,76 @@
         ],
         "Mining": [
           {
-            "id": 1569,
+            "id": 1848,
+            "name": "Smelt Tin"
+          },
+          {
+            "id": 1570,
             "name": "Mining"
+          },
+          {
+            "id": 1600,
+            "name": "Smelt Bronze"
           },
           {
             "id": 3324,
             "name": "Smelt Copper"
+          },
+          {
+            "id": 52643,
+            "name": "Lodestone"
           }
         ]
       },
       "reputations": {
         "Darnassus": {
-          "name": "Friendly",
-          "raw": 8785,
-          "tier": 4
+          "name": "Honored",
+          "raw": 9345,
+          "tier": 5
+        },
+        "Gadgetzan": {
+          "name": "Neutral",
+          "raw": 600,
+          "tier": 3
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 3223,
+          "raw": 3323,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 3223,
+          "raw": 3423,
           "tier": 4
         },
         "Stormwind": {
           "name": "Friendly",
           "raw": 3223,
           "tier": 4
-        },
-        "The League of Arathor": {
-          "name": "Neutral",
-          "raw": 0,
-          "tier": 3
         }
       },
       "spec": "Protection",
       "stats": {
-        "critters": 6,
-        "deaths": 6,
-        "food": 23,
-        "health_potions": 2,
-        "hearths": 1,
-        "killing_blows": 351,
-        "mobs": 412,
-        "need_rolls": 1,
-        "quests": 65
+        "critters": 14,
+        "deaths": 9,
+        "flights": 3,
+        "food": 25,
+        "health_potions": 7,
+        "hearths": 3,
+        "killing_blows": 369,
+        "mobs": 531,
+        "need_rolls": 6,
+        "quests": 79
       },
-      "xp": 7194
+      "xp": 6858
     }
   },
   "group": {
     "firsts": {
       "boss": {},
-      "dungeon": {},
+      "dungeon": {
+        "Hall of Thanes": "us:steel-appeal"
+      },
       "raid": {}
     }
   },
