@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-WoW: Forever guild bot v1.5 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
+WoW: Forever guild bot v1.6 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
 
 Guild additions over the upstream tracker:
   - the character list comes from the in-game guild roster
@@ -936,7 +936,7 @@ def build_roster_board(entries, settings, max_level):
     active = sum(1 for s in snaps if activity_dot(s.get("last_login"), now_ts) == "🟢")
 
     desc = [
-        f"**{total}** characters · average level **{avg}** · **{capped}** at {max_level} · **{active}** played in the last 2 days",
+        f"**{total}** {'character' if total == 1 else 'characters'} · average level **{avg}** · **{capped}** at {max_level} · **{active}** played in the last 2 days",
         f"Raid comp: **{roles['Tank']}** tank{'s' if roles['Tank'] != 1 else ''} · **{roles['Healer']}** healer{'s' if roles['Healer'] != 1 else ''} · **{roles['DPS']}** dps",
         f"`{level_bar(levels, max_level)}`",
     ]
@@ -967,7 +967,7 @@ def build_roster_board(entries, settings, max_level):
         "description": "\n".join(desc),
         "color": ROSTER_COLOR,
         "fields": fields[:25],
-        "footer": {"text": "🟢 last 2 days · 🟡 last week · ⚫ longer · refreshes every 15 min"},
+        "footer": {"text": "🟢 last 2 days · 🟡 last week · ⚫ longer · updates about every 15 min"},
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -1001,7 +1001,7 @@ def build_professions_board(entries, settings):
             fields.append({"name": "Secondary (best in guild)", "value": "\n".join(parts)[:1024], "inline": False})
     missing = [display_name(c) for c, s in entries if not any(
         p.lower() not in SECONDARY_PROFS and v for p, v in (s.get("professions") or {}).items())]
-    desc = "Ask in #general and ping the crafter. Skill shown is current; 300 is max."
+    desc = "Need something made? Ask in #general and ping the crafter. 300 is max skill."
     if missing:
         desc += f"\nNo primary profession yet: {', '.join(missing[:15])}" + (" …" if len(missing) > 15 else "")
     return {
@@ -1009,7 +1009,7 @@ def build_professions_board(entries, settings):
         "description": desc,
         "color": 0x9B59B6,
         "fields": fields[:25] or [{"name": "Nothing yet", "value": "Professions appear here as people learn them.", "inline": False}],
-        "footer": {"text": "From Blizzard's professions API · refreshes every 15 min"},
+        "footer": {"text": "Updates about every 15 min"},
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
