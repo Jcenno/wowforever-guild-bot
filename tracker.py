@@ -111,9 +111,12 @@ DEFAULT_SETTINGS = {
     # --- guild bot additions
     "milestone_levels": [30, 40, 50, 60],
     "epic_riding_skill": 150,          # Classic: 75 = 60% mount, 150 = epic (100%) mount
+    "first_riding_skill": 75,          # first mount
+    "ilvl_milestones": [40, 50, 60, 70],
+    "inactive_days": 7,                # officers-only nudge list threshold
     "epic_mount_names": ["Swift "],    # substrings that mark a mount as epic, in addition to Riding
     "hype_ping_role_id": "",           # Discord role id to ping on hype posts; blank = no ping
-    "hype_events": ["milestone", "max_level", "epic_mount", "guild_join"],
+    "hype_events": ["milestone", "max_level", "epic_mount", "first_mount", "guild_first", "guild_join"],
     "roster_board": True,
     "announce_guild_changes": True,
 }
@@ -618,15 +621,35 @@ def find_changes(key, old, new, settings, group, hype=None):
         epic_riding = int(settings.get("epic_riding_skill") or 0)
         for prof, skill in sorted(new_p.items()):
             if prof not in old_p:
-                lines.append(f"📜 Learned **{prof}**")
+                first_riding = int(settings.get("first_riding_skill") or 0)
+                if prof.lower() == "riding" and skill >= epic_riding > 0:
+                    lines.append(f"Epic riding ({skill})")
+                    hype.append(("epic_mount", {"riding": skill}))
+                elif prof.lower() == "riding" and first_riding and skill >= first_riding:
+                    lines.append(f"Learned riding ({skill})")
+                    hype.append(("first_mount", {"riding": skill}))
+                else:
+                    lines.append(f"📜 Learned **{prof}**")
                 continue
             if prof.lower() == "riding" and epic_riding and old_p[prof] < epic_riding <= skill:
                 lines.append(f"Epic riding ({skill})")
                 hype.append(("epic_mount", {"riding": skill}))
                 continue
+            first_riding = int(settings.get("first_riding_skill") or 0)
+            if prof.lower() == "riding" and first_riding and old_p[prof] < first_riding <= skill:
+                lines.append(f"Learned riding ({skill})")
+                hype.append(("first_mount", {"riding": skill}))
+                continue
             crossed = [m for m in settings["profession_milestones"] if old_p[prof] < m <= skill]
             if crossed:
                 lines.append(f"🛠️ **{prof}** reached {max(crossed)} skill")
+
+    # Item level
+    old_i, new_i = old.get("ilvl") or 0, new.get("ilvl") or 0
+    if new_i > old_i:
+        crossed = [m for m in (settings.get("ilvl_milestones") or []) if old_i < m <= new_i]
+        if crossed:
+            lines.append(f"Item level **{max(crossed)}**")
 
     # Dungeons
     old_d, new_d = old.get("dungeons"), new.get("dungeons")
@@ -634,6 +657,7 @@ def find_changes(key, old, new, settings, group, hype=None):
         for inst, info in sorted(new_d.items()):
             if info["cleared"] and not (old_d.get(inst) or {}).get("cleared"):
                 lines.append(f"🗝️ Cleared **{inst}** for the first time")
+                hype.append(("clear", inst))
 
     # Raids
     old_r, new_r = old.get("raids"), new.get("raids")
@@ -642,10 +666,12 @@ def find_changes(key, old, new, settings, group, hype=None):
             before = old_r.get(inst) or {"cleared": False, "bosses": []}
             if info["cleared"] and not before["cleared"]:
                 lines.append(f"🐉 Full clear of **{inst}**!")
+                hype.append(("raid_clear", inst))
             else:
                 for boss in info["bosses"]:
                     if boss not in before["bosses"]:
                         lines.append(f"⚔️ First kill: **{boss}** ({inst})")
+                        hype.append(("boss", f"{boss} ({inst})"))
 
     # Boss kills, from the boss-kill statistics. A dungeon's final boss posts
     # as a clear; raid bosses (and bosses in new dungeons whose final boss
@@ -660,9 +686,11 @@ def find_changes(key, old, new, settings, group, hype=None):
             kind, dungeon = DUNGEONS.classify(new_k[sid])
             if kind == "clear" and dungeon not in already:
                 lines.append(f"🗝️ Cleared **{dungeon}** for the first time")
+                hype.append(("clear", dungeon))
                 already.add(dungeon)
             elif kind == "boss":
                 lines.append(f"⚔️ First kill: **{new_k[sid]['boss']}** ({new_k[sid]['instance']})")
+                hype.append(("boss", f"{new_k[sid]['boss']} ({new_k[sid]['instance']})"))
 
     # Reputation: post when a faction reaches a milestone standing (Honored,
     # Revered, Exalted by default). Characters tracked before this feature
@@ -822,6 +850,22 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
         headline = f"**{name}** has an epic mount." + (f" {detail['mount']}." if detail.get("mount") else "")
         if detail.get("riding"):
             fields.append({"name": "Riding", "value": str(detail["riding"]), "inline": True})
+        fields.append({"name": "Level", "value": str(snap.get("level") or "?"), "inline": True})
+    elif event == "first_mount":
+        title = "First Mount"
+        headline = f"**{name}** learned to ride."
+        order = group.setdefault("milestone_order", {}).setdefault("mount", [])
+        key = f"{cls}:{name}"
+        if key not in order:
+            order.append(key)
+        fields.append({"name": "Guild", "value": f"{ordinal(order.index(key) + 1)} to get there", "inline": True})
+        fields.append({"name": "Level", "value": str(snap.get("level") or "?"), "inline": True})
+    elif event == "guild_first":
+        kind = detail.get("kind", "dungeon")
+        title = {"dungeon": "Guild First: Dungeon", "boss": "Guild First: Boss Kill", "raid": "Guild First: Raid Clear"}.get(kind, "Guild First")
+        color = HYPE_COLOR
+        verb = {"dungeon": "cleared", "boss": "killed", "raid": "cleared"}.get(kind, "did")
+        headline = f"**{name}** is the first in the guild to have {verb} **{detail['what']}**."
         fields.append({"name": "Level", "value": str(snap.get("level") or "?"), "inline": True})
     else:
         title, headline = "Milestone", f"**{name}**: {detail}"
@@ -1105,7 +1149,11 @@ def build_recap(characters, state, settings, week_end, launch_week):
     # 1. Headline + leaderboard
     total = lambda k: sum(a[4][k] for a in active)
     plural = lambda n, word: f"{n:,} {word}{'' if n == 1 else 's'}"
-    headline = (f"The group gained **{plural(total('levels'), 'level')}**, killed **{plural(total('mobs'), 'mob')}**, "
+    mounts_now = sum(len((o or {}).get("mounts") or {}) for o in (state.get("owners") or {}).values())
+    mounts_base = weekly.get("mounts_baseline")
+    mounts_gained = max(0, mounts_now - mounts_base) if mounts_base is not None and not launch_week else mounts_now if launch_week else 0
+    headline = (f"The guild gained **{plural(total('levels'), 'level')}**, cleared **{plural(total('clears'), 'dungeon')}**, "
+                f"earned **{plural(mounts_gained, 'mount')}**, killed **{plural(total('mobs'), 'mob')}**, "
                 f"finished **{plural(total('quests'), 'quest')}**, and died **{plural(total('deaths'), 'time')}**.")
     leveling = [a for a in active if a[3]["level"] < max_level or a[4]["levels"] > 0]
     capped = [a for a in active if a not in leveling]
@@ -1199,6 +1247,38 @@ def reset_recap_baseline(characters, state, when):
     weekly["last_recap"] = when.astimezone(timezone.utc).isoformat()
     weekly["recaps_posted"] = (weekly.get("recaps_posted") or 0) + 1
     weekly["last_awards"] = weekly.pop("pending_awards", [])
+    weekly["mounts_baseline"] = sum(len((o or {}).get("mounts") or {}) for o in (state.get("owners") or {}).values())
+
+
+def build_inactive_report(characters, state, settings):
+    """
+    Officers-only list of characters not seen in `inactive_days`, with the
+    last-login date. None when everyone is active or no login data exists.
+    """
+    days = int(settings.get("inactive_days") or 7)
+    cutoff = time.time() - days * 86400
+    rows, unknown = [], 0
+    for c, key in characters:
+        snap = state["characters"].get(key)
+        if not snap:
+            continue
+        ll = snap.get("last_login")
+        if not ll:
+            unknown += 1
+            continue
+        if ll / 1000 < cutoff:
+            ago = int((time.time() - ll / 1000) // 86400)
+            rows.append((ago, f"**{display_name(c)}** · Lv {snap.get('level') or '?'} {snap.get('class') or ''} · {ago}d"))
+    if not rows:
+        return None
+    rows.sort(key=lambda r: -r[0])
+    return {
+        "title": f"Quiet for {days}+ days",
+        "description": "\n".join(r[1] for r in rows[:30]) + (f"\n…and {len(rows) - 30} more" if len(rows) > 30 else ""),
+        "color": 0x95A5A6,
+        "footer": {"text": "Officers only · from Blizzard last-login · posted with the weekly recap"},
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
 
 
 # ---------------------------------------------------------------- Discord
@@ -1266,8 +1346,8 @@ def main():
         if not webhook:
             sys.exit("DISCORD_WEBHOOK_URL is not set.")
         post_to_discord(webhook, [{
-            "title": "Tracker connected ✅",
-            "description": "Progress updates will be posted in this channel when something changes.",
+            "title": "Guild Bot connected",
+            "description": "Milestones and progress will post here.",
             "color": DEFAULT_COLOR,
         }])
         print("Test message sent.")
@@ -1397,13 +1477,38 @@ def main():
             level_at.setdefault(str(snap["level"]), now_ts)
         snap["level_at"] = level_at
 
+        # Guild firsts: the first character anywhere in the guild to clear a
+        # dungeon, kill a raid boss or clear a raid. Characters seen for the
+        # first time seed the record quietly so old clears never fire.
+        firsts = state["group"].setdefault("firsts", {"dungeon": {}, "boss": {}, "raid": {}})
+        if old is None:
+            for d in cleared_dungeons(snap):
+                firsts["dungeon"].setdefault(d, key)
+            for inst, info in (snap.get("dungeons") or {}).items():
+                if info.get("cleared"):
+                    firsts["dungeon"].setdefault(inst, key)
+            for inst, info in (snap.get("raids") or {}).items():
+                if info.get("cleared"):
+                    firsts["raid"].setdefault(inst, key)
+                for boss in info.get("bosses") or []:
+                    firsts["boss"].setdefault(f"{boss} ({inst})", key)
+        else:
+            for ev, what in list(hype):
+                kind = {"clear": "dungeon", "boss": "boss", "raid_clear": "raid"}.get(ev)
+                if kind and what not in firsts[kind]:
+                    firsts[kind][what] = key
+                    hype.append(("guild_first", {"kind": kind, "what": what}))
+
         loud = [(ev, d) for ev, d in hype if ev in hype_events]
         if old is None:
             embeds.append(character_embed(c, snap, lines, settings))
         elif loud:
             for ev, d in loud:
                 hype_embeds.append(milestone_embed(c, snap, ev, d, state["group"], snap, settings, now_ts))
-            quiet = [l for l in lines if not l.startswith(("Reached", "First in the guild", "Epic"))]
+            announced = {d["what"] for ev, d in loud if ev == "guild_first"}
+            quiet = [l for l in lines
+                     if not l.startswith(("Reached", "First in the guild", "Epic", "Learned riding"))
+                     and not any(f"**{w}**" in l or f"**{w.split(' (')[0]}**" in l for w in announced)]
             if quiet:
                 digest_items.append((c, snap, quiet))
         elif lines:
@@ -1425,14 +1530,17 @@ def main():
     now = datetime.now(timezone.utc)
     recap_due_at = last_recap_time(now, settings)
     last = weekly.get("last_recap")
-    recap = None
+    recap, inactive = None, None
     if last is None and not args.recap_now:
         # First run with recaps enabled: start counting from now, recap next week.
         weekly["last_recap"] = now.isoformat()
     elif settings["weekly_recap"] and (args.recap_now or datetime.fromisoformat(last) < recap_due_at):
         week_end = recap_due_at if not args.recap_now else now.astimezone(local_zone(settings))
         recap = build_recap(keyed, state, settings, week_end, launch_week=not weekly.get("recaps_posted"))
+        inactive = build_inactive_report(keyed, state, settings)
         reset_recap_baseline(keyed, state, now)
+    if weekly.get("mounts_baseline") is None:
+        weekly["mounts_baseline"] = sum(len((o or {}).get("mounts") or {}) for o in owners.values())
 
     if digest_items:
         embeds.append(digest_embed(digest_items, settings))
@@ -1451,6 +1559,8 @@ def main():
         print(json.dumps(embeds, indent=2, ensure_ascii=False) if embeds else "[dry run] No updates.")
         print("== recap ==")
         print(json.dumps(recap, indent=2, ensure_ascii=False) if recap else "[dry run] No recap.")
+        print("== officers: inactive ==")
+        print(json.dumps(inactive, indent=2, ensure_ascii=False) if inactive else "[dry run] Nobody inactive / no recap this run.")
         print("== roster board ==")
         print(json.dumps(roster_embed, indent=2, ensure_ascii=False) if roster_embed else "[dry run] No roster.")
         return
@@ -1473,6 +1583,13 @@ def main():
         for part in ([recap] if size < 5500 else [[e] for e in recap]):
             post_to_discord(webhook, part)
         print("Posted the weekly recap.")
+    if inactive:
+        staff_hook = os.environ.get("DISCORD_STAFF_WEBHOOK_URL", "").strip()
+        if staff_hook:
+            post_to_discord(staff_hook, [inactive])
+            print("Posted the officers-only inactive list.")
+        else:
+            print("[info] DISCORD_STAFF_WEBHOOK_URL not set; skipped the officers-only inactive list.")
 
     # Saved only after posting succeeds, so a failed post is retried next run.
     with open(STATE_PATH, "w", encoding="utf-8") as f:

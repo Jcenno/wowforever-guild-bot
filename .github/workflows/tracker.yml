@@ -40,6 +40,7 @@ jobs:
           BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           DISCORD_ROSTER_WEBHOOK_URL: ${{ secrets.DISCORD_ROSTER_WEBHOOK_URL }}
+          DISCORD_STAFF_WEBHOOK_URL: ${{ secrets.DISCORD_STAFF_WEBHOOK_URL }}
           PROFILE_NAMESPACE: ${{ vars.PROFILE_NAMESPACE }}
         run: python3 tracker.py ${{ inputs.test_webhook && '--test-webhook' || '' }} ${{ inputs.recap_now && '--recap-now' || '' }}
 

@@ -30,6 +30,8 @@
       "milestone",
       "max_level",
       "epic_mount",
+      "first_mount",
+      "guild_first",
       "guild_join"
     ],
     "roster_board": true,
@@ -57,7 +59,15 @@
     "recap_day": "sunday",
     "recap_hour": 19,
     "timezone": "America/Chicago",
-    "class_emojis": {}
+    "class_emojis": {},
+    "first_riding_skill": 75,
+    "ilvl_milestones": [
+      40,
+      50,
+      60,
+      70
+    ],
+    "inactive_days": 7
   },
   "friends": [
     {

@@ -6,15 +6,19 @@ Every 15 minutes it reads the guild roster from Blizzard's API, checks each char
 
 **Milestone cards (one per event, optional role ping)**
 - Level 30 / 40 / 50 / 60, and first in the guild to 60. Card shows the character portrait, "Nth to get there" and time since the previous milestone.
-- Epic mount (Riding 150, or a "Swift" mount in the collection)
+- First mount (Riding 75) and epic mount (Riding 150, or a "Swift" mount in the collection)
+- Guild firsts: the first character in the guild to clear each dungeon, kill each raid boss, or clear a raid
 - New member joined the guild
 
 **Progress digest (one card per run, silent)**
-- Other level-ups, professions learned and 75/150/225/300 skill marks
+- Other level-ups, professions learned and 75/150/225/300 skill marks, item level 40/50/60/70
 - First clear of each dungeon, first kill of each raid boss, achievements
 - Every epic equipped, each character's first blue, reputation milestones, new mounts
 - Member left the guild
-- Weekly recap on Sunday evening: leaderboard, dungeon clears, epics, professions, scoreboard, awards
+- Weekly recap on Sunday evening: guild totals (levels, dungeons, mounts, mobs, quests, deaths), leaderboard, dungeon clears, epics, professions, scoreboard, awards
+
+**Officers only (optional)**
+- With the recap, a "quiet for 7+ days" list posts to `DISCORD_STAFF_WEBHOOK_URL` (a webhook on an officers-only channel). Not set = skipped.
 
 **Roster board (two embeds in one message, edited every run)**
 - Roster: character count, average level, how many at 60, how many played in the last 2 days, raid composition from specs, a level-spread bar, then every character by class with activity dot, level, spec, item level, guild rank, armory link.
@@ -41,6 +45,7 @@ develop.battle.net → API Access → Create Client. Any name, redirect URL `htt
    - `BLIZZARD_CLIENT_SECRET`
    - `DISCORD_WEBHOOK_URL`
    - `DISCORD_ROSTER_WEBHOOK_URL` (optional)
+   - `DISCORD_STAFF_WEBHOOK_URL` (optional, officers-only channel)
 3. Settings → Actions → General → Workflow permissions → Read and write.
 
 ### 4. Guild name
@@ -63,9 +68,12 @@ Run it again unticked. The first run posts "Now tracked" for everyone and record
 |---|---|
 | `milestone_levels` | Levels that get their own milestone card (default 30, 40, 50, 60) |
 | `epic_riding_skill` | Riding skill that counts as the epic mount (150) |
+| `first_riding_skill` | Riding skill that counts as the first mount (75) |
+| `ilvl_milestones` | Item levels that get a digest line |
+| `inactive_days` | Days without a login before someone appears on the officers list |
 | `epic_mount_names` | Name fragments that mark a mount as epic |
 | `hype_ping_role_id` | Role to ping on hype cards; blank = no ping |
-| `hype_events` | Which events are loud: `milestone`, `max_level`, `epic_mount`, `guild_join` |
+| `hype_events` | Which events are loud: `milestone`, `max_level`, `epic_mount`, `first_mount`, `guild_first`, `guild_join` |
 | `roster_board` | Keep the roster message updated |
 | `announce_guild_changes` | Post joins and leaves |
 | `recap_day`, `recap_hour`, `timezone` | When the weekly recap posts |
@@ -84,3 +92,6 @@ Everything else is as upstream.
 BLIZZARD_CLIENT_ID=... BLIZZARD_CLIENT_SECRET=... DISCORD_WEBHOOK_URL=... python3 tracker.py --dry-run
 ```
 Prints the hype cards, updates, recap and roster board without posting or saving.
+
+## Later
+- Attunements / key quests: check whether Blizzard exposes Forever's attunements as achievements once the first raid tier opens, then add them as guild firsts.
