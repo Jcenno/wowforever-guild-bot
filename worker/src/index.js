@@ -189,8 +189,22 @@ async function onButton(i, env) {
 }
 const isOfficer = (i) => (BigInt(i.member?.permissions || "0") & (1n << 13n)) !== 0n; // MANAGE_MESSAGES as the officer test
 
+const COMMANDS = [
+  { name: "give", description: "Offer an item you don't need to the guild", options: [
+    { type: 3, name: "item", description: "Item name (pick from the list)", required: true, autocomplete: true } ] },
+  { name: "help", description: "How giving works, in one line" },
+];
+async function registerCommands(env) {
+  const r = await fetch(`${API}/applications/${env.DISCORD_APP_ID}/guilds/${env.GUILD_ID}/commands`, { method: "PUT",
+    headers: { Authorization: `Bot ${env.DISCORD_BOT_TOKEN}`, "content-type": "application/json", "User-Agent": "GuildBot (gifting, 1.0)" }, body: JSON.stringify(COMMANDS) });
+  const body = await r.text();
+  return new Response(r.ok ? `registered ${COMMANDS.length} commands` : `failed ${r.status}: ${body.slice(0, 300)}`, { status: r.ok ? 200 : 500 });
+}
+
 export default {
   async fetch(req, env, ctx) {
+    const url = new URL(req.url);
+    if (req.method === "GET" && url.pathname === "/register") return registerCommands(env);
     if (req.method !== "POST") return new Response("Guild Bot", { status: 200 });
     const body = await req.text();
     if (!(await verify(req, body, env.DISCORD_PUBLIC_KEY))) return new Response("bad signature", { status: 401 });
