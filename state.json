@@ -1,9 +1,94 @@
 {
-  "characters": {},
-  "group": {},
-  "owners": {},
+  "characters": {
+    "us:steel-appeal": {
+      "achievements": {},
+      "avatar": null,
+      "boss_kills": {},
+      "class": "Warrior",
+      "dungeons": {},
+      "first_seen": 1794152175,
+      "gear": {},
+      "ilvl": 3,
+      "last_login": 1794150162000,
+      "level": 10,
+      "level_at": {
+        "10": 1794152175
+      },
+      "professions": {
+        "Cooking": 5,
+        "First Aid": 43,
+        "Mining": 27
+      },
+      "race": "Night Elf",
+      "raids": {},
+      "reputations": {
+        "Darnassus": {
+          "name": "Friendly",
+          "raw": 7195,
+          "tier": 4
+        },
+        "Gnomeregan Exiles": {
+          "name": "Friendly",
+          "raw": 3140,
+          "tier": 4
+        },
+        "Ironforge": {
+          "name": "Friendly",
+          "raw": 3140,
+          "tier": 4
+        },
+        "Stormwind": {
+          "name": "Friendly",
+          "raw": 3140,
+          "tier": 4
+        }
+      },
+      "spec": null,
+      "stats": {
+        "critters": 3,
+        "deaths": 6,
+        "food": 20,
+        "health_potions": 2,
+        "killing_blows": 248,
+        "mobs": 304,
+        "need_rolls": 1,
+        "quests": 43
+      },
+      "xp": 6480
+    }
+  },
+  "group": {
+    "firsts": {
+      "boss": {},
+      "dungeon": {},
+      "raid": {}
+    }
+  },
+  "owners": {
+    "us:steel-appeal": {
+      "mounts": {
+        "3111": "Cerulean Prideclaw",
+        "3130": "Veteran Adventurer's Loyal Companion"
+      }
+    }
+  },
+  "pending": [],
+  "roster": {
+    "message_id": "1569012691186622596"
+  },
   "weekly": {
-    "baseline": {},
+    "baseline": {
+      "us:steel-appeal": {
+        "achievements": 0,
+        "clears": {},
+        "epics": [],
+        "level": 1,
+        "professions": {},
+        "rep": {},
+        "stats": {},
+        "xp": 0
+      }
+    },
     "last_recap": "2026-11-08T03:09:11.722894+00:00",
     "mounts_baseline": 0
   }
