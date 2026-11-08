@@ -6,8 +6,12 @@ import tracker as t
 q = sys.argv[1] if len(sys.argv) > 1 else "Linen Cloth"
 token = t.get_token(os.environ["BLIZZARD_CLIENT_ID"], os.environ["BLIZZARD_CLIENT_SECRET"])
 print("token ok")
+
+def get(path, ns, **params):
+    qs = urllib.parse.urlencode({"namespace": ns, "locale": "en_US", **params})
+    return t.http("GET", f"https://us.api.blizzard.com{path}?{qs}", {"Authorization": f"Bearer {token}"})
 for ns in ["static-forever-us", "static-classic-us", "static-classic1x-us", "static-us"]:
-    s, b = t.api_get("us", f"/data/wow/search/item?name.en_US={urllib.parse.quote(q)}&orderby=id&_pageSize=5", token, ns)
+    s, b = get("/data/wow/search/item", ns, **{"name.en_US": q, "orderby": "id", "_pageSize": 5})
     n = len((b or {}).get("results") or []) if isinstance(b, dict) else 0
     first = None
     if n:
@@ -15,8 +19,8 @@ for ns in ["static-forever-us", "static-classic-us", "static-classic1x-us", "sta
     print(f"{ns:22} search {s} results={n} first={first}")
     if n:
         iid = first[0]
-        s2, it = t.api_get("us", f"/data/wow/item/{iid}", token, ns)
-        s3, md = t.api_get("us", f"/data/wow/media/item/{iid}", token, ns)
+        s2, it = get(f"/data/wow/item/{iid}", ns)
+        s3, md = get(f"/data/wow/media/item/{iid}", ns)
         keys = sorted(k for k in (it or {}) if k != "_links") if isinstance(it, dict) else None
         icon = (md or {}).get("assets", [{}])[0].get("value") if isinstance(md, dict) else None
         print(f"{'':22} item {s2} keys={keys}")
