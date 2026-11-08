@@ -80,7 +80,7 @@ async function bnet(env, path, params = {}) {
   return r.ok ? r.json() : null;
 }
 async function searchItems(env, q) {
-  const j = await bnet(env, "/data/wow/search/item", { "name.en_US": q, orderby: "id", _pageSize: 25 });
+  const j = await bnet(env, "/data/wow/search/item", { "name.en_US": q, orderby: "id", _pageSize: 100 });
   const seen = new Set(), out = [], ql = q.toLowerCase();
   for (const r of j?.results || []) {
     const name = r.data?.name?.en_US || r.data?.name; const id = r.data?.id;
