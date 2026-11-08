@@ -72,6 +72,7 @@ Run it again unticked. The first run posts "Now tracked" for everyone and record
 | `ilvl_milestones` | Item levels that get a digest line |
 | `inactive_days` | Days without a login before someone appears on the officers list |
 | `epic_mount_names` | Name fragments that mark a mount as epic |
+| `guild_first_min_tracked` | Guild-first cards wait until this many characters are tracked (default 3); ties in one check share one card |
 | `hype_ping_role_id` | Role to ping on hype cards; blank = no ping |
 | `hype_events` | Which events are loud: `milestone`, `max_level`, `epic_mount`, `first_mount`, `guild_first`, `guild_join` |
 | `roster_board` | Keep the roster message updated |

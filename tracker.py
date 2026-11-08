@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-WoW: Forever guild bot v1.9 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
+WoW: Forever guild bot v1.10 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
 
 Guild additions over the upstream tracker:
   - the character list comes from the in-game guild roster
@@ -117,6 +117,7 @@ DEFAULT_SETTINGS = {
     "epic_mount_names": ["Swift "],    # substrings that mark a mount as epic, in addition to Riding
     "hype_ping_role_id": "",           # Discord role id to ping on hype posts; blank = no ping
     "hype_events": ["milestone", "max_level", "epic_mount", "first_mount", "guild_first", "guild_join"],
+    "guild_first_min_tracked": 3,
     "roster_board": True,
     "announce_guild_changes": True,
 }
@@ -903,8 +904,9 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
         title = {"dungeon": "Guild First: Dungeon", "boss": "Guild First: Boss Kill", "raid": "Guild First: Raid Clear"}.get(kind, "Guild First")
         color = HYPE_COLOR
         verb = {"dungeon": "cleared", "boss": "killed", "raid": "cleared"}.get(kind, "did")
-        headline = f"**{name}** is the first in the guild recorded to have {verb} **{detail['what']}**."
-        fields.append({"name": "Level", "value": str(snap.get("level") or "?"), "inline": True})
+        names = detail.get("names") or [name]
+        who = ("**" + "**, **".join(names[:-1]) + "** and **" + names[-1] + "**") if len(names) > 1 else f"**{names[0]}**"
+        headline = f"{who} {'are' if len(names) > 1 else 'is'} the first in the guild recorded to have {verb} **{detail['what']}**."
     else:
         title, headline = "Milestone", f"**{name}**: {detail}"
     embed = {
@@ -1433,6 +1435,7 @@ def main():
 
     token = get_token(client_id, client_secret)
     embeds, hype_embeds, digest_items, unavailable = [], [], [], []
+    pending_firsts = {}  # (kind, what) -> [(character, snapshot, key)] achieved this run
     hype_events = set(settings.get("hype_events") or [])
     ping_role = str(settings.get("hype_ping_role_id") or "").strip() or None
 
@@ -1555,11 +1558,22 @@ def main():
                 for boss in info.get("bosses") or []:
                     firsts["boss"].setdefault(f"{boss} ({inst})", key)
         else:
+            mine = set()
             for ev, what in list(hype):
                 kind = {"clear": "dungeon", "boss": "boss", "raid_clear": "raid"}.get(ev)
-                if kind and what not in firsts[kind]:
+                if not kind:
+                    continue
+                if what not in firsts[kind]:
                     firsts[kind][what] = key
-                    hype.append(("guild_first", {"kind": kind, "what": what}))
+                    pending_firsts[(kind, what)] = [(c, snap, key)]
+                    mine.add(what)
+                elif (kind, what) in pending_firsts:
+                    # Someone else got the same first in this very run: a tie, one card for all.
+                    pending_firsts[(kind, what)].append((c, snap, key))
+                    firsts[kind][what] = (firsts[kind][what] if isinstance(firsts[kind][what], list) else [firsts[kind][what]]) + [key]
+                    mine.add(what)
+            # Lines that will become a guild-first card stay out of this character's digest.
+            lines = [l for l in lines if not any(f"**{w}**" in l or f"**{w.split(' (')[0]}**" in l for w in mine)]
 
         loud = [(ev, d) for ev, d in hype if ev in hype_events]
         if old is None:
@@ -1583,6 +1597,17 @@ def main():
             # friend added later, counts from when the tracker first saw them.
             fresh = (snap.get("level") or 0) <= NEW_CHARACTER_MAX_LEVEL
             weekly["baseline"][key] = dict(LAUNCH_BASELINE) if fresh else recap_summary(state["characters"][key])
+
+    # Guild-first cards: one per achievement, naming everyone who got it this run.
+    # Held back until enough characters are tracked for "first" to mean something.
+    tracked = len(state["characters"])
+    if pending_firsts and "guild_first" in hype_events and tracked >= int(settings.get("guild_first_min_tracked") or 0):
+        for (kind, what), members in pending_firsts.items():
+            c0, snap0, _ = members[0]
+            detail = {"kind": kind, "what": what, "names": [display_name(cc) for cc, _, _ in members]}
+            hype_embeds.append(milestone_embed(c0, snap0, "guild_first", detail, state["group"], snap0, settings, int(time.time())))
+    elif pending_firsts:
+        print(f"[info] {len(pending_firsts)} guild first(s) recorded quietly; {tracked} tracked, need {settings.get('guild_first_min_tracked')}")
 
     if unavailable:
         print("[info] No Blizzard data yet for: " + ", ".join(unavailable))
