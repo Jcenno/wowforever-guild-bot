@@ -17,7 +17,11 @@ const S = {
   dmGiver: (item, winner) => `**${item}** goes to **${winner}**. Mail or trade it when you're on.`,
   giveAck: "Posted in #general.",
   itemNotFound: "No item by that name. Pick one from the list.",
-  helpLine: "`/give` an item you don't need. Press Need or Greed on a card. Winner presses Received when it arrives.",
+  helpLine: "`/give` an item you don't need. Press Need or Greed on a card. Winner presses Received when it arrives. `/professions` shows someone's recipes, `/who-crafts` finds a crafter.",
+  noSuchChar: "No tracked character by that name.",
+  noRecipes: "No recipes recorded yet. They appear after the next check.",
+  nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
+  whoCraftsTitle: (q) => `Who can make "${q}"`,
 };
 
 // ---- index.js
@@ -98,6 +102,67 @@ async function itemDetails(env, id) {
     armor: it.item_class?.name?.en_US === "Armor" || it.item_class?.name === "Armor" ? (it.item_subclass?.name?.en_US || it.item_subclass?.name) : (it.item_subclass?.name?.en_US || it.item_subclass?.name || ""),
     quality: (it.quality?.type || "COMMON"), req_level: it.required_level || null, classes,
   };
+}
+
+// ---------------------------------------------------------------- Tracker state (roster, professions, recipes)
+let stateCache = { value: null, exp: 0 };
+async function trackerState(env) {
+  if (stateCache.value && Date.now() < stateCache.exp) return stateCache.value;
+  const r = await fetch(env.STATE_URL || "https://raw.githubusercontent.com/Jcenno/wowforever-guild-bot/main/state.json", { cf: { cacheTtl: 120 } });
+  const j = r.ok ? await r.json() : { characters: {} };
+  stateCache = { value: j, exp: Date.now() + 2 * 60 * 1000 };
+  return j;
+}
+const charName = (key) => key.split(":").pop().split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(" ");
+const tier = (sk) => (sk >= 225 ? "Artisan" : sk >= 150 ? "Expert" : sk >= 75 ? "Journeyman" : "Apprentice");
+const bar = (sk, w = 6) => { const f = Math.max(0, Math.min(w, Math.round((sk / 300) * w))); return "▰".repeat(f) + "▱".repeat(w - f); };
+const SECONDARY = new Set(["cooking", "first aid", "fishing", "riding"]);
+
+async function onProfessions(i, env) {
+  const q = (i.data.options?.find((o) => o.name === "character")?.value || "").trim().toLowerCase();
+  const st = await trackerState(env);
+  const keys = Object.keys(st.characters || {});
+  const key = keys.find((k) => k.endsWith(":" + q)) || keys.find((k) => charName(k).toLowerCase() === q) || keys.find((k) => charName(k).toLowerCase().startsWith(q));
+  if (!key) return json({ type: R.MESSAGE, data: { content: S.noSuchChar, flags: FLAGS.EPHEMERAL } });
+  const c = st.characters[key], profs = c.professions || {}, recipes = c.recipes || {};
+  const lines = [];
+  for (const [prof, skill] of Object.entries(profs).sort((a, b) => b[1] - a[1])) {
+    if (prof.toLowerCase() === "riding" || !skill) continue;
+    const known = recipes[prof] || [];
+    lines.push(`**${prof}** ${bar(skill)} ${skill} ${tier(skill)}${known.length ? ` · ${known.length} recipes` : ""}`);
+    if (known.length) {
+      const names = known.map((r) => r.name).sort();
+      lines.push(names.slice(0, 20).join(", ") + (names.length > 20 ? `, +${names.length - 20} more` : ""));
+    }
+  }
+  const content = `**${charName(key)}** · level ${c.level || "?"} ${c.class || ""}\n\n` + (lines.join("\n") || S.noRecipes);
+  return json({ type: R.MESSAGE, data: { content: content.slice(0, 1900), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
+}
+
+async function onWhoCrafts(i, env) {
+  const q = (i.data.options?.find((o) => o.name === "recipe")?.value || "").trim();
+  const ql = q.toLowerCase();
+  const st = await trackerState(env);
+  const hits = [];
+  for (const [key, c] of Object.entries(st.characters || {})) {
+    for (const [prof, known] of Object.entries(c.recipes || {})) {
+      const match = (known || []).filter((r) => r.name.toLowerCase().includes(ql));
+      if (match.length) hits.push({ name: charName(key), prof, skill: (c.professions || {})[prof] || 0, recipes: match.map((r) => r.name).sort(), last: c.last_login || 0 });
+    }
+  }
+  if (!hits.length) return json({ type: R.MESSAGE, data: { content: S.nobodyCrafts(q), flags: FLAGS.EPHEMERAL } });
+  hits.sort((a, b) => b.last - a.last || b.skill - a.skill);
+  const two = 2 * 24 * 3600 * 1000, week = 7 * two / 2;
+  const dot = (ms) => (Date.now() - ms < two ? "🟢" : Date.now() - ms < week ? "🟡" : "⚫");
+  const lines = hits.slice(0, 12).map((h) => `${dot(h.last)} **${h.name}** · ${h.prof} ${h.skill} · ${h.recipes.slice(0, 4).join(", ")}${h.recipes.length > 4 ? ` +${h.recipes.length - 4}` : ""}`);
+  return json({ type: R.MESSAGE, data: { content: `**${S.whoCraftsTitle(q)}**\n` + lines.join("\n"), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
+}
+
+async function onCharAutocomplete(i, env) {
+  const q = (i.data.options?.find((o) => o.focused)?.value || "").trim().toLowerCase();
+  const st = await trackerState(env);
+  const names = Object.keys(st.characters || {}).map(charName).filter((n) => n.toLowerCase().includes(q)).sort().slice(0, 25);
+  return json({ type: R.AUTOCOMPLETE, data: { choices: names.map((n) => ({ name: n, value: n })) } });
 }
 
 // ---------------------------------------------------------------- Card (Components V2)
@@ -214,6 +279,10 @@ const COMMANDS = [
   { name: "give", description: "Offer an item you don't need to the guild", options: [
     { type: 3, name: "item", description: "Item name (pick from the list)", required: true, autocomplete: true } ] },
   { name: "help", description: "How giving works, in one line" },
+  { name: "professions", description: "Someone's professions and known recipes", options: [
+    { type: 3, name: "character", description: "Character name", required: true, autocomplete: true } ] },
+  { name: "who-crafts", description: "Who in the guild can make something", options: [
+    { type: 3, name: "recipe", description: "Recipe or item name, or part of it", required: true } ] },
 ];
 async function registerCommands(env) {
   const r = await fetch(`${API}/applications/${env.DISCORD_APP_ID}/guilds/${env.GUILD_ID}/commands`, { method: "PUT",
@@ -231,7 +300,9 @@ export default {
     if (!(await verify(req, body, env.DISCORD_PUBLIC_KEY))) return new Response("bad signature", { status: 401 });
     const i = JSON.parse(body);
     if (i.type === T.PING) return json({ type: R.PONG });
-    if (i.type === T.AUTOCOMPLETE) return onAutocomplete(i, env);
+    if (i.type === T.AUTOCOMPLETE) return i.data.name === "professions" ? onCharAutocomplete(i, env) : onAutocomplete(i, env);
+    if (i.type === T.COMMAND && i.data.name === "professions") return onProfessions(i, env);
+    if (i.type === T.COMMAND && i.data.name === "who-crafts") return onWhoCrafts(i, env);
     if (i.type === T.COMMAND && i.data.name === "give") return onGive(i, env, ctx);
     if (i.type === T.COMMAND && i.data.name === "help") return json({ type: R.MESSAGE, data: { content: S.helpLine, flags: FLAGS.EPHEMERAL } });
     if (i.type === T.COMPONENT) return onButton(i, env);

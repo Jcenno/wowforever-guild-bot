@@ -15,5 +15,9 @@ export const S = {
   dmGiver: (item, winner) => `**${item}** goes to **${winner}**. Mail or trade it when you're on.`,
   giveAck: "Posted in #general.",
   itemNotFound: "No item by that name. Pick one from the list.",
-  helpLine: "`/give` an item you don't need. Press Need or Greed on a card. Winner presses Received when it arrives.",
+  helpLine: "`/give` an item you don't need. Press Need or Greed on a card. Winner presses Received when it arrives. `/professions` shows someone's recipes, `/who-crafts` finds a crafter.",
+  noSuchChar: "No tracked character by that name.",
+  noRecipes: "No recipes recorded yet. They appear after the next check.",
+  nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
+  whoCraftsTitle: (q) => `Who can make "${q}"`,
 };
