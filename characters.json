@@ -1,7 +1,7 @@
 {
   "region": "us",
   "guild": {
-    "slug": "REPLACE-WITH-GUILD-NAME-SLUG",
+    "slug": "",
     "region": "us",
     "min_level": 1,
     "ranks": null,
