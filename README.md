@@ -22,7 +22,7 @@ About every 15 minutes (GitHub's scheduler can run late) it reads the guild rost
 
 **Roster board (two embeds in one message, edited every run)**
 - Roster: character count, average level, how many at 60, how many played in the last 2 days, raid composition from specs, a level-spread bar, then every character by class with activity dot, level, spec, item level, guild rank, armory link.
-- Who crafts what: every primary profession with the crafters and their skill, highest first; best-in-guild for cooking/first aid/fishing; who has no profession yet.
+- Professions panel: Crafting, Gathering and Secondary cards. Each crafter line has an activity dot, armory link, skill bar, skill, tier (Apprentice to Artisan) and known-recipe count. Known recipes are saved per character for the Worker's `/professions` command.
 
 Runs free on GitHub Actions. No server.
 

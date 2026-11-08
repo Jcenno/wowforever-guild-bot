@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-WoW: Forever guild bot v1.8 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
+WoW: Forever guild bot v1.9 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
 
 Guild additions over the upstream tracker:
   - the character list comes from the in-game guild roster
@@ -270,6 +270,39 @@ def parse_professions(body):
             skills = [s for s in skills if isinstance(s, int)]
             out[name] = max(skills) if skills else 0
     return out
+
+
+def parse_recipes(body):
+    """{profession name: [{"id", "name"}, ...]} of known recipes, when the API lists them."""
+    if not isinstance(body, dict):
+        return None
+    out = {}
+    for group in ("primaries", "secondaries"):
+        for item in body.get(group) or []:
+            name = name_of(item.get("profession"))
+            if not name:
+                continue
+            known = []
+            for t in item.get("tiers") or []:
+                for r in t.get("known_recipes") or []:
+                    if r.get("id") and r.get("name"):
+                        known.append({"id": r["id"], "name": r["name"]})
+            out[name] = known
+    return out
+
+
+PROF_ICON = {"Alchemy": "⚗️", "Blacksmithing": "⚒️", "Enchanting": "🔮", "Engineering": "⚙️", "Leatherworking": "🧤",
+             "Tailoring": "🧵", "Mining": "⛏️", "Herbalism": "🌿", "Skinning": "🔪", "Cooking": "🍖", "First Aid": "🩹", "Fishing": "🎣"}
+GATHERING = {"mining", "herbalism", "skinning"}
+
+
+def skill_tier(skill):
+    return "Artisan" if skill >= 225 else "Expert" if skill >= 150 else "Journeyman" if skill >= 75 else "Apprentice"
+
+
+def skill_bar(skill, cap=300, width=6):
+    filled = max(0, min(width, round(skill / cap * width)))
+    return "▰" * filled + "▱" * (width - filled)
 
 
 def parse_encounters(body):
@@ -547,7 +580,9 @@ def fetch_snapshot(c, region, token, namespace, settings):
         snap["avatar"] = sub("/character-media", parse_avatar)
 
         if settings["track_professions"]:
-            snap["professions"] = sub("/professions", parse_professions)
+            ps, pb = api_get(region, f"{path}/professions", token, namespace)
+            snap["professions"] = parse_professions(pb) if ps == 200 else None
+            snap["recipes"] = parse_recipes(pb) if ps == 200 else None
         if settings["track_dungeons"]:
             snap["dungeons"] = sub("/encounters/dungeons", parse_encounters)
         if settings["track_raids"]:
@@ -744,7 +779,7 @@ def merge_gear(old, new):
 
 def keep_baselines(old, new):
     """If a feature failed to load this run, keep last run's data for it."""
-    for field in ("professions", "dungeons", "raids", "achievements", "boss_kills", "reputations",
+    for field in ("professions", "recipes", "dungeons", "raids", "achievements", "boss_kills", "reputations",
                   "stats", "spec", "avatar", "last_login", "ilvl", "level_at", "first_seen"):
         if new.get(field) is None and old and old.get(field) is not None:
             new[field] = old[field]
@@ -972,44 +1007,54 @@ def build_roster_board(entries, settings, max_level):
 
 def build_professions_board(entries, settings):
     """
-    Who crafts what, from the professions API: one field per primary profession,
-    names with skill, highest first. Secondary skills get one compact field.
+    Who crafts what, as up to three embeds: Crafting, Gathering, Secondary.
+    Each crafter line: activity dot, name (armory link), skill bar, skill, tier, recipe count.
     """
-    primaries, secondaries = {}, {}
-    for c, s in entries:
-        for prof, skill in (s.get("professions") or {}).items():
-            if not skill or skill < 1:
+    now_ts = int(time.time())
+    crafting, gathering, secondary = {}, {}, {}
+    for c, snap in entries:
+        for prof, skill in (snap.get("professions") or {}).items():
+            if not skill or skill < 1 or prof.lower() == "riding":
                 continue
-            bucket = secondaries if prof.lower() in SECONDARY_PROFS else primaries
-            bucket.setdefault(prof, []).append((skill, display_name(c), c))
-    fields = []
-    for prof in sorted(primaries):
-        rows = sorted(primaries[prof], key=lambda r: -r[0])
-        lines = [f"**{skill}** [{name}]({armory_url(c)})" for skill, name, c in rows]
-        fields.append({"name": f"{prof} · {len(rows)}", "value": "\n".join(lines)[:1024], "inline": True})
-    if secondaries:
-        parts = []
-        for prof in sorted(secondaries):
-            if prof.lower() == "riding":
-                continue
-            best = max(secondaries[prof], key=lambda r: r[0])
-            parts.append(f"{prof}: {best[1]} {best[0]} (+{len(secondaries[prof]) - 1})" if len(secondaries[prof]) > 1
-                         else f"{prof}: {best[1]} {best[0]}")
-        if parts:
-            fields.append({"name": "Secondary (best in guild)", "value": "\n".join(parts)[:1024], "inline": False})
+            bucket = secondary if prof.lower() in SECONDARY_PROFS else gathering if prof.lower() in GATHERING else crafting
+            n_recipes = len(((snap.get("recipes") or {}).get(prof)) or [])
+            bucket.setdefault(prof, []).append((skill, display_name(c), c, activity_dot(snap.get("last_login"), now_ts), n_recipes))
+
+    def line(skill, name, c, dot, n):
+        tail = f" · {n} recipes" if n else ""
+        return f"{dot} **[{name}]({armory_url(c)})** {skill_bar(skill)} {skill} {skill_tier(skill)}{tail}"
+
+    def fields_for(bucket):
+        out = []
+        for prof in sorted(bucket):
+            rows = sorted(bucket[prof], key=lambda r: -r[0])
+            out.append({"name": f"{PROF_ICON.get(prof, '')} {prof} · {len(rows)}".strip(),
+                        "value": "\n".join(line(*r) for r in rows)[:1024], "inline": False})
+        return out[:25]
+
+    stamp = datetime.now(timezone.utc).isoformat()
+    embeds = []
     missing = [display_name(c) for c, s in entries if not any(
         p.lower() not in SECONDARY_PROFS and v for p, v in (s.get("professions") or {}).items())]
-    desc = "Need something made? Ask in #general and ping the crafter. 300 is max skill."
+    desc = "Need something made? Ask in #general and ping the crafter."
     if missing:
         desc += f"\nNo primary profession yet: {', '.join(missing[:15])}" + (" …" if len(missing) > 15 else "")
-    return {
-        "title": "Who crafts what",
-        "description": desc,
-        "color": 0x9B59B6,
-        "fields": fields[:25] or [{"name": "Nothing yet", "value": "Professions appear here as people learn them.", "inline": False}],
-        "footer": {"text": "Updates about every 15 min"},
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-    }
+    embeds.append({"title": "Crafting", "description": desc, "color": 0x9B59B6,
+                   "fields": fields_for(crafting) or [{"name": "Nothing yet", "value": "Crafting professions appear here as people learn them.", "inline": False}]})
+    if gathering:
+        embeds.append({"title": "Gathering", "color": 0x2ECC71, "fields": fields_for(gathering)})
+    if secondary:
+        parts = []
+        for prof in sorted(secondary):
+            rows = sorted(secondary[prof], key=lambda r: -r[0])
+            best = rows[0]
+            others = " · ".join(f"{r[1]} {r[0]}" for r in rows[1:4])
+            parts.append(f"{PROF_ICON.get(prof, '')} **{prof}** {best[3]} [{best[1]}]({armory_url(best[2])}) {best[0]} {skill_tier(best[0])}"
+                         + (f"\n{'':6}{others}" if others else ""))
+        embeds.append({"title": "Secondary", "description": "\n".join(parts)[:4000], "color": 0x95A5A6})
+    embeds[-1]["footer"] = {"text": "🟢 last 2 days · 🟡 last week · ⚫ longer · 300 is max skill · updates about every 15 min"}
+    embeds[-1]["timestamp"] = stamp
+    return embeds
 
 
 def upsert_roster_board(webhook, embeds_list, state):
@@ -1566,8 +1611,7 @@ def main():
     if settings.get("roster_board"):
         entries = [(c, state["characters"][key]) for c, key in keyed if key in state["characters"]]
         if entries:
-            roster_embed = [build_roster_board(entries, settings, settings["max_level"]),
-                            build_professions_board(entries, settings)]
+            roster_embed = [build_roster_board(entries, settings, settings["max_level"])] + build_professions_board(entries, settings)
 
     if args.dry_run:
         print("== hype ==")
