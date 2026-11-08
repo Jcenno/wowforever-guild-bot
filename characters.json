@@ -78,6 +78,24 @@
           "surname": "Appeal"
         }
       ]
+    },
+    {
+      "owner": "Tanner",
+      "characters": [
+        {
+          "name": "Whizz",
+          "surname": "Ard"
+        }
+      ]
+    },
+    {
+      "owner": "Quinn",
+      "characters": [
+        {
+          "name": "Pawnage",
+          "surname": "Ownage"
+        }
+      ]
     }
   ]
 }

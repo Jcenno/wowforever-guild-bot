@@ -211,7 +211,11 @@
     "firsts": {
       "boss": {},
       "dungeon": {
-        "Hall of Thanes": "us:steel-appeal"
+        "Hall of Thanes": [
+          "us:steel-appeal",
+          "us:whizz-ard",
+          "us:pawnage-ownage"
+        ]
       },
       "raid": {}
     }
