@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-WoW: Forever guild bot (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
+WoW: Forever guild bot v1.5 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
 
 Guild additions over the upstream tracker:
   - the character list comes from the in-game guild roster
     (/data/wow/guild/{slug}/roster in profile-forever-{region}); members who
     join or leave the guild are announced, and characters.json "friends" is
     still honored for non-guild alts
-  - big-ding milestones (10/20/30/40/50/60 by default) and the epic mount
+  - big-ding milestones (30/40/50/60 by default) and the epic mount
     (Riding skill crossing epic_riding_skill, or a mount on the epic list)
     post as hype cards and can ping a Discord role; everything else stays
     silent as upstream
@@ -750,6 +750,11 @@ def keep_baselines(old, new):
                   "stats", "spec", "avatar", "last_login", "ilvl", "level_at", "first_seen"):
         if new.get(field) is None and old and old.get(field) is not None:
             new[field] = old[field]
+    # Levels never go down. A lower or missing level is a bad read; keeping the
+    # old one stops the next good read from announcing the same ding twice.
+    if old and (new.get("level") or 0) < (old.get("level") or 0):
+        new["level"] = old["level"]
+        new["xp"] = old.get("xp", new.get("xp"))
     return new
 
 
@@ -865,7 +870,7 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
         title = {"dungeon": "Guild First: Dungeon", "boss": "Guild First: Boss Kill", "raid": "Guild First: Raid Clear"}.get(kind, "Guild First")
         color = HYPE_COLOR
         verb = {"dungeon": "cleared", "boss": "killed", "raid": "cleared"}.get(kind, "did")
-        headline = f"**{name}** is the first in the guild to have {verb} **{detail['what']}**."
+        headline = f"**{name}** is the first in the guild recorded to have {verb} **{detail['what']}**."
         fields.append({"name": "Level", "value": str(snap.get("level") or "?"), "inline": True})
     else:
         title, headline = "Milestone", f"**{name}**: {detail}"
@@ -1310,6 +1315,14 @@ def post_to_discord(webhook, embeds, content=None, ping_role=None):
 
 # ---------------------------------------------------------------- Main
 
+def save_state(state):
+    """Write state now. Called after every successful Discord post so a crash
+    later in the run can't repeat an announcement on the next run."""
+    with open(STATE_PATH, "w", encoding="utf-8") as f:
+        json.dump(state, f, indent=2, sort_keys=True, ensure_ascii=False)
+        f.write("\n")
+
+
 def load_json(path, default):
     if path.exists():
         with open(path, encoding="utf-8") as f:
@@ -1391,7 +1404,13 @@ def main():
         roster_state = state.setdefault("roster", {})
         seen_before = roster_state.get("members")  # {slug: display name}
         now_members = {char_slug(m): display_name(m) for m in guild_members}
-        if seen_before is not None and settings.get("announce_guild_changes"):
+        if seen_before and not now_members:
+            # An empty roster from a guild that had members is an API hiccup,
+            # not a mass exodus. Keep last run's roster and say nothing.
+            print("[warn] guild roster came back empty; keeping the last known roster")
+            guild_members = None
+            now_members = seen_before
+        if guild_members is not None and seen_before is not None and settings.get("announce_guild_changes"):
             lines = []
             for slug, name in sorted(now_members.items(), key=lambda kv: kv[1]):
                 if slug not in seen_before:
@@ -1405,7 +1424,7 @@ def main():
                         "color": ROSTER_COLOR, "timestamp": datetime.now(timezone.utc).isoformat()}
                 (hype_embeds if "guild_join" in hype_events and joined else embeds).append(card)
         roster_state["members"] = now_members
-        print(f"[info] guild roster: {len(guild_members)} members")
+        print(f"[info] guild roster: {len(now_members)} members")
     if not characters:
         sys.exit("No characters: set guild.slug in characters.json or list friends/characters.")
 
@@ -1565,36 +1584,64 @@ def main():
         print(json.dumps(roster_embed, indent=2, ensure_ascii=False) if roster_embed else "[dry run] No roster.")
         return
 
+    # Everything to post goes into state["pending"] and is saved to disk
+    # BEFORE the first post. Each group is removed and saved again as soon as
+    # Discord accepts it. A crash at any point leaves the queue on disk, so
+    # the next run posts what is left and never recomputes or repeats what
+    # already went out. Webhook URLs are never stored; only the kind is.
+    queue = list(state.get("pending") or [])  # anything a failed run left behind
+    if queue:
+        print(f"[info] {len(queue)} post(s) left over from an earlier run")
     if hype_embeds:
-        post_to_discord(webhook, hype_embeds, ping_role=ping_role)
-        print(f"Posted {len(hype_embeds)} milestone card(s)" + (" with role ping." if ping_role else "."))
+        queue.append({"kind": "hype", "embeds": hype_embeds, "ping": ping_role})
     if embeds:
-        post_to_discord(webhook, embeds)
-        print(f"Posted {len(embeds)} update(s).")
-    if not embeds and not hype_embeds:
-        print("No changes since the last check.")
-    if roster_embed:
-        roster_hook = os.environ.get("DISCORD_ROSTER_WEBHOOK_URL", "").strip() or webhook
-        upsert_roster_board(roster_hook, roster_embed, state)
-        print("Roster board refreshed.")
+        queue.append({"kind": "updates", "embeds": embeds})
     if recap:
         # Discord caps a message at 6,000 characters across its embeds; split if needed.
         size = len(json.dumps(recap, ensure_ascii=False))
         for part in ([recap] if size < 5500 else [[e] for e in recap]):
-            post_to_discord(webhook, part)
-        print("Posted the weekly recap.")
+            queue.append({"kind": "recap", "embeds": part})
     if inactive:
-        staff_hook = os.environ.get("DISCORD_STAFF_WEBHOOK_URL", "").strip()
-        if staff_hook:
-            post_to_discord(staff_hook, [inactive])
-            print("Posted the officers-only inactive list.")
-        else:
-            print("[info] DISCORD_STAFF_WEBHOOK_URL not set; skipped the officers-only inactive list.")
+        queue.append({"kind": "inactive", "embeds": [inactive]})
+    state["pending"] = queue
+    save_state(state)
 
-    # Saved only after posting succeeds, so a failed post is retried next run.
-    with open(STATE_PATH, "w", encoding="utf-8") as f:
-        json.dump(state, f, indent=2, sort_keys=True, ensure_ascii=False)
-        f.write("\n")
+    staff_hook = os.environ.get("DISCORD_STAFF_WEBHOOK_URL", "").strip()
+    posted = {"hype": 0, "updates": 0, "recap": 0, "inactive": 0}
+    while state["pending"]:
+        item = state["pending"][0]
+        kind = item.get("kind")
+        if kind == "hype":
+            post_to_discord(webhook, item["embeds"], ping_role=item.get("ping"))
+        elif kind == "inactive":
+            if staff_hook:
+                post_to_discord(staff_hook, item["embeds"])
+            else:
+                print("[info] DISCORD_STAFF_WEBHOOK_URL not set; skipped the officers-only inactive list.")
+        elif kind in ("updates", "recap"):
+            post_to_discord(webhook, item["embeds"])
+        posted[kind] = posted.get(kind, 0) + len(item.get("embeds") or [])
+        state["pending"].pop(0)
+        save_state(state)
+    if posted["hype"]:
+        print(f"Posted {posted['hype']} milestone card(s)" + (" with role ping." if ping_role else "."))
+    if posted["updates"]:
+        print(f"Posted {posted['updates']} update(s).")
+    if posted["recap"]:
+        print("Posted the weekly recap.")
+    if posted["inactive"] and staff_hook:
+        print("Posted the officers-only inactive list.")
+    if not posted["hype"] and not posted["updates"]:
+        print("No changes since the last check.")
+
+    if roster_embed:
+        roster_hook = os.environ.get("DISCORD_ROSTER_WEBHOOK_URL", "").strip() or webhook
+        try:
+            upsert_roster_board(roster_hook, roster_embed, state)
+            print("Roster board refreshed.")
+        except Exception as err:  # the board is rebuilt every run; never block the rest
+            print(f"[warn] roster board: {err}")
+        save_state(state)
 
 
 if __name__ == "__main__":

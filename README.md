@@ -2,12 +2,12 @@
 
 Fork of [tsc862-prog/wow-forever-tracker](https://github.com/tsc862-prog/wow-forever-tracker) with guild features added.
 
-Every 15 minutes it reads the guild roster from Blizzard's API, checks each character, and posts to Discord:
+About every 15 minutes (GitHub's scheduler can run late) it reads the guild roster from Blizzard's API, checks each character, and posts to Discord:
 
 **Milestone cards (one per event, optional role ping)**
 - Level 30 / 40 / 50 / 60, and first in the guild to 60. Card shows the character portrait, "Nth to get there" and time since the previous milestone.
 - First mount (Riding 75) and epic mount (Riding 150, or a "Swift" mount in the collection)
-- Guild firsts: the first character in the guild to clear each dungeon, kill each raid boss, or clear a raid
+- Guild firsts: the first character in the guild recorded clearing each dungeon, killing each raid boss, or clearing a raid (Blizzard publishes with 20 to 40 minutes of lag, so two people in the same window are ordered by when the bot saw them)
 - New member joined the guild
 
 **Progress digest (one card per run, silent)**
@@ -82,6 +82,8 @@ Run it again unticked. The first run posts "Now tracked" for everyone and record
 Everything else is as upstream.
 
 ## Notes
+- Posts are queued in `state.json` before they go out and removed as Discord accepts each one; the save step runs even when a run fails. A crash or outage mid-run means the next run finishes the queue, nothing is repeated and nothing is lost.
+- An empty roster response is treated as an API hiccup, not as everyone leaving.
 - Blizzard only lists a character from level 10, and only after they log out once. The guild roster endpoint shows everyone, so low-level members appear on the board once their profile exists.
 - Blizzard's Forever API is undocumented. If the roster endpoint stops answering, the bot logs a warning and keeps working from `friends` plus whatever it already tracks.
 - GitHub can delay scheduled runs by a few minutes when busy.
