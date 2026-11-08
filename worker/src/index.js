@@ -56,14 +56,15 @@ async function bnet(env, path, params = {}) {
 }
 async function searchItems(env, q) {
   const j = await bnet(env, "/data/wow/search/item", { "name.en_US": q, orderby: "id", _pageSize: 25 });
-  const seen = new Set(), out = [];
+  const seen = new Set(), out = [], ql = q.toLowerCase();
   for (const r of j?.results || []) {
     const name = r.data?.name?.en_US || r.data?.name; const id = r.data?.id;
     if (!name || !id || seen.has(name)) continue;
     seen.add(name); out.push({ name: `${name}`.slice(0, 100), value: String(id) });
-    if (out.length === 25) break;
   }
-  return out;
+  // Blizzard returns by id; put the exact name first, then names that start with the query.
+  const rank = (n) => (n.toLowerCase() === ql ? 0 : n.toLowerCase().startsWith(ql) ? 1 : 2);
+  return out.sort((a, b) => rank(a.name) - rank(b.name) || a.name.localeCompare(b.name)).slice(0, 25);
 }
 async function itemDetails(env, id) {
   const [it, media] = await Promise.all([bnet(env, `/data/wow/item/${id}`), bnet(env, `/data/wow/media/item/${id}`)]);
