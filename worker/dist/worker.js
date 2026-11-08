@@ -79,12 +79,13 @@ async function bnet(env, path, params = {}) {
   const r = await fetch(u, { headers: { Authorization: `Bearer ${tok}` } });
   return r.ok ? r.json() : null;
 }
+const JUNK = /^(\[PH\]|\[DEPRECATED\]|Monster - |OLD |QA |TEST |Deprecated|zz|AHNQIRAJ TEST|\[UNUSED\]|UNUSED|NYI)|\b(test item|Deprecated|Unused|DEBUG|PLACEHOLDER)\b/i;
 async function searchItems(env, q) {
   const j = await bnet(env, "/data/wow/search/item", { "name.en_US": q, orderby: "id", _pageSize: 100 });
   const seen = new Set(), out = [], ql = q.toLowerCase();
   for (const r of j?.results || []) {
     const name = r.data?.name?.en_US || r.data?.name; const id = r.data?.id;
-    if (!name || !id || seen.has(name)) continue;
+    if (!name || !id || seen.has(name) || JUNK.test(name)) continue;
     seen.add(name); out.push({ name: `${name}`.slice(0, 100), value: String(id) });
   }
   // Blizzard returns by id; put the exact name first, then names that start with the query.
@@ -230,7 +231,7 @@ async function onGive(i, env, ctx) {
   const row = await env.DB.prepare(`INSERT INTO gifts (giver_id,giver_name,item_id,item_name,item_icon,item_level,slot,armor,quality,req_level,classes,channel_id,token,created_at,expires_at)
     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id`).bind(giver.id, giverName, item.id, item.name, item.icon, item.level, item.slot, item.armor, item.quality, item.req_level,
     item.classes ? JSON.stringify(item.classes) : null, i.channel_id, i.token, t, exp).first();
-  const g = { id: row.id, giver_id: giver.id, giver_name: giverName, ...item, item_name: item.name, item_icon: item.icon, item_level: item.level, expires_at: exp };
+  const g = { ...item, id: row.id, item_id: item.id, giver_id: giver.id, giver_name: giverName, item_name: item.name, item_icon: item.icon, item_level: item.level, expires_at: exp };
   // After we answer, fetch the id of the message we just posted so expiry can edit it. Discord needs a moment.
   ctx.waitUntil((async () => {
     for (let attempt = 0; attempt < 4; attempt++) {
