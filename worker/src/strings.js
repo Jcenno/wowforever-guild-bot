@@ -1,0 +1,19 @@
+// Every member-facing string in one place. One verb per line. No tool names.
+export const S = {
+  giveTitle: (item) => `**${item}**`,
+  giveMeta: (parts) => parts.filter(Boolean).join(" · "),
+  giveFrom: (giver, closes) => `From **${giver}** · closes <t:${closes}:R>`,
+  counts: (need, greed) => `Need **${need}** · Greed **${greed}**`,
+  needBtn: "Need", greedBtn: "Greed", closeBtn: "Close early", receivedBtn: "Received",
+  youNeed: "You pressed Need.", youGreed: "You pressed Greed.", youSwitched: (k) => `Switched to ${k}.`,
+  notYours: "Only the giver can do that.",
+  closed: "This one is closed.",
+  ownGift: "That one is yours.",
+  awarded: (item, winner) => `**${item}** → **${winner}**. Mail when you can.`,
+  noTakers: (item) => `**${item}** · no takers · ${"stays with the giver"}`,
+  dmWinner: (item, giver) => `You won **${item}** from **${giver}**. Watch your mailbox, then press Received on the card.`,
+  dmGiver: (item, winner) => `**${item}** goes to **${winner}**. Mail or trade it when you're on.`,
+  giveAck: "Posted in #general.",
+  itemNotFound: "No item by that name. Pick one from the list.",
+  helpLine: "`/give` an item you don't need. Press Need or Greed on a card. Winner presses Received when it arrives.",
+};

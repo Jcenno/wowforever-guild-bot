@@ -1,0 +1,20 @@
+name = "guild-bot"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "guild-bot"
+database_id = "REPLACE_AFTER_wrangler_d1_create"
+
+[vars]
+GUILD_ID = "1560804753267761233"
+GENERAL_CHANNEL_ID = "1560804753963745392"
+STAGING_CHANNEL_ID = ""
+CLAIM_HOURS = "24"
+BLIZZARD_REGION = "us"
+BLIZZARD_STATIC_NS = "static-forever-us"
+# Secrets (wrangler secret put): DISCORD_PUBLIC_KEY, DISCORD_APP_ID, DISCORD_BOT_TOKEN, BLIZZARD_CLIENT_ID, BLIZZARD_CLIENT_SECRET
