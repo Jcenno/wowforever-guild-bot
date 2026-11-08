@@ -1,0 +1,17 @@
+name: Probe recipe endpoints
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Character slug"
+        default: "steel-appeal"
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+        run: python3 probe_recipes.py "${{ inputs.slug }}"
