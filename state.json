@@ -8,53 +8,60 @@
       "dungeons": {},
       "first_seen": 1794152175,
       "gear": {},
-      "ilvl": 3,
-      "last_login": 1794150162000,
-      "level": 10,
+      "ilvl": 4,
+      "last_login": 1794167045000,
+      "level": 12,
       "level_at": {
-        "10": 1794152175
+        "10": 1794152175,
+        "12": 1794167884
       },
       "professions": {
         "Cooking": 5,
-        "First Aid": 43,
-        "Mining": 27
+        "First Aid": 53,
+        "Mining": 43
       },
       "race": "Night Elf",
       "raids": {},
       "reputations": {
         "Darnassus": {
           "name": "Friendly",
-          "raw": 7195,
+          "raw": 8785,
           "tier": 4
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 3140,
+          "raw": 3223,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 3140,
+          "raw": 3223,
           "tier": 4
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 3140,
+          "raw": 3223,
           "tier": 4
+        },
+        "The League of Arathor": {
+          "name": "Neutral",
+          "raw": 0,
+          "tier": 3
         }
       },
-      "spec": null,
+      "spec": "Protection",
       "stats": {
-        "critters": 3,
+        "critters": 6,
         "deaths": 6,
-        "food": 20,
+        "food": 23,
         "health_potions": 2,
-        "killing_blows": 248,
-        "mobs": 304,
+        "hearths": 1,
+        "killing_blows": 351,
+        "mobs": 412,
         "need_rolls": 1,
-        "quests": 43
+        "quests": 65
       },
-      "xp": 6480
+      "xp": 7194
     }
   },
   "group": {
