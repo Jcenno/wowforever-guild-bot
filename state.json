@@ -234,14 +234,15 @@
         }
       },
       "ilvl": 6,
-      "last_login": 1794183501000,
-      "level": 18,
+      "last_login": 1794193053000,
+      "level": 19,
       "level_at": {
-        "18": 1794190280
+        "18": 1794190280,
+        "19": 1794193265
       },
       "professions": {
         "Cooking": 39,
-        "Enchanting": 40,
+        "Enchanting": 49,
         "First Aid": 75,
         "Tailoring": 59
       },
@@ -400,6 +401,14 @@
             "name": "Green Linen Shirt"
           },
           {
+            "id": 2370,
+            "name": "Bolt of Woolen Cloth"
+          },
+          {
+            "id": 2371,
+            "name": "Woolen Cape"
+          },
+          {
             "id": 2378,
             "name": "Heavy Linen Gloves"
           },
@@ -414,6 +423,10 @@
           {
             "id": 4001,
             "name": "Linen Bag"
+          },
+          {
+            "id": 4019,
+            "name": "Red Linen Bag"
           },
           {
             "id": 4708,
@@ -444,7 +457,7 @@
       "reputations": {
         "Darnassus": {
           "name": "Friendly",
-          "raw": 3777,
+          "raw": 3840,
           "tier": 4
         },
         "Gadgetzan": {
@@ -454,36 +467,36 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 4021,
+          "raw": 4083,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 4360,
+          "raw": 4497,
           "tier": 4
         },
         "Stormwind": {
           "name": "Honored",
-          "raw": 10978,
+          "raw": 11153,
           "tier": 5
         }
       },
       "spec": "Arcane",
       "stats": {
         "critters": 15,
-        "deaths": 37,
-        "drinks": 225,
-        "flights": 16,
-        "food": 59,
-        "health_potions": 29,
-        "hearths": 9,
-        "killing_blows": 773,
-        "mana_potions": 4,
-        "mobs": 935,
+        "deaths": 43,
+        "drinks": 250,
+        "flights": 17,
+        "food": 69,
+        "health_potions": 30,
+        "hearths": 11,
+        "killing_blows": 829,
+        "mana_potions": 5,
+        "mobs": 995,
         "need_rolls": 3,
-        "quests": 139
+        "quests": 141
       },
-      "xp": 16146
+      "xp": 4598
     }
   },
   "group": {
@@ -514,7 +527,7 @@
   "roster": {
     "message_id": "1569012691186622596"
   },
-  "saved_at": 1794192757,
+  "saved_at": 1794193265,
   "weekly": {
     "baseline": {
       "us:steel-appeal": {
