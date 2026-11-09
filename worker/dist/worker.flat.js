@@ -41,6 +41,23 @@ noRecipes: "No recipes recorded yet. They appear after the next check.",
 nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
 whoCraftsTitle: (q) => `Who can make "${q}"`,
 reportTitle: "This week in the Workshop",
+welcome: [
+"**How this Discord works**",
+"",
+"**Dings** post in #general when someone hits a big milestone. The quiet stuff (level-ups, new recipes, rep) goes to #roster as a digest.",
+"**Need something crafted?** `/need` and pick the item. The people who can make it get a ping, one presses *I'll make it*, and the card closes when it's done.",
+"**Have something you don't need?** `/give` and pick the item. Need or Greed on the card. After a day the bot names the winner and DMs you both; the winner presses *Received* when it arrives.",
+"**Who plays what, who crafts what:** #roster. `/professions <name>` for anyone's recipes, `/who-crafts <item>` to find a crafter, `/workshop` for what's open.",
+"",
+"**One-time setup:** `/iam` and pick your main. Your name takes your class color and the bot knows what you can Need on.",
+"Only the Dings role gets pinged. The button below turns it on or off for you.",
+].join("\n"),
+dingsBtn: "Dings pings: on / off",
+dingsOn: "Dings pings on. You'll be pinged for the big milestones.",
+dingsOff: "Dings pings off.",
+dingsNoRole: "Ask an officer to let the bot manage roles first.",
+welcomePosted: "Posted. Pin it from the message menu.",
+officersOnly: "Officers only.",
 workshopTitle: "Workshop · open right now",
 workshopEmpty: "Nothing open. `/need` something or `/give` something.",
 workshopGift: (item, giver, closes) => `🎁 **${item}** from ${giver} · closes <t:${closes}:R>`,
@@ -422,6 +439,7 @@ async function onButton(i, env) {
 const [action, idStr] = i.data.custom_id.split(":"); const id = Number(idStr);
 console.log(`[button] ${i.data.custom_id} by ${who(i)?.id}`);
 if (["make", "done", "cancel"].includes(action)) return onRequestButton(i, env, action, id);
+if (action === "role") return onRoleToggle(i, env, idStr);
 const g = await env.DB.prepare("SELECT * FROM gifts WHERE id=?").bind(id).first();
 const u = who(i), uname = display(i);
 const eph = (content) => json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL } });
@@ -481,6 +499,7 @@ const COMMANDS = [
 { name: "need", description: "Ask the guild to craft something; pings the people who can", options: [
 { type: 3, name: "recipe", description: "What you need made", required: true, autocomplete: true } ] },
 { name: "workshop", description: "Open gifts and craft requests right now" },
+{ name: "post-welcome", description: "Officers: post the How this works card with the Dings button here", default_member_permissions: "8192" },
 { name: "who-crafts", description: "Who in the guild can make something", options: [
 { type: 3, name: "recipe", description: "Recipe or item name, or part of it", required: true } ] },
 ];
@@ -526,6 +545,25 @@ const content = `**${S.workshopTitle}**\n` + (lines.join("\n") || S.workshopEmpt
 return json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
 }
 
+// ---------------------------------------------------------------- Welcome card with the Dings toggle (officers post it, members press it)
+function welcomeCard(env) {
+const container = { type: 17, accent_color: 0xf1c40f, components: [{ type: 10, content: S.welcome }, { type: 14, divider: true, spacing: 1 },
+{ type: 1, components: [{ type: 2, style: 2, label: S.dingsBtn, custom_id: `role:${env.DINGS_ROLE_ID}` }] }] };
+return { flags: FLAGS.V2, components: [container], allowed_mentions: { parse: [] } };
+}
+async function onPostWelcome(i, env) {
+if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnly, flags: FLAGS.EPHEMERAL } });
+const ok = await discord(env, "POST", `/channels/${i.channel_id}/messages`, welcomeCard(env));
+return json({ type: R.MESSAGE, data: { content: ok ? S.welcomePosted : S.closed, flags: FLAGS.EPHEMERAL } });
+}
+async function onRoleToggle(i, env, roleId) {
+const u = who(i);
+const has = (i.member?.roles || []).includes(roleId);
+const r = await fetch(`${API}/guilds/${env.GUILD_ID}/members/${u.id}/roles/${roleId}`, { method: has ? "DELETE" : "PUT", headers: { Authorization: `Bot ${env.DISCORD_BOT_TOKEN}`, "User-Agent": "GuildBot (roles)" } });
+if (!r.ok) { console.log(`[role] toggle -> ${r.status} ${await r.text()}`); return json({ type: R.MESSAGE, data: { content: S.dingsNoRole, flags: FLAGS.EPHEMERAL } }); }
+return json({ type: R.MESSAGE, data: { content: has ? S.dingsOff : S.dingsOn, flags: FLAGS.EPHEMERAL } });
+}
+
 // ---------------------------------------------------------------- Tracker heartbeat
 // GitHub's own schedule fires the tracker only every few hours in practice. Every 15 minutes this
 // cron asks GitHub to run it (workflow_dispatch); the workflow's concurrency group stops overlaps.
@@ -551,6 +589,7 @@ if (i.type === T.PING) return json({ type: R.PONG });
 if (i.type === T.AUTOCOMPLETE) return ["professions", "iam"].includes(i.data.name) ? onCharAutocomplete(i, env) : i.data.name === "need" ? onRecipeAutocomplete(i, env) : onAutocomplete(i, env);
 if (i.type === T.COMMAND && i.data.name === "need") return onNeed(i, env, ctx);
 if (i.type === T.COMMAND && i.data.name === "workshop") return onWorkshop(i, env);
+if (i.type === T.COMMAND && i.data.name === "post-welcome") return onPostWelcome(i, env);
 if (i.type === T.COMMAND && i.data.name === "iam") return onIam(i, env, ctx);
 if (i.type === T.COMMAND && i.data.name === "professions") return onProfessions(i, env);
 if (i.type === T.COMMAND && i.data.name === "who-crafts") return onWhoCrafts(i, env);

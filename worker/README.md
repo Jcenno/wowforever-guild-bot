@@ -9,6 +9,8 @@ Slash commands for the WoW Forever Discord, running on a Cloudflare Worker with 
 | `/iam <character>` | Links your Discord account to your main. Your name takes the class color (needs the bot to have Manage Roles, see below). |
 | `/professions <character>` | Skill bars and known recipes for a tracked character. |
 | `/who-crafts <recipe>` | Who in the guild knows a matching recipe, most recently online first. |
+| `/workshop` | What is open right now: gifts and craft requests. |
+| `/post-welcome` | Officers only. Posts the "How this works" card with a Dings on/off button in the current channel; pin it. The button toggles the role in `DINGS_ROLE_ID` (needs Manage Roles). |
 | `/help` | One line on how giving works. |
 
 Character data comes from the tracker's `state.json` on GitHub (refreshed about every 15 minutes, cached 2 minutes in the Worker).
@@ -28,7 +30,7 @@ Live Worker: `guild-bot` on Cloudflare, database `guild-bot` (D1). Two ways to s
 
 ### First-time setup (already done)
 1. `wrangler d1 create guild-bot` → database_id into `wrangler.toml`; `wrangler d1 execute guild-bot --remote --file=schema.sql`.
-2. Variables: `DISCORD_APP_ID`, `DISCORD_PUBLIC_KEY`, `GUILD_ID`, `GENERAL_CHANNEL_ID`, `REPORT_CHANNEL_ID`, `BLIZZARD_REGION`, `BLIZZARD_STATIC_NS`, `CLAIM_HOURS`. Secrets: `DISCORD_BOT_TOKEN`, `BLIZZARD_CLIENT_ID`, `BLIZZARD_CLIENT_SECRET`.
+2. Variables: `DISCORD_APP_ID`, `DISCORD_PUBLIC_KEY`, `GUILD_ID`, `GENERAL_CHANNEL_ID`, `REPORT_CHANNEL_ID`, `DINGS_ROLE_ID`, `BLIZZARD_REGION`, `BLIZZARD_STATIC_NS`, `CLAIM_HOURS`. Secrets: `DISCORD_BOT_TOKEN`, `BLIZZARD_CLIENT_ID`, `BLIZZARD_CLIENT_SECRET`.
 3. Discord developer portal → General Information → Interactions Endpoint URL = the Worker URL.
 4. Invite with scopes `bot` + `applications.commands`.
 
