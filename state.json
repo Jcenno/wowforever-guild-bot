@@ -31,7 +31,7 @@
         }
       },
       "ilvl": 8,
-      "last_login": 1794188244000,
+      "last_login": 1794190746000,
       "level": 15,
       "level_at": {
         "10": 1794152175,
@@ -42,7 +42,7 @@
       "professions": {
         "Blacksmithing": 66,
         "Cooking": 5,
-        "First Aid": 53,
+        "First Aid": 65,
         "Mining": 70
       },
       "race": "Night Elf",
@@ -197,15 +197,15 @@
         "critters": 17,
         "deaths": 9,
         "flights": 3,
-        "food": 25,
-        "health_potions": 7,
+        "food": 28,
+        "health_potions": 8,
         "hearths": 3,
-        "killing_blows": 430,
-        "mobs": 588,
+        "killing_blows": 456,
+        "mobs": 614,
         "need_rolls": 6,
         "quests": 86
       },
-      "xp": 3828
+      "xp": 6572
     },
     "us:whizz-aard": {
       "achievements": {
@@ -514,7 +514,7 @@
   "roster": {
     "message_id": "1569012691186622596"
   },
-  "saved_at": 1794190570,
+  "saved_at": 1794191468,
   "weekly": {
     "baseline": {
       "us:steel-appeal": {
