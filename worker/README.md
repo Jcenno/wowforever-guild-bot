@@ -27,12 +27,12 @@ Cron (every 5 minutes): settles expired gifts, sends the Received reminder, clos
 
 ## Deploy
 Live Worker: `guild-bot` on Cloudflare, database `guild-bot` (D1). Two ways to ship a change:
-1. Cloudflare dashboard → Workers → guild-bot → Edit code → replace with `dist/worker.paste.js` → Deploy. Then open `https://guild-bot.jcenno.workers.dev/register` once so Discord sees any new commands.
+1. Cloudflare dashboard → Workers → guild-bot → Edit code → replace with `dist/worker.paste.js` → Deploy. Then open `https://guild-bot.jcenno.workers.dev/register` once so Discord sees any new commands (add `?key=...` if the optional `REGISTER_KEY` variable is set; Discord rate-limits repeated registrations for about 30 s).
 2. Cloudflare Builds (once connected: Settings → Build → repo `Jcenno/wowforever-guild-bot`, root `worker`, deploy command `npx wrangler deploy`). Every push to `main` deploys itself.
 
 ### First-time setup (already done)
 1. `wrangler d1 create guild-bot` → database_id into `wrangler.toml`; `wrangler d1 execute guild-bot --remote --file=schema.sql`.
-2. Variables: `DISCORD_APP_ID`, `DISCORD_PUBLIC_KEY`, `GUILD_ID`, `GENERAL_CHANNEL_ID`, `REPORT_CHANNEL_ID`, `DINGS_ROLE_ID`, `BLIZZARD_REGION`, `BLIZZARD_STATIC_NS`, `CLAIM_HOURS`. Secrets: `DISCORD_BOT_TOKEN`, `BLIZZARD_CLIENT_ID`, `BLIZZARD_CLIENT_SECRET`.
+2. Variables: `DISCORD_APP_ID`, `DISCORD_PUBLIC_KEY`, `GUILD_ID`, `GENERAL_CHANNEL_ID`, `REPORT_CHANNEL_ID`, `DINGS_ROLE_ID`, `BLIZZARD_REGION`, `BLIZZARD_STATIC_NS`, `CLAIM_HOURS`; optional `REGISTER_KEY`, `REPORT_DAY`, `REPORT_HOUR`, `TIMEZONE`, `GITHUB_REPO`, `STATE_URL`. Secrets (`GITHUB_TOKEN` too): `DISCORD_BOT_TOKEN`, `BLIZZARD_CLIENT_ID`, `BLIZZARD_CLIENT_SECRET`.
 3. Discord developer portal → General Information → Interactions Endpoint URL = the Worker URL.
 4. Invite with scopes `bot` + `applications.commands`.
 
