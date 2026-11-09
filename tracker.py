@@ -1041,7 +1041,7 @@ def build_professions_board(entries, settings):
     embeds = []
     missing = [display_name(c) for c, s in entries if not any(
         p.lower() not in SECONDARY_PROFS and v for p, v in (s.get("professions") or {}).items())]
-    desc = "Need something made? Ask in #general and ping the crafter."
+    desc = "Need something made? Type /need and the crafters who know it get a ping."
     if missing:
         desc += f"\nNo primary profession yet: {', '.join(missing[:15])}" + (" …" if len(missing) > 15 else "")
     embeds.append({"title": "Crafting", "description": desc, "color": 0x9B59B6,
