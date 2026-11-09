@@ -1,8 +1,10 @@
-# Pinned posts (drafts, not posted until Joe says so)
+# Pinned posts (posted 8 Nov 2026)
 
 One pin per channel. Member-facing wording only. No tool names, no setup talk.
 
 ## #general · How this works
+
+Posted as the welcome card via /post-welcome (text lives in worker/src/strings.js, `welcome`). The old /authorize pin was deleted. Draft kept for reference:
 
 ```
 **How this Discord works**
@@ -26,7 +28,10 @@ Who plays what and who crafts what. Updates itself about every 15 minutes.
 ## #announcements · topic
 Official Blizzard posts about Forever: hotfixes, maintenance, news. Nothing else.
 
-## #bot-commands · pin
+## #bot-commands · topic
+Commands go here. /iam once to link your main, /need for crafts, /give for spare gear. Type / to see them all.
+
+## #bot-commands · pin (posted)
 
 ```
 Commands work in any channel; this one keeps #general clean.
