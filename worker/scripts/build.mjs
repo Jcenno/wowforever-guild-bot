@@ -12,5 +12,8 @@ const [head, ...rest] = index.split("\n");
 const out = `${head}\n// ---- strings.js (inlined)\n${strings.trim()}\n\n// ---- index.js\n${rest.join("\n")}`;
 mkdirSync(join(root, "dist"), { recursive: true });
 writeFileSync(join(root, "dist/worker.js"), out);
-writeFileSync(join(root, "dist/worker.flat.js"), out.split("\n").map((l) => l.replace(/^\s+/, "")).join("\n"));
+const flat = out.split("\n").map((l) => l.replace(/^\s+/, ""));
+writeFileSync(join(root, "dist/worker.flat.js"), flat.join("\n"));
+// paste.js: no comments, no blank lines; what goes into the Cloudflare editor (check the last line after pasting).
+writeFileSync(join(root, "dist/worker.paste.js"), flat.filter((l) => l && !l.startsWith("//")).join("\n") + "\n");
 console.log(`dist/worker.js ${out.length} chars`);

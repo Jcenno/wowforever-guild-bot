@@ -17,13 +17,13 @@ Cron (every 5 minutes): settles expired gifts, sends the Received reminder, clos
 
 ## Layout
 - `src/index.js` handlers, `src/strings.js` every member-facing string.
-- `scripts/build.mjs` inlines the two files into `dist/worker.js` (readable) and `dist/worker.flat.js` (for pasting into the Cloudflare editor). Run it after any change to `src/`.
+- `scripts/build.mjs` inlines the two files into `dist/worker.js` (readable) and `dist/worker.flat.js` and `dist/worker.paste.js` (comment-free, for pasting into the Cloudflare editor). Run it after any change to `src/`.
 - `schema.sql` tables: `gifts`, `claims`, `chars`, `requests`, `meta`. Schema changes are applied by hand in the D1 console (`ALTER TABLE` / `CREATE TABLE IF NOT EXISTS`).
 - `test/` offline checks: `npm test`.
 
 ## Deploy
 Live Worker: `guild-bot` on Cloudflare, database `guild-bot` (D1). Two ways to ship a change:
-1. Cloudflare dashboard → Workers → guild-bot → Edit code → replace with `dist/worker.flat.js` → Deploy. Then open `https://guild-bot.jcenno.workers.dev/register` once so Discord sees any new commands.
+1. Cloudflare dashboard → Workers → guild-bot → Edit code → replace with `dist/worker.paste.js` → Deploy. Then open `https://guild-bot.jcenno.workers.dev/register` once so Discord sees any new commands.
 2. Cloudflare Builds (once connected: Settings → Build → repo `Jcenno/wowforever-guild-bot`, root `worker`, deploy command `npx wrangler deploy`). Every push to `main` deploys itself.
 
 ### First-time setup (already done)
