@@ -135,8 +135,13 @@ async function syncClassRole(env, userId, cls) {
   const roles = await discord(env, "GET", `/guilds/${env.GUILD_ID}/roles`);
   if (!roles) return false;
   let role = roles.find((r) => r.name === cls);
-  if (!role) role = await discord(env, "POST", `/guilds/${env.GUILD_ID}/roles`, { name: cls, color: CLASS_COLOR[cls], permissions: "0", hoist: false, mentionable: false });
-  if (!role) return false;
+  if (!role) {
+    role = await discord(env, "POST", `/guilds/${env.GUILD_ID}/roles`, { name: cls, color: CLASS_COLOR[cls], permissions: "0", hoist: false, mentionable: false });
+    if (!role) return false;
+    // Discord shows the highest colored role, so new class roles go just above Officer (needs the bot's role above that spot).
+    const officer = roles.find((r) => r.name === "Officer");
+    if (officer) await discord(env, "PATCH", `/guilds/${env.GUILD_ID}/roles`, [{ id: role.id, position: officer.position }]);
+  }
   const member = await discord(env, "GET", `/guilds/${env.GUILD_ID}/members/${userId}`);
   if (!member) return false;
   const others = roles.filter((r) => r.name !== cls && CLASS_COLOR[r.name] && member.roles.includes(r.id));
