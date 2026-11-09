@@ -38,3 +38,12 @@ test("Need is gated by armor type, with low-level leather and mail wider", () =>
   assert.equal(needClasses({ armor: "Cloth", slot: "Back", req_level: 30 }), null);
   assert.deepEqual(needClasses({ armor: "Plate", classes: JSON.stringify(["Paladin"]) }), ["Paladin"]);
 });
+
+test("no icon: plain text block instead of a Section without accessory", () => {
+  const g = { id: 1, item_name: "X", giver_name: "G", expires_at: 1, quality: "COMMON" };
+  const c = card(g, { need: 0, greed: 0 });
+  assert.equal(c.components[0].components[0].type, 10);
+  const withIcon = card({ ...g, item_icon: "https://x/y.jpg" }, { need: 0, greed: 0 });
+  assert.equal(withIcon.components[0].components[0].type, 9);
+  assert.ok(withIcon.components[0].components[0].accessory);
+});

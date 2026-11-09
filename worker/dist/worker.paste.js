@@ -22,6 +22,11 @@ itemNotFound: "No item by that name. Pick one from the list.",
 helpLine: "`/give` an item you don't need. `/need` something crafted; it pings the people who can make it. Press Need or Greed on a gift card; the winner presses Received. `/iam` links your main so your name takes its class color. `/professions` and `/who-crafts` look things up.",
 iamLinked: (name, cls) => `You are **${name}** (${cls}).`,
 iamRoleLater: "Class color comes once an officer lets the bot manage roles.",
+iamNoClass: "Class not recorded yet; the color comes after the next roster check.",
+notWinner: "Only the winner can do that.",
+needClosed: "This request is closed.",
+postFailed: "Couldn't post here. Check the bot can send messages in this channel.",
+unknownCommand: "Unknown command.",
 noSuchChar: "No tracked character by that name.",
 needTitle: (who, recipe, prof) => `**${who}** needs **${recipe}**${prof ? ` · ${prof}` : ""}`,
 needMats: (mats) => (mats.length ? `Mats: ${mats.map((m) => `${m.qty}× ${m.name}`).join(", ")}` : "Mats: not listed"),
@@ -53,6 +58,7 @@ dingsBtn: "Dings pings: on / off",
 dingsOn: "Dings pings on. You'll be pinged for the big milestones.",
 dingsOff: "Dings pings off.",
 dingsNoRole: "Ask an officer to let the bot manage roles first.",
+dingsNotSet: "The Dings role isn't set up yet. Ask an officer.",
 welcomePosted: "Posted. Pin it from the message menu.",
 officersOnly: "Officers only.",
 statusTitle: "Guild Bot status",
@@ -143,18 +149,26 @@ quality: (it.quality?.type || "COMMON"), req_level: it.required_level || null, c
 let stateCache = { value: null, exp: 0 };
 async function trackerState(env) {
 if (stateCache.value && Date.now() < stateCache.exp) return stateCache.value;
+try {
 const r = await fetch(env.STATE_URL || "https://raw.githubusercontent.com/Jcenno/wowforever-guild-bot/main/state.json", { cf: { cacheTtl: 120 } });
-const j = r.ok ? await r.json() : { characters: {} };
+if (!r.ok) throw new Error(`state ${r.status}`);
+const j = await r.json();
 stateCache = { value: j, exp: Date.now() + 2 * 60 * 1000 };
 return j;
+} catch (e) {
+console.log(`[state] ${e}`);
+return stateCache.value || { characters: {} }; // keep the last good copy, do not cache the failure
 }
-const charName = (key) => key.split(":").pop().split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(" ");
+}
+const dec = (w) => { try { return decodeURIComponent(w); } catch { return w; } };
+const charName = (key) => key.split(":").pop().split("-").map(dec).filter(Boolean).map((w) => w[0].toUpperCase() + w.slice(1)).join(" ");
 const tier = (sk) => (sk >= 225 ? "Artisan" : sk >= 150 ? "Expert" : sk >= 75 ? "Journeyman" : "Apprentice");
 const bar = (sk, w = 6) => { const f = Math.max(0, Math.min(w, Math.round((sk / 300) * w))); return "▰".repeat(f) + "▱".repeat(w - f); };
 const SECONDARY = new Set(["cooking", "first aid", "fishing", "riding"]);
 const CLASS_COLOR = { Warrior: 0xc69b6d, Paladin: 0xf48cba, Hunter: 0xaad372, Rogue: 0xfff468, Priest: 0xffffff, Shaman: 0x0070dd, Mage: 0x3fc7eb, Warlock: 0x8788ee, Druid: 0xff7c0a };
 function findChar(st, q) {
 q = (q || "").trim().toLowerCase();
+if (!q) return null;
 const keys = Object.keys(st.characters || {});
 return keys.find((k) => k.endsWith(":" + q)) || keys.find((k) => charName(k).toLowerCase() === q) || keys.find((k) => charName(k).toLowerCase().startsWith(q)) || null;
 }
@@ -186,8 +200,15 @@ if (!key) return json({ type: R.MESSAGE, data: { content: S.noSuchChar, flags: F
 const c = st.characters[key], u = who(i), name = charName(key), cls = c.class || "";
 await env.DB.prepare("INSERT INTO chars (user_id,name,surname,class,updated_at) VALUES (?,?,?,?,?) ON CONFLICT(user_id) DO UPDATE SET name=excluded.name, surname=excluded.surname, class=excluded.class, updated_at=excluded.updated_at")
 .bind(u.id, name, key, cls, now()).run();
-const ok = await syncClassRole(env, u.id, cls);
-return json({ type: R.MESSAGE, data: { content: S.iamLinked(name, cls) + (ok ? "" : "\n" + S.iamRoleLater), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
+ctx.waitUntil((async () => {
+let note = "";
+if (!cls) note = S.iamNoClass;
+else if (!(await syncClassRole(env, u.id, cls).catch((e) => (console.log(`[iam] ${e}`), false)))) note = S.iamRoleLater;
+const text = S.iamLinked(name, cls || "class unknown") + (note ? "\n" + note : "");
+await fetch(`${API}/webhooks/${env.DISCORD_APP_ID}/${i.token}/messages/@original`, { method: "PATCH", headers: { "content-type": "application/json" },
+body: JSON.stringify({ content: text, allowed_mentions: { parse: [] } }) }).catch((e) => console.log(`[iam] edit ${e}`));
+})());
+return json({ type: R.DEFER, data: { flags: FLAGS.EPHEMERAL } });
 }
 async function onProfessions(i, env) {
 const q = (i.data.options?.find((o) => o.name === "character")?.value || "").trim().toLowerCase();
@@ -224,7 +245,7 @@ hits.sort((a, b) => b.last - a.last || b.skill - a.skill);
 const two = 2 * 24 * 3600 * 1000, week = 7 * two / 2;
 const dot = (ms) => (Date.now() - ms < two ? "🟢" : Date.now() - ms < week ? "🟡" : "⚫");
 const lines = hits.slice(0, 12).map((h) => `${dot(h.last)} **${h.name}** · ${h.prof} ${h.skill} · ${h.recipes.slice(0, 4).join(", ")}${h.recipes.length > 4 ? ` +${h.recipes.length - 4}` : ""}`);
-return json({ type: R.MESSAGE, data: { content: `**${S.whoCraftsTitle(q)}**\n` + lines.join("\n"), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
+return json({ type: R.MESSAGE, data: { content: (`**${S.whoCraftsTitle(q)}**\n` + lines.join("\n")).slice(0, 1900), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
 }
 async function onCharAutocomplete(i, env) {
 const q = (i.data.options?.find((o) => o.focused)?.value || "").trim().toLowerCase();
@@ -253,6 +274,7 @@ e.crafters.push({ key, name: charName(key), skill: (c.professions || {})[prof] |
 }
 return out;
 }
+const textBlock = (content, icon) => (icon ? { type: 9, components: [{ type: 10, content }], accessory: { type: 11, media: { url: icon } } } : { type: 10, content });
 const activityDot = (ms) => (Date.now() - ms < 2 * 86400000 ? "🟢" : Date.now() - ms < 7 * 86400000 ? "🟡" : "⚫");
 export function requestCard(q, state = "open") {
 const mats = q.mats ? JSON.parse(q.mats) : [];
@@ -264,8 +286,7 @@ if (state === "claimed") lines.push(S.needClaimed(q.maker_name));
 if (state === "done") lines.push(S.needDone(q.maker_name));
 if (state === "cancelled") lines.push(S.needCancelled);
 if (state === "expired") lines.push(S.needExpired);
-const section = { type: 9, components: [{ type: 10, content: lines.join("\n") }] };
-if (q.icon) section.accessory = { type: 11, media: { url: q.icon } };
+const section = textBlock(lines.join("\n"), q.icon);
 const container = { type: 17, accent_color: 0x9b59b6, components: [section] };
 const buttons = [];
 if (state === "open") buttons.push({ type: 2, style: 1, label: S.makeBtn, custom_id: `make:${q.id}` });
@@ -280,12 +301,12 @@ const qtext = (i.data.options?.find((o) => o.name === "recipe")?.value || "").tr
 const st = await trackerState(env);
 const all = guildRecipes(st);
 const ql = qtext.toLowerCase();
-const hit = all[ql] || Object.values(all).find((e) => e.name.toLowerCase().includes(ql));
+const hit = ql ? all[ql] || Object.values(all).find((e) => e.name.toLowerCase().includes(ql)) : null;
 if (!hit) return json({ type: R.MESSAGE, data: { content: S.needNobody(qtext), flags: FLAGS.EPHEMERAL } });
-const keys = hit.crafters.map((c) => c.key);
+const top = hit.crafters.sort((a, b) => b.last - a.last || b.skill - a.skill).slice(0, 6);
+const keys = top.map((c) => c.key);
 const linked = keys.length ? (await env.DB.prepare(`SELECT user_id, surname FROM chars WHERE surname IN (${keys.map(() => "?").join(",")})`).bind(...keys).all()).results : [];
-const crafters = hit.crafters.sort((a, b) => b.last - a.last || b.skill - a.skill).slice(0, 6)
-.map((c) => ({ ...c, user: linked.find((l) => l.surname === c.key)?.user_id || null }));
+const crafters = top.map((c) => ({ ...c, user: linked.find((l) => l.surname === c.key)?.user_id || null }));
 const info = await recipeInfo(env, hit.id);
 const u = who(i), uname = display(i), t = now();
 const row = await env.DB.prepare(`INSERT INTO requests (user_id,user_name,recipe_id,recipe_name,profession,icon,mats,crafters,channel_id,token,created_at)
@@ -310,7 +331,7 @@ async function onRequestButton(i, env, action, id) {
 const q = await env.DB.prepare("SELECT * FROM requests WHERE id=?").bind(id).first();
 const u = who(i), uname = display(i);
 const eph = (content) => json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL } });
-if (!q) return eph(S.needNotOpen);
+if (!q) return eph(S.needClosed);
 if (action === "make") {
 if (q.status !== "open") return eph(S.needNotOpen);
 const res = await env.DB.prepare("UPDATE requests SET status='claimed', maker_id=?, maker_name=?, updated_at=? WHERE id=? AND status='open'").bind(u.id, uname, now(), id).run();
@@ -318,18 +339,20 @@ if (!res.meta.changes) return eph(S.needNotOpen);
 return json({ type: R.UPDATE, data: requestCard({ ...q, maker_id: u.id, maker_name: uname }, "claimed") });
 }
 if (action === "done") {
-if (q.status !== "claimed") return eph(S.needNotOpen);
+if (q.status !== "claimed") return eph(S.needClosed);
 if (u.id !== q.user_id && u.id !== q.maker_id && !isOfficer(i)) return eph(S.needNotYours);
-await env.DB.prepare("UPDATE requests SET status='done', updated_at=? WHERE id=?").bind(now(), id).run();
+const res = await env.DB.prepare("UPDATE requests SET status='done', updated_at=? WHERE id=? AND status='claimed'").bind(now(), id).run();
+if (!res.meta.changes) return eph(S.needClosed);
 return json({ type: R.UPDATE, data: requestCard(q, "done") });
 }
 if (action === "cancel") {
-if (q.status === "done" || q.status === "cancelled") return eph(S.needNotOpen);
+if (q.status === "done" || q.status === "cancelled") return eph(S.needClosed);
 if (u.id !== q.user_id && u.id !== q.maker_id && !isOfficer(i)) return eph(S.needNotYours);
-await env.DB.prepare("UPDATE requests SET status='cancelled', updated_at=? WHERE id=?").bind(now(), id).run();
+const res = await env.DB.prepare("UPDATE requests SET status='cancelled', updated_at=? WHERE id=? AND status IN ('open','claimed')").bind(now(), id).run();
+if (!res.meta.changes) return eph(S.needClosed);
 return json({ type: R.UPDATE, data: requestCard(q, "cancelled") });
 }
-return eph(S.needNotOpen);
+return eph(S.needClosed);
 }
 export function card(g, counts, state = "open") {
 const meta = S.giveMeta([g.item_level ? `ilvl ${g.item_level}` : null, g.slot, g.armor, g.quality ? g.quality[0] + g.quality.slice(1).toLowerCase() : null,
@@ -339,8 +362,7 @@ if (state === "open") lines.push(S.counts(counts.need, counts.greed));
 if (state === "awarded") lines.push(S.awarded(g.item_name, g.winner_name));
 if (state === "expired") lines.push(S.noTakers(g.item_name));
 if (state === "received") lines.push(`**${g.item_name}** → **${g.winner_name}** · received`);
-const section = { type: 9, components: [{ type: 10, content: lines.join("\n") }] };
-if (g.item_icon) section.accessory = { type: 11, media: { url: g.item_icon } };
+const section = textBlock(lines.join("\n"), g.item_icon);
 const container = { type: 17, accent_color: QUALITY_COLOR[g.quality] ?? 0x5865f2, components: [section] };
 if (state === "open") container.components.push({ type: 14, divider: true, spacing: 1 }, { type: 1, components: [
 { type: 2, style: 1, label: S.needBtn, custom_id: `need:${g.id}` },
@@ -361,14 +383,20 @@ async function pickWinner(env, giftId) {
 const r = await env.DB.prepare("SELECT user_id, user_name FROM claims WHERE gift_id=? ORDER BY CASE kind WHEN 'need' THEN 0 ELSE 1 END, at ASC LIMIT 1").bind(giftId).first();
 return r || null;
 }
-async function settle(env, g) {
+async function settle(env, g, { edit = true } = {}) {
 const w = await pickWinner(env, g.id);
 const next = w ? "awarded" : "expired";
 const res = await env.DB.prepare("UPDATE gifts SET status=?, winner_id=?, winner_name=?, awarded_at=? WHERE id=? AND status='open'")
 .bind(next, w?.user_id || null, w?.user_name || null, now(), g.id).run();
-if (!res.meta.changes) return;
+if (!res.meta.changes) return null;
 const g2 = { ...g, status: next, winner_id: w?.user_id, winner_name: w?.user_name };
-if (g.channel_id && g.message_id) await discord(env, "PATCH", `/channels/${g.channel_id}/messages/${g.message_id}`, card(g2, { need: 0, greed: 0 }, next));
+return { g2, notify: async () => {
+if (edit && g.channel_id && g.message_id) await discord(env, "PATCH", `/channels/${g.channel_id}/messages/${g.message_id}`, card(g2, { need: 0, greed: 0 }, next));
+await notifyWinner(env, g, w);
+} };
+}
+async function settleNow(env, g) { const s = await settle(env, g); if (s) await s.notify(); }
+async function notifyWinner(env, g, w) {
 if (w) {
 const okW = await dm(env, w.user_id, S.dmWinner(g.item_name, g.giver_name));
 const okG = await dm(env, g.giver_id, S.dmGiver(g.item_name, w.user_name));
@@ -406,7 +434,7 @@ const q = (i.data.options?.find((o) => o.focused)?.value || "").trim();
 const choices = q.length >= 2 ? await searchItems(env, q) : [];
 return json({ type: R.AUTOCOMPLETE, data: { choices } });
 }
-async function onButton(i, env) {
+async function onButton(i, env, ctx) {
 const [action, idStr] = i.data.custom_id.split(":"); const id = Number(idStr);
 console.log(`[button] ${i.data.custom_id} by ${who(i)?.id}`);
 if (["make", "done", "cancel"].includes(action)) return onRequestButton(i, env, action, id);
@@ -426,18 +454,21 @@ if (!allowed.includes(me.class)) return eph(S.wrongClass(allowed));
 }
 await env.DB.prepare("INSERT INTO claims (gift_id,user_id,user_name,kind,at) VALUES (?,?,?,?,?) ON CONFLICT(gift_id,user_id) DO UPDATE SET kind=excluded.kind, user_name=excluded.user_name")
 .bind(id, u.id, uname, action, now()).run();
+const still = await env.DB.prepare("SELECT status FROM gifts WHERE id=?").bind(id).first();
+if (still?.status !== "open") return eph(S.closed);
 return json({ type: R.UPDATE, data: card(g, await counts(env, id)) });
 }
 if (action === "close") {
 if (u.id !== g.giver_id && !isOfficer(i)) return eph(S.notYours);
 if (g.status !== "open") return eph(S.closed);
-await settle(env, g);
-const g2 = await env.DB.prepare("SELECT * FROM gifts WHERE id=?").bind(id).first();
-return json({ type: R.UPDATE, data: card(g2, { need: 0, greed: 0 }, g2.status) });
+const s = await settle(env, g, { edit: false }); // this response is the edit; DMs go out after it
+if (!s) return eph(S.closed);
+ctx.waitUntil(s.notify());
+return json({ type: R.UPDATE, data: card(s.g2, { need: 0, greed: 0 }, s.g2.status) });
 }
 if (action === "got") {
 if (g.status !== "awarded") return eph(S.closed);
-if (u.id !== g.winner_id && !isOfficer(i)) return eph(S.notYours);
+if (u.id !== g.winner_id && !isOfficer(i)) return eph(S.notWinner);
 await env.DB.prepare("UPDATE gifts SET status='received', received_at=? WHERE id=? AND status='awarded'").bind(now(), id).run();
 return json({ type: R.UPDATE, data: card({ ...g, status: "received" }, { need: 0, greed: 0 }, "received") });
 }
@@ -519,11 +550,13 @@ return { flags: FLAGS.V2, components: [container], allowed_mentions: { parse: []
 }
 async function onPostWelcome(i, env) {
 if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnly, flags: FLAGS.EPHEMERAL } });
+if (!env.DINGS_ROLE_ID) return json({ type: R.MESSAGE, data: { content: S.dingsNotSet, flags: FLAGS.EPHEMERAL } });
 const ok = await discord(env, "POST", `/channels/${i.channel_id}/messages`, welcomeCard(env));
-return json({ type: R.MESSAGE, data: { content: ok ? S.welcomePosted : S.closed, flags: FLAGS.EPHEMERAL } });
+return json({ type: R.MESSAGE, data: { content: ok ? S.welcomePosted : S.postFailed, flags: FLAGS.EPHEMERAL } });
 }
 async function onRoleToggle(i, env, roleId) {
 const u = who(i);
+if (!env.DINGS_ROLE_ID || roleId !== env.DINGS_ROLE_ID) return json({ type: R.MESSAGE, data: { content: S.dingsNotSet, flags: FLAGS.EPHEMERAL } });
 const has = (i.member?.roles || []).includes(roleId);
 const r = await fetch(`${API}/guilds/${env.GUILD_ID}/members/${u.id}/roles/${roleId}`, { method: has ? "DELETE" : "PUT", headers: { Authorization: `Bot ${env.DISCORD_BOT_TOKEN}`, "User-Agent": "GuildBot (roles)" } });
 if (!r.ok) { console.log(`[role] toggle -> ${r.status} ${await r.text()}`); return json({ type: R.MESSAGE, data: { content: S.dingsNoRole, flags: FLAGS.EPHEMERAL } }); }
@@ -546,7 +579,7 @@ const rows = (await env.DB.prepare("SELECT item_name, user_name, qty FROM stock 
 const byItem = {};
 for (const r of rows) (byItem[r.item_name] ||= []).push(r);
 const lines = Object.entries(byItem).map(([item, entries]) => S.stockLine(item, entries));
-return json({ type: R.MESSAGE, data: { content: `**${S.stockTitle}**\n` + (lines.join("\n") || S.stockEmpty), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
+return json({ type: R.MESSAGE, data: { content: (`**${S.stockTitle}**\n` + (lines.join("\n") || S.stockEmpty)).slice(0, 1900), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
 }
 async function onStatus(i, env) {
 if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnly, flags: FLAGS.EPHEMERAL } });
@@ -562,7 +595,7 @@ env.DB.prepare("SELECT COUNT(*) n FROM chars").first(),
 ]);
 const lastRun = st.saved_at || (commits?.[0]?.commit?.committer?.date ? Math.floor(Date.parse(commits[0].commit.committer.date) / 1000) : null);
 const myRoles = (roles || []).filter((r) => (me?.roles || []).includes(r.id));
-const canManageRoles = myRoles.some((r) => (BigInt(r.permissions || "0") & (1n << 28n)) !== 0n);
+const canManageRoles = myRoles.some((r) => (BigInt(r.permissions || "0") & ((1n << 28n) | (1n << 3n))) !== 0n); // Manage Roles or Administrator
 const topClassPos = Math.max(0, ...(roles || []).filter((r) => CLASS_COLOR[r.name]).map((r) => r.position));
 const myTopPos = Math.max(0, ...myRoles.map((r) => r.position));
 const chars = Object.keys(st.characters || {}).length;
@@ -587,7 +620,10 @@ if (!r.ok) console.log(`[tracker] dispatch -> ${r.status} ${await r.text()}`);
 export default {
 async fetch(req, env, ctx) {
 const url = new URL(req.url);
-if (req.method === "GET" && url.pathname === "/register") return registerCommands(env);
+if (req.method === "GET" && url.pathname === "/register") {
+if (env.REGISTER_KEY && url.searchParams.get("key") !== env.REGISTER_KEY) return new Response("forbidden", { status: 403 });
+return registerCommands(env);
+}
 if (req.method !== "POST") return new Response("Guild Bot", { status: 200 });
 const body = await req.text();
 if (!(await verify(req, body, env.DISCORD_PUBLIC_KEY))) return new Response("bad signature", { status: 401 });
@@ -605,15 +641,15 @@ if (i.type === T.COMMAND && i.data.name === "professions") return onProfessions(
 if (i.type === T.COMMAND && i.data.name === "who-crafts") return onWhoCrafts(i, env);
 if (i.type === T.COMMAND && i.data.name === "give") return onGive(i, env, ctx);
 if (i.type === T.COMMAND && i.data.name === "help") return json({ type: R.MESSAGE, data: { content: S.helpLine, flags: FLAGS.EPHEMERAL } });
-if (i.type === T.COMPONENT) return onButton(i, env);
-return json({ type: R.MESSAGE, data: { content: S.closed, flags: FLAGS.EPHEMERAL } });
+if (i.type === T.COMPONENT) return onButton(i, env, ctx);
+return json({ type: R.MESSAGE, data: { content: S.unknownCommand, flags: FLAGS.EPHEMERAL } });
 },
 async scheduled(_ev, env, ctx) {
 const t = now();
 ctx.waitUntil(weeklyReport(env, t).catch((e) => console.log(`[report] ${e}`)));
 ctx.waitUntil(kickTracker(env, t).catch((e) => console.log(`[tracker] ${e}`)));
 const due = await env.DB.prepare("SELECT * FROM gifts WHERE status='open' AND expires_at<=? LIMIT 20").bind(t).all();
-for (const g of due.results) ctx.waitUntil(settle(env, g));
+for (const g of due.results) ctx.waitUntil(settleNow(env, g).catch((e) => console.log(`[settle] ${e}`)));
 const quiet = await env.DB.prepare("SELECT * FROM gifts WHERE status='awarded' AND nudged_at IS NULL AND awarded_at<=? LIMIT 10").bind(t - 2 * 86400).all();
 for (const g of quiet.results) ctx.waitUntil((async () => {
 await env.DB.prepare("UPDATE gifts SET nudged_at=? WHERE id=?").bind(t, g.id).run();
