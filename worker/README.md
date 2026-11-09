@@ -13,7 +13,7 @@ Slash commands for the WoW Forever Discord, running on a Cloudflare Worker with 
 
 Character data comes from the tracker's `state.json` on GitHub (refreshed about every 15 minutes, cached 2 minutes in the Worker).
 
-Cron (every 5 minutes): settles expired gifts, sends the Received reminder, closes stale requests, and on Sunday at 19:00 (`REPORT_DAY`, `REPORT_HOUR`, `TIMEZONE`) posts "This week in the Workshop" to `REPORT_CHANNEL_ID` (falls back to `GENERAL_CHANNEL_ID`). Quiet weeks post nothing.
+Cron (every 5 minutes): settles expired gifts, sends the Received reminder, closes stale requests, and on Sunday at 19:00 (`REPORT_DAY`, `REPORT_HOUR`, `TIMEZONE`) posts "This week in the Workshop" to `REPORT_CHANNEL_ID` (falls back to `GENERAL_CHANNEL_ID`). Quiet weeks post nothing. With secret `GITHUB_TOKEN` set (fine-grained token, this repo only, Actions: read and write), the cron also triggers the tracker workflow every 15 minutes, because GitHub's own schedule has been firing only every few hours.
 
 ## Layout
 - `src/index.js` handlers, `src/strings.js` every member-facing string.

@@ -512,6 +512,19 @@ export function reportEmbed(gifts, made, openG, openR) {
   return { title: S.reportTitle, description: lines.join("\n"), color: 0x9b59b6 };
 }
 
+// ---------------------------------------------------------------- Tracker heartbeat
+// GitHub's own schedule fires the tracker only every few hours in practice. Every 15 minutes this
+// cron asks GitHub to run it (workflow_dispatch); the workflow's concurrency group stops overlaps.
+async function kickTracker(env, t) {
+  if (!env.GITHUB_TOKEN) return;
+  if (Math.floor(t / 60) % 15 >= 5) return; // one tick per quarter hour (cron runs every 5 min)
+  const repo = env.GITHUB_REPO || "Jcenno/wowforever-guild-bot";
+  const r = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/tracker.yml/dispatches`, {
+    method: "POST", headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "GuildBot (heartbeat)", "content-type": "application/json" },
+    body: JSON.stringify({ ref: "main" }) });
+  if (!r.ok) console.log(`[tracker] dispatch -> ${r.status} ${await r.text()}`);
+}
+
 export default {
   async fetch(req, env, ctx) {
     const url = new URL(req.url);
@@ -534,6 +547,7 @@ export default {
   async scheduled(_ev, env, ctx) {
     const t = now();
     ctx.waitUntil(weeklyReport(env, t).catch((e) => console.log(`[report] ${e}`)));
+    ctx.waitUntil(kickTracker(env, t).catch((e) => console.log(`[tracker] ${e}`)));
     const due = await env.DB.prepare("SELECT * FROM gifts WHERE status='open' AND expires_at<=? LIMIT 20").bind(t).all();
     for (const g of due.results) ctx.waitUntil(settle(env, g));
     // One reminder to a winner who has not pressed Received two days after the award.
