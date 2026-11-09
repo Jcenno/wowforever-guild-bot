@@ -24,6 +24,8 @@ About every 15 minutes (GitHub's scheduler can run late) it reads the guild rost
 - Roster: character count, average level, how many at 60, how many played in the last 2 days, raid composition from specs, a level-spread bar, then every character by class with activity dot, level, spec, item level, guild rank, armory link.
 - Professions panel: Crafting, Gathering and Secondary cards. Each crafter line has an activity dot, armory link, skill bar, skill, tier (Apprentice to Artisan) and known-recipe count. Known recipes are saved per character for the Worker's `/professions` command.
 
+- News feed (`news.py`): official Blizzard posts about Forever only, from Wowhead's Forever Blue Tracker RSS, with the full text from Blizzard's forum feed. US and EU copies collapse to one card, short blue replies in player threads are skipped, links go to Blizzard, at most 3 cards per run. The first run posts only the newest 3 and records the backlog quietly.
+
 Runs free on GitHub Actions. No server.
 
 ## Setup (15 minutes)
@@ -32,6 +34,7 @@ Runs free on GitHub Actions. No server.
 Channel settings → Integrations → Webhooks → New Webhook. Make two (webhooks must be created by a person, not a bot, or Discord hides the URL):
 - `#general` → copy the URL → this is `DISCORD_WEBHOOK_URL`
 - `#roster` → copy the URL → this is `DISCORD_ROSTER_WEBHOOK_URL` (optional; without it the board goes in the same channel)
+- `#announcements` → copy the URL → this is `DISCORD_NEWS_WEBHOOK_URL` (optional; turns on the Blizzard news feed)
 
 Optional: make a role like `@Dings` that people can self-assign. Copy its ID (Server Settings → Roles → right-click → Copy Role ID, with Developer Mode on) and put it in `hype_ping_role_id` in `characters.json`. Only big milestones ping it.
 
@@ -46,6 +49,7 @@ develop.battle.net → API Access → Create Client. Any name, redirect URL `htt
    - `DISCORD_WEBHOOK_URL`
    - `DISCORD_ROSTER_WEBHOOK_URL` (optional)
    - `DISCORD_STAFF_WEBHOOK_URL` (optional, officers-only channel)
+   - `DISCORD_NEWS_WEBHOOK_URL` (optional, #announcements news feed)
 3. Settings → Actions → General → Workflow permissions → Read and write.
 
 ### 4. Guild name

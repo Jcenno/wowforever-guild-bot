@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-WoW: Forever guild bot v1.10 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
+WoW: Forever guild bot v1.11 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
 
 Guild additions over the upstream tracker:
   - the character list comes from the in-game guild roster
@@ -43,6 +43,8 @@ Environment variables:
   DISCORD_WEBHOOK_URL         Discord webhook for the #dings channel
   DISCORD_ROSTER_WEBHOOK_URL  optional second webhook for the roster board (#roster);
                               defaults to DISCORD_WEBHOOK_URL
+  DISCORD_NEWS_WEBHOOK_URL    optional webhook for #announcements; official Forever posts only
+  DISCORD_STAFF_WEBHOOK_URL   optional webhook for the officers-only channel
   PROFILE_NAMESPACE           optional override, default profile-forever-{region}
 
 Usage:
@@ -92,6 +94,7 @@ QUALITY_RANK = {"POOR": 0, "COMMON": 1, "UNCOMMON": 2, "RARE": 3, "EPIC": 4, "LE
 DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
 DEFAULT_SETTINGS = {
+    "news_feed": True,  # official Blizzard posts about Forever to DISCORD_NEWS_WEBHOOK_URL
     "max_level": 60,
     "track_levels": True,
     "track_professions": True,
@@ -1670,11 +1673,22 @@ def main():
             queue.append({"kind": "recap", "embeds": part})
     if inactive:
         queue.append({"kind": "inactive", "embeds": [inactive]})
+    news_hook = os.environ.get("DISCORD_NEWS_WEBHOOK_URL", "").strip()
+    if settings.get("news_feed") and news_hook:
+        try:
+            import news as news_mod
+            news_embeds, _ = news_mod.build_news(state)
+            for e in news_embeds:  # one card per message so each has its own link preview
+                queue.append({"kind": "news", "embeds": [e]})
+        except Exception as err:  # news is a nicety; never block guild posts
+            print(f"[warn] news: {err}")
+    elif settings.get("news_feed"):
+        print("[info] DISCORD_NEWS_WEBHOOK_URL not set; skipped the news feed.")
     state["pending"] = queue
     save_state(state)
 
     staff_hook = os.environ.get("DISCORD_STAFF_WEBHOOK_URL", "").strip()
-    posted = {"hype": 0, "updates": 0, "recap": 0, "inactive": 0}
+    posted = {"hype": 0, "updates": 0, "recap": 0, "inactive": 0, "news": 0}
     while state["pending"]:
         item = state["pending"][0]
         kind = item.get("kind")
@@ -1690,6 +1704,9 @@ def main():
             post_to_discord(os.environ.get("DISCORD_ROSTER_WEBHOOK_URL", "").strip() or webhook, item["embeds"])
         elif kind == "recap":
             post_to_discord(webhook, item["embeds"])
+        elif kind == "news":
+            if news_hook:
+                post_to_discord(news_hook, item["embeds"])
         posted[kind] = posted.get(kind, 0) + len(item.get("embeds") or [])
         state["pending"].pop(0)
         save_state(state)
@@ -1701,6 +1718,8 @@ def main():
         print("Posted the weekly recap.")
     if posted["inactive"] and staff_hook:
         print("Posted the officers-only inactive list.")
+    if posted["news"]:
+        print(f"Posted {posted['news']} news card(s).")
     if not posted["hype"] and not posted["updates"]:
         print("No changes since the last check.")
 
