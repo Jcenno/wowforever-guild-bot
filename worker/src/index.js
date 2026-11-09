@@ -133,18 +133,22 @@ async function syncClassRole(env, userId, cls) {
 }
 async function onIam(i, env, ctx) {
   const q = i.data.options?.find((o) => o.name === "character")?.value || "";
+  const altQ = i.data.options?.find((o) => o.name === "alt")?.value || "";
   const st = await trackerState(env);
   const key = findChar(st, q);
   if (!key) return json({ type: R.MESSAGE, data: { content: S.noSuchChar, flags: FLAGS.EPHEMERAL } });
+  const altKey = altQ ? findChar(st, altQ) : null;
+  if (altQ && (!altKey || altKey === key)) return json({ type: R.MESSAGE, data: { content: S.noSuchChar, flags: FLAGS.EPHEMERAL } });
   const c = st.characters[key], u = who(i), name = charName(key), cls = c.class || "";
-  await env.DB.prepare("INSERT INTO chars (user_id,name,surname,class,updated_at) VALUES (?,?,?,?,?) ON CONFLICT(user_id) DO UPDATE SET name=excluded.name, surname=excluded.surname, class=excluded.class, updated_at=excluded.updated_at")
-    .bind(u.id, name, key, cls, now()).run();
+  const altCls = altKey ? st.characters[altKey].class || "" : null;
+  await env.DB.prepare("INSERT INTO chars (user_id,name,surname,class,alt,alt_class,updated_at) VALUES (?,?,?,?,?,?,?) ON CONFLICT(user_id) DO UPDATE SET name=excluded.name, surname=excluded.surname, class=excluded.class, alt=COALESCE(excluded.alt, chars.alt), alt_class=COALESCE(excluded.alt_class, chars.alt_class), updated_at=excluded.updated_at")
+    .bind(u.id, name, key, cls, altKey, altCls, now()).run();
   // The role sync is up to seven Discord calls, so answer first and fill the message in afterwards.
   ctx.waitUntil((async () => {
     let note = "";
     if (!cls) note = S.iamNoClass;
     else if (!(await syncClassRole(env, u.id, cls).catch((e) => (console.log(`[iam] ${e}`), false)))) note = S.iamRoleLater;
-    const text = S.iamLinked(name, cls || "class unknown") + (note ? "\n" + note : "");
+    const text = S.iamLinked(name, cls || "class unknown") + (altKey ? S.iamAlt(charName(altKey), altCls || "class unknown") : "") + (note ? "\n" + note : "");
     await fetch(`${API}/webhooks/${env.DISCORD_APP_ID}/${i.token}/messages/@original`, { method: "PATCH", headers: { "content-type": "application/json" },
       body: JSON.stringify({ content: text, allowed_mentions: { parse: [] } }) }).catch((e) => console.log(`[iam] edit ${e}`));
   })());
@@ -252,8 +256,9 @@ async function onNeed(i, env, ctx) {
   if (!hit) return json({ type: R.MESSAGE, data: { content: S.needNobody(qtext), flags: FLAGS.EPHEMERAL } });
   const top = hit.crafters.sort((a, b) => b.last - a.last || b.skill - a.skill).slice(0, 6);
   const keys = top.map((c) => c.key);
-  const linked = keys.length ? (await env.DB.prepare(`SELECT user_id, surname FROM chars WHERE surname IN (${keys.map(() => "?").join(",")})`).bind(...keys).all()).results : [];
-  const crafters = top.map((c) => ({ ...c, user: linked.find((l) => l.surname === c.key)?.user_id || null }));
+  const ph = keys.map(() => "?").join(",");
+  const linked = keys.length ? (await env.DB.prepare(`SELECT user_id, surname, alt FROM chars WHERE surname IN (${ph}) OR alt IN (${ph})`).bind(...keys, ...keys).all()).results : [];
+  const crafters = top.map((c) => ({ ...c, user: linked.find((l) => l.surname === c.key || l.alt === c.key)?.user_id || null }));
   const info = await recipeInfo(env, hit.id);
   const u = who(i), uname = display(i), t = now();
   const row = await env.DB.prepare(`INSERT INTO requests (user_id,user_name,recipe_id,recipe_name,profession,icon,mats,crafters,channel_id,token,created_at)
@@ -397,6 +402,7 @@ async function onButton(i, env, ctx) {
   console.log(`[button] ${i.data.custom_id} by ${who(i)?.id}`);
   if (["make", "done", "cancel"].includes(action)) return onRequestButton(i, env, action, id);
   if (action === "role") return onRoleToggle(i, env, idStr);
+  if (action === "spec") return onSpecToggle(i, env, idStr);
   const g = await env.DB.prepare("SELECT * FROM gifts WHERE id=?").bind(id).first();
   const u = who(i), uname = display(i);
   const eph = (content) => json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL } });
@@ -407,9 +413,9 @@ async function onButton(i, env, ctx) {
     const allowed = needClasses(g);
     if (action === "need" && allowed) {
       // Need is for the classes the item is meant for; everyone else can Greed.
-      const me = await env.DB.prepare("SELECT class FROM chars WHERE user_id=?").bind(u.id).first();
+      const me = await env.DB.prepare("SELECT class, alt_class FROM chars WHERE user_id=?").bind(u.id).first();
       if (!me?.class) return eph(S.linkFirst);
-      if (!allowed.includes(me.class)) return eph(S.wrongClass(allowed));
+      if (!allowed.includes(me.class) && !(me.alt_class && allowed.includes(me.alt_class))) return eph(S.wrongClass(allowed));
     }
     await env.DB.prepare("INSERT INTO claims (gift_id,user_id,user_name,kind,at) VALUES (?,?,?,?,?) ON CONFLICT(gift_id,user_id) DO UPDATE SET kind=excluded.kind, user_name=excluded.user_name")
       .bind(id, u.id, uname, action, now()).run();
@@ -456,7 +462,8 @@ const COMMANDS = [
       { name: "1 hour", value: 1 }, { name: "3 hours", value: 3 }, { name: "6 hours", value: 6 }, { name: "12 hours", value: 12 }, { name: "1 day", value: 24 } ] } ] },
   { name: "help", description: "How giving works, in one line" },
   { name: "iam", description: "Link your main character so your name gets its class color", options: [
-    { type: 3, name: "character", description: "Your character", required: true, autocomplete: true } ] },
+    { type: 3, name: "character", description: "Your main", required: true, autocomplete: true },
+    { type: 3, name: "alt", description: "An alt (optional)", required: false, autocomplete: true } ] },
   { name: "professions", description: "Someone's professions and known recipes", options: [
     { type: 3, name: "character", description: "Character name", required: true, autocomplete: true } ] },
   { name: "need", description: "Ask the guild to craft something; pings the people who can", options: [
@@ -516,7 +523,9 @@ async function onWorkshop(i, env) {
 // ---------------------------------------------------------------- Welcome card with the Dings toggle (officers post it, members press it)
 function welcomeCard(env) {
   const container = { type: 17, accent_color: 0xf1c40f, components: [{ type: 10, content: S.welcome }, { type: 14, divider: true, spacing: 1 },
-    { type: 1, components: [{ type: 2, style: 2, label: S.dingsBtn, custom_id: `role:${env.DINGS_ROLE_ID}` }] }] };
+    { type: 1, components: [
+      ...SPEC_ROLES.map((r) => ({ type: 2, style: 2, label: r, custom_id: `spec:${r}` })),
+      { type: 2, style: 1, label: S.dingsBtn, custom_id: `role:${env.DINGS_ROLE_ID}` }] }] };
   return { flags: FLAGS.V2, components: [container], allowed_mentions: { parse: [] } };
 }
 async function onPostWelcome(i, env) {
@@ -525,6 +534,22 @@ async function onPostWelcome(i, env) {
   const ok = await discord(env, "POST", `/channels/${i.channel_id}/messages`, welcomeCard(env));
   return json({ type: R.MESSAGE, data: { content: ok ? S.welcomePosted : S.postFailed, flags: FLAGS.EPHEMERAL } });
 }
+const SPEC_ROLES = ["Tank", "Healer", "DPS"];
+let specRoleCache = { value: null, exp: 0 };
+async function onSpecToggle(i, env, name) {
+  if (!SPEC_ROLES.includes(name)) return json({ type: R.MESSAGE, data: { content: S.unknownCommand, flags: FLAGS.EPHEMERAL } });
+  if (!specRoleCache.value || Date.now() > specRoleCache.exp) {
+    const roles = await discord(env, "GET", `/guilds/${env.GUILD_ID}/roles`);
+    if (roles) specRoleCache = { value: Object.fromEntries(roles.filter((r) => SPEC_ROLES.includes(r.name)).map((r) => [r.name, r.id])), exp: Date.now() + 10 * 60 * 1000 };
+  }
+  const roleId = specRoleCache.value?.[name];
+  if (!roleId) return json({ type: R.MESSAGE, data: { content: S.specMissing(name), flags: FLAGS.EPHEMERAL } });
+  const u = who(i), has = (i.member?.roles || []).includes(roleId);
+  const r = await fetch(`${API}/guilds/${env.GUILD_ID}/members/${u.id}/roles/${roleId}`, { method: has ? "DELETE" : "PUT", headers: { Authorization: `Bot ${env.DISCORD_BOT_TOKEN}`, "User-Agent": "GuildBot (roles)" } });
+  if (!r.ok) { console.log(`[spec] toggle -> ${r.status} ${await r.text()}`); return json({ type: R.MESSAGE, data: { content: S.dingsNoRole, flags: FLAGS.EPHEMERAL } }); }
+  return json({ type: R.MESSAGE, data: { content: has ? S.specOff(name) : S.specOn(name), flags: FLAGS.EPHEMERAL } });
+}
+
 async function onRoleToggle(i, env, roleId) {
   const u = who(i);
   if (!env.DINGS_ROLE_ID || roleId !== env.DINGS_ROLE_ID) return json({ type: R.MESSAGE, data: { content: S.dingsNotSet, flags: FLAGS.EPHEMERAL } });

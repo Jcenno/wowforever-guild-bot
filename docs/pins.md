@@ -17,7 +17,8 @@ Posted as the welcome card via /post-welcome (text lives in worker/src/strings.j
 
 **Who plays what, who crafts what:** #roster. `/professions <name>` shows anyone's recipes, `/who-crafts <item>` finds a crafter.
 
-**One-time setup:** type `/iam` and pick your main. Your name takes your class color and the bot knows which gear you can Need on.
+**One-time setup:** `/iam` and pick your main (add an alt if you have one). Your name takes your class color and the bot knows what you can Need on.
+**Tank, Healer, DPS:** press what you play. More than one is fine for main and off-spec.
 
 Only `@Dings` gets pinged. Turn it on in Channels & Roles if you want the big-milestone pings.
 ```
@@ -36,6 +37,6 @@ Commands go here. /iam once to link your main, /need for crafts, /give for spare
 ```
 Commands work in any channel; this one keeps #general clean.
 
-`/need <item>` ask for a craft · `/give <item>` offer an item · `/iam <character>` link your main
+`/need <item>` ask for a craft · `/give <item>` offer an item · `/iam <main> [alt]` link your characters
 `/workshop` what is open · `/stock` spare mats · `/professions <character>` · `/who-crafts <item>` · `/help`
 ```

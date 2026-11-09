@@ -19,6 +19,10 @@ dmGiver: (item, winner) => `**${item}** goes to **${winner}**. Mail or trade it 
 itemNotFound: "No item by that name. Pick one from the list.",
 helpLine: "`/give` an item you don't need. `/need` something crafted; it pings the people who can make it. Press Need or Greed on a gift card; the winner presses Received. `/iam` links your main so your name takes its class color. `/professions` and `/who-crafts` look things up.",
 iamLinked: (name, cls) => `You are **${name}** (${cls}).`,
+iamAlt: (name, cls) => ` Alt: **${name}** (${cls}).`,
+specOn: (role) => `${role} added.`,
+specOff: (role) => `${role} removed.`,
+specMissing: (role) => `The ${role} role does not exist on this server yet. Ask an officer.`,
 iamRoleLater: "Class color comes once an officer lets the bot manage roles.",
 iamNoClass: "Class not recorded yet; the color comes after the next roster check.",
 notWinner: "Only the winner can do that.",
@@ -49,8 +53,9 @@ welcome: [
 "**Have something you don't need?** `/give` and pick the item. Need or Greed on the card. It closes after 3 hours (the giver can pick 1 hour to 1 day); the bot names the winner and DMs you both, and the winner presses *Received* when it arrives.",
 "**Who plays what, who crafts what:** #roster. `/professions <name>` for anyone's recipes, `/who-crafts <item>` to find a crafter, `/workshop` for what's open.",
 "",
-"**One-time setup:** `/iam` and pick your main. Your name takes your class color and the bot knows what you can Need on.",
-"Only the Dings role gets pinged. The button below turns it on or off for you.",
+"**One-time setup:** `/iam` and pick your main (add an alt if you have one). Your name takes your class color and the bot knows what you can Need on.",
+"**Tank, Healer, DPS:** press what you play. More than one is fine for main and off-spec.",
+"Only the Dings role gets pinged. The button turns it on or off for you.",
 ].join("\n"),
 dingsBtn: "Dings pings: on / off",
 dingsOn: "Dings pings on. You'll be pinged for the big milestones.",
@@ -192,17 +197,21 @@ return r.ok;
 }
 async function onIam(i, env, ctx) {
 const q = i.data.options?.find((o) => o.name === "character")?.value || "";
+const altQ = i.data.options?.find((o) => o.name === "alt")?.value || "";
 const st = await trackerState(env);
 const key = findChar(st, q);
 if (!key) return json({ type: R.MESSAGE, data: { content: S.noSuchChar, flags: FLAGS.EPHEMERAL } });
+const altKey = altQ ? findChar(st, altQ) : null;
+if (altQ && (!altKey || altKey === key)) return json({ type: R.MESSAGE, data: { content: S.noSuchChar, flags: FLAGS.EPHEMERAL } });
 const c = st.characters[key], u = who(i), name = charName(key), cls = c.class || "";
-await env.DB.prepare("INSERT INTO chars (user_id,name,surname,class,updated_at) VALUES (?,?,?,?,?) ON CONFLICT(user_id) DO UPDATE SET name=excluded.name, surname=excluded.surname, class=excluded.class, updated_at=excluded.updated_at")
-.bind(u.id, name, key, cls, now()).run();
+const altCls = altKey ? st.characters[altKey].class || "" : null;
+await env.DB.prepare("INSERT INTO chars (user_id,name,surname,class,alt,alt_class,updated_at) VALUES (?,?,?,?,?,?,?) ON CONFLICT(user_id) DO UPDATE SET name=excluded.name, surname=excluded.surname, class=excluded.class, alt=COALESCE(excluded.alt, chars.alt), alt_class=COALESCE(excluded.alt_class, chars.alt_class), updated_at=excluded.updated_at")
+.bind(u.id, name, key, cls, altKey, altCls, now()).run();
 ctx.waitUntil((async () => {
 let note = "";
 if (!cls) note = S.iamNoClass;
 else if (!(await syncClassRole(env, u.id, cls).catch((e) => (console.log(`[iam] ${e}`), false)))) note = S.iamRoleLater;
-const text = S.iamLinked(name, cls || "class unknown") + (note ? "\n" + note : "");
+const text = S.iamLinked(name, cls || "class unknown") + (altKey ? S.iamAlt(charName(altKey), altCls || "class unknown") : "") + (note ? "\n" + note : "");
 await fetch(`${API}/webhooks/${env.DISCORD_APP_ID}/${i.token}/messages/@original`, { method: "PATCH", headers: { "content-type": "application/json" },
 body: JSON.stringify({ content: text, allowed_mentions: { parse: [] } }) }).catch((e) => console.log(`[iam] edit ${e}`));
 })());
@@ -303,8 +312,9 @@ const hit = ql ? all[ql] || Object.values(all).find((e) => e.name.toLowerCase().
 if (!hit) return json({ type: R.MESSAGE, data: { content: S.needNobody(qtext), flags: FLAGS.EPHEMERAL } });
 const top = hit.crafters.sort((a, b) => b.last - a.last || b.skill - a.skill).slice(0, 6);
 const keys = top.map((c) => c.key);
-const linked = keys.length ? (await env.DB.prepare(`SELECT user_id, surname FROM chars WHERE surname IN (${keys.map(() => "?").join(",")})`).bind(...keys).all()).results : [];
-const crafters = top.map((c) => ({ ...c, user: linked.find((l) => l.surname === c.key)?.user_id || null }));
+const ph = keys.map(() => "?").join(",");
+const linked = keys.length ? (await env.DB.prepare(`SELECT user_id, surname, alt FROM chars WHERE surname IN (${ph}) OR alt IN (${ph})`).bind(...keys, ...keys).all()).results : [];
+const crafters = top.map((c) => ({ ...c, user: linked.find((l) => l.surname === c.key || l.alt === c.key)?.user_id || null }));
 const info = await recipeInfo(env, hit.id);
 const u = who(i), uname = display(i), t = now();
 const row = await env.DB.prepare(`INSERT INTO requests (user_id,user_name,recipe_id,recipe_name,profession,icon,mats,crafters,channel_id,token,created_at)
@@ -438,6 +448,7 @@ const [action, idStr] = i.data.custom_id.split(":"); const id = Number(idStr);
 console.log(`[button] ${i.data.custom_id} by ${who(i)?.id}`);
 if (["make", "done", "cancel"].includes(action)) return onRequestButton(i, env, action, id);
 if (action === "role") return onRoleToggle(i, env, idStr);
+if (action === "spec") return onSpecToggle(i, env, idStr);
 const g = await env.DB.prepare("SELECT * FROM gifts WHERE id=?").bind(id).first();
 const u = who(i), uname = display(i);
 const eph = (content) => json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL } });
@@ -447,9 +458,9 @@ if (g.status !== "open" || g.expires_at <= now()) return eph(S.closed);
 if (u.id === g.giver_id) return eph(S.ownGift);
 const allowed = needClasses(g);
 if (action === "need" && allowed) {
-const me = await env.DB.prepare("SELECT class FROM chars WHERE user_id=?").bind(u.id).first();
+const me = await env.DB.prepare("SELECT class, alt_class FROM chars WHERE user_id=?").bind(u.id).first();
 if (!me?.class) return eph(S.linkFirst);
-if (!allowed.includes(me.class)) return eph(S.wrongClass(allowed));
+if (!allowed.includes(me.class) && !(me.alt_class && allowed.includes(me.alt_class))) return eph(S.wrongClass(allowed));
 }
 await env.DB.prepare("INSERT INTO claims (gift_id,user_id,user_name,kind,at) VALUES (?,?,?,?,?) ON CONFLICT(gift_id,user_id) DO UPDATE SET kind=excluded.kind, user_name=excluded.user_name")
 .bind(id, u.id, uname, action, now()).run();
@@ -492,7 +503,8 @@ const COMMANDS = [
 { name: "1 hour", value: 1 }, { name: "3 hours", value: 3 }, { name: "6 hours", value: 6 }, { name: "12 hours", value: 12 }, { name: "1 day", value: 24 } ] } ] },
 { name: "help", description: "How giving works, in one line" },
 { name: "iam", description: "Link your main character so your name gets its class color", options: [
-{ type: 3, name: "character", description: "Your character", required: true, autocomplete: true } ] },
+{ type: 3, name: "character", description: "Your main", required: true, autocomplete: true },
+{ type: 3, name: "alt", description: "An alt (optional)", required: false, autocomplete: true } ] },
 { name: "professions", description: "Someone's professions and known recipes", options: [
 { type: 3, name: "character", description: "Character name", required: true, autocomplete: true } ] },
 { name: "need", description: "Ask the guild to craft something; pings the people who can", options: [
@@ -546,7 +558,9 @@ return json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL, allowed_
 }
 function welcomeCard(env) {
 const container = { type: 17, accent_color: 0xf1c40f, components: [{ type: 10, content: S.welcome }, { type: 14, divider: true, spacing: 1 },
-{ type: 1, components: [{ type: 2, style: 2, label: S.dingsBtn, custom_id: `role:${env.DINGS_ROLE_ID}` }] }] };
+{ type: 1, components: [
+...SPEC_ROLES.map((r) => ({ type: 2, style: 2, label: r, custom_id: `spec:${r}` })),
+{ type: 2, style: 1, label: S.dingsBtn, custom_id: `role:${env.DINGS_ROLE_ID}` }] }] };
 return { flags: FLAGS.V2, components: [container], allowed_mentions: { parse: [] } };
 }
 async function onPostWelcome(i, env) {
@@ -554,6 +568,21 @@ if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnl
 if (!env.DINGS_ROLE_ID) return json({ type: R.MESSAGE, data: { content: S.dingsNotSet, flags: FLAGS.EPHEMERAL } });
 const ok = await discord(env, "POST", `/channels/${i.channel_id}/messages`, welcomeCard(env));
 return json({ type: R.MESSAGE, data: { content: ok ? S.welcomePosted : S.postFailed, flags: FLAGS.EPHEMERAL } });
+}
+const SPEC_ROLES = ["Tank", "Healer", "DPS"];
+let specRoleCache = { value: null, exp: 0 };
+async function onSpecToggle(i, env, name) {
+if (!SPEC_ROLES.includes(name)) return json({ type: R.MESSAGE, data: { content: S.unknownCommand, flags: FLAGS.EPHEMERAL } });
+if (!specRoleCache.value || Date.now() > specRoleCache.exp) {
+const roles = await discord(env, "GET", `/guilds/${env.GUILD_ID}/roles`);
+if (roles) specRoleCache = { value: Object.fromEntries(roles.filter((r) => SPEC_ROLES.includes(r.name)).map((r) => [r.name, r.id])), exp: Date.now() + 10 * 60 * 1000 };
+}
+const roleId = specRoleCache.value?.[name];
+if (!roleId) return json({ type: R.MESSAGE, data: { content: S.specMissing(name), flags: FLAGS.EPHEMERAL } });
+const u = who(i), has = (i.member?.roles || []).includes(roleId);
+const r = await fetch(`${API}/guilds/${env.GUILD_ID}/members/${u.id}/roles/${roleId}`, { method: has ? "DELETE" : "PUT", headers: { Authorization: `Bot ${env.DISCORD_BOT_TOKEN}`, "User-Agent": "GuildBot (roles)" } });
+if (!r.ok) { console.log(`[spec] toggle -> ${r.status} ${await r.text()}`); return json({ type: R.MESSAGE, data: { content: S.dingsNoRole, flags: FLAGS.EPHEMERAL } }); }
+return json({ type: R.MESSAGE, data: { content: has ? S.specOff(name) : S.specOn(name), flags: FLAGS.EPHEMERAL } });
 }
 async function onRoleToggle(i, env, roleId) {
 const u = who(i);

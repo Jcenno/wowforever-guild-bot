@@ -16,8 +16,10 @@ CREATE TABLE IF NOT EXISTS claims (
   PRIMARY KEY (gift_id, user_id)
 );
 CREATE TABLE IF NOT EXISTS chars (    -- /iam mapping, C2
-  user_id TEXT PRIMARY KEY, name TEXT NOT NULL, surname TEXT, class TEXT, updated_at INTEGER
+  user_id TEXT PRIMARY KEY, name TEXT NOT NULL, surname TEXT, class TEXT, updated_at INTEGER,
+  alt TEXT, alt_class TEXT                -- optional alt (key and class), 9 Nov
 );
+-- existing databases: ALTER TABLE chars ADD COLUMN alt TEXT; ALTER TABLE chars ADD COLUMN alt_class TEXT;
 CREATE TABLE IF NOT EXISTS requests (  -- /need craft requests, W1
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id TEXT NOT NULL, user_name TEXT NOT NULL,
