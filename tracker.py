@@ -1366,6 +1366,7 @@ def post_to_discord(webhook, embeds, content=None, ping_role=None):
 def save_state(state):
     """Write state now. Called after every successful Discord post so a crash
     later in the run can't repeat an announcement on the next run."""
+    state["saved_at"] = int(time.time())  # the Worker's /status reads this as "tracker last ran"
     with open(STATE_PATH, "w", encoding="utf-8") as f:
         json.dump(state, f, indent=2, sort_keys=True, ensure_ascii=False)
         f.write("\n")

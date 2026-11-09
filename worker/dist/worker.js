@@ -579,7 +579,7 @@ async function onStatus(i, env) {
     env.DB.prepare("SELECT COUNT(*) n FROM requests WHERE status IN ('open','claimed')").first(),
     env.DB.prepare("SELECT COUNT(*) n FROM chars").first(),
   ]);
-  const lastRun = commits?.[0]?.commit?.committer?.date ? Math.floor(Date.parse(commits[0].commit.committer.date) / 1000) : null;
+  const lastRun = st.saved_at || (commits?.[0]?.commit?.committer?.date ? Math.floor(Date.parse(commits[0].commit.committer.date) / 1000) : null);
   const myRoles = (roles || []).filter((r) => (me?.roles || []).includes(r.id));
   const canManageRoles = myRoles.some((r) => (BigInt(r.permissions || "0") & (1n << 28n)) !== 0n);
   const topClassPos = Math.max(0, ...(roles || []).filter((r) => CLASS_COLOR[r.name]).map((r) => r.position));
