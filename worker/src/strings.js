@@ -38,4 +38,8 @@ export const S = {
   noRecipes: "No recipes recorded yet. They appear after the next check.",
   nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
   whoCraftsTitle: (q) => `Who can make "${q}"`,
+  reportTitle: "This week in the Workshop",
+  reportGifts: (n, top) => `**${n}** item${n === 1 ? "" : "s"} passed on${top ? ` · most from **${top}**` : ""}`,
+  reportCrafts: (n, top) => `**${n}** craft${n === 1 ? "" : "s"} made${top ? ` · most by **${top}**` : ""}`,
+  reportOpen: (gifts, reqs) => `Open now: ${gifts} gift${gifts === 1 ? "" : "s"}, ${reqs} request${reqs === 1 ? "" : "s"}`,
 };

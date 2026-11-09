@@ -40,6 +40,10 @@ const S = {
   noRecipes: "No recipes recorded yet. They appear after the next check.",
   nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
   whoCraftsTitle: (q) => `Who can make "${q}"`,
+  reportTitle: "This week in the Workshop",
+  reportGifts: (n, top) => `**${n}** item${n === 1 ? "" : "s"} passed on${top ? ` · most from **${top}**` : ""}`,
+  reportCrafts: (n, top) => `**${n}** craft${n === 1 ? "" : "s"} made${top ? ` · most by **${top}**` : ""}`,
+  reportOpen: (gifts, reqs) => `Open now: ${gifts} gift${gifts === 1 ? "" : "s"}, ${reqs} request${reqs === 1 ? "" : "s"}`,
 };
 
 // ---- index.js
@@ -482,6 +486,32 @@ async function registerCommands(env) {
   return new Response(r.ok ? `registered ${COMMANDS.length} commands` : `failed ${r.status}: ${body.slice(0, 300)}`, { status: r.ok ? 200 : 500 });
 }
 
+// ---------------------------------------------------------------- Weekly Workshop report (Sunday evening, local time)
+const topOf = (rows, k) => { const c = {}; for (const r of rows) if (r[k]) c[r[k]] = (c[r[k]] || 0) + 1; return Object.entries(c).sort((a, b) => b[1] - a[1])[0]?.[0]; };
+async function weeklyReport(env, t) {
+  const fmt = new Intl.DateTimeFormat("en-US", { timeZone: env.TIMEZONE || "America/Chicago", weekday: "short", hour: "numeric", minute: "numeric", hour12: false });
+  const p = Object.fromEntries(fmt.formatToParts(new Date(t * 1000)).map((x) => [x.type, x.value]));
+  if (p.weekday !== (env.REPORT_DAY || "Sun") || Number(p.hour) % 24 !== Number(env.REPORT_HOUR || 19) || Number(p.minute) >= 10) return;
+  const weekKey = String(Math.floor((t + 4 * 86400) / (7 * 86400)));
+  const last = await env.DB.prepare("SELECT value FROM meta WHERE key='last_report'").first().catch(() => null);
+  if (last?.value === weekKey) return;
+  await env.DB.prepare("INSERT INTO meta (key,value) VALUES ('last_report',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value").bind(weekKey).run();
+  const since = t - 7 * 86400;
+  const gifts = (await env.DB.prepare("SELECT giver_name, winner_name, item_name FROM gifts WHERE created_at>=? AND status IN ('awarded','received')").bind(since).all()).results;
+  const made = (await env.DB.prepare("SELECT maker_name, user_name, recipe_name FROM requests WHERE created_at>=? AND status='done'").bind(since).all()).results;
+  if (!gifts.length && !made.length) return; // a quiet week gets no card
+  const openG = (await env.DB.prepare("SELECT COUNT(*) n FROM gifts WHERE status='open'").first())?.n || 0;
+  const openR = (await env.DB.prepare("SELECT COUNT(*) n FROM requests WHERE status IN ('open','claimed')").first())?.n || 0;
+  await discord(env, "POST", `/channels/${env.REPORT_CHANNEL_ID || env.GENERAL_CHANNEL_ID}/messages`, { embeds: [reportEmbed(gifts, made, openG, openR)], allowed_mentions: { parse: [] } });
+}
+export function reportEmbed(gifts, made, openG, openR) {
+  const lines = [S.reportGifts(gifts.length, topOf(gifts, "giver_name")), S.reportCrafts(made.length, topOf(made, "maker_name"))];
+  const items = [...gifts.map((g) => `${g.item_name} → ${g.winner_name}`), ...made.map((m) => `${m.recipe_name} for ${m.user_name}`)].slice(0, 8);
+  if (items.length) lines.push("", ...items.map((x) => `• ${x}`));
+  lines.push("", S.reportOpen(openG, openR));
+  return { title: S.reportTitle, description: lines.join("\n"), color: 0x9b59b6 };
+}
+
 export default {
   async fetch(req, env, ctx) {
     const url = new URL(req.url);
@@ -503,6 +533,7 @@ export default {
   },
   async scheduled(_ev, env, ctx) {
     const t = now();
+    ctx.waitUntil(weeklyReport(env, t).catch((e) => console.log(`[report] ${e}`)));
     const due = await env.DB.prepare("SELECT * FROM gifts WHERE status='open' AND expires_at<=? LIMIT 20").bind(t).all();
     for (const g of due.results) ctx.waitUntil(settle(env, g));
     // One reminder to a winner who has not pressed Received two days after the award.

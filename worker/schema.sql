@@ -29,4 +29,5 @@ CREATE TABLE IF NOT EXISTS requests (  -- /need craft requests, W1
   maker_id TEXT, maker_name TEXT,
   created_at INTEGER NOT NULL, updated_at INTEGER
 );
+CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT); -- last weekly report, etc.
 CREATE INDEX IF NOT EXISTS gifts_open ON gifts(status, expires_at);
