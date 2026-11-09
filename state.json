@@ -31,12 +31,13 @@
         }
       },
       "ilvl": 8,
-      "last_login": 1794180914000,
-      "level": 14,
+      "last_login": 1794188244000,
+      "level": 15,
       "level_at": {
         "10": 1794152175,
         "12": 1794167884,
-        "14": 1794180366
+        "14": 1794180366,
+        "15": 1794189667
       },
       "professions": {
         "Blacksmithing": 66,
@@ -167,7 +168,7 @@
       "reputations": {
         "Darnassus": {
           "name": "Honored",
-          "raw": 9345,
+          "raw": 9920,
           "tier": 5
         },
         "Gadgetzan": {
@@ -177,34 +178,34 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 3323,
+          "raw": 3536,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 3423,
+          "raw": 3561,
           "tier": 4
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 3223,
+          "raw": 3361,
           "tier": 4
         }
       },
       "spec": "Protection",
       "stats": {
-        "critters": 14,
+        "critters": 17,
         "deaths": 9,
         "flights": 3,
         "food": 25,
         "health_potions": 7,
         "hearths": 3,
-        "killing_blows": 369,
-        "mobs": 531,
+        "killing_blows": 430,
+        "mobs": 588,
         "need_rolls": 6,
-        "quests": 79
+        "quests": 86
       },
-      "xp": 6858
+      "xp": 3828
     }
   },
   "group": {
@@ -232,20 +233,47 @@
   "roster": {
     "message_id": "1569012691186622596"
   },
+  "saved_at": 1794189668,
   "weekly": {
     "baseline": {
       "us:steel-appeal": {
-        "achievements": 0,
-        "clears": {},
+        "achievements": 1,
+        "clears": {
+          "Hall of Thanes": 1
+        },
         "epics": [],
-        "level": 1,
-        "professions": {},
-        "rep": {},
-        "stats": {},
-        "xp": 0
+        "level": 15,
+        "professions": {
+          "Blacksmithing": 66,
+          "Cooking": 5,
+          "First Aid": 53,
+          "Mining": 70
+        },
+        "rep": {
+          "Darnassus": 9920,
+          "Gadgetzan": 600,
+          "Gnomeregan Exiles": 3536,
+          "Ironforge": 3561,
+          "Stormwind": 3361
+        },
+        "stats": {
+          "critters": 17,
+          "deaths": 9,
+          "flights": 3,
+          "food": 25,
+          "health_potions": 7,
+          "hearths": 3,
+          "killing_blows": 430,
+          "mobs": 588,
+          "need_rolls": 6,
+          "quests": 86
+        },
+        "xp": 3828
       }
     },
-    "last_recap": "2026-11-08T03:09:11.722894+00:00",
-    "mounts_baseline": 0
+    "last_awards": [],
+    "last_recap": "2026-11-09T02:01:07.443915+00:00",
+    "mounts_baseline": 2,
+    "recaps_posted": 1
   }
 }
