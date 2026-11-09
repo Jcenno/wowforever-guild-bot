@@ -64,6 +64,15 @@ MONTH_NUM = {m: str(i + 1) for i, m in enumerate(
 MONTH_NUM.update({m[:3]: n for m, n in list(MONTH_NUM.items())})
 
 
+def legacy_key(title):
+    """Key shape used before v1.12 (dates stripped). Only for reading old state."""
+    t = title.lower().replace("— world of warcraft — blizzard news", "")
+    t = re.sub(rf"\b({MONTHS})\b", " ", t)
+    t = re.sub(r"\b\d{1,4}\b", " ", t)
+    t = re.sub(r"[^a-z]+", " ", t)
+    return " ".join(t.split())
+
+
 def norm_title(title):
     """
     Key for US/EU dedupe. Month names become numbers and the remaining tokens
@@ -172,6 +181,8 @@ def build_news(state, now_ts=None, fetcher=fetch):
             seen[key] = now_ts
     embeds = []
     for key, it in ordered:
+        if key not in seen and legacy_key(it["title"]) in seen:
+            seen[key] = now_ts  # remembered under the pre-v1.12 key shape
         if key in seen:
             seen[key] = now_ts  # still in the feed: keep it remembered so it cannot come back as new
             continue
