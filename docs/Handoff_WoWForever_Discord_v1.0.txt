@@ -1,0 +1,96 @@
+HANDOFF — WoW Forever guild Discord build (for a fresh Claude window, Opus)
+Written 9 Nov 2026, 08:40 Chicago. Everything below is live and verified unless marked.
+
+================================================================
+0. WHO / WHAT
+================================================================
+- Joe (Joseph Enno, Discord "Joe", Administrator). Server owner: Quinn (qdog). Third regular: Tanner (tx.tan).
+- Server: WoW Forever, guild id 1560804753267761233. Friends' guild for World of Warcraft: Forever (launched 4 Nov 2026).
+- Goal: a fully automated, professional-looking Discord with minimal technical input from Joe.
+- Repo: github.com/Jcenno/wowforever-guild-bot (branch main). Local clone used so far: /home/claude/wowforever-guild-bot
+- Living plan with changelog + status table: "WoW Forever Discord Master Plan"
+  https://claude.ai/artifact/RDSUmG46y34YiCXVSdfoim  (Claude Docs; node 182e9061-3c0f; ids prefix m1bxqvpb8k3)
+- Project doc "WoW Forever notes.md" (claude.ai project) has Joe's character/addon notes plus a short "where things live" section. Keep both current.
+
+================================================================
+1. HOW JOE WANTS TO WORK (standing instructions)
+================================================================
+- "Go, don't wait on me, just build." Ask only when a decision is genuinely his or irreversible.
+- Build cycles 10 to 15 minutes; no long test batteries while he waits.
+- Anything he must copy/paste (value, name, URL, command) goes in its own fenced code box. Always.
+- Exact step-by-step with links for anything manual.
+- Member-facing text: concise, no AI chatter, no tool/implementation names, NO EM DASHES. Admin/setup text only to him.
+- Preview bot posts in #bot-staging before #general.
+- Secrets: never paste tokens in chat. Joe enters secrets himself (Cloudflare Secrets / GitHub Secrets). You may enter public values (ids, channel ids).
+- Dings start at level 30. Everything should look like a real product.
+- Terse, objective replies. Lists fine. Version-bump filenames when delivering files.
+- He uses the Chrome extension for you to build/QA (Discord as Joe, Cloudflare dashboard, GitHub). Deleting/kicking in Discord may be blocked by the permission classifier; then hand him the exact click path.
+
+================================================================
+2. ARCHITECTURE
+================================================================
+A) Tracker (Python, GitHub Actions) — tracker.py v1.12, news.py, probe_feeds.py, tests/, characters.json, state.json
+   - Reads Blizzard API (client "WF Guild Bot Wreck"; namespace static-forever-us / profile-forever-us). Forever has no realms (one server, PvE/PvP pick); the API still uses a realm slug internally.
+   - Posts via webhooks: #general (dings level 30/40/50/60, mounts, guild firsts, Sunday 19:00 recap), #roster (Progress digest; roster/professions boards edited in place: 4 messages, ids in state.roster.message_ids, first one is pinned), #announcements (Blizzard Forever news cards from Wowhead Forever Blue Tracker RSS + Blizzard forum RSS, max 3 per run), officers-only inactive list to #bot-staging.
+   - Runs every 15 min because the Worker cron dispatches workflow_dispatch (GitHub's own cron fired only 4x/day). Secret GITHUB_TOKEN in Cloudflare (fine-grained PAT, Actions read/write).
+   - Queue in state.json: posts saved before sending, popped after success; a 4xx (not 429) is dropped and logged (DiscordRejected) so one bad post cannot block the rest. state.json written atomically. Boards split fields at 1024 and fit under 6000 chars.
+   - Workflow commits state.json back with [skip ci]. Always `git pull --rebase origin main` before pushing.
+   - Secrets in GitHub Actions: BLIZZARD_CLIENT_ID/SECRET, DISCORD_WEBHOOK_URL, DISCORD_ROSTER_WEBHOOK_URL, DISCORD_STAFF_WEBHOOK_URL, DISCORD_NEWS_WEBHOOK_URL.
+   - Trigger a run: gh api -X POST repos/Jcenno/wowforever-guild-bot/actions/workflows/tracker.yml/dispatches -f ref=main
+   - Tests: python3 -I tests/test_news.py ; strings list: python3 tools/extract_strings.py (writes STRINGS.md).
+
+B) Guild Bot (Cloudflare Worker "guild-bot" + D1) — folder worker/
+   - src/index.js (handlers), src/strings.js (ALL member-facing strings), schema.sql, test/ (npm test, 9 pass), scripts/build.mjs -> dist/worker.paste.js
+   - URL https://guild-bot.jcenno.workers.dev ; Discord app id 1569054537661157647 ; D1 database "guild-bot" id 7131222f-3338-4b77-96ec-c832a730f7ce ; account 0f633783ba2e7b9940b58bb5d9e079a5
+   - Commands (11): /give <item> [closes 1h/3h/6h/12h/1d, default CLAIM_HOURS=3], /need <recipe>, /iam <main> [alt], /professions, /who-crafts, /workshop, /stock, /stock-set, /help, officers: /post-welcome, /status
+   - Components V2 cards (container 17 etc.), ephemeral replies, class-gated Need (armor type or Blizzard class list; main or alt class), crafter pings on /need, winner DMs, Received button, 2-day reminder, 7-day request expiry, weekly "This week in the Workshop" Sunday 19:00 Chicago to #general (REPORT_CHANNEL_ID), cron */5.
+   - Welcome card (/post-welcome): how-it-works text + buttons Tank / Healer / DPS (toggle roles by name, several allowed) + "Dings pings: on / off". Pinned in #general.
+   - /iam applies the class role (creates it if missing, positions above Officer). Guild Bot role must stay above class roles and have Manage Roles (it does).
+   - Variables: DISCORD_APP_ID, DISCORD_PUBLIC_KEY, GUILD_ID, GENERAL_CHANNEL_ID=1560804753963745392, REPORT_CHANNEL_ID=1560804753963745392, DINGS_ROLE_ID=1568797227747643493, BLIZZARD_REGION=us, BLIZZARD_STATIC_NS=static-forever-us, CLAIM_HOURS=3. Optional: REGISTER_KEY, REPORT_DAY, REPORT_HOUR, TIMEZONE, GITHUB_REPO, STATE_URL. Secrets: DISCORD_BOT_TOKEN, BLIZZARD_CLIENT_SECRET, GITHUB_TOKEN.
+
+================================================================
+3. DEPLOY ROUTINE (Worker) — no wrangler available
+================================================================
+1. Edit worker/src/*.js. node --check src/index.js ; node scripts/build.mjs ; npm test
+2. Cloudflare dashboard -> Workers & Pages -> guild-bot -> Edit code
+   https://dash.cloudflare.com/0f633783ba2e7b9940b58bb5d9e079a5/workers/services/edit/guild-bot/production
+3. Click in editor, Ctrl+A, Delete, then type the whole dist/worker.paste.js (Chrome "type" action works; ~47 KB).
+4. Ctrl+End: the editor auto-inserts a stray "}" on the last line. Delete it (two Backspaces) BEFORE Deploy. The 4 TypeScript warnings in Problems are noise.
+5. Deploy. Then load https://guild-bot.jcenno.workers.dev/register once (new/changed commands). 429 = rate limited, wait 30 s.
+6. Settings changes (variables/secrets) go through Settings -> Variables -> Deploy. NEVER deploy from the code editor right after a Settings change: the editor deploys the settings it loaded with and wipes newer ones (this happened once). Reload the editor first, or re-check Settings after.
+7. Schema changes: D1 console, run ALTER/CREATE by hand:
+   https://dash.cloudflare.com/0f633783ba2e7b9940b58bb5d9e079a5/workers/d1/databases/7131222f-3338-4b77-96ec-c832a730f7ce/console
+8. Logs: Worker -> Observability. Find/replace inside the editor is unreliable; always full paste.
+
+================================================================
+4. DISCORD LAYOUT (as of 9 Nov)
+================================================================
+Channels: #general (welcome card pinned), #clips-and-highlights, GUILD: #announcements (news cards), #roster (boards, first board message pinned), #bot-commands (command list pinned); OFFICERS: #mod-alerts, #bot-staging (preview channel, Guild Bot has access); voice: Leveling, Dungeon 1, Dungeon 2, Raid.
+Roles (top to bottom): Admin, Guild Bot (Manage Roles), Officer, class roles (Warrior..Druid, Blizzard colors), Tank, Healer, DPS, Dings, Member, @everyone. Note: Officer is colored and above the class roles, so officers show the Officer color, not class color (Joe has not asked to change this).
+Bots: Guild Bot only. Jeeves (Armory) and the old Guild Setup bot were kicked 9 Nov.
+Members' mains: Joe = Steel Appeal (Warrior), Tanner = Whizz Aard (Mage), Quinn = "Pawnage Ownage" (404 in Blizzard API; exact spelling still needed).
+Default notifications: mentions only. Only the Dings role gets pinged.
+
+================================================================
+5. STATE OF PLAY / OPEN ITEMS
+================================================================
+Done and verified live: tracker on 15-min cadence; roster + profession boards; digest; recap; guild firsts; news cards; all 11 commands; class colors via /iam; Dings + Tank/Healer/DPS buttons; weekly Workshop report; heartbeat; code reviews of both codebases applied (Worker 13 fixes, tracker 19 items).
+Open:
+- Quinn's exact character name -> characters.json (friends[].characters), push, dispatch a run.
+- Optional, Joe's call: music bot (research which are alive/allowed first), AI art for server icon + emoji (Recraft/Midjourney), boost not needed.
+- Watch: first real Need/Greed gift between two people; first real /need completed by someone else; Sunday 19:00 both the recap (tracker) and the Workshop card (Worker) post to #general.
+- Class tuning hotfix 10 Nov 2026 (Joe wants warrior rage numbers rechecked after it).
+
+================================================================
+6. LESSONS / GOTCHAS
+================================================================
+- Discord Section (type 9) needs an accessory; use a plain Text Display (type 10) when there is no icon (enchants have none).
+- Interactions must answer in 3 s: /iam defers (type 5) then PATCHes @original; Close early edits first, DMs after via waitUntil.
+- D1 binds max 100 params; slice crafters to 6 before the IN query.
+- news.py dedupe key keeps dates (month names normalised, tokens sorted); legacy_key() keeps old state entries valid. Changing the key shape without that re-posts the backlog (happened once; fixed within one run).
+- GitHub's cron is unreliable; keep the Worker heartbeat.
+- Blizzard profile lookups are strict on spelling; names with spaces are hyphenated slugs (us:whizz-aard).
+- Chrome: Discord message "More" menu -> Delete/Pin; kicking members is blocked for the assistant.
+- Claude Docs Master Plan: insert changelog rows after header row m1bxqvpb8k3.2211 with "as":"blocks"; status chips are dropdown enum bcbdac4d-175c (0 Verified, 1 Needs review, 2 Blocked, 3 Superseded, 4 Removed); replace a chip paragraph with as:markdown + blocks map.
+
+First action in the new window: read the Master Plan changelog (top rows), `git pull` the repo, run `/status` in #bot-staging via Chrome to confirm the bot is healthy, then ask Joe what is next (likely Quinn's name, music bot, or art).
