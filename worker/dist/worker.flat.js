@@ -41,6 +41,10 @@ noRecipes: "No recipes recorded yet. They appear after the next check.",
 nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
 whoCraftsTitle: (q) => `Who can make "${q}"`,
 reportTitle: "This week in the Workshop",
+workshopTitle: "Workshop · open right now",
+workshopEmpty: "Nothing open. `/need` something or `/give` something.",
+workshopGift: (item, giver, closes) => `🎁 **${item}** from ${giver} · closes <t:${closes}:R>`,
+workshopReq: (recipe, who, maker) => `🔨 **${recipe}** for ${who}${maker ? ` · ${maker} is on it` : " · nobody yet"}`,
 reportGifts: (n, top) => `**${n}** item${n === 1 ? "" : "s"} passed on${top ? ` · most from **${top}**` : ""}`,
 reportCrafts: (n, top) => `**${n}** craft${n === 1 ? "" : "s"} made${top ? ` · most by **${top}**` : ""}`,
 reportOpen: (gifts, reqs) => `Open now: ${gifts} gift${gifts === 1 ? "" : "s"}, ${reqs} request${reqs === 1 ? "" : "s"}`,
@@ -476,6 +480,7 @@ const COMMANDS = [
 { type: 3, name: "character", description: "Character name", required: true, autocomplete: true } ] },
 { name: "need", description: "Ask the guild to craft something; pings the people who can", options: [
 { type: 3, name: "recipe", description: "What you need made", required: true, autocomplete: true } ] },
+{ name: "workshop", description: "Open gifts and craft requests right now" },
 { name: "who-crafts", description: "Who in the guild can make something", options: [
 { type: 3, name: "recipe", description: "Recipe or item name, or part of it", required: true } ] },
 ];
@@ -512,6 +517,15 @@ lines.push("", S.reportOpen(openG, openR));
 return { title: S.reportTitle, description: lines.join("\n"), color: 0x9b59b6 };
 }
 
+// ---------------------------------------------------------------- /workshop: what is open right now
+async function onWorkshop(i, env) {
+const gifts = (await env.DB.prepare("SELECT item_name, giver_name, expires_at FROM gifts WHERE status='open' ORDER BY expires_at LIMIT 10").all()).results;
+const reqs = (await env.DB.prepare("SELECT recipe_name, user_name, maker_name FROM requests WHERE status IN ('open','claimed') ORDER BY created_at LIMIT 10").all()).results;
+const lines = [...gifts.map((g) => S.workshopGift(g.item_name, g.giver_name, g.expires_at)), ...reqs.map((q) => S.workshopReq(q.recipe_name, q.user_name, q.maker_name))];
+const content = `**${S.workshopTitle}**\n` + (lines.join("\n") || S.workshopEmpty);
+return json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
+}
+
 // ---------------------------------------------------------------- Tracker heartbeat
 // GitHub's own schedule fires the tracker only every few hours in practice. Every 15 minutes this
 // cron asks GitHub to run it (workflow_dispatch); the workflow's concurrency group stops overlaps.
@@ -536,6 +550,7 @@ const i = JSON.parse(body);
 if (i.type === T.PING) return json({ type: R.PONG });
 if (i.type === T.AUTOCOMPLETE) return ["professions", "iam"].includes(i.data.name) ? onCharAutocomplete(i, env) : i.data.name === "need" ? onRecipeAutocomplete(i, env) : onAutocomplete(i, env);
 if (i.type === T.COMMAND && i.data.name === "need") return onNeed(i, env, ctx);
+if (i.type === T.COMMAND && i.data.name === "workshop") return onWorkshop(i, env);
 if (i.type === T.COMMAND && i.data.name === "iam") return onIam(i, env, ctx);
 if (i.type === T.COMMAND && i.data.name === "professions") return onProfessions(i, env);
 if (i.type === T.COMMAND && i.data.name === "who-crafts") return onWhoCrafts(i, env);
