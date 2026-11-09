@@ -4,7 +4,8 @@ Slash commands for the WoW Forever Discord, running on a Cloudflare Worker with 
 
 | Command | What it does |
 |---|---|
-| `/give <item>` | Posts a card with Need and Greed. After 24 hours (or Close early) the bot names a winner, DMs both people, and the winner presses Received when the item arrives in game. |
+| `/give <item>` | Posts a card with Need and Greed. Need is for the classes the item is made for (armor type, or Blizzard's class list); anyone can Greed. After 24 hours (or Close early) the bot names a winner, DMs both people, and the winner presses Received when the item arrives in game. One reminder DM after 2 days without Received. |
+| `/need <recipe>` | Craft request card: mats from Blizzard, item icon, who in the guild knows the recipe (pinged if they ran /iam). I'll make it → Done, or Cancel. Untaken requests close after 7 days. |
 | `/iam <character>` | Links your Discord account to your main. Your name takes the class color (needs the bot to have Manage Roles, see below). |
 | `/professions <character>` | Skill bars and known recipes for a tracked character. |
 | `/who-crafts <recipe>` | Who in the guild knows a matching recipe, most recently online first. |
@@ -12,10 +13,12 @@ Slash commands for the WoW Forever Discord, running on a Cloudflare Worker with 
 
 Character data comes from the tracker's `state.json` on GitHub (refreshed about every 15 minutes, cached 2 minutes in the Worker).
 
+Cron (every 5 minutes): settles expired gifts, sends the Received reminder, closes stale requests, and on Sunday at 19:00 (`REPORT_DAY`, `REPORT_HOUR`, `TIMEZONE`) posts "This week in the Workshop" to `REPORT_CHANNEL_ID` (falls back to `GENERAL_CHANNEL_ID`). Quiet weeks post nothing.
+
 ## Layout
 - `src/index.js` handlers, `src/strings.js` every member-facing string.
 - `scripts/build.mjs` inlines the two files into `dist/worker.js` (readable) and `dist/worker.flat.js` (for pasting into the Cloudflare editor). Run it after any change to `src/`.
-- `schema.sql` tables: `gifts`, `claims`, `chars`.
+- `schema.sql` tables: `gifts`, `claims`, `chars`, `requests`, `meta`. Schema changes are applied by hand in the D1 console (`ALTER TABLE` / `CREATE TABLE IF NOT EXISTS`).
 - `test/` offline checks: `npm test`.
 
 ## Deploy
@@ -25,7 +28,7 @@ Live Worker: `guild-bot` on Cloudflare, database `guild-bot` (D1). Two ways to s
 
 ### First-time setup (already done)
 1. `wrangler d1 create guild-bot` → database_id into `wrangler.toml`; `wrangler d1 execute guild-bot --remote --file=schema.sql`.
-2. Variables: `DISCORD_APP_ID`, `DISCORD_PUBLIC_KEY`, `GUILD_ID`, `GENERAL_CHANNEL_ID`, `BLIZZARD_REGION`, `BLIZZARD_STATIC_NS`, `CLAIM_HOURS`. Secrets: `DISCORD_BOT_TOKEN`, `BLIZZARD_CLIENT_ID`, `BLIZZARD_CLIENT_SECRET`.
+2. Variables: `DISCORD_APP_ID`, `DISCORD_PUBLIC_KEY`, `GUILD_ID`, `GENERAL_CHANNEL_ID`, `REPORT_CHANNEL_ID`, `BLIZZARD_REGION`, `BLIZZARD_STATIC_NS`, `CLAIM_HOURS`. Secrets: `DISCORD_BOT_TOKEN`, `BLIZZARD_CLIENT_ID`, `BLIZZARD_CLIENT_SECRET`.
 3. Discord developer portal → General Information → Interactions Endpoint URL = the Worker URL.
 4. Invite with scopes `bot` + `applications.commands`.
 
