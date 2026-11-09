@@ -11,6 +11,7 @@ Slash commands for the WoW Forever Discord, running on a Cloudflare Worker with 
 | `/who-crafts <recipe>` | Who in the guild knows a matching recipe, most recently online first. |
 | `/workshop` | What is open right now: gifts and craft requests. |
 | `/post-welcome` | Officers only. Posts the "How this works" card with a Dings on/off button in the current channel; pin it. The button toggles the role in `DINGS_ROLE_ID` (needs Manage Roles). |
+| `/stock`, `/stock-set <item> <qty>` | Spare mats people are willing to hand over, grouped by item. Manual, because the API has no bag data. qty 0 removes your line. |
 | `/status` | Officers only. Tracker last save, heartbeat token, Manage Roles and role order, open counts, report schedule. |
 | `/help` | One line on how giving works. |
 
@@ -21,7 +22,7 @@ Cron (every 5 minutes): settles expired gifts, sends the Received reminder, clos
 ## Layout
 - `src/index.js` handlers, `src/strings.js` every member-facing string.
 - `scripts/build.mjs` inlines the two files into `dist/worker.js` (readable) and `dist/worker.flat.js` and `dist/worker.paste.js` (comment-free, for pasting into the Cloudflare editor). Run it after any change to `src/`.
-- `schema.sql` tables: `gifts`, `claims`, `chars`, `requests`, `meta`. Schema changes are applied by hand in the D1 console (`ALTER TABLE` / `CREATE TABLE IF NOT EXISTS`).
+- `schema.sql` tables: `gifts`, `claims`, `chars`, `requests`, `stock`, `meta`. Schema changes are applied by hand in the D1 console (`ALTER TABLE` / `CREATE TABLE IF NOT EXISTS`).
 - `test/` offline checks: `npm test`.
 
 ## Deploy

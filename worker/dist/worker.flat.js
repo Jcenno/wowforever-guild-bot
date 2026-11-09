@@ -59,6 +59,10 @@ dingsNoRole: "Ask an officer to let the bot manage roles first.",
 welcomePosted: "Posted. Pin it from the message menu.",
 officersOnly: "Officers only.",
 statusTitle: "Guild Bot status",
+stockTitle: "Spare mats in the guild",
+stockEmpty: "Nobody has listed spare mats yet. `/stock-set` adds yours.",
+stockSet: (item, qty) => (qty > 0 ? `You have **${qty}× ${item}** spare. Listed.` : `**${item}** removed from your spares.`),
+stockLine: (item, entries) => `**${item}** · ${entries.map((e) => `${e.qty} ${e.user_name}`).join(", ")}`,
 workshopTitle: "Workshop · open right now",
 workshopEmpty: "Nothing open. `/need` something or `/give` something.",
 workshopGift: (item, giver, closes) => `🎁 **${item}** from ${giver} · closes <t:${closes}:R>`,
@@ -502,6 +506,10 @@ const COMMANDS = [
 { name: "workshop", description: "Open gifts and craft requests right now" },
 { name: "post-welcome", description: "Officers: post the How this works card with the Dings button here", default_member_permissions: "8192" },
 { name: "status", description: "Officers: is everything running", default_member_permissions: "8192" },
+{ name: "stock", description: "Spare mats people in the guild can hand over" },
+{ name: "stock-set", description: "List spare mats you can hand over (qty 0 removes)", options: [
+{ type: 3, name: "item", description: "Item name (pick from the list)", required: true, autocomplete: true },
+{ type: 4, name: "qty", description: "How many you can spare", required: true, min_value: 0, max_value: 9999 } ] },
 { name: "who-crafts", description: "Who in the guild can make something", options: [
 { type: 3, name: "recipe", description: "Recipe or item name, or part of it", required: true } ] },
 ];
@@ -566,6 +574,27 @@ if (!r.ok) { console.log(`[role] toggle -> ${r.status} ${await r.text()}`); retu
 return json({ type: R.MESSAGE, data: { content: has ? S.dingsOff : S.dingsOn, flags: FLAGS.EPHEMERAL } });
 }
 
+// ---------------------------------------------------------------- /stock: spare mats people are willing to hand over (manual, the API has no bag data)
+async function onStockSet(i, env) {
+const name = (i.data.options?.find((o) => o.name === "item")?.value || "").trim();
+const qty = Math.max(0, Math.floor(Number(i.data.options?.find((o) => o.name === "qty")?.value || 0)));
+let item = /^\d+$/.test(name) ? await itemDetails(env, Number(name)) : null;
+if (!item) { const hits = await searchItems(env, name); const h = hits.find((x) => x.name.toLowerCase() === name.toLowerCase()) || hits[0]; item = h ? { id: Number(h.value), name: h.name } : null; }
+if (!item) return json({ type: R.MESSAGE, data: { content: S.itemNotFound, flags: FLAGS.EPHEMERAL } });
+const u = who(i);
+if (qty > 0) await env.DB.prepare("INSERT INTO stock (user_id,user_name,item_id,item_name,qty,updated_at) VALUES (?,?,?,?,?,?) ON CONFLICT(user_id,item_id) DO UPDATE SET qty=excluded.qty, user_name=excluded.user_name, updated_at=excluded.updated_at")
+.bind(u.id, display(i), item.id, item.name, qty, now()).run();
+else await env.DB.prepare("DELETE FROM stock WHERE user_id=? AND item_id=?").bind(u.id, item.id).run();
+return json({ type: R.MESSAGE, data: { content: S.stockSet(item.name, qty), flags: FLAGS.EPHEMERAL } });
+}
+async function onStock(i, env) {
+const rows = (await env.DB.prepare("SELECT item_name, user_name, qty FROM stock WHERE qty>0 ORDER BY item_name, qty DESC LIMIT 60").all()).results;
+const byItem = {};
+for (const r of rows) (byItem[r.item_name] ||= []).push(r);
+const lines = Object.entries(byItem).map(([item, entries]) => S.stockLine(item, entries));
+return json({ type: R.MESSAGE, data: { content: `**${S.stockTitle}**\n` + (lines.join("\n") || S.stockEmpty), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
+}
+
 // ---------------------------------------------------------------- /status: officers' health check, nothing members need
 async function onStatus(i, env) {
 if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnly, flags: FLAGS.EPHEMERAL } });
@@ -622,6 +651,8 @@ if (i.type === T.COMMAND && i.data.name === "need") return onNeed(i, env, ctx);
 if (i.type === T.COMMAND && i.data.name === "workshop") return onWorkshop(i, env);
 if (i.type === T.COMMAND && i.data.name === "post-welcome") return onPostWelcome(i, env);
 if (i.type === T.COMMAND && i.data.name === "status") return onStatus(i, env);
+if (i.type === T.COMMAND && i.data.name === "stock") return onStock(i, env);
+if (i.type === T.COMMAND && i.data.name === "stock-set") return onStockSet(i, env);
 if (i.type === T.COMMAND && i.data.name === "iam") return onIam(i, env, ctx);
 if (i.type === T.COMMAND && i.data.name === "professions") return onProfessions(i, env);
 if (i.type === T.COMMAND && i.data.name === "who-crafts") return onWhoCrafts(i, env);
