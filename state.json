@@ -30,20 +30,21 @@
           "quality": "RARE"
         }
       },
-      "ilvl": 8,
-      "last_login": 1794190746000,
-      "level": 15,
+      "ilvl": 9,
+      "last_login": 1794201581000,
+      "level": 16,
       "level_at": {
         "10": 1794152175,
         "12": 1794167884,
         "14": 1794180366,
-        "15": 1794189667
+        "15": 1794189667,
+        "16": 1794202265
       },
       "professions": {
-        "Blacksmithing": 66,
+        "Blacksmithing": 74,
         "Cooking": 5,
         "First Aid": 65,
-        "Mining": 70
+        "Mining": 80
       },
       "race": "Night Elf",
       "raids": {},
@@ -62,8 +63,16 @@
             "name": "Rough Grinding Stone"
           },
           {
+            "id": 1857,
+            "name": "Copper Chain Vest"
+          },
+          {
             "id": 1859,
             "name": "Runed Copper Pants"
+          },
+          {
+            "id": 1860,
+            "name": "Gemmed Copper Gauntlets"
           },
           {
             "id": 1861,
@@ -94,8 +103,20 @@
             "name": "Runed Copper Belt"
           },
           {
+            "id": 1638,
+            "name": "Runed Copper Breastplate"
+          },
+          {
             "id": 1652,
             "name": "Copper Shortsword"
+          },
+          {
+            "id": 4285,
+            "name": "Heavy Copper Maul"
+          },
+          {
+            "id": 52645,
+            "name": "Sharpening Wheel"
           },
           {
             "id": 54212,
@@ -110,6 +131,10 @@
           {
             "id": 1537,
             "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 4353,
+            "name": "Brilliant Smallfish"
           },
           {
             "id": 4354,
@@ -168,7 +193,7 @@
       "reputations": {
         "Darnassus": {
           "name": "Honored",
-          "raw": 9920,
+          "raw": 10755,
           "tier": 5
         },
         "Gadgetzan": {
@@ -178,34 +203,34 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 3536,
+          "raw": 3763,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 3561,
+          "raw": 3863,
           "tier": 4
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 3361,
+          "raw": 3588,
           "tier": 4
         }
       },
       "spec": "Protection",
       "stats": {
-        "critters": 17,
+        "critters": 19,
         "deaths": 9,
-        "flights": 3,
-        "food": 28,
-        "health_potions": 8,
-        "hearths": 3,
-        "killing_blows": 456,
-        "mobs": 614,
+        "flights": 5,
+        "food": 30,
+        "health_potions": 9,
+        "hearths": 4,
+        "killing_blows": 500,
+        "mobs": 656,
         "need_rolls": 6,
-        "quests": 86
+        "quests": 97
       },
-      "xp": 6572
+      "xp": 4892
     },
     "us:whizz-aard": {
       "achievements": {
@@ -518,43 +543,43 @@
     }
   },
   "news_seen": {
-    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794201367,
-    "10 11 class incoming tuning": 1794201367,
-    "10 16 forever join of stress test the updated warcraft world": 1794201367,
-    "11 2 beta development forever notes updated wow": 1794201367,
-    "11 2026 6 forever hotfixes wow": 1794201367,
-    "11 3 beta development forever notes updated wow": 1794201367,
-    "11 5 forever issues known updated wow": 1794201367,
-    "11 8 dungeon enemy increased xp": 1794201367,
-    "8 city do i inside main maybe people see the why": 1794201367,
-    "a explore forever gamepad with wow": 1794201367,
-    "a for friend invite issues players resolved": 1794201367,
-    "about bug category forever report the wow": 1794201367,
+    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794202265,
+    "10 11 class incoming tuning": 1794202265,
+    "10 16 forever join of stress test the updated warcraft world": 1794202265,
+    "11 2 beta development forever notes updated wow": 1794202265,
+    "11 2026 6 forever hotfixes wow": 1794202265,
+    "11 3 beta development forever notes updated wow": 1794202265,
+    "11 5 forever issues known updated wow": 1794202265,
+    "11 8 dungeon enemy increased xp": 1794202265,
+    "8 city do i inside main maybe people see the why": 1794202265,
+    "a explore forever gamepad with wow": 1794202265,
+    "a for friend invite issues players resolved": 1794202265,
+    "about bug category forever report the wow": 1794202265,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794201367,
-    "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794201367,
-    "and attunement forever locations of overview raid raid sizes warcraft world": 1794201367,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794201367,
-    "and familiar feels forever new s what what wow": 1794201367,
-    "and language settings social": 1794201367,
-    "are early forever live name now of reservations warcraft world": 1794201367,
-    "around campfire forever gather in of the warcraft world": 1794201367,
-    "beta from group issues persist phasing still with": 1794201367,
-    "broken zeppelins": 1794201367,
-    "bug forever forum guidelines report wow": 1794201367,
-    "choose forever in of ruleset warcraft world your": 1794201367,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794202265,
+    "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794202265,
+    "and attunement forever locations of overview raid raid sizes warcraft world": 1794202265,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794202265,
+    "and familiar feels forever new s what what wow": 1794202265,
+    "and language settings social": 1794202265,
+    "are early forever live name now of reservations warcraft world": 1794202265,
+    "around campfire forever gather in of the warcraft world": 1794202265,
+    "beta from group issues persist phasing still with": 1794202265,
+    "broken zeppelins": 1794202265,
+    "bug forever forum guidelines report wow": 1794202265,
+    "choose forever in of ruleset warcraft world your": 1794202265,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeons explore forever new of of the warcraft world": 1794201367,
+    "dungeons explore forever new of of the warcraft world": 1794202265,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794201367,
-    "forever guide new of player s starter to warcraft welcome world": 1794201367,
-    "forever launch of time warcraft world": 1794201367,
-    "forever live now of warcraft world": 1794201367,
-    "forever short story the unbowed watch wow": 1794201367,
+    "forever forever forging watch wow": 1794202265,
+    "forever guide new of player s starter to warcraft welcome world": 1794202265,
+    "forever launch of time warcraft world": 1794202265,
+    "forever live now of warcraft world": 1794202265,
+    "forever short story the unbowed watch wow": 1794202265,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
     "known issues wow forever updated nov": 1794195649,
@@ -608,7 +633,7 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794201369,
+  "saved_at": 1794202269,
   "weekly": {
     "baseline": {
       "us:steel-appeal": {
