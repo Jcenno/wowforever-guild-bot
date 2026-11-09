@@ -409,6 +409,7 @@ async function onButton(i, env) {
 const ARMOR_CLASSES = { Cloth: ["Mage", "Priest", "Warlock"], Leather: ["Rogue", "Druid"], Mail: ["Hunter", "Shaman"], Plate: ["Warrior", "Paladin"] };
 export function needClasses(g) {
   if (g.classes) return JSON.parse(g.classes);
+  if (["Back", "Neck", "Ring", "Trinket", "Shield", "Off hand", "Bag"].includes(g.slot)) return null; // cloaks are "Cloth" in the data but for everyone
   const base = ARMOR_CLASSES[g.armor];
   if (!base) return null; // weapons, trinkets, bags: anyone may Need
   const low = (g.req_level || 0) < 40;
