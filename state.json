@@ -518,11 +518,14 @@
     }
   },
   "news_seen": {
+    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794200732,
     "about the wow forever bug report category": 1794195649,
+    "around campfire forever gather in of the warcraft world": 1794200732,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
+    "dungeons explore forever new of of the warcraft world": 1794200732,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
     "gather around the campfire in world of warcraft forever": 1794195649,
@@ -550,6 +553,15 @@
   },
   "news_started": true,
   "owners": {
+    "joe": {
+      "mounts": {
+        "3111": "Cerulean Prideclaw",
+        "3130": "Veteran Adventurer's Loyal Companion"
+      }
+    },
+    "tanner": {
+      "mounts": {}
+    },
     "us:steel-appeal": {
       "mounts": {
         "3111": "Cerulean Prideclaw",
@@ -562,9 +574,14 @@
   },
   "pending": [],
   "roster": {
-    "message_id": "1569012691186622596"
+    "message_ids": [
+      "1569012691186622596",
+      "1569216357805989971",
+      "1569216358992842835",
+      "1569216360347607131"
+    ]
   },
-  "saved_at": 1794200468,
+  "saved_at": 1794200735,
   "weekly": {
     "baseline": {
       "us:steel-appeal": {
