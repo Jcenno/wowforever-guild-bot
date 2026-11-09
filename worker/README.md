@@ -11,6 +11,7 @@ Slash commands for the WoW Forever Discord, running on a Cloudflare Worker with 
 | `/who-crafts <recipe>` | Who in the guild knows a matching recipe, most recently online first. |
 | `/workshop` | What is open right now: gifts and craft requests. |
 | `/post-welcome` | Officers only. Posts the "How this works" card with a Dings on/off button in the current channel; pin it. The button toggles the role in `DINGS_ROLE_ID` (needs Manage Roles). |
+| `/status` | Officers only. Tracker last save, heartbeat token, Manage Roles and role order, open counts, report schedule. |
 | `/help` | One line on how giving works. |
 
 Character data comes from the tracker's `state.json` on GitHub (refreshed about every 15 minutes, cached 2 minutes in the Worker).

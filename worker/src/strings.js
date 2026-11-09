@@ -56,6 +56,7 @@ export const S = {
   dingsNoRole: "Ask an officer to let the bot manage roles first.",
   welcomePosted: "Posted. Pin it from the message menu.",
   officersOnly: "Officers only.",
+  statusTitle: "Guild Bot status",
   workshopTitle: "Workshop · open right now",
   workshopEmpty: "Nothing open. `/need` something or `/give` something.",
   workshopGift: (item, giver, closes) => `🎁 **${item}** from ${giver} · closes <t:${closes}:R>`,

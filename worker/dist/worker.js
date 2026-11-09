@@ -58,6 +58,7 @@ const S = {
   dingsNoRole: "Ask an officer to let the bot manage roles first.",
   welcomePosted: "Posted. Pin it from the message menu.",
   officersOnly: "Officers only.",
+  statusTitle: "Guild Bot status",
   workshopTitle: "Workshop · open right now",
   workshopEmpty: "Nothing open. `/need` something or `/give` something.",
   workshopGift: (item, giver, closes) => `🎁 **${item}** from ${giver} · closes <t:${closes}:R>`,
@@ -500,6 +501,7 @@ const COMMANDS = [
     { type: 3, name: "recipe", description: "What you need made", required: true, autocomplete: true } ] },
   { name: "workshop", description: "Open gifts and craft requests right now" },
   { name: "post-welcome", description: "Officers: post the How this works card with the Dings button here", default_member_permissions: "8192" },
+  { name: "status", description: "Officers: is everything running", default_member_permissions: "8192" },
   { name: "who-crafts", description: "Who in the guild can make something", options: [
     { type: 3, name: "recipe", description: "Recipe or item name, or part of it", required: true } ] },
 ];
@@ -564,6 +566,35 @@ async function onRoleToggle(i, env, roleId) {
   return json({ type: R.MESSAGE, data: { content: has ? S.dingsOff : S.dingsOn, flags: FLAGS.EPHEMERAL } });
 }
 
+// ---------------------------------------------------------------- /status: officers' health check, nothing members need
+async function onStatus(i, env) {
+  if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnly, flags: FLAGS.EPHEMERAL } });
+  const repo = env.GITHUB_REPO || "Jcenno/wowforever-guild-bot";
+  const [st, commits, me, roles, openG, openR, linked] = await Promise.all([
+    trackerState(env),
+    fetch(`https://api.github.com/repos/${repo}/commits?path=state.json&per_page=1`, { headers: { "User-Agent": "GuildBot (status)", Accept: "application/vnd.github+json" } }).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+    discord(env, "GET", `/guilds/${env.GUILD_ID}/members/${env.DISCORD_APP_ID}`),
+    discord(env, "GET", `/guilds/${env.GUILD_ID}/roles`),
+    env.DB.prepare("SELECT COUNT(*) n FROM gifts WHERE status='open'").first(),
+    env.DB.prepare("SELECT COUNT(*) n FROM requests WHERE status IN ('open','claimed')").first(),
+    env.DB.prepare("SELECT COUNT(*) n FROM chars").first(),
+  ]);
+  const lastRun = commits?.[0]?.commit?.committer?.date ? Math.floor(Date.parse(commits[0].commit.committer.date) / 1000) : null;
+  const myRoles = (roles || []).filter((r) => (me?.roles || []).includes(r.id));
+  const canManageRoles = myRoles.some((r) => (BigInt(r.permissions || "0") & (1n << 28n)) !== 0n);
+  const topClassPos = Math.max(0, ...(roles || []).filter((r) => CLASS_COLOR[r.name]).map((r) => r.position));
+  const myTopPos = Math.max(0, ...myRoles.map((r) => r.position));
+  const chars = Object.keys(st.characters || {}).length;
+  const lines = [
+    `Tracker last saved: ${lastRun ? `<t:${lastRun}:R>` : "unknown"} · ${chars} character${chars === 1 ? "" : "s"} tracked`,
+    `Heartbeat token: ${env.GITHUB_TOKEN ? "set" : "missing (tracker runs only when GitHub feels like it)"}`,
+    `Manage Roles: ${canManageRoles ? "yes" : "no (class colors and the Dings button are off)"} · bot role ${myTopPos > topClassPos ? "above" : "below"} the class roles`,
+    `Open: ${openG?.n || 0} gift${openG?.n === 1 ? "" : "s"}, ${openR?.n || 0} request${openR?.n === 1 ? "" : "s"} · ${linked?.n || 0} member${linked?.n === 1 ? "" : "s"} linked with /iam`,
+    `Weekly report: ${env.REPORT_DAY || "Sun"} ${env.REPORT_HOUR || 19}:00 ${env.TIMEZONE || "America/Chicago"} → <#${env.REPORT_CHANNEL_ID || env.GENERAL_CHANNEL_ID}>`,
+  ];
+  return json({ type: R.MESSAGE, data: { content: `**${S.statusTitle}**\n` + lines.join("\n"), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
+}
+
 // ---------------------------------------------------------------- Tracker heartbeat
 // GitHub's own schedule fires the tracker only every few hours in practice. Every 15 minutes this
 // cron asks GitHub to run it (workflow_dispatch); the workflow's concurrency group stops overlaps.
@@ -590,6 +621,7 @@ export default {
     if (i.type === T.COMMAND && i.data.name === "need") return onNeed(i, env, ctx);
     if (i.type === T.COMMAND && i.data.name === "workshop") return onWorkshop(i, env);
     if (i.type === T.COMMAND && i.data.name === "post-welcome") return onPostWelcome(i, env);
+    if (i.type === T.COMMAND && i.data.name === "status") return onStatus(i, env);
     if (i.type === T.COMMAND && i.data.name === "iam") return onIam(i, env, ctx);
     if (i.type === T.COMMAND && i.data.name === "professions") return onProfessions(i, env);
     if (i.type === T.COMMAND && i.data.name === "who-crafts") return onWhoCrafts(i, env);
