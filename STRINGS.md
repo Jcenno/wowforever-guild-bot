@@ -83,14 +83,14 @@ Rules: one verb per line, no tool names (Jeeves, Blizzard, GitHub, tracker), no 
 | 1329 | `title \| Quiet for {days}+ days` |
 | 1330 | `description` |
 | 1332 | `footer \| text \| Officers only · based on last login · posted with the weekly recap` |
-| 1384 | `friends \| name \| Tim \| characters \| name \| ... \| surname \| ...` |
-| 1386 | `characters \| owner \| Tim \| name \| ... \| surname \| ...` |
-| 1410 | `title \| Guild Bot connected` |
-| 1411 | `description \| Milestones and progress will post here.` |
-| 1466 | `🛡️ **{name}** joined the guild` |
-| 1469 | `👋 **{name}** left the guild` |
-| 1472 | `title \| Guild roster \| description \| 🛡️ ` |
-| 1506 | `Now tracked at level **{snap.get('level') or '?'}**` |
-| 1510 | ` · ` |
-| 1532 | `Epic mount: **{mname}**` |
-| 1534 | `New mount: **{mname}**` |
+| 1385 | `friends \| name \| Tim \| characters \| name \| ... \| surname \| ...` |
+| 1387 | `characters \| owner \| Tim \| name \| ... \| surname \| ...` |
+| 1411 | `title \| Guild Bot connected` |
+| 1412 | `description \| Milestones and progress will post here.` |
+| 1467 | `🛡️ **{name}** joined the guild` |
+| 1470 | `👋 **{name}** left the guild` |
+| 1473 | `title \| Guild roster \| description \| 🛡️ ` |
+| 1507 | `Now tracked at level **{snap.get('level') or '?'}**` |
+| 1511 | ` · ` |
+| 1533 | `Epic mount: **{mname}**` |
+| 1535 | `New mount: **{mname}**` |
