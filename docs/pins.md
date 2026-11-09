@@ -32,5 +32,5 @@ Official Blizzard posts about Forever: hotfixes, maintenance, news. Nothing else
 Commands work in any channel; this one keeps #general clean.
 
 `/need <item>` ask for a craft · `/give <item>` offer an item · `/iam <character>` link your main
-`/workshop` what is open · `/professions <character>` · `/who-crafts <item>` · `/help`
+`/workshop` what is open · `/stock` spare mats · `/professions <character>` · `/who-crafts <item>` · `/help`
 ```
