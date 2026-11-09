@@ -5,6 +5,7 @@ const S = {
   giveTitle: (item) => `**${item}**`,
   giveMeta: (parts) => parts.filter(Boolean).join(" · "),
   giveFrom: (giver, closes) => `From **${giver}** · closes <t:${closes}:R>`,
+  giveFromClosed: (giver) => `From **${giver}** · closed`,
   counts: (need, greed) => `Need **${need}** · Greed **${greed}**`,
   needBtn: "Need", greedBtn: "Greed", closeBtn: "Close early", receivedBtn: "Received",
   youNeed: "You pressed Need.", youGreed: "You pressed Greed.", youSwitched: (k) => `Switched to ${k}.`,
@@ -17,7 +18,9 @@ const S = {
   dmGiver: (item, winner) => `**${item}** goes to **${winner}**. Mail or trade it when you're on.`,
   giveAck: "Posted in #general.",
   itemNotFound: "No item by that name. Pick one from the list.",
-  helpLine: "`/give` an item you don't need. Press Need or Greed on a card. Winner presses Received when it arrives. `/professions` shows someone's recipes, `/who-crafts` finds a crafter.",
+  helpLine: "`/give` an item you don't need. Press Need or Greed on a card. Winner presses Received when it arrives. `/iam` links your main so your name takes its class color. `/professions` shows someone's recipes, `/who-crafts` finds a crafter.",
+  iamLinked: (name, cls) => `You are **${name}** (${cls}).`,
+  iamRoleLater: "Class color comes once an officer lets the bot manage roles.",
   noSuchChar: "No tracked character by that name.",
   noRecipes: "No recipes recorded yet. They appear after the next check.",
   nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
@@ -118,18 +121,53 @@ const charName = (key) => key.split(":").pop().split("-").map((w) => w[0].toUppe
 const tier = (sk) => (sk >= 225 ? "Artisan" : sk >= 150 ? "Expert" : sk >= 75 ? "Journeyman" : "Apprentice");
 const bar = (sk, w = 6) => { const f = Math.max(0, Math.min(w, Math.round((sk / 300) * w))); return "▰".repeat(f) + "▱".repeat(w - f); };
 const SECONDARY = new Set(["cooking", "first aid", "fishing", "riding"]);
+const CLASS_COLOR = { Warrior: 0xc69b6d, Paladin: 0xf48cba, Hunter: 0xaad372, Rogue: 0xfff468, Priest: 0xffffff, Shaman: 0x0070dd, Mage: 0x3fc7eb, Warlock: 0x8788ee, Druid: 0xff7c0a };
+function findChar(st, q) {
+  q = (q || "").trim().toLowerCase();
+  const keys = Object.keys(st.characters || {});
+  return keys.find((k) => k.endsWith(":" + q)) || keys.find((k) => charName(k).toLowerCase() === q) || keys.find((k) => charName(k).toLowerCase().startsWith(q)) || null;
+}
+
+// ---------------------------------------------------------------- /iam: link a Discord user to their main, give them the class role
+async function syncClassRole(env, userId, cls) {
+  // Needs Manage Roles on the bot and the bot's role above the class roles. Returns true when the role is on.
+  if (!CLASS_COLOR[cls]) return false;
+  const roles = await discord(env, "GET", `/guilds/${env.GUILD_ID}/roles`);
+  if (!roles) return false;
+  let role = roles.find((r) => r.name === cls);
+  if (!role) role = await discord(env, "POST", `/guilds/${env.GUILD_ID}/roles`, { name: cls, color: CLASS_COLOR[cls], permissions: "0", hoist: false, mentionable: false });
+  if (!role) return false;
+  const member = await discord(env, "GET", `/guilds/${env.GUILD_ID}/members/${userId}`);
+  if (!member) return false;
+  const others = roles.filter((r) => r.name !== cls && CLASS_COLOR[r.name] && member.roles.includes(r.id));
+  for (const o of others) await discord(env, "DELETE", `/guilds/${env.GUILD_ID}/members/${userId}/roles/${o.id}`);
+  if (member.roles.includes(role.id)) return true;
+  const r = await fetch(`${API}/guilds/${env.GUILD_ID}/members/${userId}/roles/${role.id}`, { method: "PUT", headers: { Authorization: `Bot ${env.DISCORD_BOT_TOKEN}`, "User-Agent": "GuildBot (gifting, 1.0)" } });
+  if (!r.ok) console.log(`[iam] role add -> ${r.status} ${await r.text()}`);
+  return r.ok;
+}
+async function onIam(i, env, ctx) {
+  const q = i.data.options?.find((o) => o.name === "character")?.value || "";
+  const st = await trackerState(env);
+  const key = findChar(st, q);
+  if (!key) return json({ type: R.MESSAGE, data: { content: S.noSuchChar, flags: FLAGS.EPHEMERAL } });
+  const c = st.characters[key], u = who(i), name = charName(key), cls = c.class || "";
+  await env.DB.prepare("INSERT INTO chars (user_id,name,surname,class,updated_at) VALUES (?,?,?,?,?) ON CONFLICT(user_id) DO UPDATE SET name=excluded.name, surname=excluded.surname, class=excluded.class, updated_at=excluded.updated_at")
+    .bind(u.id, name, key, cls, now()).run();
+  const ok = await syncClassRole(env, u.id, cls);
+  return json({ type: R.MESSAGE, data: { content: S.iamLinked(name, cls) + (ok ? "" : "\n" + S.iamRoleLater), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
+}
 
 async function onProfessions(i, env) {
   const q = (i.data.options?.find((o) => o.name === "character")?.value || "").trim().toLowerCase();
   const st = await trackerState(env);
-  const keys = Object.keys(st.characters || {});
-  const key = keys.find((k) => k.endsWith(":" + q)) || keys.find((k) => charName(k).toLowerCase() === q) || keys.find((k) => charName(k).toLowerCase().startsWith(q));
+  const key = findChar(st, q);
   if (!key) return json({ type: R.MESSAGE, data: { content: S.noSuchChar, flags: FLAGS.EPHEMERAL } });
   const c = st.characters[key], profs = c.professions || {}, recipes = c.recipes || {};
   const lines = [];
   for (const [prof, skill] of Object.entries(profs).sort((a, b) => b[1] - a[1])) {
     if (prof.toLowerCase() === "riding" || !skill) continue;
-    const known = recipes[prof] || [];
+    const known = (recipes[prof] || []).filter((r) => r.name.toLowerCase() !== prof.toLowerCase());
     lines.push(`**${prof}** ${bar(skill)} ${skill} ${tier(skill)}${known.length ? ` · ${known.length} recipes` : ""}`);
     if (known.length) {
       const names = known.map((r) => r.name).sort();
@@ -170,7 +208,7 @@ async function onCharAutocomplete(i, env) {
 export function card(g, counts, state = "open") {
   const meta = S.giveMeta([g.item_level ? `ilvl ${g.item_level}` : null, g.slot, g.armor, g.quality ? g.quality[0] + g.quality.slice(1).toLowerCase() : null,
     g.req_level ? `req ${g.req_level}` : null]);
-  const lines = [S.giveTitle(g.item_name), meta, S.giveFrom(g.giver_name, g.expires_at)];
+  const lines = [S.giveTitle(g.item_name), meta, state === "open" ? S.giveFrom(g.giver_name, g.expires_at) : S.giveFromClosed(g.giver_name)];
   if (state === "open") lines.push(S.counts(counts.need, counts.greed));
   if (state === "awarded") lines.push(S.awarded(g.item_name, g.winner_name));
   if (state === "expired") lines.push(S.noTakers(g.item_name));
@@ -285,6 +323,8 @@ const COMMANDS = [
   { name: "give", description: "Offer an item you don't need to the guild", options: [
     { type: 3, name: "item", description: "Item name (pick from the list)", required: true, autocomplete: true } ] },
   { name: "help", description: "How giving works, in one line" },
+  { name: "iam", description: "Link your main character so your name gets its class color", options: [
+    { type: 3, name: "character", description: "Your character", required: true, autocomplete: true } ] },
   { name: "professions", description: "Someone's professions and known recipes", options: [
     { type: 3, name: "character", description: "Character name", required: true, autocomplete: true } ] },
   { name: "who-crafts", description: "Who in the guild can make something", options: [
@@ -306,7 +346,8 @@ export default {
     if (!(await verify(req, body, env.DISCORD_PUBLIC_KEY))) return new Response("bad signature", { status: 401 });
     const i = JSON.parse(body);
     if (i.type === T.PING) return json({ type: R.PONG });
-    if (i.type === T.AUTOCOMPLETE) return i.data.name === "professions" ? onCharAutocomplete(i, env) : onAutocomplete(i, env);
+    if (i.type === T.AUTOCOMPLETE) return ["professions", "iam"].includes(i.data.name) ? onCharAutocomplete(i, env) : onAutocomplete(i, env);
+    if (i.type === T.COMMAND && i.data.name === "iam") return onIam(i, env, ctx);
     if (i.type === T.COMMAND && i.data.name === "professions") return onProfessions(i, env);
     if (i.type === T.COMMAND && i.data.name === "who-crafts") return onWhoCrafts(i, env);
     if (i.type === T.COMMAND && i.data.name === "give") return onGive(i, env, ctx);

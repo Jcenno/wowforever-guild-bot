@@ -1,17 +1,36 @@
-# Guild Bot gifting Worker
+# Guild Bot Worker
 
-`/give <item>` posts a card in #general with Need and Greed. 24 hours later (or on Close early) the bot names a winner, DMs both people, and the winner presses Received when the item arrives in game. Nothing moves in game automatically; Received is the only confirmation.
+Slash commands for the WoW Forever Discord, running on a Cloudflare Worker with a D1 database. Nothing moves in game automatically.
 
-## Deploy (one time, about 10 minutes)
-1. `npm i -g wrangler` and `wrangler login`.
-2. `wrangler d1 create guild-bot` → paste the database_id into `wrangler.toml`.
-3. `wrangler d1 execute guild-bot --remote --file=schema.sql`
-4. Secrets, one at a time (each prompts for the value, nothing is echoed):
-   `wrangler secret put DISCORD_PUBLIC_KEY` · `DISCORD_APP_ID` · `DISCORD_BOT_TOKEN` · `BLIZZARD_CLIENT_ID` · `BLIZZARD_CLIENT_SECRET`
-5. `wrangler deploy` → copy the Worker URL.
-6. Discord developer portal → General Information → Interactions Endpoint URL = that URL → Save (Discord sends a PING; the Worker answers it).
-7. `node scripts/register-commands.mjs` with the three env vars set.
-8. Invite the bot: OAuth2 → URL Generator → scopes `bot` + `applications.commands`, permissions Send Messages, Embed Links, Read Message History.
+| Command | What it does |
+|---|---|
+| `/give <item>` | Posts a card with Need and Greed. After 24 hours (or Close early) the bot names a winner, DMs both people, and the winner presses Received when the item arrives in game. |
+| `/iam <character>` | Links your Discord account to your main. Your name takes the class color (needs the bot to have Manage Roles, see below). |
+| `/professions <character>` | Skill bars and known recipes for a tracked character. |
+| `/who-crafts <recipe>` | Who in the guild knows a matching recipe, most recently online first. |
+| `/help` | One line on how giving works. |
 
-## Test
-`npm test` runs the offline checks (signature verify, card shape, winner choice).
+Character data comes from the tracker's `state.json` on GitHub (refreshed about every 15 minutes, cached 2 minutes in the Worker).
+
+## Layout
+- `src/index.js` handlers, `src/strings.js` every member-facing string.
+- `scripts/build.mjs` inlines the two files into `dist/worker.js` (readable) and `dist/worker.flat.js` (for pasting into the Cloudflare editor). Run it after any change to `src/`.
+- `schema.sql` tables: `gifts`, `claims`, `chars`.
+- `test/` offline checks: `npm test`.
+
+## Deploy
+Live Worker: `guild-bot` on Cloudflare, database `guild-bot` (D1). Two ways to ship a change:
+1. Cloudflare dashboard → Workers → guild-bot → Edit code → replace with `dist/worker.flat.js` → Deploy. Then open `https://guild-bot.jcenno.workers.dev/register` once so Discord sees any new commands.
+2. Cloudflare Builds (once connected: Settings → Build → repo `Jcenno/wowforever-guild-bot`, root `worker`, deploy command `npx wrangler deploy`). Every push to `main` deploys itself.
+
+### First-time setup (already done)
+1. `wrangler d1 create guild-bot` → database_id into `wrangler.toml`; `wrangler d1 execute guild-bot --remote --file=schema.sql`.
+2. Variables: `DISCORD_APP_ID`, `DISCORD_PUBLIC_KEY`, `GUILD_ID`, `GENERAL_CHANNEL_ID`, `BLIZZARD_REGION`, `BLIZZARD_STATIC_NS`, `CLAIM_HOURS`. Secrets: `DISCORD_BOT_TOKEN`, `BLIZZARD_CLIENT_ID`, `BLIZZARD_CLIENT_SECRET`.
+3. Discord developer portal → General Information → Interactions Endpoint URL = the Worker URL.
+4. Invite with scopes `bot` + `applications.commands`.
+
+### Class colors (for `/iam`)
+The bot creates one role per class (Warrior, Mage, ...) with the standard class colors the first time someone links that class. For that it needs:
+- Server Settings → Roles → Guild Bot → Manage Roles on.
+- The Guild Bot role dragged above the class roles, and the class roles above any other colored role (Officer), since Discord shows the highest colored role.
+Until then `/iam` still saves the link and says the color comes later.
