@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-WoW: Forever guild bot v1.11 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
+WoW: Forever guild bot v1.12 (fork of tsc862-prog/wow-forever-tracker, MIT-style use).
 
 Guild additions over the upstream tracker:
   - the character list comes from the in-game guild roster
@@ -829,25 +829,52 @@ def character_embed(c, snap, lines, settings=None, hype=False):
     }
 
 
-def digest_embed(items, settings):
+def split_fields(name, lines, limit=1024):
+    """Turn a list of lines into one or more embed fields that each stay under Discord's 1,024-char value cap."""
+    out, chunk, size = [], [], 0
+    for line in lines:
+        line = line[:limit]
+        if chunk and size + len(line) + 1 > limit:
+            out.append(chunk)
+            chunk, size = [], 0
+        chunk.append(line)
+        size += len(line) + 1
+    if chunk:
+        out.append(chunk)
+    return [{"name": name if i == 0 else f"{name} ({i + 1})", "value": "\n".join(c), "inline": False} for i, c in enumerate(out)]
+
+
+def digest_embeds(items, settings, budget=5000, max_lines=12):
     """
-    One card per run for everything that is not a milestone. items =
-    [(c, snap, lines)]. Each character is a field; the footer counts updates.
+    Everything that is not a milestone, one field per character. Splits into as
+    many Progress cards as needed so no card passes Discord's size limits.
+    items = [(c, snap, lines)].
     """
-    fields = []
-    for c, snap, lines in items[:25]:
+    cards, fields, size = [], [], 0
+    for c, snap, lines in items:
         icon = CLASS_ICON.get(snap.get("class") or "", "")
-        name = f"{icon} {display_name(c)} · {snap.get('level') or '?'}".strip()
-        fields.append({"name": name[:256], "value": "\n".join(lines)[:1024], "inline": False})
+        name = f"{icon} {display_name(c)} · {snap.get('level') or '?'}".strip()[:256]
+        shown = lines[:max_lines] + ([f"+{len(lines) - max_lines} more"] if len(lines) > max_lines else [])
+        value = "\n".join(shown)[:1024]
+        if fields and (len(fields) >= 25 or size + len(name) + len(value) > budget):
+            cards.append(fields)
+            fields, size = [], 0
+        fields.append({"name": name, "value": value, "inline": False})
+        size += len(name) + len(value)
+    if fields:
+        cards.append(fields)
     n = sum(len(l) for _, _, l in items)
-    extra = f" · {len(items) - 25} more characters not shown" if len(items) > 25 else ""
-    return {
-        "title": "Progress",
-        "color": DEFAULT_COLOR,
-        "fields": fields,
-        "footer": {"text": f"{n} update{'s' if n != 1 else ''} · {len(items)} character{'s' if len(items) != 1 else ''}{extra}"},
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-    }
+    stamp = datetime.now(timezone.utc).isoformat()
+    out = []
+    for i, f in enumerate(cards):
+        out.append({
+            "title": "Progress" if len(cards) == 1 else f"Progress ({i + 1} of {len(cards)})",
+            "color": DEFAULT_COLOR,
+            "fields": f,
+            "footer": {"text": f"{n} update{'s' if n != 1 else ''} · {len(items)} character{'s' if len(items) != 1 else ''}"},
+            "timestamp": stamp,
+        })
+    return out
 
 
 def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts):
@@ -975,7 +1002,7 @@ def build_roster_board(entries, settings, max_level):
 
     desc = [
         f"**{total}** {'character' if total == 1 else 'characters'} · average level **{avg}** · **{capped}** at {max_level} · **{active}** played in the last 2 days",
-        f"Raid comp: **{roles['Tank']}** tank{'s' if roles['Tank'] != 1 else ''} · **{roles['Healer']}** healer{'s' if roles['Healer'] != 1 else ''} · **{roles['DPS']}** dps",
+        f"Raid comp: **{roles['Tank']}** tank{'s' if roles['Tank'] != 1 else ''} · **{roles['Healer']}** healer{'s' if roles['Healer'] != 1 else ''} · **{roles['DPS']}** DPS",
         f"`{level_bar(levels, max_level)}`",
     ]
 
@@ -999,13 +1026,13 @@ def build_roster_board(entries, settings, max_level):
                 bits.append(c["rank_name"])
             lines.append(" · ".join(bits))
         emoji = (settings.get("class_emojis") or {}).get(cls.lower()) or CLASS_ICON.get(cls, "")
-        fields.append({"name": f"{emoji} {cls} · {len(rows)}".strip(), "value": "\n".join(lines)[:1024], "inline": False})
+        fields += split_fields(f"{emoji} {cls} · {len(rows)}".strip(), lines)
     return {
         "title": "Roster",
         "description": "\n".join(desc),
         "color": ROSTER_COLOR,
         "fields": fields[:25],
-        "footer": {"text": "🟢 last 2 days · 🟡 last week · ⚫ longer · updates about every 15 min"},
+        "footer": {"text": "🟢 last 2 days · 🟡 last week · ⚫ longer · ⚪ not seen yet · updates about every 15 min"},
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -1026,15 +1053,14 @@ def build_professions_board(entries, settings):
             bucket.setdefault(prof, []).append((skill, display_name(c), c, activity_dot(snap.get("last_login"), now_ts), n_recipes))
 
     def line(skill, name, c, dot, n):
-        tail = f" · {n} recipes" if n else ""
-        return f"{dot} **[{name}]({armory_url(c)})** {skill_bar(skill)} {skill} {skill_tier(skill)}{tail}"
+        tail = f" · {n} recipe{'s' if n != 1 else ''}" if n else ""
+        return f"{dot} **{name}** {skill_bar(skill)} {skill} {skill_tier(skill)}{tail}"  # the Roster card carries the links
 
     def fields_for(bucket):
         out = []
         for prof in sorted(bucket):
             rows = sorted(bucket[prof], key=lambda r: -r[0])
-            out.append({"name": f"{PROF_ICON.get(prof, '')} {prof} · {len(rows)}".strip(),
-                        "value": "\n".join(line(*r) for r in rows)[:1024], "inline": False})
+            out += split_fields(f"{PROF_ICON.get(prof, '')} {prof} · {len(rows)}".strip(), [line(*r) for r in rows])
         return out[:25]
 
     stamp = datetime.now(timezone.utc).isoformat()
@@ -1046,39 +1072,52 @@ def build_professions_board(entries, settings):
         desc += f"\nNo primary profession yet: {', '.join(missing[:15])}" + (" …" if len(missing) > 15 else "")
     embeds.append({"title": "Crafting", "description": desc, "color": 0x9B59B6,
                    "fields": fields_for(crafting) or [{"name": "Nothing yet", "value": "Crafting professions appear here as people learn them.", "inline": False}]})
-    if gathering:
-        embeds.append({"title": "Gathering", "color": 0x2ECC71, "fields": fields_for(gathering)})
-    if secondary:
-        parts = []
-        for prof in sorted(secondary):
-            rows = sorted(secondary[prof], key=lambda r: -r[0])
-            best = rows[0]
-            others = " · ".join(f"{r[1]} {r[0]}" for r in rows[1:4])
-            parts.append(f"{PROF_ICON.get(prof, '')} **{prof}** {best[3]} [{best[1]}]({armory_url(best[2])}) {best[0]} {skill_tier(best[0])}"
-                         + (f"\n{'':6}{others}" if others else ""))
-        embeds.append({"title": "Secondary", "description": "\n".join(parts)[:4000], "color": 0x95A5A6})
-    embeds[-1]["footer"] = {"text": "🟢 last 2 days · 🟡 last week · ⚫ longer · 300 is max skill · updates about every 15 min"}
+    embeds.append({"title": "Gathering", "color": 0x2ECC71,
+                   "fields": fields_for(gathering) or [{"name": "Nothing yet", "value": "Mining, Herbalism and Skinning appear here as people learn them.", "inline": False}]})
+    parts = []
+    for prof in sorted(secondary):
+        rows = sorted(secondary[prof], key=lambda r: -r[0])
+        shown = " · ".join(f"{r[3]} {r[1]} {r[0]}" for r in rows[:6])
+        more = f" · +{len(rows) - 6} more" if len(rows) > 6 else ""
+        parts.append(f"{PROF_ICON.get(prof, '')} **{prof}**\n{shown}{more}")
+    embeds.append({"title": "Secondary", "description": ("\n".join(parts) or "Cooking, First Aid and Fishing appear here as people learn them.")[:4000], "color": 0x95A5A6})
+    embeds[-1]["footer"] = {"text": "🟢 last 2 days · 🟡 last week · ⚫ longer · ⚪ not seen yet · 300 is max skill · updates about every 15 min"}
     embeds[-1]["timestamp"] = stamp
     return embeds
 
 
 def upsert_roster_board(webhook, embeds_list, state):
-    """Edit the saved roster message if it still exists, else post a fresh one."""
+    """
+    One Discord message per board card (Roster, Crafting, Gathering, Secondary),
+    each edited in place, so a growing guild never trips the 6,000-character
+    per-message cap. Message ids are kept in order; the first one is the
+    original board message, so a pin on it survives.
+    """
     base = webhook.split("?")[0]
-    msg_id = (state.get("roster") or {}).get("message_id")
-    payload = json.dumps({"embeds": embeds_list, "allowed_mentions": {"parse": []}}).encode()
-    if msg_id:
-        status, _ = http("PATCH", f"{base}/messages/{msg_id}", {"Content-Type": "application/json"}, payload)
-        if status in (200, 204):
-            return msg_id
-        print(f"[info] roster message {msg_id} not editable (HTTP {status}); posting a new one")
-    status, body = http("POST", f"{base}?wait=true", {"Content-Type": "application/json"},
-                        json.dumps({"username": "Guild Bot", "embeds": embeds_list,
-                                    "flags": 4096, "allowed_mentions": {"parse": []}}).encode())
-    if status not in (200, 204) or not isinstance(body, dict):
-        raise RuntimeError(f"Roster board post failed (HTTP {status}): {body}")
-    state.setdefault("roster", {})["message_id"] = body.get("id")
-    return body.get("id")
+    roster_state = state.setdefault("roster", {})
+    ids = list(roster_state.get("message_ids") or ([roster_state["message_id"]] if roster_state.get("message_id") else []))
+    new_ids = []
+    for i, embed in enumerate(embeds_list):
+        embed = fit_embed(embed)
+        payload = {"embeds": [embed], "allowed_mentions": {"parse": []}}
+        msg_id = ids[i] if i < len(ids) else None
+        if msg_id:
+            status, _ = http("PATCH", f"{base}/messages/{msg_id}", {"Content-Type": "application/json"}, json.dumps(payload).encode())
+            if status in (200, 204):
+                new_ids.append(msg_id)
+                continue
+            print(f"[info] board message {msg_id} not editable (HTTP {status}); posting a new one")
+        status, body = http("POST", f"{base}?wait=true", {"Content-Type": "application/json"},
+                            json.dumps({"username": "Guild Bot", "flags": 4096, **payload}).encode())
+        if status not in (200, 204) or not isinstance(body, dict):
+            roster_state["message_ids"] = new_ids + ids[len(new_ids):]
+            raise RuntimeError(f"Roster board post failed (HTTP {status}): {body}")
+        new_ids.append(body.get("id"))
+    for old in ids[len(embeds_list):]:  # fewer cards than before: remove the leftovers
+        http("DELETE", f"{base}/messages/{old}", {}, None)
+    roster_state["message_ids"] = new_ids
+    roster_state.pop("message_id", None)
+    return new_ids
 
 
 # ---------------------------------------------------------------- Weekly recap
@@ -1088,7 +1127,8 @@ def local_zone(settings):
         from zoneinfo import ZoneInfo
         return ZoneInfo(settings["timezone"])
     except Exception:
-        return timezone(timedelta(hours=-8))
+        print(f"[warn] timezone {settings.get('timezone')!r} not found; using UTC")
+        return timezone.utc
 
 
 def last_recap_time(now, settings):
@@ -1221,10 +1261,11 @@ def build_recap(characters, state, settings, week_end, launch_week):
     if len(leveling) > 15:
         lines.append(f"…and {len(leveling) - 15} more")
     if capped:
-        lines.append(f"⭐ **At {max_level}:** " + " · ".join(f"{a[1]}[{a[0]}]({a[5]})" for a in capped))
+        shown = " · ".join(f"{a[1]}{a[0]}" for a in capped[:15]) + (f" · +{len(capped) - 15} more" if len(capped) > 15 else "")
+        lines.append(f"⭐ **At {max_level}:** {shown}")
     week_start = week_end - timedelta(days=6)
     embeds = [{
-        "title": f"📅 Weekly Recap · {week_start.strftime('%b %-d')} – {week_end.strftime('%b %-d')}",
+        "title": f"📅 Weekly Recap · {week_start.strftime('%b %-d')} to {week_end.strftime('%b %-d')}",
         "description": f"{headline}\n\n**🏆 Leaderboard**\n" + "\n".join(lines),
         "color": RECAP_COLOR,
     }]
@@ -1336,6 +1377,10 @@ def build_inactive_report(characters, state, settings):
 
 # ---------------------------------------------------------------- Discord
 
+class DiscordRejected(RuntimeError):
+    """Discord refused the message outright (4xx other than 429). Retrying the same payload will never work."""
+
+
 def post_to_discord(webhook, embeds, content=None, ping_role=None):
     """
     Post embeds through the webhook. Silent by default. With ping_role set,
@@ -1358,18 +1403,66 @@ def post_to_discord(webhook, embeds, content=None, ping_role=None):
         status, body = http("POST", webhook, {"Content-Type": "application/json"},
                             json.dumps(payload).encode())
         if status not in (200, 204):
+            if 400 <= status < 500 and status != 429:
+                raise DiscordRejected(f"Discord rejected the message (HTTP {status}): {str(body)[:300]}")
             raise RuntimeError(f"Discord webhook failed (HTTP {status}): {body}")
 
 
+def fit_embed(embed, budget=5600):
+    """
+    Keep one embed under Discord's per-message total (6,000 chars across all
+    embed text). Fields are trimmed from the bottom, a line at a time, and get
+    a "+N more" tail, so a big roster never produces a 400.
+    """
+    def size(e):
+        n = len(e.get("title") or "") + len(e.get("description") or "") + len((e.get("footer") or {}).get("text") or "")
+        for f in e.get("fields") or []:
+            n += len(f.get("name") or "") + len(f.get("value") or "")
+        return n
+    fields = embed.get("fields") or []
+    while size(embed) > budget and fields:
+        f = fields[-1]
+        lines = (f.get("value") or "").split("\n")
+        kept = [l for l in lines if not l.startswith("+")]
+        if len(kept) <= 1:
+            fields.pop()
+            continue
+        dropped = len(lines) - len(kept) + 1
+        f["value"] = "\n".join(kept[:-1] + [f"+{dropped} more"])
+    if size(embed) > budget and embed.get("description"):
+        embed["description"] = embed["description"][: max(0, budget - size(embed) + len(embed["description"]))]
+    return embed
+
+
 # ---------------------------------------------------------------- Main
+
+def post_queue_item(item, kind, webhook, staff_hook, news_hook):
+    if kind == "hype":
+        post_to_discord(webhook, item["embeds"], ping_role=item.get("ping"))
+    elif kind == "inactive":
+        if staff_hook:
+            post_to_discord(staff_hook, item["embeds"])
+        else:
+            print("[info] DISCORD_STAFF_WEBHOOK_URL not set; skipped the officers-only inactive list.")
+    elif kind == "updates":
+        # Quiet digest goes to the roster channel when one exists; #general keeps milestones and the recap.
+        post_to_discord(os.environ.get("DISCORD_ROSTER_WEBHOOK_URL", "").strip() or webhook, item["embeds"])
+    elif kind == "recap":
+        post_to_discord(webhook, item["embeds"])
+    elif kind == "news":
+        if news_hook:
+            post_to_discord(news_hook, item["embeds"])
+
 
 def save_state(state):
     """Write state now. Called after every successful Discord post so a crash
     later in the run can't repeat an announcement on the next run."""
     state["saved_at"] = int(time.time())  # the Worker's /status reads this as "tracker last ran"
-    with open(STATE_PATH, "w", encoding="utf-8") as f:
+    tmp = STATE_PATH.with_suffix(".json.tmp")
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(state, f, indent=2, sort_keys=True, ensure_ascii=False)
         f.write("\n")
+    os.replace(tmp, STATE_PATH)  # never leave a half-written state.json behind
 
 
 def load_json(path, default):
@@ -1382,7 +1475,7 @@ def load_json(path, default):
 def load_characters(config):
     """
     Characters can be listed grouped by friend:
-      "friends": [{"name": "Tim", "characters": [{"name": "...", "surname": "..."}]}]
+      "friends": [{"owner": "Tim", "characters": [{"name": "...", "surname": "..."}]}]
     or as a flat list with an "owner" on each:
       "characters": [{"owner": "Tim", "name": "...", "surname": "..."}]
     Both can be used together.
@@ -1390,7 +1483,7 @@ def load_characters(config):
     chars = []
     for friend in config.get("friends") or []:
         for c in friend.get("characters") or []:
-            chars.append({"owner": friend.get("name"), **c})
+            chars.append({"owner": friend.get("owner") or friend.get("name"), **c})
     chars += config.get("characters") or []
     return [c for c in chars if c.get("name")]
 
@@ -1441,10 +1534,17 @@ def main():
     embeds, hype_embeds, digest_items, unavailable = [], [], [], []
     pending_firsts = {}  # (kind, what) -> [(character, snapshot, key)] achieved this run
     hype_events = set(settings.get("hype_events") or [])
+    firsts_will_post = "guild_first" in hype_events and len(state.get("characters") or {}) >= int(settings.get("guild_first_min_tracked") or 0)
     ping_role = str(settings.get("hype_ping_role_id") or "").strip() or None
 
     # --- Guild roster: auto-discover members, announce joins and leaves.
     guild_members = fetch_guild_roster(guild, token) if (guild.get("slug") or guild.get("name")) else None
+    roster_failed = False
+    if guild_members is None and (guild.get("slug") or guild.get("name")) and (state.get("roster") or {}).get("members_full"):
+        # Blizzard hiccup: reuse last run's member list so boards, digest and recap keep everyone.
+        print("[warn] guild roster fetch failed; using the last known member list")
+        guild_members = [dict(m) for m in state["roster"]["members_full"]]
+        roster_failed = True
     if guild_members is not None:
         rank_names = {str(k): v for k, v in (guild.get("rank_names") or {}).items()}
         for m in guild_members:
@@ -1460,7 +1560,9 @@ def main():
             print("[warn] guild roster came back empty; keeping the last known roster")
             guild_members = None
             now_members = seen_before
-        if guild_members is not None and seen_before is not None and settings.get("announce_guild_changes"):
+        if not roster_failed:
+            roster_state["members_full"] = [{k: v for k, v in m.items() if k != "rank_name"} for m in guild_members]
+        if guild_members is not None and not roster_failed and seen_before is not None and settings.get("announce_guild_changes"):
             lines = []
             for slug, name in sorted(now_members.items(), key=lambda kv: kv[1]):
                 if slug not in seen_before:
@@ -1479,7 +1581,7 @@ def main():
         sys.exit("No characters: set guild.slug in characters.json or list friends/characters.")
 
     def check(c):
-        region = c.get("region", default_region).lower()
+        region = (c.get("region") or default_region).lower()
         namespace = os.environ.get("PROFILE_NAMESPACE") or f"profile-forever-{region}"
         try:
             return fetch_snapshot(c, region, token, namespace, settings), None
@@ -1492,7 +1594,7 @@ def main():
 
     keyed = []
     for c, (snap, err) in zip(characters, results):
-        key = f"{c.get('region', default_region).lower()}:{char_slug(c)}"
+        key = f"{(c.get('region') or default_region).lower()}:{char_slug(c)}"
         keyed.append((c, key))
         if err:
             print(f"[warn] {display_name(c)}: {err}")
@@ -1577,7 +1679,8 @@ def main():
                     firsts[kind][what] = (firsts[kind][what] if isinstance(firsts[kind][what], list) else [firsts[kind][what]]) + [key]
                     mine.add(what)
             # Lines that will become a guild-first card stay out of this character's digest.
-            lines = [l for l in lines if not any(f"**{w}**" in l or f"**{w.split(' (')[0]}**" in l for w in mine)]
+            if firsts_will_post:
+                lines = [l for l in lines if not any(f"**{w}**" in l or f"**{w.split(' (')[0]}**" in l for w in mine)]
 
         loud = [(ev, d) for ev, d in hype if ev in hype_events]
         if old is None:
@@ -1585,10 +1688,7 @@ def main():
         elif loud:
             for ev, d in loud:
                 hype_embeds.append(milestone_embed(c, snap, ev, d, state["group"], snap, settings, now_ts))
-            announced = {d["what"] for ev, d in loud if ev == "guild_first"}
-            quiet = [l for l in lines
-                     if not l.startswith(("Reached", "First in the guild", "Epic", "Learned riding"))
-                     and not any(f"**{w}**" in l or f"**{w.split(' (')[0]}**" in l for w in announced)]
+            quiet = [l for l in lines if not l.startswith(("Reached", "First in the guild", "Epic", "Learned riding"))]
             if quiet:
                 digest_items.append((c, snap, quiet))
         elif lines:
@@ -1634,7 +1734,7 @@ def main():
         weekly["mounts_baseline"] = sum(len((o or {}).get("mounts") or {}) for o in owners.values())
 
     if digest_items:
-        embeds.append(digest_embed(digest_items, settings))
+        embeds.extend(digest_embeds(digest_items, settings))
 
     roster_embed = None
     if settings.get("roster_board"):
@@ -1693,21 +1793,14 @@ def main():
     while state["pending"]:
         item = state["pending"][0]
         kind = item.get("kind")
-        if kind == "hype":
-            post_to_discord(webhook, item["embeds"], ping_role=item.get("ping"))
-        elif kind == "inactive":
-            if staff_hook:
-                post_to_discord(staff_hook, item["embeds"])
-            else:
-                print("[info] DISCORD_STAFF_WEBHOOK_URL not set; skipped the officers-only inactive list.")
-        elif kind == "updates":
-            # Quiet digest goes to the roster channel when one exists; #general keeps milestones and the recap.
-            post_to_discord(os.environ.get("DISCORD_ROSTER_WEBHOOK_URL", "").strip() or webhook, item["embeds"])
-        elif kind == "recap":
-            post_to_discord(webhook, item["embeds"])
-        elif kind == "news":
-            if news_hook:
-                post_to_discord(news_hook, item["embeds"])
+        try:
+            post_queue_item(item, kind, webhook, staff_hook, news_hook)
+        except DiscordRejected as err:
+            # A payload Discord will never accept must not block everything behind it.
+            print(f"[warn] dropped a {kind} post: {err}")
+            state["pending"].pop(0)
+            save_state(state)
+            continue
         posted[kind] = posted.get(kind, 0) + len(item.get("embeds") or [])
         state["pending"].pop(0)
         save_state(state)

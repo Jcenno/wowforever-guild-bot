@@ -59,13 +59,22 @@ def rss_items(xml):
     return out
 
 
+MONTH_NUM = {m: str(i + 1) for i, m in enumerate(
+    ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"])}
+MONTH_NUM.update({m[:3]: n for m, n in list(MONTH_NUM.items())})
+
+
 def norm_title(title):
+    """
+    Key for US/EU dedupe. Month names become numbers and the remaining tokens
+    are sorted, so "Hotfixes - November 6, 2026" and "Hotfixes: 6 November 2026"
+    match each other but not the November 13 note.
+    """
     t = title.lower()
     t = t.replace("— world of warcraft — blizzard news", "")
-    t = re.sub(rf"\b({MONTHS})\b", " ", t)
-    t = re.sub(r"\b\d{1,4}\b", " ", t)
-    t = re.sub(r"[^a-z]+", " ", t)
-    return " ".join(t.split())
+    t = re.sub(r"[^a-z0-9]+", " ", t)
+    toks = [MONTH_NUM.get(w, w) for w in t.split()]
+    return " ".join(sorted(toks))
 
 
 def clean_title(title):
@@ -164,6 +173,7 @@ def build_news(state, now_ts=None, fetcher=fetch):
     embeds = []
     for key, it in ordered:
         if key in seen:
+            seen[key] = now_ts  # still in the feed: keep it remembered so it cannot come back as new
             continue
         body, author = strip_author(it["description"])
         forum = forum_bodies.get(it["bid"] or "")

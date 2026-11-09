@@ -20,7 +20,7 @@ assert embeds[0]["url"] == "https://news.blizzard.com/en-us/article/24315281"
 assert embeds[1]["url"] == "https://us.forums.blizzard.com/en/wow/t/2406595"
 assert "**Deviate Hides**" in embeds[1]["description"] and "• one" in embeds[1]["description"]
 assert embeds[1]["footer"]["text"] == "Hotfixes · Kaivax · US forums"
-assert "realm status update" in state["news_seen"]
+assert news.norm_title("Realm Status Update - November 4") in state["news_seen"]
 # second run: nothing new
 embeds2, state = news.build_news(state, now_ts=1_794_200_600, fetcher=fetcher)
 assert embeds2 == [], embeds2

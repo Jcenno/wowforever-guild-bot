@@ -57,6 +57,7 @@ jobs:
             git commit -m "Update bot state [skip ci]"
             for i in 1 2 3; do
               git push && break
+              git rebase --abort 2>/dev/null || true
               git pull --rebase origin main || true
               sleep 5
             done
