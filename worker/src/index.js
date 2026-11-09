@@ -181,6 +181,107 @@ async function onCharAutocomplete(i, env) {
   return json({ type: R.AUTOCOMPLETE, data: { choices: names.map((n) => ({ name: n, value: n })) } });
 }
 
+// ---------------------------------------------------------------- /need: a craft request card that pings the people who can make it
+async function recipeInfo(env, id) {
+  const r = await bnet(env, `/data/wow/recipe/${id}`);
+  if (!r) return { mats: [], icon: null };
+  const mats = (r.reagents || []).map((x) => ({ name: x.reagent?.name?.en_US || x.reagent?.name, qty: x.quantity || 1 })).filter((m) => m.name);
+  const itemId = r.crafted_item?.id || r.alliance_crafted_item?.id || r.horde_crafted_item?.id;
+  const media = itemId ? await bnet(env, `/data/wow/media/item/${itemId}`) : null;
+  return { mats, icon: media?.assets?.[0]?.value || null };
+}
+function guildRecipes(st) {
+  // { lower name: { name, id, prof, crafters: [{ key, name, skill, last }] } }
+  const out = {};
+  for (const [key, c] of Object.entries(st.characters || {})) {
+    for (const [prof, known] of Object.entries(c.recipes || {})) {
+      for (const r of known || []) {
+        if (!r.name || r.name.toLowerCase() === prof.toLowerCase()) continue;
+        const e = (out[r.name.toLowerCase()] ||= { name: r.name, id: r.id, prof, crafters: [] });
+        e.crafters.push({ key, name: charName(key), skill: (c.professions || {})[prof] || 0, last: c.last_login || 0 });
+      }
+    }
+  }
+  return out;
+}
+const activityDot = (ms) => (Date.now() - ms < 2 * 86400000 ? "🟢" : Date.now() - ms < 7 * 86400000 ? "🟡" : "⚫");
+export function requestCard(q, state = "open") {
+  const mats = q.mats ? JSON.parse(q.mats) : [];
+  const crafters = q.crafters ? JSON.parse(q.crafters) : [];
+  const lines = [S.needTitle(q.user_name, q.recipe_name, q.profession), S.needMats(mats)];
+  if (crafters.length) lines.push(S.needCrafters(crafters.map((c) => `${activityDot(c.last)} **${c.name}** (${c.skill})${c.user ? ` <@${c.user}>` : ""}`).join(" · ")));
+  if (state === "open") lines.push(S.needOpen);
+  if (state === "claimed") lines.push(S.needClaimed(q.maker_name));
+  if (state === "done") lines.push(S.needDone(q.maker_name));
+  if (state === "cancelled") lines.push(S.needCancelled);
+  const section = { type: 9, components: [{ type: 10, content: lines.join("\n") }] };
+  if (q.icon) section.accessory = { type: 11, media: { url: q.icon } };
+  const container = { type: 17, accent_color: 0x9b59b6, components: [section] };
+  const buttons = [];
+  if (state === "open") buttons.push({ type: 2, style: 1, label: S.makeBtn, custom_id: `make:${q.id}` });
+  if (state === "claimed") buttons.push({ type: 2, style: 3, label: S.doneBtn, custom_id: `done:${q.id}` });
+  if (state === "open" || state === "claimed") buttons.push({ type: 2, style: 2, label: S.cancelBtn, custom_id: `cancel:${q.id}` });
+  if (buttons.length) container.components.push({ type: 14, divider: true, spacing: 1 }, { type: 1, components: buttons });
+  const users = crafters.map((c) => c.user).filter(Boolean);
+  return { flags: FLAGS.V2, components: [container], allowed_mentions: { users } };
+}
+async function onNeed(i, env, ctx) {
+  const qtext = (i.data.options?.find((o) => o.name === "recipe")?.value || "").trim();
+  const st = await trackerState(env);
+  const all = guildRecipes(st);
+  const ql = qtext.toLowerCase();
+  const hit = all[ql] || Object.values(all).find((e) => e.name.toLowerCase().includes(ql));
+  if (!hit) return json({ type: R.MESSAGE, data: { content: S.needNobody(qtext), flags: FLAGS.EPHEMERAL } });
+  const keys = hit.crafters.map((c) => c.key);
+  const linked = keys.length ? (await env.DB.prepare(`SELECT user_id, surname FROM chars WHERE surname IN (${keys.map(() => "?").join(",")})`).bind(...keys).all()).results : [];
+  const crafters = hit.crafters.sort((a, b) => b.last - a.last || b.skill - a.skill).slice(0, 6)
+    .map((c) => ({ ...c, user: linked.find((l) => l.surname === c.key)?.user_id || null }));
+  const info = await recipeInfo(env, hit.id);
+  const u = who(i), uname = display(i), t = now();
+  const row = await env.DB.prepare(`INSERT INTO requests (user_id,user_name,recipe_id,recipe_name,profession,icon,mats,crafters,channel_id,token,created_at)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?) RETURNING id`).bind(u.id, uname, hit.id, hit.name, hit.prof, info.icon, JSON.stringify(info.mats), JSON.stringify(crafters), i.channel_id, i.token, t).first();
+  const q = { id: row.id, user_id: u.id, user_name: uname, recipe_name: hit.name, profession: hit.prof, icon: info.icon, mats: JSON.stringify(info.mats), crafters: JSON.stringify(crafters) };
+  ctx.waitUntil((async () => {
+    for (let attempt = 0; attempt < 4; attempt++) {
+      await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+      const m = await fetch(`${API}/webhooks/${env.DISCORD_APP_ID}/${i.token}/messages/@original`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+      if (m?.id) { await env.DB.prepare("UPDATE requests SET message_id=? WHERE id=?").bind(m.id, q.id).run(); return; }
+    }
+  })());
+  return json({ type: R.MESSAGE, data: requestCard(q) });
+}
+async function onRecipeAutocomplete(i, env) {
+  const ql = (i.data.options?.find((o) => o.focused)?.value || "").trim().toLowerCase();
+  const st = await trackerState(env);
+  const names = Object.values(guildRecipes(st)).map((e) => e.name).filter((n) => n.toLowerCase().includes(ql)).sort().slice(0, 25);
+  return json({ type: R.AUTOCOMPLETE, data: { choices: names.map((n) => ({ name: n, value: n })) } });
+}
+async function onRequestButton(i, env, action, id) {
+  const q = await env.DB.prepare("SELECT * FROM requests WHERE id=?").bind(id).first();
+  const u = who(i), uname = display(i);
+  const eph = (content) => json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL } });
+  if (!q) return eph(S.needNotOpen);
+  if (action === "make") {
+    if (q.status !== "open") return eph(S.needNotOpen);
+    const res = await env.DB.prepare("UPDATE requests SET status='claimed', maker_id=?, maker_name=?, updated_at=? WHERE id=? AND status='open'").bind(u.id, uname, now(), id).run();
+    if (!res.meta.changes) return eph(S.needNotOpen);
+    return json({ type: R.UPDATE, data: requestCard({ ...q, maker_id: u.id, maker_name: uname }, "claimed") });
+  }
+  if (action === "done") {
+    if (q.status !== "claimed") return eph(S.needNotOpen);
+    if (u.id !== q.user_id && u.id !== q.maker_id && !isOfficer(i)) return eph(S.needNotYours);
+    await env.DB.prepare("UPDATE requests SET status='done', updated_at=? WHERE id=?").bind(now(), id).run();
+    return json({ type: R.UPDATE, data: requestCard(q, "done") });
+  }
+  if (action === "cancel") {
+    if (q.status === "done" || q.status === "cancelled") return eph(S.needNotOpen);
+    if (u.id !== q.user_id && u.id !== q.maker_id && !isOfficer(i)) return eph(S.needNotYours);
+    await env.DB.prepare("UPDATE requests SET status='cancelled', updated_at=? WHERE id=?").bind(now(), id).run();
+    return json({ type: R.UPDATE, data: requestCard(q, "cancelled") });
+  }
+  return eph(S.needNotOpen);
+}
+
 // ---------------------------------------------------------------- Card (Components V2)
 export function card(g, counts, state = "open") {
   const meta = S.giveMeta([g.item_level ? `ilvl ${g.item_level}` : null, g.slot, g.armor, g.quality ? g.quality[0] + g.quality.slice(1).toLowerCase() : null,
@@ -268,6 +369,7 @@ async function onAutocomplete(i, env) {
 async function onButton(i, env) {
   const [action, idStr] = i.data.custom_id.split(":"); const id = Number(idStr);
   console.log(`[button] ${i.data.custom_id} by ${who(i)?.id}`);
+  if (["make", "done", "cancel"].includes(action)) return onRequestButton(i, env, action, id);
   const g = await env.DB.prepare("SELECT * FROM gifts WHERE id=?").bind(id).first();
   const u = who(i), uname = display(i);
   const eph = (content) => json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL } });
@@ -304,6 +406,8 @@ const COMMANDS = [
     { type: 3, name: "character", description: "Your character", required: true, autocomplete: true } ] },
   { name: "professions", description: "Someone's professions and known recipes", options: [
     { type: 3, name: "character", description: "Character name", required: true, autocomplete: true } ] },
+  { name: "need", description: "Ask the guild to craft something; pings the people who can", options: [
+    { type: 3, name: "recipe", description: "What you need made", required: true, autocomplete: true } ] },
   { name: "who-crafts", description: "Who in the guild can make something", options: [
     { type: 3, name: "recipe", description: "Recipe or item name, or part of it", required: true } ] },
 ];
@@ -323,7 +427,8 @@ export default {
     if (!(await verify(req, body, env.DISCORD_PUBLIC_KEY))) return new Response("bad signature", { status: 401 });
     const i = JSON.parse(body);
     if (i.type === T.PING) return json({ type: R.PONG });
-    if (i.type === T.AUTOCOMPLETE) return ["professions", "iam"].includes(i.data.name) ? onCharAutocomplete(i, env) : onAutocomplete(i, env);
+    if (i.type === T.AUTOCOMPLETE) return ["professions", "iam"].includes(i.data.name) ? onCharAutocomplete(i, env) : i.data.name === "need" ? onRecipeAutocomplete(i, env) : onAutocomplete(i, env);
+    if (i.type === T.COMMAND && i.data.name === "need") return onNeed(i, env, ctx);
     if (i.type === T.COMMAND && i.data.name === "iam") return onIam(i, env, ctx);
     if (i.type === T.COMMAND && i.data.name === "professions") return onProfessions(i, env);
     if (i.type === T.COMMAND && i.data.name === "who-crafts") return onWhoCrafts(i, env);

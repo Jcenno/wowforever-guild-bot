@@ -17,4 +17,15 @@ CREATE TABLE IF NOT EXISTS claims (
 CREATE TABLE IF NOT EXISTS chars (    -- /iam mapping, C2
   user_id TEXT PRIMARY KEY, name TEXT NOT NULL, surname TEXT, class TEXT, updated_at INTEGER
 );
+CREATE TABLE IF NOT EXISTS requests (  -- /need craft requests, W1
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id TEXT NOT NULL, user_name TEXT NOT NULL,
+  recipe_id INTEGER, recipe_name TEXT NOT NULL, profession TEXT, icon TEXT,
+  mats TEXT,                           -- JSON [{name, qty}]
+  crafters TEXT,                       -- JSON [{key, name, skill, last, user}]
+  channel_id TEXT, message_id TEXT, token TEXT,
+  status TEXT NOT NULL DEFAULT 'open', -- open | claimed | done | cancelled
+  maker_id TEXT, maker_name TEXT,
+  created_at INTEGER NOT NULL, updated_at INTEGER
+);
 CREATE INDEX IF NOT EXISTS gifts_open ON gifts(status, expires_at);
