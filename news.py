@@ -21,6 +21,7 @@ import html
 import re
 import time
 import urllib.request
+from email.utils import parsedate_to_datetime
 
 FOREVER_RSS = "https://www.wowhead.com/forever/blue-tracker?rss"
 FORUM_RSS = "https://us.forums.blizzard.com/en/wow/groups/blizzard-tracker/posts.rss"
@@ -150,7 +151,12 @@ def build_news(state, now_ts=None, fetcher=fetch):
         if cur is None or (cur["region"] == "eu" and region == "us"):
             groups[key] = {**it, "key": key, "url": link, "region": region, "bid": bid}
 
-    ordered = list(reversed(list(groups.items())))  # oldest first
+    def when(it):
+        try:
+            return parsedate_to_datetime(it["pubDate"]).timestamp()
+        except Exception:
+            return 0
+    ordered = sorted(groups.items(), key=lambda kv: when(kv[1]))  # oldest first
     if first_run:
         # Start the channel with the newest few; record the rest quietly so the backlog never posts.
         for key, _ in ordered[:-MAX_PER_RUN]:
