@@ -13,7 +13,7 @@ Posted as the welcome card via /post-welcome (text lives in worker/src/strings.j
 
 **Need something crafted?** Type `/need` and pick the item. The people who can make it get a ping, one of them presses *I'll make it*, and the card closes when it's done.
 
-**Have something you don't need?** Type `/give` and pick the item. Need or Greed on the card. After a day the bot names the winner and DMs you both. Winner presses *Received* when it arrives.
+**Have something you don't need?** Type `/give` and pick the item. Need or Greed on the card. It closes after 3 hours (the giver can pick 1 hour to 1 day); the bot names the winner and DMs you both. Winner presses *Received* when it arrives.
 
 **Who plays what, who crafts what:** #roster. `/professions <name>` shows anyone's recipes, `/who-crafts <item>` finds a crafter.
 

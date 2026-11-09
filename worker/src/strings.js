@@ -49,7 +49,7 @@ export const S = {
     "",
     "**Dings** post in #general when someone hits a big milestone. The quiet stuff (level-ups, new recipes, rep) goes to #roster as a digest.",
     "**Need something crafted?** `/need` and pick the item. The people who can make it get a ping, one presses *I'll make it*, and the card closes when it's done.",
-    "**Have something you don't need?** `/give` and pick the item. Need or Greed on the card. After a day the bot names the winner and DMs you both; the winner presses *Received* when it arrives.",
+    "**Have something you don't need?** `/give` and pick the item. Need or Greed on the card. It closes after 3 hours (the giver can pick 1 hour to 1 day); the bot names the winner and DMs you both, and the winner presses *Received* when it arrives.",
     "**Who plays what, who crafts what:** #roster. `/professions <name>` for anyone's recipes, `/who-crafts <item>` to find a crafter, `/workshop` for what's open.",
     "",
     "**One-time setup:** `/iam` and pick your main. Your name takes your class color and the bot knows what you can Need on.",

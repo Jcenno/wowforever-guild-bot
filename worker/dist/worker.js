@@ -51,7 +51,7 @@ const S = {
     "",
     "**Dings** post in #general when someone hits a big milestone. The quiet stuff (level-ups, new recipes, rep) goes to #roster as a digest.",
     "**Need something crafted?** `/need` and pick the item. The people who can make it get a ping, one presses *I'll make it*, and the card closes when it's done.",
-    "**Have something you don't need?** `/give` and pick the item. Need or Greed on the card. After a day the bot names the winner and DMs you both; the winner presses *Received* when it arrives.",
+    "**Have something you don't need?** `/give` and pick the item. Need or Greed on the card. It closes after 3 hours (the giver can pick 1 hour to 1 day); the bot names the winner and DMs you both, and the winner presses *Received* when it arrives.",
     "**Who plays what, who crafts what:** #roster. `/professions <name>` for anyone's recipes, `/who-crafts <item>` to find a crafter, `/workshop` for what's open.",
     "",
     "**One-time setup:** `/iam` and pick your main. Your name takes your class color and the bot knows what you can Need on.",
@@ -447,7 +447,8 @@ async function onGive(i, env, ctx) {
     item = exact ? await itemDetails(env, Number(exact.value)) : null;
   }
   if (!item) return json({ type: R.MESSAGE, data: { content: S.itemNotFound, flags: FLAGS.EPHEMERAL } });
-  const t = now(), exp = t + Number(env.CLAIM_HOURS || 24) * 3600;
+  const hours = Number(i.data.options?.find((o) => o.name === "closes")?.value) || Number(env.CLAIM_HOURS || 3);
+  const t = now(), exp = t + hours * 3600;
   const row = await env.DB.prepare(`INSERT INTO gifts (giver_id,giver_name,item_id,item_name,item_icon,item_level,slot,armor,quality,req_level,classes,channel_id,token,created_at,expires_at)
     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id`).bind(giver.id, giverName, item.id, item.name, item.icon, item.level, item.slot, item.armor, item.quality, item.req_level,
     item.classes ? JSON.stringify(item.classes) : null, i.channel_id, i.token, t, exp).first();
@@ -529,7 +530,9 @@ const isOfficer = (i) => (BigInt(i.member?.permissions || "0") & (1n << 13n)) !=
 
 const COMMANDS = [
   { name: "give", description: "Offer an item you don't need to the guild", options: [
-    { type: 3, name: "item", description: "Item name (pick from the list)", required: true, autocomplete: true } ] },
+    { type: 3, name: "item", description: "Item name (pick from the list)", required: true, autocomplete: true },
+    { type: 4, name: "closes", description: "How long people have to roll (default 3 hours)", required: false, choices: [
+      { name: "1 hour", value: 1 }, { name: "3 hours", value: 3 }, { name: "6 hours", value: 6 }, { name: "12 hours", value: 12 }, { name: "1 day", value: 24 } ] } ] },
   { name: "help", description: "How giving works, in one line" },
   { name: "iam", description: "Link your main character so your name gets its class color", options: [
     { type: 3, name: "character", description: "Your character", required: true, autocomplete: true } ] },
