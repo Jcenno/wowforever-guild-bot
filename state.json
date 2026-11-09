@@ -234,7 +234,7 @@
         }
       },
       "ilvl": 6,
-      "last_login": 1794193053000,
+      "last_login": 1794195441000,
       "level": 19,
       "level_at": {
         "18": 1794190280,
@@ -455,6 +455,11 @@
         ]
       },
       "reputations": {
+        "Azeroth Commerce Authority": {
+          "name": "Neutral",
+          "raw": 0,
+          "tier": 3
+        },
         "Darnassus": {
           "name": "Friendly",
           "raw": 3840,
@@ -484,19 +489,19 @@
       "spec": "Arcane",
       "stats": {
         "critters": 15,
-        "deaths": 43,
-        "drinks": 250,
-        "flights": 17,
-        "food": 69,
+        "deaths": 44,
+        "drinks": 261,
+        "flights": 18,
+        "food": 74,
         "health_potions": 30,
         "hearths": 11,
-        "killing_blows": 829,
+        "killing_blows": 850,
         "mana_potions": 5,
-        "mobs": 995,
+        "mobs": 1016,
         "need_rolls": 3,
         "quests": 141
       },
-      "xp": 4598
+      "xp": 6491
     }
   },
   "group": {
@@ -512,6 +517,38 @@
       "raid": {}
     }
   },
+  "news_seen": {
+    "about the wow forever bug report category": 1794195649,
+    "choose your ruleset in world of warcraft forever": 1794195649,
+    "class tuning incoming": 1794195649,
+    "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
+    "dungeon enemy xp increased": 1794195649,
+    "explore the new dungeons of world of warcraft forever": 1794195649,
+    "explore wow forever with a gamepad": 1794195649,
+    "gather around the campfire in world of warcraft forever": 1794195649,
+    "issues resolved for invite a friend players": 1794195649,
+    "known issues wow forever updated nov": 1794195649,
+    "language and social settings": 1794195649,
+    "new player s starter guide welcome to world of warcraft forever": 1794195649,
+    "phasing issues with group still persist from beta": 1794195649,
+    "prepare for forever try midnight s talebound and discover sweet treats in wow weekly": 1794195649,
+    "the adventure begins in wow forever stay connected with discord and taldramir takes shape in wow weekly": 1794195649,
+    "updated oct join the world of warcraft forever stress test": 1794195649,
+    "watch the wow forever short story unbowed": 1794195649,
+    "why do i see maybe people inside the main city": 1794195649,
+    "world of warcraft forever early name reservations are now live": 1794195649,
+    "world of warcraft forever launch time": 1794195649,
+    "world of warcraft forever now live": 1794195649,
+    "world of warcraft forever raid overview locations raid sizes and attunement": 1794195649,
+    "wow forever beta development notes updated": 1794195649,
+    "wow forever bug report forum guidelines": 1794195649,
+    "wow forever hotfixes": 1794195649,
+    "wow forever watch forging forever": 1794195649,
+    "wow forever what s new and what feels familiar": 1794195649,
+    "wow weekly highlights midnight worldcore wow forever and more": 1794195649,
+    "zeppelins broken": 1794195649
+  },
+  "news_started": true,
   "owners": {
     "us:steel-appeal": {
       "mounts": {
@@ -527,7 +564,7 @@
   "roster": {
     "message_id": "1569012691186622596"
   },
-  "saved_at": 1794195068,
+  "saved_at": 1794195650,
   "weekly": {
     "baseline": {
       "us:steel-appeal": {
