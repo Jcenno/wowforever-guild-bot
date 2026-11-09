@@ -26,11 +26,6 @@ async function discord(env, method, path, body) {
   if (!r.ok) console.log(`[discord] ${method} ${path} -> ${r.status} ${await r.text()}`);
   return r.ok ? (r.status === 204 ? null : r.json()) : null;
 }
-async function dm(env, userId, content) {
-  const ch = await discord(env, "POST", "/users/@me/channels", { recipient_id: userId });
-  if (!ch) return false;
-  return !!(await discord(env, "POST", `/channels/${ch.id}/messages`, { content, allowed_mentions: { parse: [] } }));
-}
 const who = (i) => (i.member?.user || i.user);
 const display = (i) => i.member?.nick || who(i).global_name || who(i).username;
 
@@ -354,11 +349,11 @@ async function settle(env, g, { edit = true } = {}) {
 }
 async function settleNow(env, g) { const s = await settle(env, g); if (s) await s.notify(); }
 async function notifyWinner(env, g, w) {
-  if (w) {
-    const okW = await dm(env, w.user_id, S.dmWinner(g.item_name, g.giver_name));
-    const okG = await dm(env, g.giver_id, S.dmGiver(g.item_name, w.user_name));
-    if (!okW || !okG) await discord(env, "POST", `/channels/${g.channel_id}/messages`, { content: S.awarded(g.item_name, `<@${w.user_id}>`) + ` <@${g.giver_id}>`, allowed_mentions: { users: [w.user_id, g.giver_id] } });
-  }
+  // One reply under the card that pings both people. No DMs: in context, visible to all, nothing in anyone's inbox.
+  if (!w || !g.channel_id) return;
+  const body = { content: S.handoff(g.item_name, `<@${w.user_id}>`, `<@${g.giver_id}>`), allowed_mentions: { users: [w.user_id, g.giver_id] } };
+  if (g.message_id) body.message_reference = { message_id: g.message_id, fail_if_not_exists: false };
+  await discord(env, "POST", `/channels/${g.channel_id}/messages`, body);
 }
 
 // ---------------------------------------------------------------- Handlers
@@ -417,12 +412,20 @@ async function onButton(i, env, ctx) {
       if (!me?.class) return eph(S.linkFirst);
       if (!allowed.includes(me.class) && !(me.alt_class && allowed.includes(me.alt_class))) return eph(S.wrongClass(allowed));
     }
+    const before = await env.DB.prepare("SELECT kind FROM claims WHERE gift_id=? AND user_id=?").bind(id, u.id).first();
+    if (before?.kind === action) return eph(S.alreadyIn(action));
     await env.DB.prepare("INSERT INTO claims (gift_id,user_id,user_name,kind,at) VALUES (?,?,?,?,?) ON CONFLICT(gift_id,user_id) DO UPDATE SET kind=excluded.kind, user_name=excluded.user_name")
       .bind(id, u.id, uname, action, now()).run();
     // If the gift settled while we were writing, do not paint the open card over the awarded one.
     const still = await env.DB.prepare("SELECT status FROM gifts WHERE id=?").bind(id).first();
     if (still?.status !== "open") return eph(S.closed);
-    return json({ type: R.UPDATE, data: card(g, await counts(env, id)) });
+    const fresh = card(g, await counts(env, id));
+    if (g.channel_id && g.message_id) {
+      // Tell the presser privately; refresh the card's counts in the background.
+      ctx.waitUntil(discord(env, "PATCH", `/channels/${g.channel_id}/messages/${g.message_id}`, fresh));
+      return eph(before ? S.youSwitched(action) : S.youIn(action));
+    }
+    return json({ type: R.UPDATE, data: fresh });
   }
   if (action === "close") {
     if (u.id !== g.giver_id && !isOfficer(i)) return eph(S.notYours);
@@ -659,7 +662,10 @@ export default {
     const quiet = await env.DB.prepare("SELECT * FROM gifts WHERE status='awarded' AND nudged_at IS NULL AND awarded_at<=? LIMIT 10").bind(t - 2 * 86400).all();
     for (const g of quiet.results) ctx.waitUntil((async () => {
       await env.DB.prepare("UPDATE gifts SET nudged_at=? WHERE id=?").bind(t, g.id).run();
-      await dm(env, g.winner_id, S.nudge(g.item_name, g.giver_name));
+      if (!g.channel_id) return;
+      const body = { content: S.nudge(g.item_name, `<@${g.winner_id}>`), allowed_mentions: { users: [g.winner_id] } };
+      if (g.message_id) body.message_reference = { message_id: g.message_id, fail_if_not_exists: false };
+      await discord(env, "POST", `/channels/${g.channel_id}/messages`, body);
     })());
     // Craft requests nobody took in a week close quietly.
     const stale = await env.DB.prepare("SELECT * FROM requests WHERE status='open' AND created_at<=? LIMIT 10").bind(t - 7 * 86400).all();

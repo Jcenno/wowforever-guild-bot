@@ -4,7 +4,7 @@ Slash commands for the WoW Forever Discord, running on a Cloudflare Worker with 
 
 | Command | What it does |
 |---|---|
-| `/give <item> [closes]` | Posts a card with Need and Greed. Need is for the classes the item is made for (armor type, or Blizzard's class list); anyone can Greed. When the timer runs out (`closes`: 1 h, 3 h, 6 h, 12 h or 1 day; default `CLAIM_HOURS`, 3) or on Close early the bot names a winner, DMs both people, and the winner presses Received when the item arrives in game. One reminder DM after 2 days without Received. |
+| `/give <item> [closes]` | Posts a card with Need and Greed. Need is for the classes the item is made for (armor type, or Blizzard's class list); anyone can Greed. When the timer runs out (`closes`: 1 h, 3 h, 6 h, 12 h or 1 day; default `CLAIM_HOURS`, 3) or on Close early the bot names a winner in a reply under the card (pinging winner and giver), and the winner presses Received when the item arrives in game. One reminder reply after 2 days without Received. Each Need or Greed press gets a private confirmation (in, switched, or already in). No DMs. |
 | `/need <recipe>` | Craft request card: mats from Blizzard, item icon, who in the guild knows the recipe (pinged if they ran /iam). I'll make it → Done, or Cancel. Untaken requests close after 7 days. |
 | `/iam <character> [alt]` | Links your Discord account to your main, plus one optional alt. Your name takes the main's class color; Need on a gift is allowed for either class; crafter pings reach you for either character. |
 | `/professions <character>` | Skill bars and known recipes for a tracked character. |

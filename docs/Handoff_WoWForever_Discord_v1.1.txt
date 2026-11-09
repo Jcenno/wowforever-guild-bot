@@ -1,5 +1,5 @@
-HANDOFF — WoW Forever guild Discord build (for a fresh Claude window, Opus)
-Written 9 Nov 2026, 08:40 Chicago. Everything below is live and verified unless marked.
+HANDOFF v1.1 — WoW Forever guild Discord build (for a fresh Claude window, Opus)
+Written 9 Nov 2026, 08:40 Chicago; updated 9 Nov 17:20 (DMs replaced by channel replies). Everything below is live and verified unless marked.
 
 ================================================================
 0. WHO / WHAT
@@ -43,7 +43,7 @@ B) Guild Bot (Cloudflare Worker "guild-bot" + D1) — folder worker/
    - src/index.js (handlers), src/strings.js (ALL member-facing strings), schema.sql, test/ (npm test, 9 pass), scripts/build.mjs -> dist/worker.paste.js
    - URL https://guild-bot.jcenno.workers.dev ; Discord app id 1569054537661157647 ; D1 database "guild-bot" id 7131222f-3338-4b77-96ec-c832a730f7ce ; account 0f633783ba2e7b9940b58bb5d9e079a5
    - Commands (11): /give <item> [closes 1h/3h/6h/12h/1d, default CLAIM_HOURS=3], /need <recipe>, /iam <main> [alt], /professions, /who-crafts, /workshop, /stock, /stock-set, /help, officers: /post-welcome, /status
-   - Components V2 cards (container 17 etc.), ephemeral replies, class-gated Need (armor type or Blizzard class list; main or alt class), crafter pings on /need, winner DMs, Received button, 2-day reminder, 7-day request expiry, weekly "This week in the Workshop" Sunday 19:00 Chicago to #general (REPORT_CHANNEL_ID), cron */5.
+   - Components V2 cards (container 17 etc.), ephemeral replies, class-gated Need (armor type or Blizzard class list; main or alt class), crafter pings on /need, winner/giver named in a reply under the card (no DMs; Joe found DMs intrusive), ephemeral Need/Greed press feedback (in / switched / already in), Received button, 2-day reminder reply under the card, 7-day request expiry, weekly "This week in the Workshop" Sunday 19:00 Chicago to #general (REPORT_CHANNEL_ID), cron */5.
    - Welcome card (/post-welcome): how-it-works text + buttons Tank / Healer / DPS (toggle roles by name, several allowed) + "Dings pings: on / off". Pinned in #general.
    - /iam applies the class role (creates it if missing, positions above Officer). Guild Bot role must stay above class roles and have Manage Roles (it does).
    - Variables: DISCORD_APP_ID, DISCORD_PUBLIC_KEY, GUILD_ID, GENERAL_CHANNEL_ID=1560804753963745392, REPORT_CHANNEL_ID=1560804753963745392, DINGS_ROLE_ID=1568797227747643493, BLIZZARD_REGION=us, BLIZZARD_STATIC_NS=static-forever-us, CLAIM_HOURS=3. Optional: REGISTER_KEY, REPORT_DAY, REPORT_HOUR, TIMEZONE, GITHUB_REPO, STATE_URL. Secrets: DISCORD_BOT_TOKEN, BLIZZARD_CLIENT_SECRET, GITHUB_TOKEN.
@@ -78,14 +78,14 @@ Done and verified live: tracker on 15-min cadence; roster + profession boards; d
 Open:
 - Quinn's exact character name -> characters.json (friends[].characters), push, dispatch a run.
 - Optional, Joe's call: music bot (research which are alive/allowed first), AI art for server icon + emoji (Recraft/Midjourney), boost not needed.
-- Watch: first real Need/Greed gift between two people; first real /need completed by someone else; Sunday 19:00 both the recap (tracker) and the Workshop card (Worker) post to #general.
+- Watch: Tanner's Red Linen Bag gift (closes ~18:41 Chicago 9 Nov): card flips to awarded, reply under the card pings Joe + tx.tan, Received appears. First real Need/Greed gift between two people; first real /need completed by someone else; Sunday 19:00 both the recap (tracker) and the Workshop card (Worker) post to #general.
 - Class tuning hotfix 10 Nov 2026 (Joe wants warrior rage numbers rechecked after it).
 
 ================================================================
 6. LESSONS / GOTCHAS
 ================================================================
 - Discord Section (type 9) needs an accessory; use a plain Text Display (type 10) when there is no icon (enchants have none).
-- Interactions must answer in 3 s: /iam defers (type 5) then PATCHes @original; Close early edits first, DMs after via waitUntil.
+- Interactions must answer in 3 s: /iam defers (type 5) then PATCHes @original; Close early edits first, the handoff reply posts after via waitUntil. Need/Greed presses answer ephemerally and PATCH the card via waitUntil (so the presser sees feedback).
 - D1 binds max 100 params; slice crafters to 6 before the IN query.
 - news.py dedupe key keeps dates (month names normalised, tokens sorted); legacy_key() keeps old state entries valid. Changing the key shape without that re-posts the backlog (happened once; fixed within one run).
 - GitHub's cron is unreliable; keep the Worker heartbeat.

@@ -13,14 +13,16 @@ const S = {
   ownGift: "That one is yours.",
   wrongClass: (classes) => `That one is for ${classes.join(", ")}. Greed is fine.`,
   linkFirst: "Run `/iam` once so the bot knows your class, then press Need.",
-  nudge: (item, giver) => `Did **${item}** from **${giver}** arrive? Press Received on the card when it does.`,
+  nudge: (item, winner) => `${winner}, did **${item}** arrive? Press Received on the card when it does.`,
+  youIn: (kind) => `You're in as ${kind === "need" ? "Need" : "Greed"}.`,
+  youSwitched: (kind) => `Switched to ${kind === "need" ? "Need" : "Greed"}.`,
+  alreadyIn: (kind) => `Already in as ${kind === "need" ? "Need" : "Greed"}. The card updates when it closes.`,
   needExpired: "Nobody picked this up in a week. Post it again when you still need it.",
   awarded: (item, winner) => `**${item}** → **${winner}**. Mail when you can.`,
   noTakers: (item) => `**${item}** · no takers · stays with the giver`,
-  dmWinner: (item, giver) => `You won **${item}** from **${giver}**. Watch your mailbox, then press Received on the card.`,
-  dmGiver: (item, winner) => `**${item}** goes to **${winner}**. Mail or trade it when you're on.`,
+  handoff: (item, winner, giver) => `**${item}** → ${winner}. ${giver}, mail or trade it when you're on. ${winner} presses *Received* on the card when it lands.`,
   itemNotFound: "No item by that name. Pick one from the list.",
-  helpLine: "`/give` an item you don't need. `/need` something crafted; it pings the people who can make it. Press Need or Greed on a gift card; the winner presses Received. `/iam` links your main so your name takes its class color. `/professions` and `/who-crafts` look things up.",
+  helpLine: "`/give` an item you don't need. `/need` something crafted; it pings the people who can make it. Press Need or Greed on a gift card; when it closes the bot names the winner under the card and the winner presses Received. `/iam` links your main so your name takes its class color. `/professions` and `/who-crafts` look things up.",
   iamLinked: (name, cls) => `You are **${name}** (${cls}).`,
   iamAlt: (name, cls) => ` Alt: **${name}** (${cls}).`,
   specOn: (role) => `${role} added.`,
@@ -53,7 +55,7 @@ const S = {
     "",
     "**Dings** post in #general when someone hits a big milestone. The quiet stuff (level-ups, new recipes, rep) goes to #roster as a digest.",
     "**Need something crafted?** `/need` and pick the item. The people who can make it get a ping, one presses *I'll make it*, and the card closes when it's done.",
-    "**Have something you don't need?** `/give` and pick the item. Need or Greed on the card. It closes after 3 hours (the giver can pick 1 hour to 1 day); the bot names the winner and DMs you both, and the winner presses *Received* when it arrives.",
+    "**Have something you don't need?** `/give` and pick the item. Need or Greed on the card. It closes after 3 hours (the giver can pick 1 hour to 1 day); the bot names the winner under the card, and the winner presses *Received* when it arrives.",
     "**Who plays what, who crafts what:** #roster. `/professions <name>` for anyone's recipes, `/who-crafts <item>` to find a crafter, `/workshop` for what's open.",
     "",
     "**One-time setup:** `/iam` and pick your main (add an alt if you have one). Your name takes your class color and the bot knows what you can Need on.",
@@ -107,11 +109,6 @@ async function discord(env, method, path, body) {
     body: body ? JSON.stringify(body) : undefined });
   if (!r.ok) console.log(`[discord] ${method} ${path} -> ${r.status} ${await r.text()}`);
   return r.ok ? (r.status === 204 ? null : r.json()) : null;
-}
-async function dm(env, userId, content) {
-  const ch = await discord(env, "POST", "/users/@me/channels", { recipient_id: userId });
-  if (!ch) return false;
-  return !!(await discord(env, "POST", `/channels/${ch.id}/messages`, { content, allowed_mentions: { parse: [] } }));
 }
 const who = (i) => (i.member?.user || i.user);
 const display = (i) => i.member?.nick || who(i).global_name || who(i).username;
@@ -436,11 +433,11 @@ async function settle(env, g, { edit = true } = {}) {
 }
 async function settleNow(env, g) { const s = await settle(env, g); if (s) await s.notify(); }
 async function notifyWinner(env, g, w) {
-  if (w) {
-    const okW = await dm(env, w.user_id, S.dmWinner(g.item_name, g.giver_name));
-    const okG = await dm(env, g.giver_id, S.dmGiver(g.item_name, w.user_name));
-    if (!okW || !okG) await discord(env, "POST", `/channels/${g.channel_id}/messages`, { content: S.awarded(g.item_name, `<@${w.user_id}>`) + ` <@${g.giver_id}>`, allowed_mentions: { users: [w.user_id, g.giver_id] } });
-  }
+  // One reply under the card that pings both people. No DMs: in context, visible to all, nothing in anyone's inbox.
+  if (!w || !g.channel_id) return;
+  const body = { content: S.handoff(g.item_name, `<@${w.user_id}>`, `<@${g.giver_id}>`), allowed_mentions: { users: [w.user_id, g.giver_id] } };
+  if (g.message_id) body.message_reference = { message_id: g.message_id, fail_if_not_exists: false };
+  await discord(env, "POST", `/channels/${g.channel_id}/messages`, body);
 }
 
 // ---------------------------------------------------------------- Handlers
@@ -499,12 +496,20 @@ async function onButton(i, env, ctx) {
       if (!me?.class) return eph(S.linkFirst);
       if (!allowed.includes(me.class) && !(me.alt_class && allowed.includes(me.alt_class))) return eph(S.wrongClass(allowed));
     }
+    const before = await env.DB.prepare("SELECT kind FROM claims WHERE gift_id=? AND user_id=?").bind(id, u.id).first();
+    if (before?.kind === action) return eph(S.alreadyIn(action));
     await env.DB.prepare("INSERT INTO claims (gift_id,user_id,user_name,kind,at) VALUES (?,?,?,?,?) ON CONFLICT(gift_id,user_id) DO UPDATE SET kind=excluded.kind, user_name=excluded.user_name")
       .bind(id, u.id, uname, action, now()).run();
     // If the gift settled while we were writing, do not paint the open card over the awarded one.
     const still = await env.DB.prepare("SELECT status FROM gifts WHERE id=?").bind(id).first();
     if (still?.status !== "open") return eph(S.closed);
-    return json({ type: R.UPDATE, data: card(g, await counts(env, id)) });
+    const fresh = card(g, await counts(env, id));
+    if (g.channel_id && g.message_id) {
+      // Tell the presser privately; refresh the card's counts in the background.
+      ctx.waitUntil(discord(env, "PATCH", `/channels/${g.channel_id}/messages/${g.message_id}`, fresh));
+      return eph(before ? S.youSwitched(action) : S.youIn(action));
+    }
+    return json({ type: R.UPDATE, data: fresh });
   }
   if (action === "close") {
     if (u.id !== g.giver_id && !isOfficer(i)) return eph(S.notYours);
@@ -741,7 +746,10 @@ export default {
     const quiet = await env.DB.prepare("SELECT * FROM gifts WHERE status='awarded' AND nudged_at IS NULL AND awarded_at<=? LIMIT 10").bind(t - 2 * 86400).all();
     for (const g of quiet.results) ctx.waitUntil((async () => {
       await env.DB.prepare("UPDATE gifts SET nudged_at=? WHERE id=?").bind(t, g.id).run();
-      await dm(env, g.winner_id, S.nudge(g.item_name, g.giver_name));
+      if (!g.channel_id) return;
+      const body = { content: S.nudge(g.item_name, `<@${g.winner_id}>`), allowed_mentions: { users: [g.winner_id] } };
+      if (g.message_id) body.message_reference = { message_id: g.message_id, fail_if_not_exists: false };
+      await discord(env, "POST", `/channels/${g.channel_id}/messages`, body);
     })());
     // Craft requests nobody took in a week close quietly.
     const stale = await env.DB.prepare("SELECT * FROM requests WHERE status='open' AND created_at<=? LIMIT 10").bind(t - 7 * 86400).all();
