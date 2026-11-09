@@ -12,6 +12,10 @@ youNeed: "You pressed Need.", youGreed: "You pressed Greed.", youSwitched: (k) =
 notYours: "Only the giver can do that.",
 closed: "This one is closed.",
 ownGift: "That one is yours.",
+wrongClass: (classes) => `That one is for ${classes.join(", ")}. Greed is fine.`,
+linkFirst: "Run `/iam` once so the bot knows your class, then press Need.",
+nudge: (item, giver) => `Did **${item}** from **${giver}** arrive? Press Received on the card when it does.`,
+needExpired: "Nobody picked this up in a week. Post it again when you still need it.",
 awarded: (item, winner) => `**${item}** → **${winner}**. Mail when you can.`,
 noTakers: (item) => `**${item}** · no takers · ${"stays with the giver"}`,
 dmWinner: (item, giver) => `You won **${item}** from **${giver}**. Watch your mailbox, then press Received on the card.`,
@@ -253,6 +257,7 @@ if (state === "open") lines.push(S.needOpen);
 if (state === "claimed") lines.push(S.needClaimed(q.maker_name));
 if (state === "done") lines.push(S.needDone(q.maker_name));
 if (state === "cancelled") lines.push(S.needCancelled);
+if (state === "expired") lines.push(S.needExpired);
 const section = { type: 9, components: [{ type: 10, content: lines.join("\n") }] };
 if (q.icon) section.accessory = { type: 11, media: { url: q.icon } };
 const container = { type: 17, accent_color: 0x9b59b6, components: [section] };
@@ -416,6 +421,13 @@ if (!g) return eph(S.closed);
 if (action === "need" || action === "greed") {
 if (g.status !== "open" || g.expires_at <= now()) return eph(S.closed);
 if (u.id === g.giver_id) return eph(S.ownGift);
+const allowed = needClasses(g);
+if (action === "need" && allowed) {
+// Need is for the classes the item is meant for; everyone else can Greed.
+const me = await env.DB.prepare("SELECT class FROM chars WHERE user_id=?").bind(u.id).first();
+if (!me?.class) return eph(S.linkFirst);
+if (!allowed.includes(me.class)) return eph(S.wrongClass(allowed));
+}
 await env.DB.prepare("INSERT INTO claims (gift_id,user_id,user_name,kind,at) VALUES (?,?,?,?,?) ON CONFLICT(gift_id,user_id) DO UPDATE SET kind=excluded.kind, user_name=excluded.user_name")
 .bind(id, u.id, uname, action, now()).run();
 return json({ type: R.UPDATE, data: card(g, await counts(env, id)) });
@@ -434,6 +446,18 @@ await env.DB.prepare("UPDATE gifts SET status='received', received_at=? WHERE id
 return json({ type: R.UPDATE, data: card({ ...g, status: "received" }, { need: 0, greed: 0 }, "received") });
 }
 return eph(S.closed);
+}
+// Loot etiquette: Need goes to the classes an armor type is made for. Below 40, hunters and shamans
+// are still in leather and warriors and paladins still in mail, so those tiers include them.
+const ARMOR_CLASSES = { Cloth: ["Mage", "Priest", "Warlock"], Leather: ["Rogue", "Druid"], Mail: ["Hunter", "Shaman"], Plate: ["Warrior", "Paladin"] };
+export function needClasses(g) {
+if (g.classes) return JSON.parse(g.classes);
+const base = ARMOR_CLASSES[g.armor];
+if (!base) return null; // weapons, trinkets, bags: anyone may Need
+const low = (g.req_level || 0) < 40;
+if (g.armor === "Leather" && low) return [...base, "Hunter", "Shaman"];
+if (g.armor === "Mail" && low) return [...base, "Warrior", "Paladin"];
+return base;
 }
 const isOfficer = (i) => (BigInt(i.member?.permissions || "0") & (1n << 13n)) !== 0n; // MANAGE_MESSAGES as the officer test
 
@@ -477,7 +501,20 @@ if (i.type === T.COMPONENT) return onButton(i, env);
 return json({ type: R.MESSAGE, data: { content: S.closed, flags: FLAGS.EPHEMERAL } });
 },
 async scheduled(_ev, env, ctx) {
-const due = await env.DB.prepare("SELECT * FROM gifts WHERE status='open' AND expires_at<=? LIMIT 20").bind(now()).all();
+const t = now();
+const due = await env.DB.prepare("SELECT * FROM gifts WHERE status='open' AND expires_at<=? LIMIT 20").bind(t).all();
 for (const g of due.results) ctx.waitUntil(settle(env, g));
+// One reminder to a winner who has not pressed Received two days after the award.
+const quiet = await env.DB.prepare("SELECT * FROM gifts WHERE status='awarded' AND nudged_at IS NULL AND awarded_at<=? LIMIT 10").bind(t - 2 * 86400).all();
+for (const g of quiet.results) ctx.waitUntil((async () => {
+await env.DB.prepare("UPDATE gifts SET nudged_at=? WHERE id=?").bind(t, g.id).run();
+await dm(env, g.winner_id, S.nudge(g.item_name, g.giver_name));
+})());
+// Craft requests nobody took in a week close quietly.
+const stale = await env.DB.prepare("SELECT * FROM requests WHERE status='open' AND created_at<=? LIMIT 10").bind(t - 7 * 86400).all();
+for (const q of stale.results) ctx.waitUntil((async () => {
+const res = await env.DB.prepare("UPDATE requests SET status='cancelled', updated_at=? WHERE id=? AND status='open'").bind(t, q.id).run();
+if (res.meta.changes && q.channel_id && q.message_id) await discord(env, "PATCH", `/channels/${q.channel_id}/messages/${q.message_id}`, requestCard(q, "expired"));
+})());
 },
 };

@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS gifts (
   channel_id TEXT, message_id TEXT, token TEXT,
   created_at INTEGER NOT NULL, expires_at INTEGER NOT NULL,
   status TEXT NOT NULL DEFAULT 'open', -- open | awarded | expired | received | voided
-  winner_id TEXT, winner_name TEXT, awarded_at INTEGER, received_at INTEGER
+  winner_id TEXT, winner_name TEXT, awarded_at INTEGER, received_at INTEGER,
+  nudged_at INTEGER                    -- when the winner was reminded to press Received
 );
 CREATE TABLE IF NOT EXISTS claims (
   gift_id INTEGER NOT NULL, user_id TEXT NOT NULL, user_name TEXT NOT NULL,

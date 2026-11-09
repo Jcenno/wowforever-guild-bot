@@ -29,3 +29,11 @@ test("ed25519 verify path works with webcrypto", async () => {
   assert.equal(await crypto.subtle.verify("Ed25519", key, sig, new TextEncoder().encode(ts + body)), true);
   assert.equal(await crypto.subtle.verify("Ed25519", key, sig, new TextEncoder().encode("x" + body)), false);
 });
+import { needClasses } from "../src/index.js";
+test("Need is gated by armor type, with low-level leather and mail wider", () => {
+  assert.deepEqual(needClasses({ armor: "Plate", req_level: 45 }), ["Warrior", "Paladin"]);
+  assert.deepEqual(needClasses({ armor: "Mail", req_level: 22 }), ["Hunter", "Shaman", "Warrior", "Paladin"]);
+  assert.deepEqual(needClasses({ armor: "Cloth", req_level: 10 }), ["Mage", "Priest", "Warlock"]);
+  assert.equal(needClasses({ armor: "Sword", req_level: 30 }), null);
+  assert.deepEqual(needClasses({ armor: "Plate", classes: JSON.stringify(["Paladin"]) }), ["Paladin"]);
+});
