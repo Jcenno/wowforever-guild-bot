@@ -206,6 +206,284 @@
         "quests": 86
       },
       "xp": 3828
+    },
+    "us:whizz-aard": {
+      "achievements": {
+        "776": "Explore Elwynn Forest"
+      },
+      "avatar": "https://render.worldofwarcraft.com/forever-us/character/151/7402647-avatar.jpg",
+      "boss_kills": {
+        "15027": {
+          "boss": "Bazzalan",
+          "count": 1,
+          "instance": "Ragefire Chasm"
+        },
+        "63573": {
+          "boss": "Durgen Dirgehammer",
+          "count": 1,
+          "instance": "Hall of Thanes"
+        }
+      },
+      "class": "Mage",
+      "dungeons": {},
+      "first_seen": 1794190280,
+      "gear": {
+        "270261": {
+          "name": "Robes of the Disgraced Thane",
+          "quality": "RARE"
+        }
+      },
+      "ilvl": 6,
+      "last_login": 1794183501000,
+      "level": 18,
+      "level_at": {
+        "18": 1794190280
+      },
+      "professions": {
+        "Cooking": 39,
+        "Enchanting": 40,
+        "First Aid": 75,
+        "Tailoring": 59
+      },
+      "race": "Human",
+      "raids": {},
+      "recipes": {
+        "Cooking": [
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
+            "id": 1536,
+            "name": "Spiced Wolf Meat"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
+          }
+        ],
+        "Enchanting": [
+          {
+            "id": 7999,
+            "name": "Lesser Magic Wand"
+          },
+          {
+            "id": 7316,
+            "name": "Disenchant"
+          },
+          {
+            "id": 4289,
+            "name": "Enchant Bracer - Inferior Stamina"
+          },
+          {
+            "id": 4290,
+            "name": "Enchant Chest - Inferior Stamina"
+          },
+          {
+            "id": 4291,
+            "name": "Runed Copper Rod"
+          },
+          {
+            "id": 4293,
+            "name": "Enchant Bracer - Minor Deflect"
+          },
+          {
+            "id": 52649,
+            "name": "Enchanted Lute"
+          },
+          {
+            "id": 54213,
+            "name": "Dust to Motes"
+          },
+          {
+            "id": 54214,
+            "name": "Novice's Practice Wand"
+          }
+        ],
+        "First Aid": [
+          {
+            "id": 1838,
+            "name": "Linen Bandage"
+          },
+          {
+            "id": 1839,
+            "name": "Heavy Linen Bandage"
+          },
+          {
+            "id": 52641,
+            "name": "First Aid Kit"
+          },
+          {
+            "id": 54191,
+            "name": "Minor Healing Potion"
+          },
+          {
+            "id": 54192,
+            "name": "Lesser Healing Potion"
+          }
+        ],
+        "Tailoring": [
+          {
+            "id": 6577,
+            "name": "Simple Linen Boots"
+          },
+          {
+            "id": 6578,
+            "name": "Simple Kilt"
+          },
+          {
+            "id": 55423,
+            "name": "Novice Arcanist's Sash"
+          },
+          {
+            "id": 6576,
+            "name": "Simple Linen Pants"
+          },
+          {
+            "id": 2408,
+            "name": "Brown Linen Pants"
+          },
+          {
+            "id": 2409,
+            "name": "Brown Linen Shirt"
+          },
+          {
+            "id": 4848,
+            "name": "Linen Belt"
+          },
+          {
+            "id": 2359,
+            "name": "Bolt of Linen Cloth"
+          },
+          {
+            "id": 2360,
+            "name": "Linen Cloak"
+          },
+          {
+            "id": 2361,
+            "name": "Brown Linen Vest"
+          },
+          {
+            "id": 2363,
+            "name": "Linen Boots"
+          },
+          {
+            "id": 2364,
+            "name": "Red Linen Shirt"
+          },
+          {
+            "id": 2365,
+            "name": "White Linen Shirt"
+          },
+          {
+            "id": 2366,
+            "name": "Blue Linen Shirt"
+          },
+          {
+            "id": 2367,
+            "name": "Reinforced Linen Cape"
+          },
+          {
+            "id": 2368,
+            "name": "Barbaric Linen Vest"
+          },
+          {
+            "id": 2369,
+            "name": "Green Linen Shirt"
+          },
+          {
+            "id": 2378,
+            "name": "Heavy Linen Gloves"
+          },
+          {
+            "id": 2379,
+            "name": "Green Linen Bracers"
+          },
+          {
+            "id": 2380,
+            "name": "Handstitched Linen Britches"
+          },
+          {
+            "id": 4001,
+            "name": "Linen Bag"
+          },
+          {
+            "id": 4708,
+            "name": "Simple Dress"
+          },
+          {
+            "id": 4302,
+            "name": "Brown Linen Robe"
+          },
+          {
+            "id": 4303,
+            "name": "White Linen Robe"
+          },
+          {
+            "id": 56361,
+            "name": "Faction Banner"
+          },
+          {
+            "id": 55424,
+            "name": "Novice Ardent's Sash"
+          },
+          {
+            "id": 55366,
+            "name": "Linen Reagent Bag"
+          }
+        ]
+      },
+      "reputations": {
+        "Darnassus": {
+          "name": "Friendly",
+          "raw": 3777,
+          "tier": 4
+        },
+        "Gadgetzan": {
+          "name": "Neutral",
+          "raw": 600,
+          "tier": 3
+        },
+        "Gnomeregan Exiles": {
+          "name": "Friendly",
+          "raw": 4021,
+          "tier": 4
+        },
+        "Ironforge": {
+          "name": "Friendly",
+          "raw": 4360,
+          "tier": 4
+        },
+        "Stormwind": {
+          "name": "Honored",
+          "raw": 10978,
+          "tier": 5
+        }
+      },
+      "spec": "Arcane",
+      "stats": {
+        "critters": 15,
+        "deaths": 37,
+        "drinks": 225,
+        "flights": 16,
+        "food": 59,
+        "health_potions": 29,
+        "hearths": 9,
+        "killing_blows": 773,
+        "mana_potions": 4,
+        "mobs": 935,
+        "need_rolls": 3,
+        "quests": 139
+      },
+      "xp": 16146
     }
   },
   "group": {
@@ -227,13 +505,16 @@
         "3111": "Cerulean Prideclaw",
         "3130": "Veteran Adventurer's Loyal Companion"
       }
+    },
+    "us:whizz-aard": {
+      "mounts": {}
     }
   },
   "pending": [],
   "roster": {
     "message_id": "1569012691186622596"
   },
-  "saved_at": 1794189668,
+  "saved_at": 1794190280,
   "weekly": {
     "baseline": {
       "us:steel-appeal": {
@@ -269,6 +550,42 @@
           "quests": 86
         },
         "xp": 3828
+      },
+      "us:whizz-aard": {
+        "achievements": 1,
+        "clears": {
+          "Hall of Thanes": 1
+        },
+        "epics": [],
+        "level": 18,
+        "professions": {
+          "Cooking": 39,
+          "Enchanting": 40,
+          "First Aid": 75,
+          "Tailoring": 59
+        },
+        "rep": {
+          "Darnassus": 3777,
+          "Gadgetzan": 600,
+          "Gnomeregan Exiles": 4021,
+          "Ironforge": 4360,
+          "Stormwind": 10978
+        },
+        "stats": {
+          "critters": 15,
+          "deaths": 37,
+          "drinks": 225,
+          "flights": 16,
+          "food": 59,
+          "health_potions": 29,
+          "hearths": 9,
+          "killing_blows": 773,
+          "mana_potions": 4,
+          "mobs": 935,
+          "need_rolls": 3,
+          "quests": 139
+        },
+        "xp": 16146
       }
     },
     "last_awards": [],
