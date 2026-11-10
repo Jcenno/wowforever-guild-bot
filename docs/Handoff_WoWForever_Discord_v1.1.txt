@@ -68,7 +68,7 @@ B) Guild Bot (Cloudflare Worker "guild-bot" + D1) — folder worker/
 Channels: #general (welcome card pinned), #clips-and-highlights, GUILD: #announcements (news cards), #roster (boards, first board message pinned), #bot-commands (command list pinned); OFFICERS: #mod-alerts, #bot-staging (preview channel, Guild Bot has access); voice: Leveling, Dungeon 1, Dungeon 2, Raid.
 Roles (top to bottom): Admin, Guild Bot (Manage Roles), Officer, class roles (Warrior..Druid, Blizzard colors), Tank, Healer, DPS, Dings, Member, @everyone. Note: Officer is colored and above the class roles, so officers show the Officer color, not class color (Joe has not asked to change this).
 Bots: Guild Bot only. Jeeves (Armory) and the old Guild Setup bot were kicked 9 Nov.
-Members' mains: Joe = Steel Appeal (Warrior), Tanner = Whizz Aard (Mage), Quinn = "Pawnage Ownage" (404 in Blizzard API; exact spelling still needed).
+Members' mains: Joe = Steel Appeal (Warrior), Tanner = Whizz Aard (Mage), Quinn = Pwanage Ownage (Druid; tracked since 9 Nov).
 Default notifications: mentions only. Only the Dings role gets pinged.
 
 ================================================================
@@ -76,7 +76,7 @@ Default notifications: mentions only. Only the Dings role gets pinged.
 ================================================================
 Done and verified live: tracker on 15-min cadence; roster + profession boards; digest; recap; guild firsts; news cards; all 11 commands; class colors via /iam; Dings + Tank/Healer/DPS buttons; weekly Workshop report; heartbeat; code reviews of both codebases applied (Worker 13 fixes, tracker 19 items).
 Open:
-- Quinn's exact character name -> characters.json (friends[].characters), push, dispatch a run.
+- (done 9 Nov) Quinn = Pwanage Ownage, tracked.
 - Optional, Joe's call: music bot (research which are alive/allowed first), AI art for server icon + emoji (Recraft/Midjourney), boost not needed.
 - Watch: Tanner's Red Linen Bag gift (closes ~18:41 Chicago 9 Nov): card flips to awarded, reply under the card pings Joe + tx.tan, Received appears. First real Need/Greed gift between two people; first real /need completed by someone else; Sunday 19:00 both the recap (tracker) and the Workshop card (Worker) post to #general.
 - Class tuning hotfix 10 Nov 2026 (Joe wants warrior rage numbers rechecked after it).
