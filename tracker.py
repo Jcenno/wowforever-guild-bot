@@ -43,6 +43,8 @@ Environment variables:
   DISCORD_WEBHOOK_URL         Discord webhook for the #dings channel
   DISCORD_ROSTER_WEBHOOK_URL  optional second webhook for the roster board (#roster);
                               defaults to DISCORD_WEBHOOK_URL
+  DISCORD_PROGRESS_WEBHOOK_URL optional webhook for the quiet Progress digest (#progress);
+                              defaults to the roster webhook
   DISCORD_NEWS_WEBHOOK_URL    optional webhook for #announcements; official Forever posts only
   DISCORD_STAFF_WEBHOOK_URL   optional webhook for the officers-only channel
   PROFILE_NAMESPACE           optional override, default profile-forever-{region}
@@ -1445,8 +1447,10 @@ def post_queue_item(item, kind, webhook, staff_hook, news_hook):
         else:
             print("[info] DISCORD_STAFF_WEBHOOK_URL not set; skipped the officers-only inactive list.")
     elif kind == "updates":
-        # Quiet digest goes to the roster channel when one exists; #general keeps milestones and the recap.
-        post_to_discord(os.environ.get("DISCORD_ROSTER_WEBHOOK_URL", "").strip() or webhook, item["embeds"])
+        # Quiet digest goes to #progress so #roster stays board-only; falls back to #roster, then #general.
+        hook = (os.environ.get("DISCORD_PROGRESS_WEBHOOK_URL", "").strip()
+                or os.environ.get("DISCORD_ROSTER_WEBHOOK_URL", "").strip() or webhook)
+        post_to_discord(hook, item["embeds"])
     elif kind == "recap":
         post_to_discord(webhook, item["embeds"])
     elif kind == "news":
