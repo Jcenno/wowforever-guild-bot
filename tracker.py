@@ -507,6 +507,10 @@ CLASS_ICON = {"Warrior": "⚔️", "Paladin": "🛡️", "Hunter": "🏹", "Rogu
 
 
 def raid_role(snap):
+    # characters.json "role" (Tank/Healer/DPS) wins over the talent guess: people level as one spec and raid as another.
+    fixed = str(snap.get("role") or "").strip().lower()
+    if fixed in ("tank", "healer", "heal", "dps"):
+        return {"heal": "Healer"}.get(fixed, fixed.capitalize() if fixed != "dps" else "DPS")
     key = (snap.get("class"), snap.get("spec"))
     if key in TANK_SPECS:
         return "Tank"
@@ -1607,6 +1611,8 @@ def main():
             unavailable.append(display_name(c))
             continue
 
+        if c.get("role"):
+            snap["role"] = c["role"]
         old = state["characters"].get(key)
         lines, hype = [], []
         if old is None:
