@@ -312,7 +312,7 @@
         }
       },
       "ilvl": 11,
-      "last_login": 1794337402000,
+      "last_login": 1794355311000,
       "level": 19,
       "level_at": {
         "10": 1794152175,
@@ -336,72 +336,16 @@
       "recipes": {
         "Blacksmithing": [
           {
-            "id": 1798,
-            "name": "Rough Weightstone"
-          },
-          {
-            "id": 1800,
-            "name": "Coarse Weightstone"
-          },
-          {
-            "id": 1849,
-            "name": "Heavy Copper Broadsword"
-          },
-          {
-            "id": 1856,
-            "name": "Rough Grinding Stone"
-          },
-          {
-            "id": 1857,
-            "name": "Copper Chain Vest"
-          },
-          {
-            "id": 1859,
-            "name": "Runed Copper Pants"
-          },
-          {
-            "id": 1860,
-            "name": "Gemmed Copper Gauntlets"
-          },
-          {
-            "id": 1861,
-            "name": "Coarse Grinding Stone"
-          },
-          {
-            "id": 1862,
-            "name": "Rough Bronze Shoulders"
-          },
-          {
-            "id": 6636,
-            "name": "Rough Copper Vest"
-          },
-          {
-            "id": 1631,
-            "name": "Rough Sharpening Stone"
-          },
-          {
             "id": 1632,
             "name": "Copper Chain Belt"
           },
           {
-            "id": 1633,
-            "name": "Copper Chain Pants"
+            "id": 4285,
+            "name": "Heavy Copper Maul"
           },
           {
-            "id": 1634,
-            "name": "Copper Bracers"
-          },
-          {
-            "id": 1636,
-            "name": "Coarse Sharpening Stone"
-          },
-          {
-            "id": 1637,
-            "name": "Runed Copper Belt"
-          },
-          {
-            "id": 1638,
-            "name": "Runed Copper Breastplate"
+            "id": 11183,
+            "name": "Silver Skeleton Key"
           },
           {
             "id": 1639,
@@ -412,108 +356,164 @@
             "name": "Rough Bronze Cuirass"
           },
           {
-            "id": 1649,
-            "name": "Bronze Mace"
+            "id": 52645,
+            "name": "Sharpening Wheel"
           },
           {
-            "id": 1650,
-            "name": "Bronze Axe"
+            "id": 1636,
+            "name": "Coarse Sharpening Stone"
           },
           {
-            "id": 1652,
-            "name": "Copper Shortsword"
+            "id": 1798,
+            "name": "Rough Weightstone"
+          },
+          {
+            "id": 1633,
+            "name": "Copper Chain Pants"
           },
           {
             "id": 4389,
             "name": "Rough Bronze Boots"
           },
           {
-            "id": 4390,
-            "name": "Silver Rod"
+            "id": 6636,
+            "name": "Rough Copper Vest"
           },
           {
-            "id": 11183,
-            "name": "Silver Skeleton Key"
+            "id": 1652,
+            "name": "Copper Shortsword"
+          },
+          {
+            "id": 1631,
+            "name": "Rough Sharpening Stone"
+          },
+          {
+            "id": 1650,
+            "name": "Bronze Axe"
+          },
+          {
+            "id": 1862,
+            "name": "Rough Bronze Shoulders"
+          },
+          {
+            "id": 1856,
+            "name": "Rough Grinding Stone"
+          },
+          {
+            "id": 1649,
+            "name": "Bronze Mace"
+          },
+          {
+            "id": 1634,
+            "name": "Copper Bracers"
+          },
+          {
+            "id": 1637,
+            "name": "Runed Copper Belt"
           },
           {
             "id": 3972,
             "name": "Pearl-handled Dagger"
           },
           {
-            "id": 4285,
-            "name": "Heavy Copper Maul"
-          },
-          {
-            "id": 52645,
-            "name": "Sharpening Wheel"
+            "id": 1800,
+            "name": "Coarse Weightstone"
           },
           {
             "id": 54212,
             "name": "Copper Rod"
+          },
+          {
+            "id": 1859,
+            "name": "Runed Copper Pants"
+          },
+          {
+            "id": 1857,
+            "name": "Copper Chain Vest"
+          },
+          {
+            "id": 1849,
+            "name": "Heavy Copper Broadsword"
+          },
+          {
+            "id": 1638,
+            "name": "Runed Copper Breastplate"
+          },
+          {
+            "id": 4390,
+            "name": "Silver Rod"
+          },
+          {
+            "id": 1860,
+            "name": "Gemmed Copper Gauntlets"
+          },
+          {
+            "id": 1861,
+            "name": "Coarse Grinding Stone"
           }
         ],
         "Cooking": [
           {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
-          },
-          {
-            "id": 1536,
-            "name": "Spiced Wolf Meat"
-          },
-          {
-            "id": 1537,
-            "name": "Roasted Boar Meat"
-          },
-          {
-            "id": 3926,
-            "name": "Kaldorei Spider Kabob"
+            "id": 4786,
+            "name": "Herb Baked Egg"
           },
           {
             "id": 1674,
             "name": "Beer Basted Boar Ribs"
           },
           {
+            "id": 52640,
+            "name": "Basic Campfire"
+          },
+          {
+            "id": 3926,
+            "name": "Kaldorei Spider Kabob"
+          },
+          {
+            "id": 1536,
+            "name": "Spiced Wolf Meat"
+          },
+          {
             "id": 4353,
             "name": "Brilliant Smallfish"
           },
           {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
             "id": 4354,
             "name": "Slitherskin Mackerel"
-          },
-          {
-            "id": 4786,
-            "name": "Herb Baked Egg"
-          },
-          {
-            "id": 52640,
-            "name": "Basic Campfire"
           }
         ],
         "First Aid": [
-          {
-            "id": 1838,
-            "name": "Linen Bandage"
-          },
           {
             "id": 1839,
             "name": "Heavy Linen Bandage"
           },
           {
-            "id": 1840,
-            "name": "Wool Bandage"
-          },
-          {
-            "id": 52641,
-            "name": "First Aid Kit"
+            "id": 54192,
+            "name": "Lesser Healing Potion"
           },
           {
             "id": 54191,
             "name": "Minor Healing Potion"
           },
           {
-            "id": 54192,
-            "name": "Lesser Healing Potion"
+            "id": 52641,
+            "name": "First Aid Kit"
+          },
+          {
+            "id": 1840,
+            "name": "Wool Bandage"
+          },
+          {
+            "id": 1838,
+            "name": "Linen Bandage"
           }
         ],
         "Fishing": [
@@ -524,8 +524,8 @@
         ],
         "Mining": [
           {
-            "id": 1848,
-            "name": "Smelt Tin"
+            "id": 3324,
+            "name": "Smelt Copper"
           },
           {
             "id": 1570,
@@ -536,8 +536,8 @@
             "name": "Smelt Bronze"
           },
           {
-            "id": 3324,
-            "name": "Smelt Copper"
+            "id": 1848,
+            "name": "Smelt Tin"
           },
           {
             "id": 52643,
@@ -923,50 +923,50 @@
     }
   },
   "news_seen": {
-    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794355270,
-    "10 11 balance faction pvp updates": 1794355270,
-    "10 11 class incoming tuning": 1794355270,
-    "10 16 forever join of stress test the updated warcraft world": 1794355270,
-    "11 11 balance faction pvp updates": 1794355270,
-    "11 2 beta development forever notes updated wow": 1794355270,
-    "11 2026 6 forever hotfixes wow": 1794355270,
-    "11 2026 9 forever hotfixes wow": 1794355270,
-    "11 3 beta development forever notes updated wow": 1794355270,
-    "11 5 forever issues known updated wow": 1794355270,
-    "11 8 dungeon enemy increased xp": 1794355270,
-    "60 at for gold quests": 1794355270,
-    "60 at from gold lvl no quests seriously": 1794355270,
-    "8 city do i inside main maybe people see the why": 1794355270,
-    "a explore forever gamepad with wow": 1794355270,
-    "a for friend invite issues players resolved": 1794355270,
-    "about bug category forever report the wow": 1794355270,
+    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794356166,
+    "10 11 balance faction pvp updates": 1794356166,
+    "10 11 class incoming tuning": 1794356166,
+    "10 16 forever join of stress test the updated warcraft world": 1794356166,
+    "11 11 balance faction pvp updates": 1794356166,
+    "11 2 beta development forever notes updated wow": 1794356166,
+    "11 2026 6 forever hotfixes wow": 1794356166,
+    "11 2026 9 forever hotfixes wow": 1794356166,
+    "11 3 beta development forever notes updated wow": 1794356166,
+    "11 5 forever issues known updated wow": 1794356166,
+    "11 8 dungeon enemy increased xp": 1794356166,
+    "60 at for gold quests": 1794356166,
+    "60 at from gold lvl no quests seriously": 1794356166,
+    "8 city do i inside main maybe people see the why": 1794356166,
+    "a explore forever gamepad with wow": 1794356166,
+    "a for friend invite issues players resolved": 1794356166,
+    "about bug category forever report the wow": 1794356166,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794355270,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794356166,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
-    "and attunement forever locations of overview raid raid sizes warcraft world": 1794355270,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794355270,
-    "and familiar feels forever new s what what wow": 1794355270,
-    "and language settings social": 1794355270,
+    "and attunement forever locations of overview raid raid sizes warcraft world": 1794356166,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794356166,
+    "and familiar feels forever new s what what wow": 1794356166,
+    "and language settings social": 1794356166,
     "are early forever live name now of reservations warcraft world": 1794347719,
-    "around campfire forever gather in of the warcraft world": 1794355270,
-    "beta from group issues persist phasing still with": 1794355270,
-    "broken zeppelins": 1794355270,
-    "bug forever forum guidelines report wow": 1794355270,
-    "choose forever in of ruleset warcraft world your": 1794355270,
+    "around campfire forever gather in of the warcraft world": 1794356166,
+    "beta from group issues persist phasing still with": 1794356166,
+    "broken zeppelins": 1794356166,
+    "bug forever forum guidelines report wow": 1794356166,
+    "choose forever in of ruleset warcraft world your": 1794356166,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1794355270,
-    "dungeon increased majority the wants xp": 1794355270,
-    "dungeons explore forever new of of the warcraft world": 1794355270,
+    "dungeon enough not still xp": 1794356166,
+    "dungeon increased majority the wants xp": 1794356166,
+    "dungeons explore forever new of of the warcraft world": 1794356166,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794355270,
-    "forever guide new of player s starter to warcraft welcome world": 1794355270,
-    "forever launch of time warcraft world": 1794355270,
-    "forever live now of warcraft world": 1794355270,
-    "forever short story the unbowed watch wow": 1794355270,
+    "forever forever forging watch wow": 1794356166,
+    "forever guide new of player s starter to warcraft welcome world": 1794356166,
+    "forever launch of time warcraft world": 1794356166,
+    "forever live now of warcraft world": 1794356166,
+    "forever short story the unbowed watch wow": 1794356166,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
     "known issues wow forever updated nov": 1794195649,
@@ -1026,7 +1026,7 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794355271,
+  "saved_at": 1794356168,
   "weekly": {
     "baseline": {
       "us:pwanage-ownage": {
