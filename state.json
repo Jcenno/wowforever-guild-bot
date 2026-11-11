@@ -27,20 +27,21 @@
           "quality": "RARE"
         }
       },
-      "ilvl": 9,
-      "last_login": 1794405268000,
-      "level": 19,
+      "ilvl": 10,
+      "last_login": 1794417048000,
+      "level": 20,
       "level_at": {
         "17": 1794274699,
         "18": 1794283267,
-        "19": 1794365167
+        "19": 1794365167,
+        "20": 1794417433
       },
       "professions": {
-        "Alchemy": 108,
-        "Cooking": 80,
+        "Alchemy": 118,
+        "Cooking": 141,
         "First Aid": 62,
         "Fishing": 109,
-        "Herbalism": 147
+        "Herbalism": 148
       },
       "race": "Night Elf",
       "raids": {},
@@ -133,12 +134,32 @@
             "name": "Herb Baked Egg"
           },
           {
+            "id": 1872,
+            "name": "Blood Sausage"
+          },
+          {
+            "id": 3963,
+            "name": "Goblin Deviled Clams"
+          },
+          {
             "id": 1543,
             "name": "Crab Cake"
           },
           {
+            "id": 1873,
+            "name": "Murloc Fin Soup"
+          },
+          {
+            "id": 1674,
+            "name": "Beer Basted Boar Ribs"
+          },
+          {
             "id": 52640,
             "name": "Basic Campfire"
+          },
+          {
+            "id": 4359,
+            "name": "Bristle Whisker Catfish"
           },
           {
             "id": 4355,
@@ -149,8 +170,20 @@
             "name": "Coyote Steak"
           },
           {
+            "id": 1539,
+            "name": "Goretusk Liver Pie"
+          },
+          {
+            "id": 1548,
+            "name": "Seasoned Wolf Kabob"
+          },
+          {
             "id": 1545,
             "name": "Dry Pork Ribs"
+          },
+          {
+            "id": 13344,
+            "name": "Smoked Sagefish"
           },
           {
             "id": 3926,
@@ -163,6 +196,14 @@
           {
             "id": 4391,
             "name": "Rainbow Fin Albacore"
+          },
+          {
+            "id": 1544,
+            "name": "Cooked Crab Claw"
+          },
+          {
+            "id": 1546,
+            "name": "Redridge Goulash"
           },
           {
             "id": 3930,
@@ -181,8 +222,16 @@
             "name": "Charred Wolf Meat"
           },
           {
+            "id": 1540,
+            "name": "Westfall Stew"
+          },
+          {
             "id": 4354,
             "name": "Slitherskin Mackerel"
+          },
+          {
+            "id": 1871,
+            "name": "Crocolisk Steak"
           }
         ],
         "First Aid": [
@@ -219,11 +268,15 @@
         ],
         "Herbalism": [
           {
+            "id": 54116,
+            "name": "Herbalism"
+          },
+          {
             "id": 1419,
             "name": "Herbalism"
           },
           {
-            "id": 54115,
+            "id": 2041,
             "name": "Herbalism"
           },
           {
@@ -233,14 +286,19 @@
         ]
       },
       "reputations": {
+        "Azeroth Commerce Authority": {
+          "name": "Neutral",
+          "raw": 2000,
+          "tier": 3
+        },
         "Cenarion Circle": {
           "name": "Neutral",
-          "raw": 2785,
+          "raw": 2960,
           "tier": 3
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 11732,
+          "raw": 11813,
           "tier": 5
         },
         "Gadgetzan": {
@@ -250,17 +308,22 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 5295,
+          "raw": 5376,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 5151,
+          "raw": 5232,
           "tier": 4
+        },
+        "Silverwing Sentinels": {
+          "name": "Neutral",
+          "raw": 0,
+          "tier": 3
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 5076,
+          "raw": 5501,
           "tier": 4
         }
       },
@@ -269,18 +332,18 @@
       "stats": {
         "critters": 14,
         "deaths": 15,
-        "drinks": 65,
-        "flights": 22,
-        "food": 39,
+        "drinks": 66,
+        "flights": 23,
+        "food": 40,
         "health_potions": 18,
-        "hearths": 12,
-        "killing_blows": 481,
-        "mana_potions": 24,
-        "mobs": 926,
-        "need_rolls": 7,
-        "quests": 151
+        "hearths": 13,
+        "killing_blows": 499,
+        "mana_potions": 28,
+        "mobs": 976,
+        "need_rolls": 8,
+        "quests": 163
       },
-      "xp": 16145
+      "xp": 8673
     },
     "us:steel-appeal": {
       "achievements": {
@@ -971,51 +1034,51 @@
     }
   },
   "news_seen": {
-    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794416482,
-    "10 11 2026 forever hotfixes wow": 1794416482,
-    "10 11 balance faction pvp updates": 1794416482,
-    "10 11 class incoming tuning": 1794416482,
-    "10 16 forever join of stress test the updated warcraft world": 1794416482,
-    "11 11 balance faction pvp updates": 1794416482,
-    "11 2 beta development forever notes updated wow": 1794416482,
+    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794417433,
+    "10 11 2026 forever hotfixes wow": 1794417433,
+    "10 11 balance faction pvp updates": 1794417433,
+    "10 11 class incoming tuning": 1794417433,
+    "10 16 forever join of stress test the updated warcraft world": 1794417433,
+    "11 11 balance faction pvp updates": 1794417433,
+    "11 2 beta development forever notes updated wow": 1794417433,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
-    "11 3 beta development forever notes updated wow": 1794416482,
-    "11 5 forever issues known updated wow": 1794416482,
-    "11 8 dungeon enemy increased xp": 1794416482,
-    "60 at for gold quests": 1794416482,
-    "60 at from gold lvl no quests seriously": 1794416482,
-    "8 city do i inside main maybe people see the why": 1794416482,
-    "a explore forever gamepad with wow": 1794416482,
-    "a for friend invite issues players resolved": 1794416482,
-    "about bug category forever report the wow": 1794416482,
+    "11 3 beta development forever notes updated wow": 1794417433,
+    "11 5 forever issues known updated wow": 1794417433,
+    "11 8 dungeon enemy increased xp": 1794417433,
+    "60 at for gold quests": 1794417433,
+    "60 at from gold lvl no quests seriously": 1794417433,
+    "8 city do i inside main maybe people see the why": 1794417433,
+    "a explore forever gamepad with wow": 1794417433,
+    "a for friend invite issues players resolved": 1794417433,
+    "about bug category forever report the wow": 1794417433,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794416482,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794417433,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
-    "and attunement forever locations of overview raid raid sizes warcraft world": 1794416482,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794416482,
-    "and familiar feels forever new s what what wow": 1794416482,
-    "and language settings social": 1794416482,
+    "and attunement forever locations of overview raid raid sizes warcraft world": 1794417433,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794417433,
+    "and familiar feels forever new s what what wow": 1794417433,
+    "and language settings social": 1794417433,
     "are early forever live name now of reservations warcraft world": 1794347719,
-    "around campfire forever gather in of the warcraft world": 1794416482,
-    "beta from group issues persist phasing still with": 1794416482,
-    "broken zeppelins": 1794416482,
-    "bug forever forum guidelines report wow": 1794416482,
-    "bugged chaos missing monday s server shaman since totems": 1794416482,
-    "choose forever in of ruleset warcraft world your": 1794416482,
+    "around campfire forever gather in of the warcraft world": 1794417433,
+    "beta from group issues persist phasing still with": 1794417433,
+    "broken zeppelins": 1794417433,
+    "bug forever forum guidelines report wow": 1794417433,
+    "bugged chaos missing monday s server shaman since totems": 1794417433,
+    "choose forever in of ruleset warcraft world your": 1794417433,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1794416482,
-    "dungeon increased majority the wants xp": 1794416482,
-    "dungeons explore forever new of of the warcraft world": 1794416482,
+    "dungeon enough not still xp": 1794417433,
+    "dungeon increased majority the wants xp": 1794417433,
+    "dungeons explore forever new of of the warcraft world": 1794417433,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794416482,
-    "forever guide new of player s starter to warcraft welcome world": 1794416482,
-    "forever launch of time warcraft world": 1794416482,
-    "forever live now of warcraft world": 1794416482,
+    "forever forever forging watch wow": 1794417433,
+    "forever guide new of player s starter to warcraft welcome world": 1794417433,
+    "forever launch of time warcraft world": 1794417433,
+    "forever live now of warcraft world": 1794417433,
     "forever short story the unbowed watch wow": 1794358867,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
@@ -1076,7 +1139,7 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794416485,
+  "saved_at": 1794417435,
   "weekly": {
     "baseline": {
       "us:pwanage-ownage": {
