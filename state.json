@@ -622,7 +622,7 @@
         }
       },
       "ilvl": 6,
-      "last_login": 1794285543000,
+      "last_login": 1794372478000,
       "level": 21,
       "level_at": {
         "18": 1794190280,
@@ -632,7 +632,7 @@
       },
       "professions": {
         "Cooking": 39,
-        "Enchanting": 80,
+        "Enchanting": 103,
         "First Aid": 75,
         "Tailoring": 81
       },
@@ -641,8 +641,12 @@
       "recipes": {
         "Cooking": [
           {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
           },
           {
             "id": 1536,
@@ -653,30 +657,22 @@
             "name": "Roasted Boar Meat"
           },
           {
-            "id": 4786,
-            "name": "Herb Baked Egg"
-          },
-          {
-            "id": 52640,
-            "name": "Basic Campfire"
+            "id": 1535,
+            "name": "Charred Wolf Meat"
           }
         ],
         "Enchanting": [
           {
-            "id": 7999,
-            "name": "Lesser Magic Wand"
+            "id": 4368,
+            "name": "Enchant 2H Weapon - Minor Impact"
           },
           {
-            "id": 8000,
-            "name": "Greater Magic Wand"
+            "id": 4290,
+            "name": "Enchant Chest - Inferior Stamina"
           },
           {
-            "id": 4352,
-            "name": "Enchant Chest - Lesser Stamina"
-          },
-          {
-            "id": 4362,
-            "name": "Enchant Cloak - Minor Protection"
+            "id": 52649,
+            "name": "Enchanted Lute"
           },
           {
             "id": 7316,
@@ -687,112 +683,156 @@
             "name": "Enchant Bracer - Inferior Stamina"
           },
           {
-            "id": 4290,
-            "name": "Enchant Chest - Inferior Stamina"
-          },
-          {
             "id": 4291,
             "name": "Runed Copper Rod"
           },
           {
-            "id": 4292,
-            "name": "Enchant Chest - Minor Absorption"
-          },
-          {
-            "id": 4293,
-            "name": "Enchant Bracer - Minor Deflect"
+            "id": 8000,
+            "name": "Greater Magic Wand"
           },
           {
             "id": 4300,
             "name": "Enchant Cloak - Minor Resistance"
           },
           {
+            "id": 4292,
+            "name": "Enchant Chest - Minor Absorption"
+          },
+          {
+            "id": 7999,
+            "name": "Lesser Magic Wand"
+          },
+          {
+            "id": 4370,
+            "name": "Runed Silver Rod"
+          },
+          {
+            "id": 54214,
+            "name": "Novice's Practice Wand"
+          },
+          {
             "id": 4301,
             "name": "Enchant Bracer - Minor Stamina"
           },
           {
-            "id": 52649,
-            "name": "Enchanted Lute"
+            "id": 4364,
+            "name": "Enchant Bracer - Minor Agility"
+          },
+          {
+            "id": 4352,
+            "name": "Enchant Chest - Lesser Stamina"
+          },
+          {
+            "id": 4362,
+            "name": "Enchant Cloak - Minor Protection"
+          },
+          {
+            "id": 4367,
+            "name": "Enchant Weapon - Minor Striking"
           },
           {
             "id": 54213,
             "name": "Dust to Motes"
           },
           {
-            "id": 54214,
-            "name": "Novice's Practice Wand"
+            "id": 4293,
+            "name": "Enchant Bracer - Minor Deflect"
           }
         ],
         "First Aid": [
-          {
-            "id": 1838,
-            "name": "Linen Bandage"
-          },
           {
             "id": 1839,
             "name": "Heavy Linen Bandage"
           },
           {
-            "id": 52641,
-            "name": "First Aid Kit"
+            "id": 54192,
+            "name": "Lesser Healing Potion"
           },
           {
             "id": 54191,
             "name": "Minor Healing Potion"
           },
           {
-            "id": 54192,
-            "name": "Lesser Healing Potion"
+            "id": 52641,
+            "name": "First Aid Kit"
+          },
+          {
+            "id": 1838,
+            "name": "Linen Bandage"
           }
         ],
         "Tailoring": [
           {
-            "id": 6577,
-            "name": "Simple Linen Boots"
-          },
-          {
-            "id": 6578,
-            "name": "Simple Kilt"
-          },
-          {
-            "id": 55423,
-            "name": "Novice Arcanist's Sash"
-          },
-          {
-            "id": 6576,
-            "name": "Simple Linen Pants"
-          },
-          {
-            "id": 2408,
-            "name": "Brown Linen Pants"
-          },
-          {
-            "id": 2409,
-            "name": "Brown Linen Shirt"
-          },
-          {
-            "id": 4848,
-            "name": "Linen Belt"
+            "id": 56361,
+            "name": "Faction Banner"
           },
           {
             "id": 2359,
             "name": "Bolt of Linen Cloth"
           },
           {
-            "id": 2360,
-            "name": "Linen Cloak"
+            "id": 2408,
+            "name": "Brown Linen Pants"
           },
           {
-            "id": 2361,
-            "name": "Brown Linen Vest"
+            "id": 6578,
+            "name": "Simple Kilt"
+          },
+          {
+            "id": 4848,
+            "name": "Linen Belt"
+          },
+          {
+            "id": 4019,
+            "name": "Red Linen Bag"
+          },
+          {
+            "id": 55423,
+            "name": "Novice Arcanist's Sash"
+          },
+          {
+            "id": 2409,
+            "name": "Brown Linen Shirt"
+          },
+          {
+            "id": 2367,
+            "name": "Reinforced Linen Cape"
           },
           {
             "id": 2363,
             "name": "Linen Boots"
           },
           {
-            "id": 2364,
-            "name": "Red Linen Shirt"
+            "id": 2369,
+            "name": "Green Linen Shirt"
+          },
+          {
+            "id": 2380,
+            "name": "Handstitched Linen Britches"
+          },
+          {
+            "id": 2360,
+            "name": "Linen Cloak"
+          },
+          {
+            "id": 2370,
+            "name": "Bolt of Woolen Cloth"
+          },
+          {
+            "id": 6577,
+            "name": "Simple Linen Boots"
+          },
+          {
+            "id": 4708,
+            "name": "Simple Dress"
+          },
+          {
+            "id": 4303,
+            "name": "White Linen Robe"
+          },
+          {
+            "id": 4001,
+            "name": "Linen Bag"
           },
           {
             "id": 2365,
@@ -803,68 +843,44 @@
             "name": "Blue Linen Shirt"
           },
           {
-            "id": 2367,
-            "name": "Reinforced Linen Cape"
-          },
-          {
-            "id": 2368,
-            "name": "Barbaric Linen Vest"
-          },
-          {
-            "id": 2369,
-            "name": "Green Linen Shirt"
-          },
-          {
-            "id": 2370,
-            "name": "Bolt of Woolen Cloth"
-          },
-          {
-            "id": 2371,
-            "name": "Woolen Cape"
-          },
-          {
-            "id": 2378,
-            "name": "Heavy Linen Gloves"
+            "id": 2364,
+            "name": "Red Linen Shirt"
           },
           {
             "id": 2379,
             "name": "Green Linen Bracers"
           },
           {
-            "id": 2380,
-            "name": "Handstitched Linen Britches"
+            "id": 2368,
+            "name": "Barbaric Linen Vest"
           },
           {
-            "id": 4001,
-            "name": "Linen Bag"
-          },
-          {
-            "id": 4002,
-            "name": "Woolen Bag"
-          },
-          {
-            "id": 4019,
-            "name": "Red Linen Bag"
-          },
-          {
-            "id": 4708,
-            "name": "Simple Dress"
+            "id": 55424,
+            "name": "Novice Ardent's Sash"
           },
           {
             "id": 4302,
             "name": "Brown Linen Robe"
           },
           {
-            "id": 4303,
-            "name": "White Linen Robe"
+            "id": 2378,
+            "name": "Heavy Linen Gloves"
           },
           {
-            "id": 56361,
-            "name": "Faction Banner"
+            "id": 2371,
+            "name": "Woolen Cape"
           },
           {
-            "id": 55424,
-            "name": "Novice Ardent's Sash"
+            "id": 4002,
+            "name": "Woolen Bag"
+          },
+          {
+            "id": 2361,
+            "name": "Brown Linen Vest"
+          },
+          {
+            "id": 6576,
+            "name": "Simple Linen Pants"
           },
           {
             "id": 55366,
@@ -875,7 +891,7 @@
       "reputations": {
         "Darnassus": {
           "name": "Friendly",
-          "raw": 5690,
+          "raw": 5727,
           "tier": 4
         },
         "Gadgetzan": {
@@ -885,17 +901,17 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 4651,
+          "raw": 4688,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 5271,
+          "raw": 5308,
           "tier": 4
         },
         "Stormwind": {
           "name": "Honored",
-          "raw": 11935,
+          "raw": 12085,
           "tier": 5
         }
       },
@@ -903,18 +919,18 @@
       "stats": {
         "critters": 22,
         "deaths": 49,
-        "drinks": 326,
-        "flights": 22,
-        "food": 95,
+        "drinks": 331,
+        "flights": 24,
+        "food": 97,
         "health_potions": 32,
         "hearths": 12,
-        "killing_blows": 1029,
+        "killing_blows": 1048,
         "mana_potions": 7,
-        "mobs": 1269,
+        "mobs": 1357,
         "need_rolls": 3,
-        "quests": 174
+        "quests": 176
       },
-      "xp": 2633
+      "xp": 8511
     }
   },
   "group": {
@@ -931,51 +947,51 @@
     }
   },
   "news_seen": {
-    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794372366,
-    "10 11 2026 forever hotfixes wow": 1794372366,
-    "10 11 balance faction pvp updates": 1794372366,
-    "10 11 class incoming tuning": 1794372366,
-    "10 16 forever join of stress test the updated warcraft world": 1794372366,
-    "11 11 balance faction pvp updates": 1794372366,
-    "11 2 beta development forever notes updated wow": 1794372366,
+    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794373268,
+    "10 11 2026 forever hotfixes wow": 1794373268,
+    "10 11 balance faction pvp updates": 1794373268,
+    "10 11 class incoming tuning": 1794373268,
+    "10 16 forever join of stress test the updated warcraft world": 1794373268,
+    "11 11 balance faction pvp updates": 1794373268,
+    "11 2 beta development forever notes updated wow": 1794373268,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
-    "11 3 beta development forever notes updated wow": 1794372366,
-    "11 5 forever issues known updated wow": 1794372366,
-    "11 8 dungeon enemy increased xp": 1794372366,
-    "60 at for gold quests": 1794372366,
-    "60 at from gold lvl no quests seriously": 1794372366,
-    "8 city do i inside main maybe people see the why": 1794372366,
-    "a explore forever gamepad with wow": 1794372366,
-    "a for friend invite issues players resolved": 1794372366,
-    "about bug category forever report the wow": 1794372366,
+    "11 3 beta development forever notes updated wow": 1794373268,
+    "11 5 forever issues known updated wow": 1794373268,
+    "11 8 dungeon enemy increased xp": 1794373268,
+    "60 at for gold quests": 1794373268,
+    "60 at from gold lvl no quests seriously": 1794373268,
+    "8 city do i inside main maybe people see the why": 1794373268,
+    "a explore forever gamepad with wow": 1794373268,
+    "a for friend invite issues players resolved": 1794373268,
+    "about bug category forever report the wow": 1794373268,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794372366,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794373268,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
-    "and attunement forever locations of overview raid raid sizes warcraft world": 1794372366,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794372366,
-    "and familiar feels forever new s what what wow": 1794372366,
-    "and language settings social": 1794372366,
+    "and attunement forever locations of overview raid raid sizes warcraft world": 1794373268,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794373268,
+    "and familiar feels forever new s what what wow": 1794373268,
+    "and language settings social": 1794373268,
     "are early forever live name now of reservations warcraft world": 1794347719,
-    "around campfire forever gather in of the warcraft world": 1794372366,
-    "beta from group issues persist phasing still with": 1794372366,
-    "broken zeppelins": 1794372366,
-    "bug forever forum guidelines report wow": 1794372366,
-    "bugged chaos missing monday s server shaman since totems": 1794372366,
-    "choose forever in of ruleset warcraft world your": 1794372366,
+    "around campfire forever gather in of the warcraft world": 1794373268,
+    "beta from group issues persist phasing still with": 1794373268,
+    "broken zeppelins": 1794373268,
+    "bug forever forum guidelines report wow": 1794373268,
+    "bugged chaos missing monday s server shaman since totems": 1794373268,
+    "choose forever in of ruleset warcraft world your": 1794373268,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1794372366,
-    "dungeon increased majority the wants xp": 1794372366,
-    "dungeons explore forever new of of the warcraft world": 1794372366,
+    "dungeon enough not still xp": 1794373268,
+    "dungeon increased majority the wants xp": 1794373268,
+    "dungeons explore forever new of of the warcraft world": 1794373268,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794372366,
-    "forever guide new of player s starter to warcraft welcome world": 1794372366,
-    "forever launch of time warcraft world": 1794372366,
-    "forever live now of warcraft world": 1794372366,
+    "forever forever forging watch wow": 1794373268,
+    "forever guide new of player s starter to warcraft welcome world": 1794373268,
+    "forever launch of time warcraft world": 1794373268,
+    "forever live now of warcraft world": 1794373268,
     "forever short story the unbowed watch wow": 1794358867,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
@@ -1036,7 +1052,7 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794372368,
+  "saved_at": 1794373270,
   "weekly": {
     "baseline": {
       "us:pwanage-ownage": {
