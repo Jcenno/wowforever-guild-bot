@@ -1197,7 +1197,7 @@
           "us:steel-appeal"
         ],
         "kind": "dungeon",
-        "since": 1794488468,
+        "since": 1794474000,
         "what": "The Deadmines"
       },
       "dungeon|Wailing Caverns": {
@@ -1206,7 +1206,7 @@
           "us:steel-appeal"
         ],
         "kind": "dungeon",
-        "since": 1794488468,
+        "since": 1794474000,
         "what": "Wailing Caverns"
       }
     },
