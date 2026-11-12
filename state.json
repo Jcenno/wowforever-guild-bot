@@ -449,6 +449,10 @@
           "name": "Chausses of Westfall",
           "quality": "RARE"
         },
+        "6220": {
+          "name": "Meteor Shard",
+          "quality": "RARE"
+        },
         "6340": {
           "name": "Fenrus' Hide",
           "quality": "RARE"
@@ -463,7 +467,7 @@
         }
       },
       "ilvl": 17,
-      "last_login": 1794470205000,
+      "last_login": 1794503920000,
       "level": 24,
       "level_at": {
         "10": 1794152175,
@@ -481,10 +485,10 @@
       },
       "professions": {
         "Blacksmithing": 122,
-        "Cooking": 44,
-        "First Aid": 131,
-        "Fishing": 60,
-        "Mining": 136
+        "Cooking": 158,
+        "First Aid": 132,
+        "Fishing": 64,
+        "Mining": 140
       },
       "race": "Night Elf",
       "raids": {},
@@ -649,8 +653,28 @@
         ],
         "Cooking": [
           {
+            "id": 3964,
+            "name": "Boiled Clams"
+          },
+          {
+            "id": 1876,
+            "name": "Gooey Spider Cake"
+          },
+          {
             "id": 4786,
             "name": "Herb Baked Egg"
+          },
+          {
+            "id": 1872,
+            "name": "Blood Sausage"
+          },
+          {
+            "id": 3963,
+            "name": "Goblin Deviled Clams"
+          },
+          {
+            "id": 1543,
+            "name": "Crab Cake"
           },
           {
             "id": 1674,
@@ -661,12 +685,36 @@
             "name": "Basic Campfire"
           },
           {
+            "id": 1538,
+            "name": "Coyote Steak"
+          },
+          {
+            "id": 1539,
+            "name": "Goretusk Liver Pie"
+          },
+          {
+            "id": 1545,
+            "name": "Dry Pork Ribs"
+          },
+          {
             "id": 3926,
             "name": "Kaldorei Spider Kabob"
           },
           {
             "id": 1536,
             "name": "Spiced Wolf Meat"
+          },
+          {
+            "id": 1544,
+            "name": "Cooked Crab Claw"
+          },
+          {
+            "id": 1546,
+            "name": "Redridge Goulash"
+          },
+          {
+            "id": 3930,
+            "name": "Strider Stew"
           },
           {
             "id": 4353,
@@ -681,8 +729,16 @@
             "name": "Charred Wolf Meat"
           },
           {
+            "id": 1540,
+            "name": "Westfall Stew"
+          },
+          {
             "id": 4354,
             "name": "Slitherskin Mackerel"
+          },
+          {
+            "id": 1871,
+            "name": "Crocolisk Steak"
           }
         ],
         "First Aid": [
@@ -755,6 +811,10 @@
             "name": "Smelt Bronze"
           },
           {
+            "id": 2036,
+            "name": "Mining"
+          },
+          {
             "id": 1848,
             "name": "Smelt Tin"
           },
@@ -776,7 +836,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 15113,
+          "raw": 15147,
           "tier": 5
         },
         "Everlook": {
@@ -791,12 +851,12 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 5547,
+          "raw": 5581,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 5935,
+          "raw": 6043,
           "tier": 4
         },
         "Powderfuse": {
@@ -811,7 +871,7 @@
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 6223,
+          "raw": 6283,
           "tier": 4
         }
       },
@@ -820,16 +880,16 @@
         "critters": 95,
         "deaths": 14,
         "drinks": 2,
-        "flights": 26,
-        "food": 62,
-        "health_potions": 16,
-        "hearths": 18,
-        "killing_blows": 1283,
-        "mobs": 2158,
+        "flights": 31,
+        "food": 64,
+        "health_potions": 17,
+        "hearths": 19,
+        "killing_blows": 1292,
+        "mobs": 2167,
         "need_rolls": 26,
-        "quests": 186
+        "quests": 191
       },
-      "xp": 21784
+      "xp": 31109
     },
     "us:whizz-aard": {
       "achievements": {
@@ -1197,53 +1257,53 @@
     ]
   },
   "news_seen": {
-    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794503766,
+    "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504121,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1794503766,
-    "10 11 class incoming tuning": 1794503766,
-    "10 16 forever join of stress test the updated warcraft world": 1794503766,
-    "11 11 2026 forever hotfixes wow": 1794503766,
-    "11 11 balance faction pvp updates": 1794503766,
-    "11 2 beta development forever notes updated wow": 1794503766,
+    "10 11 balance faction pvp updates": 1794504121,
+    "10 11 class incoming tuning": 1794504121,
+    "10 16 forever join of stress test the updated warcraft world": 1794504121,
+    "11 11 2026 forever hotfixes wow": 1794504121,
+    "11 11 balance faction pvp updates": 1794504121,
+    "11 2 beta development forever notes updated wow": 1794504121,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
-    "11 3 beta development forever notes updated wow": 1794503766,
-    "11 5 forever issues known updated wow": 1794503766,
-    "11 8 dungeon enemy increased xp": 1794503766,
-    "60 at for gold quests": 1794503766,
-    "60 at from gold lvl no quests seriously": 1794503766,
-    "8 city do i inside main maybe people see the why": 1794503766,
-    "a explore forever gamepad with wow": 1794503766,
-    "a for friend invite issues players resolved": 1794503766,
-    "about bug category forever report the wow": 1794503766,
+    "11 3 beta development forever notes updated wow": 1794504121,
+    "11 5 forever issues known updated wow": 1794504121,
+    "11 8 dungeon enemy increased xp": 1794504121,
+    "60 at for gold quests": 1794504121,
+    "60 at from gold lvl no quests seriously": 1794504121,
+    "8 city do i inside main maybe people see the why": 1794504121,
+    "a explore forever gamepad with wow": 1794504121,
+    "a for friend invite issues players resolved": 1794504121,
+    "about bug category forever report the wow": 1794504121,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794503766,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794504121,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
-    "and attunement forever locations of overview raid raid sizes warcraft world": 1794503766,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794503766,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794503766,
-    "and familiar feels forever new s what what wow": 1794503766,
-    "and language settings social": 1794503766,
+    "and attunement forever locations of overview raid raid sizes warcraft world": 1794504121,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794504121,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794504121,
+    "and familiar feels forever new s what what wow": 1794504121,
+    "and language settings social": 1794504121,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1794503766,
-    "broken zeppelins": 1794503766,
-    "bug forever forum guidelines report wow": 1794503766,
-    "bugged chaos missing monday s server shaman since totems": 1794503766,
+    "beta from group issues persist phasing still with": 1794504121,
+    "broken zeppelins": 1794504121,
+    "bug forever forum guidelines report wow": 1794504121,
+    "bugged chaos missing monday s server shaman since totems": 1794504121,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1794503766,
-    "dungeon increased majority the wants xp": 1794503766,
-    "dungeons explore forever new of of the warcraft world": 1794503766,
+    "dungeon enough not still xp": 1794504121,
+    "dungeon increased majority the wants xp": 1794504121,
+    "dungeons explore forever new of of the warcraft world": 1794504121,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794503766,
-    "forever guide new of player s starter to warcraft welcome world": 1794503766,
-    "forever launch of time warcraft world": 1794503766,
-    "forever live now of warcraft world": 1794503766,
+    "forever forever forging watch wow": 1794504121,
+    "forever guide new of player s starter to warcraft welcome world": 1794504121,
+    "forever launch of time warcraft world": 1794504121,
+    "forever live now of warcraft world": 1794504121,
     "forever short story the unbowed watch wow": 1794358867,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
@@ -1304,7 +1364,7 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794503768,
+  "saved_at": 1794504123,
   "weekly": {
     "baseline": {
       "us:pwanage-ownage": {
