@@ -123,6 +123,11 @@ DEFAULT_SETTINGS = {
     "hype_ping_role_id": "",           # Discord role id to ping on hype posts; blank = no ping
     "hype_events": ["milestone", "max_level", "epic_mount", "first_mount", "guild_first", "guild_join"],
     "guild_first_min_tracked": 3,
+    # Guild-first cards wait for the next morning so everyone in the group shows up:
+    # Blizzard only refreshes a profile when that character logs out.
+    "guild_first_post_hour": 9,        # local hour (settings.timezone) the held cards post
+    "guild_first_min_wait_hours": 6,   # never post sooner than this after the first clear is seen
+    "guild_first_repost": [],          # one-time: [["dungeon", "Wailing Caverns"], ...] re-held with everyone who has it
     "roster_board": True,
     "announce_guild_changes": True,
 }
@@ -1150,6 +1155,16 @@ def last_recap_time(now, settings):
     return moment
 
 
+def first_post_time(since, settings):
+    """Unix time a held guild-first card posts: the first post_hour (local) at least min_wait after since."""
+    zone = local_zone(settings)
+    earliest = datetime.fromtimestamp(since + 3600 * float(settings.get("guild_first_min_wait_hours") or 0), zone)
+    moment = earliest.replace(hour=int(settings.get("guild_first_post_hour") or 9), minute=0, second=0, microsecond=0)
+    if moment < earliest:
+        moment += timedelta(days=1)
+    return int(moment.timestamp())
+
+
 def recap_summary(snap):
     """The numbers a weekly recap compares, saved as last week's baseline."""
     kills = {}
@@ -1540,7 +1555,7 @@ def main():
 
     token = get_token(client_id, client_secret)
     embeds, hype_embeds, digest_items, unavailable = [], [], [], []
-    pending_firsts = {}  # (kind, what) -> [(character, snapshot, key)] achieved this run
+    held_firsts = state["group"].setdefault("firsts_pending", {})  # "kind|what" -> {kind, what, keys, since}
     hype_events = set(settings.get("hype_events") or [])
     firsts_will_post = "guild_first" in hype_events and len(state.get("characters") or {}) >= int(settings.get("guild_first_min_tracked") or 0)
     ping_role = str(settings.get("hype_ping_role_id") or "").strip() or None
@@ -1679,14 +1694,17 @@ def main():
                 kind = {"clear": "dungeon", "boss": "boss", "raid_clear": "raid"}.get(ev)
                 if not kind:
                     continue
+                pk = f"{kind}|{what}"
                 if what not in firsts[kind]:
-                    firsts[kind][what] = key
-                    pending_firsts[(kind, what)] = [(c, snap, key)]
+                    firsts[kind][what] = [key]
+                    held_firsts[pk] = {"kind": kind, "what": what, "keys": [key], "since": now_ts}
                     mine.add(what)
-                elif (kind, what) in pending_firsts:
-                    # Someone else got the same first in this very run: a tie, one card for all.
-                    pending_firsts[(kind, what)].append((c, snap, key))
-                    firsts[kind][what] = (firsts[kind][what] if isinstance(firsts[kind][what], list) else [firsts[kind][what]]) + [key]
+                elif pk in held_firsts:
+                    # Same first, card not posted yet: add them to it.
+                    if key not in held_firsts[pk]["keys"]:
+                        held_firsts[pk]["keys"].append(key)
+                        cur = firsts[kind][what]
+                        firsts[kind][what] = (cur if isinstance(cur, list) else [cur]) + [key]
                     mine.add(what)
             # Lines that will become a guild-first card stay out of this character's digest.
             if firsts_will_post:
@@ -1712,16 +1730,36 @@ def main():
             fresh = (snap.get("level") or 0) <= NEW_CHARACTER_MAX_LEVEL
             weekly["baseline"][key] = dict(LAUNCH_BASELINE) if fresh else recap_summary(state["characters"][key])
 
-    # Guild-first cards: one per achievement, naming everyone who got it this run.
-    # Held back until enough characters are tracked for "first" to mean something.
+    # Guild-first cards are held until the next morning, then post once naming
+    # everyone whose clear showed up by then (profiles refresh on logout).
+    now_i = int(time.time())
+    by_key = {k: c for c, k in keyed}
+    done = state["group"].setdefault("firsts_reposted", [])
+    for kind, what in settings.get("guild_first_repost") or []:
+        pk = f"{kind}|{what}"
+        if pk in done or pk in held_firsts:
+            continue
+        keys = [k for k, sn in state["characters"].items()
+                if kind == "dungeon" and what in cleared_dungeons(sn)]
+        if keys:
+            held_firsts[pk] = {"kind": kind, "what": what, "keys": keys, "since": now_i}
+            state["group"].setdefault("firsts", {}).setdefault(kind, {})[what] = keys
+        done.append(pk)
     tracked = len(state["characters"])
-    if pending_firsts and "guild_first" in hype_events and tracked >= int(settings.get("guild_first_min_tracked") or 0):
-        for (kind, what), members in pending_firsts.items():
-            c0, snap0, _ = members[0]
-            detail = {"kind": kind, "what": what, "names": [display_name(cc) for cc, _, _ in members]}
-            hype_embeds.append(milestone_embed(c0, snap0, "guild_first", detail, state["group"], snap0, settings, int(time.time())))
-    elif pending_firsts:
-        print(f"[info] {len(pending_firsts)} guild first(s) recorded quietly; {tracked} tracked, need {settings.get('guild_first_min_tracked')}")
+    can_post = "guild_first" in hype_events and tracked >= int(settings.get("guild_first_min_tracked") or 0)
+    for pk, item in list(held_firsts.items()):
+        if now_i < first_post_time(item["since"], settings):
+            continue
+        members = [(by_key[k], state["characters"][k]) for k in item["keys"] if k in by_key and k in state["characters"]]
+        if can_post and members:
+            c0, snap0 = members[0]
+            detail = {"kind": item["kind"], "what": item["what"], "names": [display_name(cc) for cc, _ in members]}
+            hype_embeds.append(milestone_embed(c0, snap0, "guild_first", detail, state["group"], snap0, settings, now_i))
+        elif not can_post:
+            print(f"[info] guild first {pk} recorded quietly; {tracked} tracked, need {settings.get('guild_first_min_tracked')}")
+        del held_firsts[pk]
+    if held_firsts:
+        print("[info] guild firsts held for the morning: " + ", ".join(sorted(held_firsts)))
 
     if unavailable:
         print("[info] No Blizzard data yet for: " + ", ".join(unavailable))

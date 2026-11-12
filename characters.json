@@ -67,7 +67,17 @@
       60,
       70
     ],
-    "inactive_days": 7
+    "inactive_days": 7,
+    "guild_first_repost": [
+      [
+        "dungeon",
+        "Wailing Caverns"
+      ],
+      [
+        "dungeon",
+        "The Deadmines"
+      ]
+    ]
   },
   "friends": [
     {
