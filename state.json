@@ -3,6 +3,7 @@
     "us:pwanage-ownage": {
       "achievements": {
         "842": "Explore Teldrassil",
+        "844": "Explore Darkshore",
         "855": "Explore Moonglade"
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/49/20858161-avatar.jpg",
@@ -50,7 +51,7 @@
         }
       },
       "ilvl": 13,
-      "last_login": 1794464229000,
+      "last_login": 1794572642000,
       "level": 22,
       "level_at": {
         "17": 1794274699,
@@ -61,11 +62,11 @@
         "22": 1794465068
       },
       "professions": {
-        "Alchemy": 128,
+        "Alchemy": 138,
         "Cooking": 144,
         "First Aid": 62,
         "Fishing": 109,
-        "Herbalism": 159
+        "Herbalism": 161
       },
       "race": "Night Elf",
       "raids": {},
@@ -124,6 +125,10 @@
             "name": "Minor Mender's Potion"
           },
           {
+            "id": 1820,
+            "name": "Elixir of Lesser Defense"
+          },
+          {
             "id": 1833,
             "name": "Elixir of Minor Agility"
           },
@@ -138,6 +143,10 @@
           {
             "id": 54456,
             "name": "Sulfuric Acid"
+          },
+          {
+            "id": 4394,
+            "name": "Fire Oil"
           },
           {
             "id": 1832,
@@ -338,7 +347,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 12188,
+          "raw": 12788,
           "tier": 5
         },
         "Gadgetzan": {
@@ -348,17 +357,17 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 5720,
+          "raw": 5870,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 5626,
+          "raw": 5776,
           "tier": 4
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 6195,
+          "raw": 6345,
           "tier": 4
         }
       },
@@ -366,19 +375,19 @@
       "spec": "Feral Combat",
       "stats": {
         "critters": 39,
-        "deaths": 24,
+        "deaths": 25,
         "drinks": 88,
-        "flights": 30,
-        "food": 46,
-        "health_potions": 21,
+        "flights": 31,
+        "food": 47,
+        "health_potions": 22,
         "hearths": 14,
-        "killing_blows": 563,
+        "killing_blows": 609,
         "mana_potions": 36,
-        "mobs": 1554,
-        "need_rolls": 21,
-        "quests": 173
+        "mobs": 1615,
+        "need_rolls": 22,
+        "quests": 179
       },
-      "xp": 11122
+      "xp": 24763
     },
     "us:steel-appeal": {
       "achievements": {
@@ -1347,53 +1356,53 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1794572176,
-    "10 11 class incoming tuning": 1794572176,
+    "10 11 balance faction pvp updates": 1794573071,
+    "10 11 class incoming tuning": 1794573071,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
-    "11 11 2026 forever hotfixes wow": 1794572176,
-    "11 11 balance faction pvp updates": 1794572176,
-    "11 2 beta development forever notes updated wow": 1794572176,
+    "11 11 2026 forever hotfixes wow": 1794573071,
+    "11 11 balance faction pvp updates": 1794573071,
+    "11 2 beta development forever notes updated wow": 1794573071,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
-    "11 3 beta development forever notes updated wow": 1794572176,
-    "11 5 forever issues known updated wow": 1794572176,
-    "11 8 dungeon enemy increased xp": 1794572176,
-    "60 at for gold quests": 1794572176,
-    "60 at from gold lvl no quests seriously": 1794572176,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794572176,
-    "8 city do i inside main maybe people see the why": 1794572176,
-    "a explore forever gamepad with wow": 1794572176,
-    "a for friend invite issues players resolved": 1794572176,
-    "about bug category forever report the wow": 1794572176,
+    "11 3 beta development forever notes updated wow": 1794573071,
+    "11 5 forever issues known updated wow": 1794573071,
+    "11 8 dungeon enemy increased xp": 1794573071,
+    "60 at for gold quests": 1794573071,
+    "60 at from gold lvl no quests seriously": 1794573071,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794573071,
+    "8 city do i inside main maybe people see the why": 1794573071,
+    "a explore forever gamepad with wow": 1794573071,
+    "a for friend invite issues players resolved": 1794573071,
+    "about bug category forever report the wow": 1794573071,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794572176,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794573071,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794572176,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794572176,
-    "and familiar feels forever new s what what wow": 1794572176,
-    "and language settings social": 1794572176,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794573071,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794573071,
+    "and familiar feels forever new s what what wow": 1794573071,
+    "and language settings social": 1794573071,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1794572176,
-    "broken zeppelins": 1794572176,
-    "bug forever forum guidelines report wow": 1794572176,
-    "bugged chaos missing monday s server shaman since totems": 1794572176,
+    "beta from group issues persist phasing still with": 1794573071,
+    "broken zeppelins": 1794573071,
+    "bug forever forum guidelines report wow": 1794573071,
+    "bugged chaos missing monday s server shaman since totems": 1794573071,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1794572176,
-    "dungeon increased majority the wants xp": 1794572176,
+    "dungeon enough not still xp": 1794573071,
+    "dungeon increased majority the wants xp": 1794573071,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1794572176,
+    "episode forever lore podcast the the watch wow": 1794573071,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794572176,
-    "forever guide new of player s starter to warcraft welcome world": 1794572176,
-    "forever launch of time warcraft world": 1794572176,
-    "forever live now of warcraft world": 1794572176,
+    "forever forever forging watch wow": 1794573071,
+    "forever guide new of player s starter to warcraft welcome world": 1794573071,
+    "forever launch of time warcraft world": 1794573071,
+    "forever live now of warcraft world": 1794573071,
     "forever short story the unbowed watch wow": 1794358867,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
@@ -1454,7 +1463,7 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794572178,
+  "saved_at": 1794573073,
   "weekly": {
     "baseline": {
       "us:pwanage-ownage": {
