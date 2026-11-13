@@ -400,13 +400,18 @@
         },
         "15028": {
           "boss": "Mutanus the Devourer",
-          "count": 2,
+          "count": 3,
           "instance": "Wailing Caverns"
         },
         "63570": {
           "boss": "Edwin VanCleef",
-          "count": 1,
+          "count": 2,
           "instance": "Deadmines"
+        },
+        "63571": {
+          "boss": "Rath'mael",
+          "count": 1,
+          "instance": "Ruins of Lordaeron"
         },
         "63573": {
           "boss": "Durgen Dirgehammer",
@@ -430,8 +435,16 @@
           "name": "Kindlegem Girdle",
           "quality": "RARE"
         },
+        "271213": {
+          "name": "Mirror of Rath'mael",
+          "quality": "RARE"
+        },
         "273088": {
           "name": "Snake Eye Kaleidoscope",
+          "quality": "RARE"
+        },
+        "273293": {
+          "name": "Bandsaw Wristbands",
           "quality": "RARE"
         },
         "285292": {
@@ -467,9 +480,9 @@
           "quality": "RARE"
         }
       },
-      "ilvl": 17,
-      "last_login": 1794514365000,
-      "level": 25,
+      "ilvl": 16,
+      "last_login": 1794543589000,
+      "level": 26,
       "level_at": {
         "10": 1794152175,
         "12": 1794167884,
@@ -483,12 +496,13 @@
         "21": 1794409266,
         "22": 1794440767,
         "24": 1794470467,
-        "25": 1794514567
+        "25": 1794514567,
+        "26": 1794544268
       },
       "professions": {
         "Blacksmithing": 122,
         "Cooking": 158,
-        "First Aid": 132,
+        "First Aid": 136,
         "Fishing": 64,
         "Mining": 141
       },
@@ -879,19 +893,19 @@
       },
       "spec": "Protection",
       "stats": {
-        "critters": 97,
-        "deaths": 14,
+        "critters": 126,
+        "deaths": 15,
         "drinks": 2,
-        "flights": 32,
-        "food": 65,
-        "health_potions": 17,
-        "hearths": 20,
-        "killing_blows": 1309,
-        "mobs": 2179,
-        "need_rolls": 26,
-        "quests": 197
+        "flights": 37,
+        "food": 71,
+        "health_potions": 18,
+        "hearths": 21,
+        "killing_blows": 1487,
+        "mobs": 2709,
+        "need_rolls": 29,
+        "quests": 203
       },
-      "xp": 3038
+      "xp": 1403
     },
     "us:whizz-aard": {
       "achievements": {
@@ -904,6 +918,16 @@
           "count": 1,
           "instance": "Ragefire Chasm"
         },
+        "15028": {
+          "boss": "Mutanus the Devourer",
+          "count": 1,
+          "instance": "Wailing Caverns"
+        },
+        "63570": {
+          "boss": "Edwin VanCleef",
+          "count": 1,
+          "instance": "Deadmines"
+        },
         "63573": {
           "boss": "Durgen Dirgehammer",
           "count": 1,
@@ -914,26 +938,39 @@
       "dungeons": {},
       "first_seen": 1794190280,
       "gear": {
+        "1156": {
+          "name": "Lavishly Jeweled Ring",
+          "quality": "RARE"
+        },
+        "2042": {
+          "name": "Staff of Westfall",
+          "quality": "RARE"
+        },
         "270261": {
           "name": "Robes of the Disgraced Thane",
           "quality": "RARE"
+        },
+        "6461": {
+          "name": "Slime-encrusted Pads",
+          "quality": "RARE"
         }
       },
-      "ilvl": 8,
-      "last_login": 1794520824000,
-      "level": 22,
+      "ilvl": 13,
+      "last_login": 1794543546000,
+      "level": 23,
       "level_at": {
         "18": 1794190280,
         "19": 1794193265,
         "20": 1794245466,
         "21": 1794285966,
-        "22": 1794513667
+        "22": 1794513667,
+        "23": 1794544268
       },
       "professions": {
         "Cooking": 39,
-        "Enchanting": 103,
-        "First Aid": 75,
-        "Tailoring": 83
+        "Enchanting": 136,
+        "First Aid": 78,
+        "Tailoring": 90
       },
       "race": "Human",
       "raids": {},
@@ -980,6 +1017,14 @@
           {
             "id": 4291,
             "name": "Runed Copper Rod"
+          },
+          {
+            "id": 7377,
+            "name": "Enchant Cloak - Lesser Protection"
+          },
+          {
+            "id": 7356,
+            "name": "Enchant Shield - Minor Stamina"
           },
           {
             "id": 8000,
@@ -1170,6 +1215,10 @@
             "name": "Woolen Cape"
           },
           {
+            "id": 55435,
+            "name": "Filigreed Pearly Gown"
+          },
+          {
             "id": 4002,
             "name": "Woolen Bag"
           },
@@ -1192,48 +1241,68 @@
         ]
       },
       "reputations": {
+        "Booty Bay": {
+          "name": "Neutral",
+          "raw": 550,
+          "tier": 3
+        },
         "Darnassus": {
           "name": "Friendly",
-          "raw": 6227,
+          "raw": 6640,
           "tier": 4
+        },
+        "Everlook": {
+          "name": "Neutral",
+          "raw": 550,
+          "tier": 3
         },
         "Gadgetzan": {
           "name": "Neutral",
-          "raw": 600,
+          "raw": 650,
           "tier": 3
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 4813,
+          "raw": 5138,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 5433,
+          "raw": 5808,
           "tier": 4
+        },
+        "Powderfuse": {
+          "name": "Neutral",
+          "raw": 550,
+          "tier": 3
+        },
+        "Ratchet": {
+          "name": "Neutral",
+          "raw": 600,
+          "tier": 3
         },
         "Stormwind": {
           "name": "Honored",
-          "raw": 12210,
+          "raw": 12772,
           "tier": 5
         }
       },
       "spec": "Fire",
       "stats": {
-        "critters": 34,
-        "deaths": 56,
-        "drinks": 367,
-        "flights": 27,
+        "critters": 62,
+        "deaths": 57,
+        "drinks": 413,
+        "flights": 29,
         "food": 105,
         "health_potions": 34,
-        "hearths": 14,
-        "killing_blows": 1135,
+        "hearths": 16,
+        "killing_blows": 1250,
         "mana_potions": 7,
-        "mobs": 1608,
-        "need_rolls": 8,
-        "quests": 182
+        "mobs": 2082,
+        "need_rolls": 31,
+        "quests": 195
       },
-      "xp": 2997
+      "xp": 23252
     }
   },
   "group": {
@@ -1244,6 +1313,9 @@
           "us:steel-appeal",
           "us:whizz-aard",
           "us:pwanage-ownage"
+        ],
+        "Ruins of Lordaeron": [
+          "us:steel-appeal"
         ],
         "Shadowfang Keep": "us:steel-appeal",
         "The Deadmines": [
@@ -1257,7 +1329,16 @@
       },
       "raid": {}
     },
-    "firsts_pending": {},
+    "firsts_pending": {
+      "dungeon|Ruins of Lordaeron": {
+        "keys": [
+          "us:steel-appeal"
+        ],
+        "kind": "dungeon",
+        "since": 1794544268,
+        "what": "Ruins of Lordaeron"
+      }
+    },
     "firsts_reposted": [
       "dungeon|Wailing Caverns",
       "dungeon|The Deadmines"
@@ -1266,53 +1347,53 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1794543367,
-    "10 11 class incoming tuning": 1794543367,
+    "10 11 balance faction pvp updates": 1794544268,
+    "10 11 class incoming tuning": 1794544268,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
-    "11 11 2026 forever hotfixes wow": 1794543367,
-    "11 11 balance faction pvp updates": 1794543367,
-    "11 2 beta development forever notes updated wow": 1794543367,
+    "11 11 2026 forever hotfixes wow": 1794544268,
+    "11 11 balance faction pvp updates": 1794544268,
+    "11 2 beta development forever notes updated wow": 1794544268,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
-    "11 3 beta development forever notes updated wow": 1794543367,
-    "11 5 forever issues known updated wow": 1794543367,
-    "11 8 dungeon enemy increased xp": 1794543367,
-    "60 at for gold quests": 1794543367,
-    "60 at from gold lvl no quests seriously": 1794543367,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794543367,
-    "8 city do i inside main maybe people see the why": 1794543367,
-    "a explore forever gamepad with wow": 1794543367,
-    "a for friend invite issues players resolved": 1794543367,
-    "about bug category forever report the wow": 1794543367,
+    "11 3 beta development forever notes updated wow": 1794544268,
+    "11 5 forever issues known updated wow": 1794544268,
+    "11 8 dungeon enemy increased xp": 1794544268,
+    "60 at for gold quests": 1794544268,
+    "60 at from gold lvl no quests seriously": 1794544268,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794544268,
+    "8 city do i inside main maybe people see the why": 1794544268,
+    "a explore forever gamepad with wow": 1794544268,
+    "a for friend invite issues players resolved": 1794544268,
+    "about bug category forever report the wow": 1794544268,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794543367,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794544268,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794543367,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794543367,
-    "and familiar feels forever new s what what wow": 1794543367,
-    "and language settings social": 1794543367,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794544268,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794544268,
+    "and familiar feels forever new s what what wow": 1794544268,
+    "and language settings social": 1794544268,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1794543367,
-    "broken zeppelins": 1794543367,
-    "bug forever forum guidelines report wow": 1794543367,
-    "bugged chaos missing monday s server shaman since totems": 1794543367,
+    "beta from group issues persist phasing still with": 1794544268,
+    "broken zeppelins": 1794544268,
+    "bug forever forum guidelines report wow": 1794544268,
+    "bugged chaos missing monday s server shaman since totems": 1794544268,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1794543367,
-    "dungeon increased majority the wants xp": 1794543367,
+    "dungeon enough not still xp": 1794544268,
+    "dungeon increased majority the wants xp": 1794544268,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1794543367,
+    "episode forever lore podcast the the watch wow": 1794544268,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794543367,
-    "forever guide new of player s starter to warcraft welcome world": 1794543367,
-    "forever launch of time warcraft world": 1794543367,
-    "forever live now of warcraft world": 1794543367,
+    "forever forever forging watch wow": 1794544268,
+    "forever guide new of player s starter to warcraft welcome world": 1794544268,
+    "forever launch of time warcraft world": 1794544268,
+    "forever live now of warcraft world": 1794544268,
     "forever short story the unbowed watch wow": 1794358867,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
@@ -1373,7 +1454,7 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794543370,
+  "saved_at": 1794544270,
   "weekly": {
     "baseline": {
       "us:pwanage-ownage": {
