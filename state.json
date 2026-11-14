@@ -499,7 +499,7 @@
         }
       },
       "ilvl": 18,
-      "last_login": 1794631969000,
+      "last_login": 1794638007000,
       "level": 27,
       "level_at": {
         "10": 1794152175,
@@ -702,6 +702,10 @@
             "name": "Crusader's Chain Leggings"
           },
           {
+            "id": 54740,
+            "name": "Veteran's Silvered Chain Helm"
+          },
+          {
             "id": 54212,
             "name": "Copper Rod"
           }
@@ -889,6 +893,11 @@
           "raw": 350,
           "tier": 3
         },
+        "Azeroth Commerce Authority": {
+          "name": "Neutral",
+          "raw": 2000,
+          "tier": 3
+        },
         "Booty Bay": {
           "name": "Neutral",
           "raw": 792,
@@ -940,16 +949,16 @@
         "critters": 126,
         "deaths": 17,
         "drinks": 2,
-        "flights": 44,
+        "flights": 46,
         "food": 85,
         "health_potions": 21,
-        "hearths": 27,
+        "hearths": 28,
         "killing_blows": 1710,
         "mobs": 3136,
         "need_rolls": 32,
-        "quests": 216
+        "quests": 217
       },
-      "xp": 27111
+      "xp": 27761
     },
     "us:whizz-aard": {
       "achievements": {
@@ -1421,57 +1430,57 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1794637866,
-    "10 11 class incoming tuning": 1794637866,
+    "10 11 balance faction pvp updates": 1794638767,
+    "10 11 class incoming tuning": 1794638767,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
-    "11 11 2026 forever hotfixes wow": 1794637866,
-    "11 11 balance faction pvp updates": 1794637866,
-    "11 13 2026 forever hotfixes wow": 1794637866,
-    "11 13 lost purchase refunds training": 1794637866,
-    "11 2 beta development forever notes updated wow": 1794637866,
+    "11 11 2026 forever hotfixes wow": 1794638767,
+    "11 11 balance faction pvp updates": 1794638767,
+    "11 13 2026 forever hotfixes wow": 1794638767,
+    "11 13 lost purchase refunds training": 1794638767,
+    "11 2 beta development forever notes updated wow": 1794638767,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
-    "11 3 beta development forever notes updated wow": 1794637866,
-    "11 5 forever issues known updated wow": 1794637866,
-    "11 8 dungeon enemy increased xp": 1794637866,
-    "60 at for gold quests": 1794637866,
-    "60 at from gold lvl no quests seriously": 1794637866,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794637866,
-    "8 city do i inside main maybe people see the why": 1794637866,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1794637866,
-    "a explore forever gamepad with wow": 1794637866,
-    "a for friend invite issues players resolved": 1794637866,
-    "about bug category forever report the wow": 1794637866,
+    "11 3 beta development forever notes updated wow": 1794638767,
+    "11 5 forever issues known updated wow": 1794638767,
+    "11 8 dungeon enemy increased xp": 1794638767,
+    "60 at for gold quests": 1794638767,
+    "60 at from gold lvl no quests seriously": 1794638767,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794638767,
+    "8 city do i inside main maybe people see the why": 1794638767,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1794638767,
+    "a explore forever gamepad with wow": 1794638767,
+    "a for friend invite issues players resolved": 1794638767,
+    "about bug category forever report the wow": 1794638767,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794637866,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794638767,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794637866,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794638767,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
-    "and language settings social": 1794637866,
+    "and language settings social": 1794638767,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1794637866,
-    "broken zeppelins": 1794637866,
-    "bug forever forum guidelines report wow": 1794637866,
-    "bugged chaos missing monday s server shaman since totems": 1794637866,
+    "beta from group issues persist phasing still with": 1794638767,
+    "broken zeppelins": 1794638767,
+    "bug forever forum guidelines report wow": 1794638767,
+    "bugged chaos missing monday s server shaman since totems": 1794638767,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1794637866,
+    "cost forever honor of short story the watch wow": 1794638767,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1794637866,
-    "dungeon increased majority the wants xp": 1794637866,
+    "dungeon enough not still xp": 1794638767,
+    "dungeon increased majority the wants xp": 1794638767,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1794637866,
+    "episode forever lore podcast the the watch wow": 1794638767,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794637866,
-    "forever guide new of player s starter to warcraft welcome world": 1794637866,
-    "forever launch of time warcraft world": 1794637866,
-    "forever live now of warcraft world": 1794637866,
+    "forever forever forging watch wow": 1794638767,
+    "forever guide new of player s starter to warcraft welcome world": 1794638767,
+    "forever launch of time warcraft world": 1794638767,
+    "forever live now of warcraft world": 1794638767,
     "forever short story the unbowed watch wow": 1794358867,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
@@ -1532,7 +1541,7 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794637868,
+  "saved_at": 1794638769,
   "weekly": {
     "baseline": {
       "us:pwanage-ownage": {
