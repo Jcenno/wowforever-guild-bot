@@ -1,5 +1,345 @@
 {
   "characters": {
+    "us:aeri-moonglow": {
+      "achievements": {
+        "842": "Explore Teldrassil",
+        "844": "Explore Darkshore",
+        "855": "Explore Moonglade"
+      },
+      "avatar": "https://render.worldofwarcraft.com/forever-us/character/218/29133018-avatar.jpg",
+      "best_item": {
+        "id": 1264,
+        "ilvl": 29,
+        "name": "Headbasher",
+        "quality": "RARE",
+        "slot": "Main Hand"
+      },
+      "boss_kills": {
+        "15027": {
+          "boss": "Bazzalan",
+          "count": 1,
+          "instance": "Ragefire Chasm"
+        },
+        "15029": {
+          "boss": "Bazil Thredd",
+          "count": 2,
+          "instance": "Stormwind Stockade"
+        },
+        "63573": {
+          "boss": "Durgen Dirgehammer",
+          "count": 1,
+          "instance": "Hall of Thanes"
+        }
+      },
+      "class": "Druid",
+      "dungeons": {},
+      "first_seen": 1794895272,
+      "gear": {
+        "1264": {
+          "name": "Headbasher",
+          "quality": "RARE"
+        },
+        "270260": {
+          "name": "Direhammer Leggings",
+          "quality": "RARE"
+        },
+        "273804": {
+          "name": "Executioner Mantle",
+          "quality": "RARE"
+        },
+        "273820": {
+          "name": "Nightskulker Ring",
+          "quality": "RARE"
+        }
+      },
+      "ilvl": 17,
+      "last_explored": "Darkshore",
+      "last_login": 1794880753000,
+      "level": 24,
+      "level_at": {
+        "24": 1794895272
+      },
+      "professions": {
+        "Cooking": 29,
+        "Herbalism": 168,
+        "Skinning": 171
+      },
+      "race": "High Order Skyborne",
+      "raids": {},
+      "recipes": {
+        "Cooking": [
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
+            "id": 1536,
+            "name": "Spiced Wolf Meat"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 4353,
+            "name": "Brilliant Smallfish"
+          },
+          {
+            "id": 4354,
+            "name": "Slitherskin Mackerel"
+          },
+          {
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
+          },
+          {
+            "id": 54504,
+            "name": "Tasty Raptor Bites"
+          },
+          {
+            "id": 56881,
+            "name": "Skywall Souffle"
+          }
+        ],
+        "Herbalism": [
+          {
+            "id": 1419,
+            "name": "Herbalism"
+          },
+          {
+            "id": 2041,
+            "name": "Herbalism"
+          },
+          {
+            "id": 54116,
+            "name": "Herbalism"
+          },
+          {
+            "id": 52642,
+            "name": "Incense Candle"
+          }
+        ],
+        "Skinning": [
+          {
+            "id": 4768,
+            "name": "Skinning"
+          },
+          {
+            "id": 52644,
+            "name": "Camp Chair"
+          }
+        ]
+      },
+      "reputations": {
+        "Azeroth Commerce Authority": {
+          "name": "Neutral",
+          "raw": 2000,
+          "tier": 3
+        },
+        "Cenarion Circle": {
+          "name": "Neutral",
+          "raw": 2885,
+          "tier": 3
+        },
+        "Darnassus": {
+          "name": "Friendly",
+          "raw": 5597,
+          "tier": 4
+        },
+        "Gadgetzan": {
+          "name": "Neutral",
+          "raw": 600,
+          "tier": 3
+        },
+        "Gnomeregan Exiles": {
+          "name": "Friendly",
+          "raw": 4333,
+          "tier": 4
+        },
+        "High Order": {
+          "name": "Friendly",
+          "raw": 5885,
+          "tier": 4
+        },
+        "Ironforge": {
+          "name": "Friendly",
+          "raw": 5033,
+          "tier": 4
+        },
+        "Kirin Tor": {
+          "name": "Friendly",
+          "raw": 3200,
+          "tier": 4
+        },
+        "Nightclaw Druids": {
+          "name": "Friendly",
+          "raw": 5700,
+          "tier": 4
+        },
+        "Stormwind": {
+          "name": "Friendly",
+          "raw": 5652,
+          "tier": 4
+        }
+      },
+      "spec": "Feral Combat",
+      "stats": {
+        "critters": 2,
+        "deaths": 26,
+        "drinks": 3,
+        "flights": 18,
+        "food": 4,
+        "health_potions": 13,
+        "hearths": 15,
+        "killing_blows": 932,
+        "mana_potions": 2,
+        "mobs": 1298,
+        "quests": 210
+      },
+      "xp": 16742
+    },
+    "us:devil-latterday": {
+      "achievements": {},
+      "avatar": "https://render.worldofwarcraft.com/forever-us/character/43/66228267-avatar.jpg",
+      "best_item": {
+        "id": 5957,
+        "ilvl": 10,
+        "name": "Handstitched Leather Vest",
+        "quality": "UNCOMMON",
+        "slot": "Chest"
+      },
+      "boss_kills": {},
+      "class": "Hunter",
+      "dungeons": {},
+      "first_seen": 1794895272,
+      "gear": {},
+      "ilvl": 1,
+      "last_explored": null,
+      "last_login": 1794884947000,
+      "level": 10,
+      "level_at": {
+        "10": 1794895272
+      },
+      "professions": {
+        "Cooking": 1,
+        "First Aid": 44,
+        "Leatherworking": 9,
+        "Skinning": 77
+      },
+      "race": "Night Elf",
+      "raids": {},
+      "recipes": {
+        "Cooking": [
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
+          }
+        ],
+        "First Aid": [
+          {
+            "id": 1838,
+            "name": "Linen Bandage"
+          },
+          {
+            "id": 1839,
+            "name": "Heavy Linen Bandage"
+          },
+          {
+            "id": 52641,
+            "name": "First Aid Kit"
+          },
+          {
+            "id": 54191,
+            "name": "Minor Healing Potion"
+          }
+        ],
+        "Leatherworking": [
+          {
+            "id": 1353,
+            "name": "Handstitched Leather Boots"
+          },
+          {
+            "id": 1356,
+            "name": "Light Armor Kit"
+          },
+          {
+            "id": 1708,
+            "name": "Light Leather"
+          },
+          {
+            "id": 4987,
+            "name": "Handstitched Leather Cloak"
+          },
+          {
+            "id": 4988,
+            "name": "Handstitched Leather Bracers"
+          },
+          {
+            "id": 4156,
+            "name": "Handstitched Leather Vest"
+          }
+        ],
+        "Skinning": [
+          {
+            "id": 4767,
+            "name": "Skinning"
+          },
+          {
+            "id": 52644,
+            "name": "Camp Chair"
+          }
+        ]
+      },
+      "reputations": {
+        "Darnassus": {
+          "name": "Friendly",
+          "raw": 6785,
+          "tier": 4
+        },
+        "Gnomeregan Exiles": {
+          "name": "Friendly",
+          "raw": 3137,
+          "tier": 4
+        },
+        "Ironforge": {
+          "name": "Friendly",
+          "raw": 3137,
+          "tier": 4
+        },
+        "Stormwind": {
+          "name": "Friendly",
+          "raw": 3137,
+          "tier": 4
+        }
+      },
+      "spec": "Beast Mastery",
+      "stats": {
+        "critters": 14,
+        "deaths": 2,
+        "food": 12,
+        "health_potions": 3,
+        "killing_blows": 388,
+        "mobs": 353,
+        "quests": 38
+      },
+      "xp": 4966
+    },
     "us:pwanage-ownage": {
       "achievements": {
         "61502": "Novice Druid",
@@ -1724,60 +2064,60 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1794894371,
-    "10 11 class incoming tuning": 1794894371,
+    "10 11 balance faction pvp updates": 1794895272,
+    "10 11 class incoming tuning": 1794895272,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1794894371,
+    "11 11 balance faction pvp updates": 1794895272,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1794894371,
-    "11 14 adjustment dungeon level player xp": 1794894371,
-    "11 15 adjustment dungeon level player xp": 1794894371,
-    "11 16 2026 forever hotfixes wow": 1794894371,
-    "11 2 beta development forever notes updated wow": 1794894371,
+    "11 13 lost purchase refunds training": 1794895272,
+    "11 14 adjustment dungeon level player xp": 1794895272,
+    "11 15 adjustment dungeon level player xp": 1794895272,
+    "11 16 2026 forever hotfixes wow": 1794895272,
+    "11 2 beta development forever notes updated wow": 1794895272,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
-    "11 3 beta development forever notes updated wow": 1794894371,
-    "11 5 forever issues known updated wow": 1794894371,
-    "11 8 dungeon enemy increased xp": 1794894371,
-    "60 at for gold quests": 1794894371,
-    "60 at from gold lvl no quests seriously": 1794894371,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794894371,
-    "8 city do i inside main maybe people see the why": 1794894371,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1794894371,
-    "a explore forever gamepad with wow": 1794894371,
-    "a for friend invite issues players resolved": 1794894371,
-    "about bug category forever report the wow": 1794894371,
+    "11 3 beta development forever notes updated wow": 1794895272,
+    "11 5 forever issues known updated wow": 1794895272,
+    "11 8 dungeon enemy increased xp": 1794895272,
+    "60 at for gold quests": 1794895272,
+    "60 at from gold lvl no quests seriously": 1794895272,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794895272,
+    "8 city do i inside main maybe people see the why": 1794895272,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1794895272,
+    "a explore forever gamepad with wow": 1794895272,
+    "a for friend invite issues players resolved": 1794895272,
+    "about bug category forever report the wow": 1794895272,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794894371,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794895272,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794894371,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794895272,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
-    "and language settings social": 1794894371,
+    "and language settings social": 1794895272,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1794894371,
-    "broken zeppelins": 1794894371,
-    "bug forever forum guidelines report wow": 1794894371,
-    "bugged chaos missing monday s server shaman since totems": 1794894371,
+    "beta from group issues persist phasing still with": 1794895272,
+    "broken zeppelins": 1794895272,
+    "bug forever forum guidelines report wow": 1794895272,
+    "bugged chaos missing monday s server shaman since totems": 1794895272,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1794894371,
+    "cost forever honor of short story the watch wow": 1794895272,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1794894371,
-    "dungeon increased majority the wants xp": 1794894371,
+    "dungeon enough not still xp": 1794895272,
+    "dungeon increased majority the wants xp": 1794895272,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1794894371,
+    "episode forever lore podcast the the watch wow": 1794895272,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794894371,
-    "forever guide new of player s starter to warcraft welcome world": 1794894371,
-    "forever launch of time warcraft world": 1794894371,
-    "forever live now of warcraft world": 1794894371,
+    "forever forever forging watch wow": 1794895272,
+    "forever guide new of player s starter to warcraft welcome world": 1794895272,
+    "forever launch of time warcraft world": 1794895272,
+    "forever live now of warcraft world": 1794895272,
     "forever short story the unbowed watch wow": 1794358867,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
@@ -1816,6 +2156,18 @@
         "3130": "Veteran Adventurer's Loyal Companion"
       }
     },
+    "roguemormon": {
+      "mounts": {
+        "3111": "Cerulean Prideclaw",
+        "3130": "Veteran Adventurer's Loyal Companion"
+      }
+    },
+    "ryo": {
+      "mounts": {
+        "3111": "Cerulean Prideclaw",
+        "3130": "Veteran Adventurer's Loyal Companion"
+      }
+    },
     "tanner": {
       "mounts": {}
     },
@@ -1838,9 +2190,59 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794894372,
+  "saved_at": 1794895274,
   "weekly": {
     "baseline": {
+      "us:aeri-moonglow": {
+        "achievements": 3,
+        "clears": {
+          "Hall of Thanes": 1,
+          "The Stockade": 2
+        },
+        "epics": [],
+        "level": 24,
+        "professions": {
+          "Cooking": 29,
+          "Herbalism": 168,
+          "Skinning": 171
+        },
+        "rep": {
+          "Azeroth Commerce Authority": 2000,
+          "Cenarion Circle": 2885,
+          "Darnassus": 5597,
+          "Gadgetzan": 600,
+          "Gnomeregan Exiles": 4333,
+          "High Order": 5885,
+          "Ironforge": 5033,
+          "Kirin Tor": 3200,
+          "Nightclaw Druids": 5700,
+          "Stormwind": 5652
+        },
+        "stats": {
+          "critters": 2,
+          "deaths": 26,
+          "drinks": 3,
+          "flights": 18,
+          "food": 4,
+          "health_potions": 13,
+          "hearths": 15,
+          "killing_blows": 932,
+          "mana_potions": 2,
+          "mobs": 1298,
+          "quests": 210
+        },
+        "xp": 16742
+      },
+      "us:devil-latterday": {
+        "achievements": 0,
+        "clears": {},
+        "epics": [],
+        "level": 1,
+        "professions": {},
+        "rep": {},
+        "stats": {},
+        "xp": 0
+      },
       "us:pwanage-ownage": {
         "achievements": 3,
         "clears": {
