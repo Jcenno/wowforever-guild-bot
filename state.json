@@ -2,19 +2,25 @@
   "characters": {
     "us:pwanage-ownage": {
       "achievements": {
+        "61502": "Novice Druid",
         "842": "Explore Teldrassil",
         "844": "Explore Darkshore",
         "855": "Explore Moonglade"
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/49/20858161-avatar.jpg",
       "best_item": {
-        "id": 9807,
-        "ilvl": 27,
-        "name": "Superior Shoulders of the Beast",
-        "quality": "UNCOMMON",
+        "id": 273804,
+        "ilvl": 26,
+        "name": "Executioner Mantle",
+        "quality": "RARE",
         "slot": "Shoulders"
       },
       "boss_kills": {
+        "1092": {
+          "boss": "Archmage Arugal",
+          "count": 1,
+          "instance": "Shadowfang Keep"
+        },
         "15027": {
           "boss": "Bazzalan",
           "count": 1,
@@ -74,10 +80,10 @@
           "quality": "RARE"
         }
       },
-      "ilvl": 16,
+      "ilvl": 18,
       "last_explored": "Darkshore",
-      "last_login": 1794839187000,
-      "level": 24,
+      "last_login": 1794892990000,
+      "level": 26,
       "level_at": {
         "17": 1794274699,
         "18": 1794283267,
@@ -85,14 +91,15 @@
         "20": 1794417433,
         "21": 1794438966,
         "22": 1794465068,
-        "24": 1794810667
+        "24": 1794810667,
+        "26": 1794893470
       },
       "professions": {
-        "Alchemy": 140,
-        "Cooking": 144,
+        "Alchemy": 145,
+        "Cooking": 146,
         "First Aid": 80,
         "Fishing": 109,
-        "Herbalism": 174
+        "Herbalism": 184
       },
       "race": "Night Elf",
       "raids": {},
@@ -369,9 +376,19 @@
         ]
       },
       "reputations": {
+        "Argent Dawn": {
+          "name": "Neutral",
+          "raw": 350,
+          "tier": 3
+        },
         "Azeroth Commerce Authority": {
           "name": "Neutral",
           "raw": 2000,
+          "tier": 3
+        },
+        "Booty Bay": {
+          "name": "Neutral",
+          "raw": 500,
           "tier": 3
         },
         "Cenarion Circle": {
@@ -381,7 +398,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 13001,
+          "raw": 13276,
           "tier": 5
         },
         "Gadgetzan": {
@@ -391,42 +408,36 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 6026,
+          "raw": 6151,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 6007,
+          "raw": 6301,
           "tier": 4
-        },
-        "Ratchet": {
-          "name": "Neutral",
-          "raw": 500,
-          "tier": 3
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 6838,
+          "raw": 7170,
           "tier": 4
         }
       },
       "role": "Healer",
       "spec": "Feral Combat",
       "stats": {
-        "critters": 39,
+        "critters": 49,
         "deaths": 28,
-        "drinks": 98,
-        "flights": 35,
-        "food": 51,
-        "health_potions": 23,
-        "hearths": 15,
-        "killing_blows": 620,
-        "mana_potions": 40,
-        "mobs": 1860,
-        "need_rolls": 30,
-        "quests": 191
+        "drinks": 100,
+        "flights": 38,
+        "food": 52,
+        "health_potions": 24,
+        "hearths": 16,
+        "killing_blows": 677,
+        "mana_potions": 42,
+        "mobs": 2184,
+        "quests": 201
       },
-      "xp": 20480
+      "xp": 5069
     },
     "us:steel-appeal": {
       "achievements": {
@@ -1210,9 +1221,9 @@
           "quality": "RARE"
         }
       },
-      "ilvl": 17,
+      "ilvl": 18,
       "last_explored": "Elwynn Forest",
-      "last_login": 1794853461000,
+      "last_login": 1794892813000,
       "level": 28,
       "level_at": {
         "18": 1794190280,
@@ -1229,7 +1240,7 @@
       },
       "professions": {
         "Cooking": 58,
-        "Enchanting": 166,
+        "Enchanting": 167,
         "First Aid": 78,
         "Tailoring": 111
       },
@@ -1654,18 +1665,17 @@
       "stats": {
         "critters": 63,
         "deaths": 61,
-        "drinks": 603,
-        "flights": 41,
+        "drinks": 619,
+        "flights": 42,
         "food": 123,
         "health_potions": 46,
         "hearths": 20,
-        "killing_blows": 1537,
+        "killing_blows": 1564,
         "mana_potions": 13,
-        "mobs": 2753,
-        "need_rolls": 36,
+        "mobs": 2906,
         "quests": 250
       },
-      "xp": 1763
+      "xp": 11652
     }
   },
   "group": {
@@ -1714,60 +1724,60 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1794892570,
-    "10 11 class incoming tuning": 1794892570,
+    "10 11 balance faction pvp updates": 1794893470,
+    "10 11 class incoming tuning": 1794893470,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1794892570,
+    "11 11 balance faction pvp updates": 1794893470,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1794892570,
-    "11 14 adjustment dungeon level player xp": 1794892570,
-    "11 15 adjustment dungeon level player xp": 1794892570,
-    "11 16 2026 forever hotfixes wow": 1794892570,
-    "11 2 beta development forever notes updated wow": 1794892570,
+    "11 13 lost purchase refunds training": 1794893470,
+    "11 14 adjustment dungeon level player xp": 1794893470,
+    "11 15 adjustment dungeon level player xp": 1794893470,
+    "11 16 2026 forever hotfixes wow": 1794893470,
+    "11 2 beta development forever notes updated wow": 1794893470,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
-    "11 3 beta development forever notes updated wow": 1794892570,
-    "11 5 forever issues known updated wow": 1794892570,
-    "11 8 dungeon enemy increased xp": 1794892570,
-    "60 at for gold quests": 1794892570,
-    "60 at from gold lvl no quests seriously": 1794892570,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794892570,
-    "8 city do i inside main maybe people see the why": 1794892570,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1794892570,
-    "a explore forever gamepad with wow": 1794892570,
-    "a for friend invite issues players resolved": 1794892570,
-    "about bug category forever report the wow": 1794892570,
+    "11 3 beta development forever notes updated wow": 1794893470,
+    "11 5 forever issues known updated wow": 1794893470,
+    "11 8 dungeon enemy increased xp": 1794893470,
+    "60 at for gold quests": 1794893470,
+    "60 at from gold lvl no quests seriously": 1794893470,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794893470,
+    "8 city do i inside main maybe people see the why": 1794893470,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1794893470,
+    "a explore forever gamepad with wow": 1794893470,
+    "a for friend invite issues players resolved": 1794893470,
+    "about bug category forever report the wow": 1794893470,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794892570,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794893470,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794892570,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794893470,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
-    "and language settings social": 1794892570,
+    "and language settings social": 1794893470,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1794892570,
-    "broken zeppelins": 1794892570,
-    "bug forever forum guidelines report wow": 1794892570,
-    "bugged chaos missing monday s server shaman since totems": 1794892570,
+    "beta from group issues persist phasing still with": 1794893470,
+    "broken zeppelins": 1794893470,
+    "bug forever forum guidelines report wow": 1794893470,
+    "bugged chaos missing monday s server shaman since totems": 1794893470,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1794892570,
+    "cost forever honor of short story the watch wow": 1794893470,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1794892570,
-    "dungeon increased majority the wants xp": 1794892570,
+    "dungeon enough not still xp": 1794893470,
+    "dungeon increased majority the wants xp": 1794893470,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1794892570,
+    "episode forever lore podcast the the watch wow": 1794893470,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794892570,
-    "forever guide new of player s starter to warcraft welcome world": 1794892570,
-    "forever launch of time warcraft world": 1794892570,
-    "forever live now of warcraft world": 1794892570,
+    "forever forever forging watch wow": 1794893470,
+    "forever guide new of player s starter to warcraft welcome world": 1794893470,
+    "forever launch of time warcraft world": 1794893470,
+    "forever live now of warcraft world": 1794893470,
     "forever short story the unbowed watch wow": 1794358867,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
@@ -1828,7 +1838,7 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794892572,
+  "saved_at": 1794893471,
   "weekly": {
     "baseline": {
       "us:pwanage-ownage": {
