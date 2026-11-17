@@ -206,29 +206,30 @@
       "achievements": {},
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/43/66228267-avatar.jpg",
       "best_item": {
-        "id": 5957,
-        "ilvl": 10,
-        "name": "Handstitched Leather Vest",
-        "quality": "UNCOMMON",
-        "slot": "Chest"
+        "id": 2507,
+        "ilvl": 16,
+        "name": "Laminated Recurve Bow",
+        "quality": "COMMON",
+        "slot": "Ranged"
       },
       "boss_kills": {},
       "class": "Hunter",
       "dungeons": {},
       "first_seen": 1794895272,
       "gear": {},
-      "ilvl": 1,
+      "ilvl": 3,
       "last_explored": null,
-      "last_login": 1794884947000,
-      "level": 10,
+      "last_login": 1794896596000,
+      "level": 12,
       "level_at": {
-        "10": 1794895272
+        "10": 1794895272,
+        "12": 1794897066
       },
       "professions": {
-        "Cooking": 1,
-        "First Aid": 44,
-        "Leatherworking": 9,
-        "Skinning": 77
+        "Cooking": 12,
+        "First Aid": 71,
+        "Leatherworking": 35,
+        "Skinning": 85
       },
       "race": "Night Elf",
       "raids": {},
@@ -241,6 +242,14 @@
           {
             "id": 1537,
             "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 3926,
+            "name": "Kaldorei Spider Kabob"
+          },
+          {
+            "id": 4353,
+            "name": "Brilliant Smallfish"
           },
           {
             "id": 4786,
@@ -267,6 +276,10 @@
           {
             "id": 54191,
             "name": "Minor Healing Potion"
+          },
+          {
+            "id": 54192,
+            "name": "Lesser Healing Potion"
           }
         ],
         "Leatherworking": [
@@ -275,12 +288,24 @@
             "name": "Handstitched Leather Boots"
           },
           {
+            "id": 1355,
+            "name": "Handstitched Leather Pants"
+          },
+          {
             "id": 1356,
             "name": "Light Armor Kit"
           },
           {
+            "id": 1362,
+            "name": "Embossed Leather Vest"
+          },
+          {
             "id": 1708,
             "name": "Light Leather"
+          },
+          {
+            "id": 2162,
+            "name": "Handstitched Leather Belt"
           },
           {
             "id": 4987,
@@ -291,8 +316,40 @@
             "name": "Handstitched Leather Bracers"
           },
           {
+            "id": 4989,
+            "name": "Light Leather Quiver"
+          },
+          {
+            "id": 4990,
+            "name": "Small Leather Ammo Pouch"
+          },
+          {
+            "id": 2195,
+            "name": "Cured Light Hide"
+          },
+          {
             "id": 4156,
             "name": "Handstitched Leather Vest"
+          },
+          {
+            "id": 52647,
+            "name": "Camp Tent"
+          },
+          {
+            "id": 55204,
+            "name": "Moonglow Boots"
+          },
+          {
+            "id": 55205,
+            "name": "Murloc Scale Shoes"
+          },
+          {
+            "id": 55206,
+            "name": "Dark Leather Boots"
+          },
+          {
+            "id": 55207,
+            "name": "Black Whelp Slippers"
           }
         ],
         "Skinning": [
@@ -309,36 +366,36 @@
       "reputations": {
         "Darnassus": {
           "name": "Friendly",
-          "raw": 6785,
+          "raw": 7380,
           "tier": 4
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 3137,
+          "raw": 3142,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 3137,
+          "raw": 3142,
           "tier": 4
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 3137,
+          "raw": 3142,
           "tier": 4
         }
       },
       "spec": "Beast Mastery",
       "stats": {
-        "critters": 14,
-        "deaths": 2,
-        "food": 12,
+        "critters": 20,
+        "deaths": 5,
+        "food": 15,
         "health_potions": 3,
-        "killing_blows": 388,
-        "mobs": 353,
-        "quests": 38
+        "killing_blows": 627,
+        "mobs": 579,
+        "quests": 51
       },
-      "xp": 4966
+      "xp": 5487
     },
     "us:pwanage-ownage": {
       "achievements": {
@@ -2069,60 +2126,60 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1794896171,
-    "10 11 class incoming tuning": 1794896171,
+    "10 11 balance faction pvp updates": 1794897066,
+    "10 11 class incoming tuning": 1794897066,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1794896171,
+    "11 11 balance faction pvp updates": 1794897066,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1794896171,
-    "11 14 adjustment dungeon level player xp": 1794896171,
-    "11 15 adjustment dungeon level player xp": 1794896171,
-    "11 16 2026 forever hotfixes wow": 1794896171,
-    "11 2 beta development forever notes updated wow": 1794896171,
+    "11 13 lost purchase refunds training": 1794897066,
+    "11 14 adjustment dungeon level player xp": 1794897066,
+    "11 15 adjustment dungeon level player xp": 1794897066,
+    "11 16 2026 forever hotfixes wow": 1794897066,
+    "11 2 beta development forever notes updated wow": 1794897066,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
-    "11 3 beta development forever notes updated wow": 1794896171,
-    "11 5 forever issues known updated wow": 1794896171,
-    "11 8 dungeon enemy increased xp": 1794896171,
-    "60 at for gold quests": 1794896171,
-    "60 at from gold lvl no quests seriously": 1794896171,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794896171,
-    "8 city do i inside main maybe people see the why": 1794896171,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1794896171,
-    "a explore forever gamepad with wow": 1794896171,
-    "a for friend invite issues players resolved": 1794896171,
-    "about bug category forever report the wow": 1794896171,
+    "11 3 beta development forever notes updated wow": 1794897066,
+    "11 5 forever issues known updated wow": 1794897066,
+    "11 8 dungeon enemy increased xp": 1794897066,
+    "60 at for gold quests": 1794897066,
+    "60 at from gold lvl no quests seriously": 1794897066,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1794897066,
+    "8 city do i inside main maybe people see the why": 1794897066,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1794897066,
+    "a explore forever gamepad with wow": 1794897066,
+    "a for friend invite issues players resolved": 1794897066,
+    "about bug category forever report the wow": 1794897066,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794896171,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1794897066,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794896171,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1794897066,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
-    "and language settings social": 1794896171,
+    "and language settings social": 1794897066,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1794896171,
-    "broken zeppelins": 1794896171,
-    "bug forever forum guidelines report wow": 1794896171,
-    "bugged chaos missing monday s server shaman since totems": 1794896171,
+    "beta from group issues persist phasing still with": 1794897066,
+    "broken zeppelins": 1794897066,
+    "bug forever forum guidelines report wow": 1794897066,
+    "bugged chaos missing monday s server shaman since totems": 1794897066,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1794896171,
+    "cost forever honor of short story the watch wow": 1794897066,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1794896171,
-    "dungeon increased majority the wants xp": 1794896171,
+    "dungeon enough not still xp": 1794897066,
+    "dungeon increased majority the wants xp": 1794897066,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1794896171,
+    "episode forever lore podcast the the watch wow": 1794897066,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1794896171,
-    "forever guide new of player s starter to warcraft welcome world": 1794896171,
-    "forever launch of time warcraft world": 1794896171,
-    "forever live now of warcraft world": 1794896171,
+    "forever forever forging watch wow": 1794897066,
+    "forever guide new of player s starter to warcraft welcome world": 1794897066,
+    "forever launch of time warcraft world": 1794897066,
+    "forever live now of warcraft world": 1794897066,
     "forever short story the unbowed watch wow": 1794358867,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
@@ -2195,7 +2252,7 @@
       "1569216360347607131"
     ]
   },
-  "saved_at": 1794896173,
+  "saved_at": 1794897068,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
