@@ -110,6 +110,24 @@
           "role": "Healer"
         }
       ]
+    },
+    {
+      "owner": "Ryo",
+      "characters": [
+        {
+          "name": "Aeri",
+          "surname": "Moonglow"
+        }
+      ]
+    },
+    {
+      "owner": "RogueMormon",
+      "characters": [
+        {
+          "name": "Devil",
+          "surname": "Latterday"
+        }
+      ]
     }
   ]
 }
