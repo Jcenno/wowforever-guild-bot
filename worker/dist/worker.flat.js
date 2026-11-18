@@ -54,13 +54,13 @@ noRecipes: "No recipes recorded yet. They appear after the next check.",
 nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
 whoCraftsTitle: (q) => `Who can make "${q}"`,
 reportTitle: "This week in the Workshop",
-pollHow: "Pick your top 3. 1st choice gets 3 points, 2nd gets 2, 3rd gets 1. You can vote again to change your picks.",
+pollHow: "Pick your top 4. 1st choice gets 4 points, 2nd gets 3, 3rd gets 2, 4th gets 1. You can vote again to change your picks.",
 pollBallots: (n) => `**${n}** ballot${n === 1 ? "" : "s"} in. Results show when the poll closes.`,
 pollVoteBtn: "Vote",
 pollCloseBtn: "Close poll",
-pollStep: (step) => `Pick your **${["1st", "2nd", "3rd"][step - 1]} choice**.`,
-pollPick: (step) => `${["1st", "2nd", "3rd"][step - 1]} choice`,
-pollPickPart: (step, a, b) => `${["1st", "2nd", "3rd"][step - 1]} choice: ${a} to ${b}`.slice(0, 150),
+pollStep: (step) => `Pick your **${["1st", "2nd", "3rd", "4th"][step - 1]} choice**.`,
+pollPick: (step) => `${["1st", "2nd", "3rd", "4th"][step - 1]} choice`,
+pollPickPart: (step, a, b) => `${["1st", "2nd", "3rd", "4th"][step - 1]} choice: ${a} to ${b}`.slice(0, 150),
 pollSoFar: (names) => names.map((n, k) => `${k + 1}. ${n}`).join("\n"),
 pollDone: (names) => `Your ballot:\n${names.map((n, k) => `${k + 1}. **${n}**`).join("\n")}\nPress Vote again any time to change it.`,
 pollWinner: (name) => `🏆 **${name}** wins.`,
@@ -630,7 +630,7 @@ const COMMANDS = [
 { name: "workshop", description: "Open gifts and craft requests right now" },
 { name: "post-welcome", description: "Officers: post the How this works card with the Dings button here", default_member_permissions: "8192" },
 { name: "status", description: "Officers: is everything running", default_member_permissions: "8192" },
-{ name: "poll-create", description: "Officers: post a ranked poll (top 3 choices each)", default_member_permissions: "8192", options: [
+{ name: "poll-create", description: "Officers: post a ranked poll (top 4 choices each)", default_member_permissions: "8192", options: [
 { type: 3, name: "title", description: "What the poll is about", required: true, max_length: 150 },
 { type: 3, name: "options", description: "Choices separated by ; (semicolon)", required: true, max_length: 4000 },
 { type: 7, name: "channel", description: "Post it in this channel instead of here", required: false, channel_types: [0] } ] },
@@ -687,12 +687,14 @@ return json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL, allowed_
 // ---------------------------------------------------------------- Ranked polls
 // /poll-create (officers) posts a card. Vote opens a private 3-step ballot (1st, 2nd, 3rd choice).
 // Scoring: 3/2/1 points, ties broken by first-choice count. Results show only when an officer closes it.
+const PICKS = 4; // choices per ballot; 1st gets PICKS points, last gets 1
 let pollTablesReady = false;
 async function ensurePollTables(env) {
 if (pollTablesReady) return;
 await env.DB.prepare("CREATE TABLE IF NOT EXISTS polls (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, options TEXT NOT NULL, channel_id TEXT, message_id TEXT, token TEXT, status TEXT NOT NULL DEFAULT 'open', created_by TEXT, created_at INTEGER, capped TEXT)").run();
 try { await env.DB.prepare("ALTER TABLE polls ADD COLUMN capped TEXT").run(); } catch (e) { /* already there */ }
-await env.DB.prepare("CREATE TABLE IF NOT EXISTS poll_votes (poll_id INTEGER NOT NULL, user_id TEXT NOT NULL, r1 INTEGER, r2 INTEGER, r3 INTEGER, at INTEGER, PRIMARY KEY (poll_id, user_id))").run();
+await env.DB.prepare("CREATE TABLE IF NOT EXISTS poll_votes (poll_id INTEGER NOT NULL, user_id TEXT NOT NULL, r1 INTEGER, r2 INTEGER, r3 INTEGER, r4 INTEGER, at INTEGER, PRIMARY KEY (poll_id, user_id))").run();
+try { await env.DB.prepare("ALTER TABLE poll_votes ADD COLUMN r4 INTEGER").run(); } catch (e) { /* already there */ }
 pollTablesReady = true;
 }
 export function parseOptions(raw) {
@@ -711,7 +713,7 @@ return { opts, capped };
 export function tally(options, votes, capped = []) {
 const rows = options.map((name, idx) => ({ name, idx, points: 0, firsts: 0, mentions: 0 }));
 for (const v of votes) {
-[v.r1, v.r2, v.r3].forEach((o, k) => { if (o != null && rows[o]) { rows[o].points += 3 - k; rows[o].mentions += 1; if (k === 0) rows[o].firsts += 1; } });
+[v.r1, v.r2, v.r3, v.r4].forEach((o, k) => { if (o != null && rows[o]) { rows[o].points += PICKS - k; rows[o].mentions += 1; if (k === 0) rows[o].firsts += 1; } });
 }
 const order = (a, b) => b.points - a.points || b.firsts - a.firsts || a.name.localeCompare(b.name);
 const ranked = rows.sort(order);
@@ -793,22 +795,22 @@ if (action === "pclose") {
 if (!isOfficer(i)) return eph(S.officersOnly);
 const res = await env.DB.prepare("UPDATE polls SET status='closed' WHERE id=? AND status='open'").bind(id).run();
 if (!res.meta.changes) return eph(S.pollIsClosed);
-const votes = (await env.DB.prepare("SELECT r1, r2, r3 FROM poll_votes WHERE poll_id=?").bind(id).all()).results;
+const votes = (await env.DB.prepare("SELECT r1, r2, r3, r4 FROM poll_votes WHERE poll_id=?").bind(id).all()).results;
 return json({ type: R.UPDATE, data: pollCard(p, votes.filter((v) => v.r1 != null).length, tally(JSON.parse(p.options), votes, JSON.parse(p.capped || "[]"))) });
 }
 if (action === "pick") {
 const step = Number(parts[2]), choice = Number(i.data.values?.[0]);
 const opts = JSON.parse(p.options);
 if (!(choice >= 0 && choice < opts.length)) return eph(S.pollGone);
-const cur = await env.DB.prepare("SELECT r1, r2, r3 FROM poll_votes WHERE poll_id=? AND user_id=?").bind(id, u.id).first();
-const picked = step === 1 ? [] : [cur?.r1, step === 3 ? cur?.r2 : null].filter((x) => x != null);
-if (step === 1) await env.DB.prepare("INSERT INTO poll_votes (poll_id,user_id,r1,r2,r3,at) VALUES (?,?,?,NULL,NULL,?) ON CONFLICT(poll_id,user_id) DO UPDATE SET r1=excluded.r1, r2=NULL, r3=NULL, at=excluded.at").bind(id, u.id, choice, now()).run();
-else await env.DB.prepare(`UPDATE poll_votes SET ${step === 2 ? "r2" : "r3"}=?, at=? WHERE poll_id=? AND user_id=?`).bind(choice, now(), id, u.id).run();
+const cur = await env.DB.prepare("SELECT r1, r2, r3, r4 FROM poll_votes WHERE poll_id=? AND user_id=?").bind(id, u.id).first();
+const picked = [cur?.r1, cur?.r2, cur?.r3].slice(0, step - 1).filter((x) => x != null);
+if (step === 1) await env.DB.prepare("INSERT INTO poll_votes (poll_id,user_id,r1,r2,r3,r4,at) VALUES (?,?,?,NULL,NULL,NULL,?) ON CONFLICT(poll_id,user_id) DO UPDATE SET r1=excluded.r1, r2=NULL, r3=NULL, r4=NULL, at=excluded.at").bind(id, u.id, choice, now()).run();
+else await env.DB.prepare(`UPDATE poll_votes SET r${step}=?, at=? WHERE poll_id=? AND user_id=?`).bind(choice, now(), id, u.id).run();
 const chosen = [...picked, choice];
 if (step === 1 && p.channel_id && p.message_id) {
 ctx.waitUntil((async () => discord(env, "PATCH", `/channels/${p.channel_id}/messages/${p.message_id}`, pollCard(p, await ballotCount(env, id), null)))());
 }
-if (step < 3 && chosen.length < opts.length) return json({ type: R.UPDATE, data: ballotStep(p, step + 1, chosen) });
+if (step < PICKS && chosen.length < opts.length) return json({ type: R.UPDATE, data: ballotStep(p, step + 1, chosen) });
 return json({ type: R.UPDATE, data: { content: S.pollDone(chosen.map((x) => opts[x])), components: [] } });
 }
 return eph(S.pollGone);
