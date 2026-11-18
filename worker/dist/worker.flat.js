@@ -54,6 +54,21 @@ noRecipes: "No recipes recorded yet. They appear after the next check.",
 nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
 whoCraftsTitle: (q) => `Who can make "${q}"`,
 reportTitle: "This week in the Workshop",
+pollHow: "Pick your top 3. 1st choice gets 3 points, 2nd gets 2, 3rd gets 1. You can vote again to change your picks.",
+pollBallots: (n) => `**${n}** ballot${n === 1 ? "" : "s"} in. Results show when the poll closes.`,
+pollVoteBtn: "Vote",
+pollCloseBtn: "Close poll",
+pollStep: (step) => `Pick your **${["1st", "2nd", "3rd"][step - 1]} choice**.`,
+pollPick: (step) => `${["1st", "2nd", "3rd"][step - 1]} choice`,
+pollPickPart: (step, a, b) => `${["1st", "2nd", "3rd"][step - 1]} choice: ${a} to ${b}`.slice(0, 150),
+pollSoFar: (names) => names.map((n, k) => `${k + 1}. ${n}`).join("\n"),
+pollDone: (names) => `Your ballot:\n${names.map((n, k) => `${k + 1}. **${n}**`).join("\n")}\nPress Vote again any time to change it.`,
+pollWinner: (name) => `🏆 **${name}** wins.`,
+pollNoVotes: "No votes came in.",
+pollClosed: (n) => `Closed · ${n} ballot${n === 1 ? "" : "s"}`,
+pollNeedOptions: "Give at least 3 choices, separated by semicolons.",
+pollGone: "That poll is gone.",
+pollIsClosed: "This poll is closed.",
 linkBtn: "Link my character",
 linkTitle: "Link your character",
 linkLabel: "Character name (first and last)",
@@ -537,6 +552,7 @@ if (["make", "done", "cancel"].includes(action)) return onRequestButton(i, env, 
 if (action === "role") return onRoleToggle(i, env, idStr);
 if (action === "spec") return onSpecToggle(i, env, idStr);
 if (action === "link") return linkModal();
+if (["pvote", "pclose", "pick"].includes(action)) return onPollComponent(i, env, ctx, action, i.data.custom_id.split(":"));
 const g = await env.DB.prepare("SELECT * FROM gifts WHERE id=?").bind(id).first();
 const u = who(i), uname = display(i);
 const eph = (content) => json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL } });
@@ -613,6 +629,9 @@ const COMMANDS = [
 { name: "workshop", description: "Open gifts and craft requests right now" },
 { name: "post-welcome", description: "Officers: post the How this works card with the Dings button here", default_member_permissions: "8192" },
 { name: "status", description: "Officers: is everything running", default_member_permissions: "8192" },
+{ name: "poll-create", description: "Officers: post a ranked poll (top 3 choices each)", default_member_permissions: "8192", options: [
+{ type: 3, name: "title", description: "What the poll is about", required: true, max_length: 150 },
+{ type: 3, name: "options", description: "Choices separated by ; (semicolon)", required: true, max_length: 4000 } ] },
 { name: "stock", description: "Spare mats people in the guild can hand over" },
 { name: "stock-set", description: "List spare mats you can hand over (qty 0 removes)", options: [
 { type: 3, name: "item", description: "Item name (pick from the list)", required: true, autocomplete: true },
@@ -663,6 +682,111 @@ return json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL, allowed_
 }
 
 // ---------------------------------------------------------------- Welcome card with the Dings toggle (officers post it, members press it)
+// ---------------------------------------------------------------- Ranked polls
+// /poll-create (officers) posts a card. Vote opens a private 3-step ballot (1st, 2nd, 3rd choice).
+// Scoring: 3/2/1 points, ties broken by first-choice count. Results show only when an officer closes it.
+let pollTablesReady = false;
+async function ensurePollTables(env) {
+if (pollTablesReady) return;
+await env.DB.prepare("CREATE TABLE IF NOT EXISTS polls (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, options TEXT NOT NULL, channel_id TEXT, message_id TEXT, token TEXT, status TEXT NOT NULL DEFAULT 'open', created_by TEXT, created_at INTEGER)").run();
+await env.DB.prepare("CREATE TABLE IF NOT EXISTS poll_votes (poll_id INTEGER NOT NULL, user_id TEXT NOT NULL, r1 INTEGER, r2 INTEGER, r3 INTEGER, at INTEGER, PRIMARY KEY (poll_id, user_id))").run();
+pollTablesReady = true;
+}
+export function parseOptions(raw) {
+const seen = new Set();
+return String(raw || "").split(/[;\n|]+/).map((s) => s.trim()).filter((s) => s && !seen.has(s.toLowerCase()) && seen.add(s.toLowerCase())).map((s) => s.slice(0, 80)).slice(0, 50);
+}
+export function tally(options, votes) {
+const rows = options.map((name, idx) => ({ name, idx, points: 0, firsts: 0, mentions: 0 }));
+for (const v of votes) {
+[v.r1, v.r2, v.r3].forEach((o, k) => { if (o != null && rows[o]) { rows[o].points += 3 - k; rows[o].mentions += 1; if (k === 0) rows[o].firsts += 1; } });
+}
+return rows.sort((a, b) => b.points - a.points || b.firsts - a.firsts || a.name.localeCompare(b.name));
+}
+function pollCard(p, ballots, results) {
+const opts = JSON.parse(p.options);
+const lines = [`**${p.title}**`, S.pollHow];
+if (results) {
+const top = results.filter((r) => r.points > 0).slice(0, 10);
+lines.push("", top.length ? S.pollWinner(top[0].name) : S.pollNoVotes);
+top.forEach((r, n) => lines.push(`${n + 1}. **${r.name}** · ${r.points} pts · ${r.firsts} first-choice`));
+lines.push("", S.pollClosed(ballots));
+} else {
+lines.push("", opts.map((o) => `• ${o}`).join("\n"), "", S.pollBallots(ballots));
+}
+const container = { type: 17, accent_color: 0x5865f2, components: [{ type: 10, content: lines.join("\n").slice(0, 3900) }] };
+if (!results) container.components.push({ type: 14, divider: true, spacing: 1 }, { type: 1, components: [
+{ type: 2, style: 1, label: S.pollVoteBtn, custom_id: `pvote:${p.id}` },
+{ type: 2, style: 2, label: S.pollCloseBtn, custom_id: `pclose:${p.id}` },
+] });
+return { flags: FLAGS.V2, components: [container], allowed_mentions: { parse: [] } };
+}
+function ballotStep(p, step, picked) {
+const opts = JSON.parse(p.options);
+const avail = opts.map((name, idx) => ({ name, idx })).filter((o) => !picked.includes(o.idx));
+const half = Math.ceil(avail.length / 2);
+const groups = avail.length > 25 ? [avail.slice(0, half), avail.slice(half)] : [avail];
+const so = (o) => ({ label: o.name.slice(0, 100), value: String(o.idx) });
+const rows = groups.map((g, n) => ({ type: 1, components: [{ type: 3, custom_id: `pick:${p.id}:${step}:${n}`,
+placeholder: groups.length > 1 ? S.pollPickPart(step, g[0].name, g[g.length - 1].name) : S.pollPick(step), options: g.map(so) }] }));
+const head = picked.length ? S.pollSoFar(picked.map((x) => opts[x])) + "\n" : "";
+return { content: head + S.pollStep(step), components: rows, flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } };
+}
+async function onPollCreate(i, env, ctx) {
+if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnly, flags: FLAGS.EPHEMERAL } });
+await ensurePollTables(env);
+const title = (i.data.options?.find((o) => o.name === "title")?.value || "").trim().slice(0, 150);
+const opts = parseOptions(i.data.options?.find((o) => o.name === "options")?.value);
+if (opts.length < 3) return json({ type: R.MESSAGE, data: { content: S.pollNeedOptions, flags: FLAGS.EPHEMERAL } });
+const row = await env.DB.prepare("INSERT INTO polls (title, options, channel_id, token, created_by, created_at) VALUES (?,?,?,?,?,?) RETURNING id")
+.bind(title, JSON.stringify(opts), i.channel_id, i.token, who(i).id, now()).first();
+const p = { id: row.id, title, options: JSON.stringify(opts) };
+ctx.waitUntil((async () => {
+for (let attempt = 0; attempt < 4; attempt++) {
+await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+const m = await fetch(`${API}/webhooks/${env.DISCORD_APP_ID}/${i.token}/messages/@original`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+if (m?.id) { await env.DB.prepare("UPDATE polls SET message_id=? WHERE id=?").bind(m.id, p.id).run(); return; }
+}
+})());
+return json({ type: R.MESSAGE, data: pollCard(p, 0, null) });
+}
+async function ballotCount(env, id) {
+return (await env.DB.prepare("SELECT COUNT(*) n FROM poll_votes WHERE poll_id=? AND r1 IS NOT NULL").bind(id).first())?.n || 0;
+}
+async function onPollComponent(i, env, ctx, action, parts) {
+await ensurePollTables(env);
+const id = Number(parts[1]);
+const p = await env.DB.prepare("SELECT * FROM polls WHERE id=?").bind(id).first();
+const eph = (content) => json({ type: R.MESSAGE, data: { content, flags: FLAGS.EPHEMERAL } });
+if (!p) return eph(S.pollGone);
+if (p.status !== "open") return eph(S.pollIsClosed);
+const u = who(i);
+if (action === "pvote") return json({ type: R.MESSAGE, data: ballotStep(p, 1, []) });
+if (action === "pclose") {
+if (!isOfficer(i)) return eph(S.officersOnly);
+const res = await env.DB.prepare("UPDATE polls SET status='closed' WHERE id=? AND status='open'").bind(id).run();
+if (!res.meta.changes) return eph(S.pollIsClosed);
+const votes = (await env.DB.prepare("SELECT r1, r2, r3 FROM poll_votes WHERE poll_id=?").bind(id).all()).results;
+return json({ type: R.UPDATE, data: pollCard(p, votes.filter((v) => v.r1 != null).length, tally(JSON.parse(p.options), votes)) });
+}
+if (action === "pick") {
+const step = Number(parts[2]), choice = Number(i.data.values?.[0]);
+const opts = JSON.parse(p.options);
+if (!(choice >= 0 && choice < opts.length)) return eph(S.pollGone);
+const cur = await env.DB.prepare("SELECT r1, r2, r3 FROM poll_votes WHERE poll_id=? AND user_id=?").bind(id, u.id).first();
+const picked = step === 1 ? [] : [cur?.r1, step === 3 ? cur?.r2 : null].filter((x) => x != null);
+if (step === 1) await env.DB.prepare("INSERT INTO poll_votes (poll_id,user_id,r1,r2,r3,at) VALUES (?,?,?,NULL,NULL,?) ON CONFLICT(poll_id,user_id) DO UPDATE SET r1=excluded.r1, r2=NULL, r3=NULL, at=excluded.at").bind(id, u.id, choice, now()).run();
+else await env.DB.prepare(`UPDATE poll_votes SET ${step === 2 ? "r2" : "r3"}=?, at=? WHERE poll_id=? AND user_id=?`).bind(choice, now(), id, u.id).run();
+const chosen = [...picked, choice];
+if (step === 1 && p.channel_id && p.message_id) {
+ctx.waitUntil((async () => discord(env, "PATCH", `/channels/${p.channel_id}/messages/${p.message_id}`, pollCard(p, await ballotCount(env, id), null)))());
+}
+if (step < 3 && chosen.length < opts.length) return json({ type: R.UPDATE, data: ballotStep(p, step + 1, chosen) });
+return json({ type: R.UPDATE, data: { content: S.pollDone(chosen.map((x) => opts[x])), components: [] } });
+}
+return eph(S.pollGone);
+}
+
 // "Link my character": button -> modal -> Blizzard lookup -> class role + saved link.
 // The tracker reads GET /linked, so a linked character is tracked without editing characters.json.
 function linkModal() {
@@ -843,6 +967,7 @@ if (i.type === T.COMMAND && i.data.name === "need") return onNeed(i, env, ctx);
 if (i.type === T.COMMAND && i.data.name === "workshop") return onWorkshop(i, env);
 if (i.type === T.COMMAND && i.data.name === "post-welcome") return onPostWelcome(i, env);
 if (i.type === T.COMMAND && i.data.name === "status") return onStatus(i, env);
+if (i.type === T.COMMAND && i.data.name === "poll-create") return onPollCreate(i, env, ctx);
 if (i.type === T.COMMAND && i.data.name === "stock") return onStock(i, env);
 if (i.type === T.COMMAND && i.data.name === "stock-set") return onStockSet(i, env);
 if (i.type === T.COMMAND && i.data.name === "iam") return onIam(i, env, ctx);
