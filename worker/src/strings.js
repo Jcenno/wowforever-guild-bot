@@ -66,6 +66,7 @@ export const S = {
   pollClosed: (n) => `Closed · ${n} ballot${n === 1 ? "" : "s"}`,
   pollNeedOptions: "Give at least 3 choices, separated by semicolons.",
   pollGone: "That poll is gone.",
+  pollPosted: (ch) => `Poll posted in <#${ch}>.`,
   pollIsClosed: "This poll is closed.",
   linkBtn: "Link my character",
   linkTitle: "Link your character",

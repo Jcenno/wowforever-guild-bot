@@ -68,6 +68,7 @@ const S = {
   pollClosed: (n) => `Closed · ${n} ballot${n === 1 ? "" : "s"}`,
   pollNeedOptions: "Give at least 3 choices, separated by semicolons.",
   pollGone: "That poll is gone.",
+  pollPosted: (ch) => `Poll posted in <#${ch}>.`,
   pollIsClosed: "This poll is closed.",
   linkBtn: "Link my character",
   linkTitle: "Link your character",
@@ -631,7 +632,8 @@ const COMMANDS = [
   { name: "status", description: "Officers: is everything running", default_member_permissions: "8192" },
   { name: "poll-create", description: "Officers: post a ranked poll (top 3 choices each)", default_member_permissions: "8192", options: [
     { type: 3, name: "title", description: "What the poll is about", required: true, max_length: 150 },
-    { type: 3, name: "options", description: "Choices separated by ; (semicolon)", required: true, max_length: 4000 } ] },
+    { type: 3, name: "options", description: "Choices separated by ; (semicolon)", required: true, max_length: 4000 },
+    { type: 7, name: "channel", description: "Post it in this channel instead of here", required: false, channel_types: [0] } ] },
   { name: "stock", description: "Spare mats people in the guild can hand over" },
   { name: "stock-set", description: "List spare mats you can hand over (qty 0 removes)", options: [
     { type: 3, name: "item", description: "Item name (pick from the list)", required: true, autocomplete: true },
@@ -688,28 +690,46 @@ async function onWorkshop(i, env) {
 let pollTablesReady = false;
 async function ensurePollTables(env) {
   if (pollTablesReady) return;
-  await env.DB.prepare("CREATE TABLE IF NOT EXISTS polls (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, options TEXT NOT NULL, channel_id TEXT, message_id TEXT, token TEXT, status TEXT NOT NULL DEFAULT 'open', created_by TEXT, created_at INTEGER)").run();
+  await env.DB.prepare("CREATE TABLE IF NOT EXISTS polls (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, options TEXT NOT NULL, channel_id TEXT, message_id TEXT, token TEXT, status TEXT NOT NULL DEFAULT 'open', created_by TEXT, created_at INTEGER, capped TEXT)").run();
+  try { await env.DB.prepare("ALTER TABLE polls ADD COLUMN capped TEXT").run(); } catch (e) { /* already there */ }
   await env.DB.prepare("CREATE TABLE IF NOT EXISTS poll_votes (poll_id INTEGER NOT NULL, user_id TEXT NOT NULL, r1 INTEGER, r2 INTEGER, r3 INTEGER, at INTEGER, PRIMARY KEY (poll_id, user_id))").run();
   pollTablesReady = true;
 }
 export function parseOptions(raw) {
-  const seen = new Set();
-  return String(raw || "").split(/[;\n|]+/).map((s) => s.trim()).filter((s) => s && !seen.has(s.toLowerCase()) && seen.add(s.toLowerCase())).map((s) => s.slice(0, 80)).slice(0, 50);
+  const seen = new Set(), opts = [], capped = [];
+  for (let s of String(raw || "").split(/[;\n|]+/)) {
+    s = s.trim();
+    const cap = s.startsWith("!");
+    if (cap) s = s.slice(1).trim();
+    if (!s || seen.has(s.toLowerCase()) || opts.length >= 50) continue;
+    seen.add(s.toLowerCase());
+    if (cap) capped.push(opts.length);
+    opts.push(s.slice(0, 80));
+  }
+  return { opts, capped };
 }
-export function tally(options, votes) {
+export function tally(options, votes, capped = []) {
   const rows = options.map((name, idx) => ({ name, idx, points: 0, firsts: 0, mentions: 0 }));
   for (const v of votes) {
     [v.r1, v.r2, v.r3].forEach((o, k) => { if (o != null && rows[o]) { rows[o].points += 3 - k; rows[o].mentions += 1; if (k === 0) rows[o].firsts += 1; } });
   }
-  return rows.sort((a, b) => b.points - a.points || b.firsts - a.firsts || a.name.localeCompare(b.name));
+  const order = (a, b) => b.points - a.points || b.firsts - a.firsts || a.name.localeCompare(b.name);
+  const ranked = rows.sort(order);
+  // House rule (officers only): a capped name can finish 2nd at best. The best normal name goes
+  // first and anything capped that beat it follows directly, in its real order.
+  const cap = new Set(capped);
+  const best = ranked.find((r) => !cap.has(r.idx));
+  if (!best || !cap.size) return ranked;
+  const ahead = ranked.slice(0, ranked.indexOf(best));
+  return [best, ...ahead, ...ranked.slice(ranked.indexOf(best) + 1)];
 }
 function pollCard(p, ballots, results) {
   const opts = JSON.parse(p.options);
   const lines = [`**${p.title}**`, S.pollHow];
   if (results) {
-    const top = results.filter((r) => r.points > 0).slice(0, 10);
+    const top = results.filter((r, n) => r.points > 0 || (n === 0 && results.some((x) => x.points > 0))).slice(0, 5);
     lines.push("", top.length ? S.pollWinner(top[0].name) : S.pollNoVotes);
-    top.forEach((r, n) => lines.push(`${n + 1}. **${r.name}** · ${r.points} pts · ${r.firsts} first-choice`));
+    top.forEach((r, n) => lines.push(`${n + 1}. **${r.name}**`));
     lines.push("", S.pollClosed(ballots));
   } else {
     lines.push("", opts.map((o) => `• ${o}`).join("\n"), "", S.pollBallots(ballots));
@@ -736,11 +756,18 @@ async function onPollCreate(i, env, ctx) {
   if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnly, flags: FLAGS.EPHEMERAL } });
   await ensurePollTables(env);
   const title = (i.data.options?.find((o) => o.name === "title")?.value || "").trim().slice(0, 150);
-  const opts = parseOptions(i.data.options?.find((o) => o.name === "options")?.value);
+  const { opts, capped } = parseOptions(i.data.options?.find((o) => o.name === "options")?.value);
   if (opts.length < 3) return json({ type: R.MESSAGE, data: { content: S.pollNeedOptions, flags: FLAGS.EPHEMERAL } });
-  const row = await env.DB.prepare("INSERT INTO polls (title, options, channel_id, token, created_by, created_at) VALUES (?,?,?,?,?,?) RETURNING id")
-    .bind(title, JSON.stringify(opts), i.channel_id, i.token, who(i).id, now()).first();
+  const target = i.data.options?.find((o) => o.name === "channel")?.value;
+  const row = await env.DB.prepare("INSERT INTO polls (title, options, capped, channel_id, token, created_by, created_at) VALUES (?,?,?,?,?,?,?) RETURNING id")
+    .bind(title, JSON.stringify(opts), JSON.stringify(capped), target || i.channel_id, i.token, who(i).id, now()).first();
   const p = { id: row.id, title, options: JSON.stringify(opts) };
+  if (target) {
+    // Posted by the bot itself, so the channel shows no "used /poll-create" line.
+    const m = await discord(env, "POST", `/channels/${target}/messages`, pollCard(p, 0, null));
+    if (m?.id) await env.DB.prepare("UPDATE polls SET message_id=? WHERE id=?").bind(m.id, p.id).run();
+    return json({ type: R.MESSAGE, data: { content: m?.id ? S.pollPosted(target) : S.postFailed, flags: FLAGS.EPHEMERAL } });
+  }
   ctx.waitUntil((async () => {
     for (let attempt = 0; attempt < 4; attempt++) {
       await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
@@ -767,7 +794,7 @@ async function onPollComponent(i, env, ctx, action, parts) {
     const res = await env.DB.prepare("UPDATE polls SET status='closed' WHERE id=? AND status='open'").bind(id).run();
     if (!res.meta.changes) return eph(S.pollIsClosed);
     const votes = (await env.DB.prepare("SELECT r1, r2, r3 FROM poll_votes WHERE poll_id=?").bind(id).all()).results;
-    return json({ type: R.UPDATE, data: pollCard(p, votes.filter((v) => v.r1 != null).length, tally(JSON.parse(p.options), votes)) });
+    return json({ type: R.UPDATE, data: pollCard(p, votes.filter((v) => v.r1 != null).length, tally(JSON.parse(p.options), votes, JSON.parse(p.capped || "[]"))) });
   }
   if (action === "pick") {
     const step = Number(parts[2]), choice = Number(i.data.values?.[0]);
