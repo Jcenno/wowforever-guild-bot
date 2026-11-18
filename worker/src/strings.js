@@ -56,7 +56,7 @@ export const S = {
   pollBallots: (n) => `**${n}** ballot${n === 1 ? "" : "s"} in. Results show when the poll closes.`,
   pollVoteBtn: "Vote",
   pollCloseBtn: "Close poll",
-  pollStep: (step) => `Pick your **${["1st", "2nd", "3rd", "4th"][step - 1]} choice**.`,
+  pollStep: (step, split) => `Pick your **${["1st", "2nd", "3rd", "4th"][step - 1]} choice** (${step} of 4).${split ? " The names are split across two menus, use either one." : ""}`,
   pollPick: (step) => `${["1st", "2nd", "3rd", "4th"][step - 1]} choice`,
   pollPickPart: (step, a, b) => `${["1st", "2nd", "3rd", "4th"][step - 1]} choice: ${a} to ${b}`.slice(0, 150),
   pollSoFar: (names) => names.map((n, k) => `${k + 1}. ${n}`).join("\n"),

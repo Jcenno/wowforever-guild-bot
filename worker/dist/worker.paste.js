@@ -55,7 +55,7 @@ pollHow: "Pick your top 4. 1st choice gets 4 points, 2nd gets 3, 3rd gets 2, 4th
 pollBallots: (n) => `**${n}** ballot${n === 1 ? "" : "s"} in. Results show when the poll closes.`,
 pollVoteBtn: "Vote",
 pollCloseBtn: "Close poll",
-pollStep: (step) => `Pick your **${["1st", "2nd", "3rd", "4th"][step - 1]} choice**.`,
+pollStep: (step, split) => `Pick your **${["1st", "2nd", "3rd", "4th"][step - 1]} choice** (${step} of 4).${split ? " The names are split across two menus, use either one." : ""}`,
 pollPick: (step) => `${["1st", "2nd", "3rd", "4th"][step - 1]} choice`,
 pollPickPart: (step, a, b) => `${["1st", "2nd", "3rd", "4th"][step - 1]} choice: ${a} to ${b}`.slice(0, 150),
 pollSoFar: (names) => names.map((n, k) => `${k + 1}. ${n}`).join("\n"),
@@ -691,7 +691,7 @@ const so = (o) => ({ label: o.name.slice(0, 100), value: String(o.idx) });
 const rows = groups.map((g, n) => ({ type: 1, components: [{ type: 3, custom_id: `pick:${p.id}:${step}:${n}`,
 placeholder: groups.length > 1 ? S.pollPickPart(step, g[0].name, g[g.length - 1].name) : S.pollPick(step), options: g.map(so) }] }));
 const head = picked.length ? S.pollSoFar(picked.map((x) => opts[x])) + "\n" : "";
-return { content: head + S.pollStep(step), components: rows, flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } };
+return { content: head + S.pollStep(step, groups.length > 1), components: rows, flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } };
 }
 async function onPollCreate(i, env, ctx) {
 if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnly, flags: FLAGS.EPHEMERAL } });

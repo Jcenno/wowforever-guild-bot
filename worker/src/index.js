@@ -639,7 +639,7 @@ function ballotStep(p, step, picked) {
   const rows = groups.map((g, n) => ({ type: 1, components: [{ type: 3, custom_id: `pick:${p.id}:${step}:${n}`,
     placeholder: groups.length > 1 ? S.pollPickPart(step, g[0].name, g[g.length - 1].name) : S.pollPick(step), options: g.map(so) }] }));
   const head = picked.length ? S.pollSoFar(picked.map((x) => opts[x])) + "\n" : "";
-  return { content: head + S.pollStep(step), components: rows, flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } };
+  return { content: head + S.pollStep(step, groups.length > 1), components: rows, flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } };
 }
 async function onPollCreate(i, env, ctx) {
   if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnly, flags: FLAGS.EPHEMERAL } });
