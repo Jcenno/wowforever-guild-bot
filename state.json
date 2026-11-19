@@ -484,6 +484,240 @@
       },
       "xp": 3664
     },
+    "us:pharaoh-nuff": {
+      "achievements": {
+        "61499": "Novice Warrior",
+        "62015": "Journeyman Blacksmith",
+        "62021": "Journeyman Engineer",
+        "62031": "Novice Spelunker",
+        "842": "Explore Teldrassil",
+        "844": "Explore Darkshore"
+      },
+      "avatar": "https://render.worldofwarcraft.com/forever-us/character/21/55984661-avatar.jpg",
+      "best_item": {
+        "id": 4368,
+        "ilvl": 20,
+        "name": "Flying Tiger Goggles",
+        "quality": "UNCOMMON",
+        "slot": "Head"
+      },
+      "boss_kills": {},
+      "class": "Paladin",
+      "dungeons": {},
+      "first_seen": 1795096871,
+      "gear": {},
+      "ilvl": 8,
+      "last_explored": "Darkshore",
+      "last_login": 1795095595000,
+      "level": 14,
+      "level_at": {
+        "14": 1795096871
+      },
+      "professions": {
+        "Engineering": 150,
+        "Mining": 120
+      },
+      "race": "Human",
+      "raids": {},
+      "recipes": {
+        "Engineering": [
+          {
+            "id": 2439,
+            "name": "Whirring Bronze Gizmo"
+          },
+          {
+            "id": 2441,
+            "name": "Heavy Blasting Powder"
+          },
+          {
+            "id": 2442,
+            "name": "Heavy Dynamite"
+          },
+          {
+            "id": 2443,
+            "name": "Crafted Solid Shot"
+          },
+          {
+            "id": 2445,
+            "name": "Big Bronze Bomb"
+          },
+          {
+            "id": 2447,
+            "name": "Bronze Framework"
+          },
+          {
+            "id": 2449,
+            "name": "Explosive Sheep"
+          },
+          {
+            "id": 2450,
+            "name": "Green Tinted Goggles"
+          },
+          {
+            "id": 2413,
+            "name": "Rough Blasting Powder"
+          },
+          {
+            "id": 2414,
+            "name": "Rough Dynamite"
+          },
+          {
+            "id": 2415,
+            "name": "Crafted Light Shot"
+          },
+          {
+            "id": 2417,
+            "name": "Handful of Copper Bolts"
+          },
+          {
+            "id": 2418,
+            "name": "Rough Copper Bomb"
+          },
+          {
+            "id": 2419,
+            "name": "Copper Tube"
+          },
+          {
+            "id": 2420,
+            "name": "Rough Boomstick"
+          },
+          {
+            "id": 2421,
+            "name": "Crude Scope"
+          },
+          {
+            "id": 2422,
+            "name": "Silver Contact"
+          },
+          {
+            "id": 2423,
+            "name": "Copper Modulator"
+          },
+          {
+            "id": 2425,
+            "name": "Coarse Blasting Powder"
+          },
+          {
+            "id": 2426,
+            "name": "Crafted Heavy Shot"
+          },
+          {
+            "id": 2427,
+            "name": "Coarse Dynamite"
+          },
+          {
+            "id": 2428,
+            "name": "Target Dummy"
+          },
+          {
+            "id": 2430,
+            "name": "Flying Tiger Goggles"
+          },
+          {
+            "id": 2431,
+            "name": "Deadly Blunderbuss"
+          },
+          {
+            "id": 2432,
+            "name": "Large Copper Bomb"
+          },
+          {
+            "id": 2433,
+            "name": "Bronze Tube"
+          },
+          {
+            "id": 2435,
+            "name": "Standard Scope"
+          },
+          {
+            "id": 4606,
+            "name": "Practice Lock"
+          },
+          {
+            "id": 5067,
+            "name": "Aquadynamic Fish Attractor"
+          },
+          {
+            "id": 3945,
+            "name": "Ornate Spyglass"
+          },
+          {
+            "id": 4294,
+            "name": "Arclight Spanner"
+          },
+          {
+            "id": 6857,
+            "name": "Gold Power Core"
+          },
+          {
+            "id": 52650,
+            "name": "Reagent Bot"
+          }
+        ],
+        "Mining": [
+          {
+            "id": 1848,
+            "name": "Smelt Tin"
+          },
+          {
+            "id": 1570,
+            "name": "Mining"
+          },
+          {
+            "id": 1599,
+            "name": "Smelt Silver"
+          },
+          {
+            "id": 1600,
+            "name": "Smelt Bronze"
+          },
+          {
+            "id": 3324,
+            "name": "Smelt Copper"
+          },
+          {
+            "id": 52643,
+            "name": "Lodestone"
+          }
+        ]
+      },
+      "reputations": {
+        "Darnassus": {
+          "name": "Friendly",
+          "raw": 4810,
+          "tier": 4
+        },
+        "Gnomeregan Exiles": {
+          "name": "Friendly",
+          "raw": 3450,
+          "tier": 4
+        },
+        "Ironforge": {
+          "name": "Friendly",
+          "raw": 3350,
+          "tier": 4
+        },
+        "Stormwind": {
+          "name": "Friendly",
+          "raw": 6740,
+          "tier": 4
+        }
+      },
+      "spec": "Retribution",
+      "stats": {
+        "critters": 6,
+        "deaths": 2,
+        "drinks": 1,
+        "flights": 7,
+        "food": 6,
+        "health_potions": 1,
+        "hearths": 7,
+        "killing_blows": 496,
+        "mobs": 565,
+        "quests": 60
+      },
+      "xp": 3119
+    },
     "us:pwanage-ownage": {
       "achievements": {
         "61502": "Novice Druid",
@@ -590,8 +824,8 @@
       },
       "ilvl": 24,
       "last_explored": "Redridge Mountains",
-      "last_login": 1795061179000,
-      "level": 28,
+      "last_login": 1795096169000,
+      "level": 29,
       "level_at": {
         "17": 1794274699,
         "18": 1794283267,
@@ -602,12 +836,13 @@
         "24": 1794810667,
         "26": 1794893470,
         "27": 1795005067,
-        "28": 1795061765
+        "28": 1795061765,
+        "29": 1795096871
       },
       "professions": {
-        "Alchemy": 179,
+        "Alchemy": 189,
         "Cooking": 146,
-        "First Aid": 124,
+        "First Aid": 128,
         "Fishing": 109,
         "Herbalism": 194
       },
@@ -718,6 +953,10 @@
           {
             "id": 54546,
             "name": "Minor Mageblood Elixir"
+          },
+          {
+            "id": 54547,
+            "name": "Lesser Mageblood Elixir"
           },
           {
             "id": 54667,
@@ -947,7 +1186,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 14082,
+          "raw": 14085,
           "tier": 5
         },
         "Gadgetzan": {
@@ -957,17 +1196,17 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 6482,
+          "raw": 6485,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 6670,
+          "raw": 6672,
           "tier": 4
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 8382,
+          "raw": 8392,
           "tier": 4
         }
       },
@@ -977,16 +1216,516 @@
         "critters": 55,
         "deaths": 32,
         "drinks": 104,
-        "flights": 44,
+        "flights": 46,
         "food": 55,
         "health_potions": 37,
-        "hearths": 21,
+        "hearths": 22,
         "killing_blows": 844,
         "mana_potions": 47,
         "mobs": 2668,
-        "quests": 224
+        "quests": 227
       },
-      "xp": 33638
+      "xp": 2338
+    },
+    "us:ryo-lithandros": {
+      "achievements": {
+        "61502": "Novice Druid",
+        "842": "Explore Teldrassil",
+        "844": "Explore Darkshore",
+        "855": "Explore Moonglade"
+      },
+      "avatar": "https://render.worldofwarcraft.com/forever-us/character/140/13854092-avatar.jpg",
+      "best_item": {
+        "id": 2850,
+        "ilvl": 24,
+        "name": "Bronze Shortsword",
+        "quality": "UNCOMMON",
+        "slot": "Main Hand"
+      },
+      "boss_kills": {},
+      "class": "Hunter",
+      "dungeons": {},
+      "first_seen": 1795096871,
+      "gear": {},
+      "ilvl": 10,
+      "last_explored": "Moonglade",
+      "last_login": 1795064400000,
+      "level": 19,
+      "level_at": {
+        "19": 1795096871
+      },
+      "professions": {
+        "Cooking": 1,
+        "Fishing": 5,
+        "Leatherworking": 100,
+        "Skinning": 129
+      },
+      "race": "Night Elf",
+      "raids": {},
+      "recipes": {
+        "Cooking": [
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 4354,
+            "name": "Slitherskin Mackerel"
+          },
+          {
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
+          }
+        ],
+        "Fishing": [
+          {
+            "id": 4344,
+            "name": "Fishing"
+          }
+        ],
+        "Leatherworking": [
+          {
+            "id": 1353,
+            "name": "Handstitched Leather Boots"
+          },
+          {
+            "id": 1355,
+            "name": "Handstitched Leather Pants"
+          },
+          {
+            "id": 1356,
+            "name": "Light Armor Kit"
+          },
+          {
+            "id": 1360,
+            "name": "Fine Leather Cloak"
+          },
+          {
+            "id": 1362,
+            "name": "Embossed Leather Vest"
+          },
+          {
+            "id": 1363,
+            "name": "Embossed Leather Boots"
+          },
+          {
+            "id": 1364,
+            "name": "Embossed Leather Cloak"
+          },
+          {
+            "id": 1367,
+            "name": "Medium Armor Kit"
+          },
+          {
+            "id": 1368,
+            "name": "Toughened Leather Armor"
+          },
+          {
+            "id": 1369,
+            "name": "Gray Leather Boots"
+          },
+          {
+            "id": 1370,
+            "name": "Dark Leather Cloak"
+          },
+          {
+            "id": 1708,
+            "name": "Light Leather"
+          },
+          {
+            "id": 2162,
+            "name": "Handstitched Leather Belt"
+          },
+          {
+            "id": 2164,
+            "name": "Embossed Leather Gloves"
+          },
+          {
+            "id": 2167,
+            "name": "Embossed Leather Pants"
+          },
+          {
+            "id": 2170,
+            "name": "Fine Leather Tunic"
+          },
+          {
+            "id": 4987,
+            "name": "Handstitched Leather Cloak"
+          },
+          {
+            "id": 4988,
+            "name": "Handstitched Leather Bracers"
+          },
+          {
+            "id": 4989,
+            "name": "Light Leather Quiver"
+          },
+          {
+            "id": 4990,
+            "name": "Small Leather Ammo Pouch"
+          },
+          {
+            "id": 4992,
+            "name": "Light Leather Bracers"
+          },
+          {
+            "id": 4993,
+            "name": "Light Leather Pants"
+          },
+          {
+            "id": 4996,
+            "name": "Nimble Leather Gloves"
+          },
+          {
+            "id": 2172,
+            "name": "Fine Leather Belt"
+          },
+          {
+            "id": 2195,
+            "name": "Cured Light Hide"
+          },
+          {
+            "id": 2196,
+            "name": "Cured Medium Hide"
+          },
+          {
+            "id": 11756,
+            "name": "Medium Leather"
+          },
+          {
+            "id": 4589,
+            "name": "Moonglow Vest"
+          },
+          {
+            "id": 4156,
+            "name": "Handstitched Leather Vest"
+          },
+          {
+            "id": 4159,
+            "name": "Dark Leather Pants"
+          },
+          {
+            "id": 52647,
+            "name": "Camp Tent"
+          },
+          {
+            "id": 58812,
+            "name": "Light Leather Reagent Bag"
+          }
+        ],
+        "Skinning": [
+          {
+            "id": 4768,
+            "name": "Skinning"
+          },
+          {
+            "id": 52644,
+            "name": "Camp Chair"
+          }
+        ]
+      },
+      "reputations": {
+        "Darnassus": {
+          "name": "Honored",
+          "raw": 13436,
+          "tier": 5
+        },
+        "Gnomeregan Exiles": {
+          "name": "Friendly",
+          "raw": 4701,
+          "tier": 4
+        },
+        "Ironforge": {
+          "name": "Friendly",
+          "raw": 4645,
+          "tier": 4
+        },
+        "Stormwind": {
+          "name": "Friendly",
+          "raw": 4363,
+          "tier": 4
+        }
+      },
+      "spec": "Marksmanship",
+      "stats": {
+        "critters": 3,
+        "deaths": 15,
+        "flights": 9,
+        "food": 6,
+        "health_potions": 5,
+        "hearths": 11,
+        "killing_blows": 695,
+        "mana_potions": 1,
+        "mobs": 731,
+        "quests": 131
+      },
+      "xp": 1515
+    },
+    "us:sparkee-runebrew": {
+      "achievements": {
+        "802": "Explore Westfall"
+      },
+      "avatar": "https://render.worldofwarcraft.com/forever-us/character/75/15035211-avatar.jpg",
+      "best_item": {
+        "id": 9812,
+        "ilvl": 22,
+        "name": "Fortified Cloak of Power",
+        "quality": "UNCOMMON",
+        "slot": "Back"
+      },
+      "boss_kills": {
+        "15027": {
+          "boss": "Bazzalan",
+          "count": 1,
+          "instance": "Ragefire Chasm"
+        },
+        "63573": {
+          "boss": "Durgen Dirgehammer",
+          "count": 1,
+          "instance": "Hall of Thanes"
+        }
+      },
+      "class": "Shaman",
+      "dungeons": {},
+      "first_seen": 1795096871,
+      "gear": {
+        "270231": {
+          "name": "Flamefist Grips",
+          "quality": "RARE"
+        },
+        "279895": {
+          "name": "Ironforge Greathammer",
+          "quality": "RARE"
+        }
+      },
+      "ilvl": 8,
+      "last_explored": "Westfall",
+      "last_login": 1795076271000,
+      "level": 19,
+      "level_at": {
+        "19": 1795096871
+      },
+      "professions": {
+        "Alchemy": 107,
+        "Cooking": 118,
+        "First Aid": 98,
+        "Fishing": 130,
+        "Herbalism": 120
+      },
+      "race": "Dwarf",
+      "raids": {},
+      "recipes": {
+        "Alchemy": [
+          {
+            "id": 1814,
+            "name": "Elixir of Wisdom"
+          },
+          {
+            "id": 1832,
+            "name": "Minor Troll's Blood Elixir"
+          },
+          {
+            "id": 1378,
+            "name": "Elixir of Minor Strength"
+          },
+          {
+            "id": 1379,
+            "name": "Minor Mana Potion"
+          },
+          {
+            "id": 1380,
+            "name": "Minor Rejuvenation Potion"
+          },
+          {
+            "id": 1382,
+            "name": "Elixir of Minor Fortitude"
+          },
+          {
+            "id": 4393,
+            "name": "Blackmouth Oil"
+          },
+          {
+            "id": 4176,
+            "name": "Draught of Water Breathing"
+          },
+          {
+            "id": 4178,
+            "name": "Elixir of Minor Defense"
+          },
+          {
+            "id": 52646,
+            "name": "Mana Well"
+          },
+          {
+            "id": 54453,
+            "name": "Cerulean Dye"
+          },
+          {
+            "id": 54456,
+            "name": "Sulfuric Acid"
+          },
+          {
+            "id": 54210,
+            "name": "Minor Arcane Elixir"
+          },
+          {
+            "id": 54211,
+            "name": "Elixir of Minor Force"
+          }
+        ],
+        "Cooking": [
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
+            "id": 1536,
+            "name": "Spiced Wolf Meat"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 1539,
+            "name": "Goretusk Liver Pie"
+          },
+          {
+            "id": 1540,
+            "name": "Westfall Stew"
+          },
+          {
+            "id": 1674,
+            "name": "Beer Basted Boar Ribs"
+          },
+          {
+            "id": 4353,
+            "name": "Brilliant Smallfish"
+          },
+          {
+            "id": 4355,
+            "name": "Longjaw Mud Snapper"
+          },
+          {
+            "id": 4391,
+            "name": "Rainbow Fin Albacore"
+          },
+          {
+            "id": 3964,
+            "name": "Boiled Clams"
+          },
+          {
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
+          }
+        ],
+        "First Aid": [
+          {
+            "id": 1838,
+            "name": "Linen Bandage"
+          },
+          {
+            "id": 1839,
+            "name": "Heavy Linen Bandage"
+          },
+          {
+            "id": 1840,
+            "name": "Wool Bandage"
+          },
+          {
+            "id": 52641,
+            "name": "First Aid Kit"
+          },
+          {
+            "id": 54192,
+            "name": "Lesser Healing Potion"
+          }
+        ],
+        "Fishing": [
+          {
+            "id": 4345,
+            "name": "Fishing"
+          },
+          {
+            "id": 52639,
+            "name": "Fish Bowl"
+          }
+        ],
+        "Herbalism": [
+          {
+            "id": 1419,
+            "name": "Herbalism"
+          },
+          {
+            "id": 54115,
+            "name": "Herbalism"
+          },
+          {
+            "id": 52642,
+            "name": "Incense Candle"
+          }
+        ]
+      },
+      "reputations": {
+        "Darnassus": {
+          "name": "Friendly",
+          "raw": 3437,
+          "tier": 4
+        },
+        "Gadgetzan": {
+          "name": "Neutral",
+          "raw": 600,
+          "tier": 3
+        },
+        "Gnomeregan Exiles": {
+          "name": "Friendly",
+          "raw": 6453,
+          "tier": 4
+        },
+        "Ironforge": {
+          "name": "Friendly",
+          "raw": 7403,
+          "tier": 4
+        },
+        "Silverwing Sentinels": {
+          "name": "Neutral",
+          "raw": 210,
+          "tier": 3
+        },
+        "Stormwind": {
+          "name": "Friendly",
+          "raw": 5897,
+          "tier": 4
+        }
+      },
+      "spec": "Enhancement",
+      "stats": {
+        "critters": 42,
+        "deaths": 25,
+        "drinks": 11,
+        "flights": 4,
+        "food": 22,
+        "health_potions": 15,
+        "hearths": 17,
+        "honorable_kills": 172,
+        "killing_blows": 959,
+        "mana_potions": 1,
+        "mobs": 2004,
+        "quests": 103
+      },
+      "xp": 6134
     },
     "us:steel-appeal": {
       "achievements": {
@@ -2325,63 +3064,63 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795095967,
-    "10 11 class incoming tuning": 1795095967,
+    "10 11 balance faction pvp updates": 1795096871,
+    "10 11 class incoming tuning": 1795096871,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795095967,
+    "11 11 balance faction pvp updates": 1795096871,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795095967,
-    "11 14 adjustment dungeon level player xp": 1795095967,
-    "11 15 adjustment dungeon level player xp": 1795095967,
+    "11 13 lost purchase refunds training": 1795096871,
+    "11 14 adjustment dungeon level player xp": 1795096871,
+    "11 15 adjustment dungeon level player xp": 1795096871,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
-    "11 17 2026 forever hotfixes wow": 1795095967,
-    "11 17 abuse actions blackmaw for hold": 1795095967,
+    "11 17 2026 forever hotfixes wow": 1795096871,
+    "11 17 abuse actions blackmaw for hold": 1795096871,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795095967,
-    "11 8 dungeon enemy increased xp": 1795095967,
-    "60 at for gold quests": 1795095967,
-    "60 at from gold lvl no quests seriously": 1795095967,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795095967,
-    "8 city do i inside main maybe people see the why": 1795095967,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795095967,
-    "a explore forever gamepad with wow": 1795095967,
-    "a for friend invite issues players resolved": 1795095967,
-    "about bug category forever report the wow": 1795095967,
+    "11 5 forever issues known updated wow": 1795096871,
+    "11 8 dungeon enemy increased xp": 1795096871,
+    "60 at for gold quests": 1795096871,
+    "60 at from gold lvl no quests seriously": 1795096871,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795096871,
+    "8 city do i inside main maybe people see the why": 1795096871,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795096871,
+    "a explore forever gamepad with wow": 1795096871,
+    "a for friend invite issues players resolved": 1795096871,
+    "about bug category forever report the wow": 1795096871,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795095967,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795096871,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795095967,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795096871,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
-    "and language settings social": 1795095967,
+    "and language settings social": 1795096871,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795095967,
-    "broken zeppelins": 1795095967,
-    "bug forever forum guidelines report wow": 1795095967,
-    "bugged chaos missing monday s server shaman since totems": 1795095967,
+    "beta from group issues persist phasing still with": 1795096871,
+    "broken zeppelins": 1795096871,
+    "bug forever forum guidelines report wow": 1795096871,
+    "bugged chaos missing monday s server shaman since totems": 1795096871,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1795095967,
+    "cost forever honor of short story the watch wow": 1795096871,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1795095967,
-    "dungeon increased majority the wants xp": 1795095967,
+    "dungeon enough not still xp": 1795096871,
+    "dungeon increased majority the wants xp": 1795096871,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795095967,
+    "episode forever lore podcast the the watch wow": 1795096871,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1795095967,
-    "forever guide new of player s starter to warcraft welcome world": 1795095967,
-    "forever launch of time warcraft world": 1795095967,
-    "forever live now of warcraft world": 1795095967,
+    "forever forever forging watch wow": 1795096871,
+    "forever guide new of player s starter to warcraft welcome world": 1795096871,
+    "forever launch of time warcraft world": 1795096871,
+    "forever live now of warcraft world": 1795096871,
     "forever short story the unbowed watch wow": 1794358867,
     "gather around the campfire in world of warcraft forever": 1794195649,
     "issues resolved for invite a friend players": 1794195649,
@@ -2435,6 +3174,21 @@
     "tanner": {
       "mounts": {}
     },
+    "us:pharaoh-nuff": {
+      "mounts": {
+        "3111": "Cerulean Prideclaw",
+        "3130": "Veteran Adventurer's Loyal Companion"
+      }
+    },
+    "us:ryo-lithandros": {
+      "mounts": {
+        "3111": "Cerulean Prideclaw",
+        "3130": "Veteran Adventurer's Loyal Companion"
+      }
+    },
+    "us:sparkee-runebrew": {
+      "mounts": {}
+    },
     "us:steel-appeal": {
       "mounts": {
         "3111": "Cerulean Prideclaw",
@@ -2447,12 +3201,96 @@
   },
   "pending": [],
   "roster": {
+    "members": {
+      "aeri-moonglow": "Aeri Moonglow",
+      "devil-latterday": "Devil Latterday",
+      "pharaoh-nuff": "Pharaoh Nuff",
+      "pwanage-ownage": "Pwanage Ownage",
+      "ryo-lithandros": "Ryo Lithandros",
+      "sparkee-runebrew": "Sparkee Runebrew",
+      "steel-appeal": "Steel Appeal",
+      "whizz-aard": "Whizz Aard"
+    },
+    "members_full": [
+      {
+        "class": null,
+        "guild": true,
+        "level": 32,
+        "name": "Steel",
+        "rank": 0,
+        "region": "us",
+        "surname": "Appeal"
+      },
+      {
+        "class": null,
+        "guild": true,
+        "level": 29,
+        "name": "Whizz",
+        "rank": 1,
+        "region": "us",
+        "surname": "Aard"
+      },
+      {
+        "class": null,
+        "guild": true,
+        "level": 19,
+        "name": "Ryo",
+        "rank": 3,
+        "region": "us",
+        "surname": "Lithandros"
+      },
+      {
+        "class": null,
+        "guild": true,
+        "level": 18,
+        "name": "Sparkee",
+        "rank": 2,
+        "region": "us",
+        "surname": "Runebrew"
+      },
+      {
+        "class": null,
+        "guild": true,
+        "level": 28,
+        "name": "Pwanage",
+        "rank": 1,
+        "region": "us",
+        "surname": "Ownage"
+      },
+      {
+        "class": null,
+        "guild": true,
+        "level": 28,
+        "name": "Aeri",
+        "rank": 2,
+        "region": "us",
+        "surname": "Moonglow"
+      },
+      {
+        "class": null,
+        "guild": true,
+        "level": 14,
+        "name": "Pharaoh",
+        "rank": 3,
+        "region": "us",
+        "surname": "Nuff"
+      },
+      {
+        "class": null,
+        "guild": true,
+        "level": 16,
+        "name": "Devil",
+        "rank": 1,
+        "region": "us",
+        "surname": "Latterday"
+      }
+    ],
     "message_ids": [
       "1569012691186622596",
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795095969,
+  "saved_at": 1795096872,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
@@ -2505,6 +3343,35 @@
         "stats": {},
         "xp": 0
       },
+      "us:pharaoh-nuff": {
+        "achievements": 6,
+        "clears": {},
+        "epics": [],
+        "level": 14,
+        "professions": {
+          "Engineering": 150,
+          "Mining": 120
+        },
+        "rep": {
+          "Darnassus": 4810,
+          "Gnomeregan Exiles": 3450,
+          "Ironforge": 3350,
+          "Stormwind": 6740
+        },
+        "stats": {
+          "critters": 6,
+          "deaths": 2,
+          "drinks": 1,
+          "flights": 7,
+          "food": 6,
+          "health_potions": 1,
+          "hearths": 7,
+          "killing_blows": 496,
+          "mobs": 565,
+          "quests": 60
+        },
+        "xp": 3119
+      },
       "us:pwanage-ownage": {
         "achievements": 3,
         "clears": {
@@ -2545,6 +3412,75 @@
           "quests": 179
         },
         "xp": 24763
+      },
+      "us:ryo-lithandros": {
+        "achievements": 4,
+        "clears": {},
+        "epics": [],
+        "level": 19,
+        "professions": {
+          "Cooking": 1,
+          "Fishing": 5,
+          "Leatherworking": 100,
+          "Skinning": 129
+        },
+        "rep": {
+          "Darnassus": 13436,
+          "Gnomeregan Exiles": 4701,
+          "Ironforge": 4645,
+          "Stormwind": 4363
+        },
+        "stats": {
+          "critters": 3,
+          "deaths": 15,
+          "flights": 9,
+          "food": 6,
+          "health_potions": 5,
+          "hearths": 11,
+          "killing_blows": 695,
+          "mana_potions": 1,
+          "mobs": 731,
+          "quests": 131
+        },
+        "xp": 1515
+      },
+      "us:sparkee-runebrew": {
+        "achievements": 1,
+        "clears": {
+          "Hall of Thanes": 1
+        },
+        "epics": [],
+        "level": 19,
+        "professions": {
+          "Alchemy": 107,
+          "Cooking": 118,
+          "First Aid": 98,
+          "Fishing": 130,
+          "Herbalism": 120
+        },
+        "rep": {
+          "Darnassus": 3437,
+          "Gadgetzan": 600,
+          "Gnomeregan Exiles": 6453,
+          "Ironforge": 7403,
+          "Silverwing Sentinels": 210,
+          "Stormwind": 5897
+        },
+        "stats": {
+          "critters": 42,
+          "deaths": 25,
+          "drinks": 11,
+          "flights": 4,
+          "food": 22,
+          "health_potions": 15,
+          "hearths": 17,
+          "honorable_kills": 172,
+          "killing_blows": 959,
+          "mana_potions": 1,
+          "mobs": 2004,
+          "quests": 103
+        },
+        "xp": 6134
       },
       "us:steel-appeal": {
         "achievements": 3,
