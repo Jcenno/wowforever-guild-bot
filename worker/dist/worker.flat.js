@@ -643,6 +643,56 @@ const body = await r.text();
 return new Response(r.ok ? `registered ${COMMANDS.length} commands` : `failed ${r.status}: ${body.slice(0, 300)}`, { status: r.ok ? 200 : 500 });
 }
 
+// ---------------------------------------------------------------- Rank roles: Discord role = in-game guild rank of a member's linked characters
+const rankKey = (m) => `${m.region || "us"}:` + [m.name, m.surname].filter(Boolean).map((p) => encodeURIComponent(String(p).trim().toLowerCase())).join("-");
+export function rankPlan(members, rows, names) {
+// -> [[user_id, rank name or null]]; a member with two linked characters gets the higher rank (lower number).
+const rankOf = {};
+for (const m of members || []) if (Number.isInteger(m.rank)) rankOf[rankKey(m)] = m.rank;
+return (rows || []).map((r) => {
+const rs = [rankOf[r.surname], rankOf[r.alt]].filter((x) => Number.isInteger(x));
+const name = rs.length ? names[String(Math.min(...rs))] : null;
+return [r.user_id, name || null];
+}).sort((a, b) => (a[0] < b[0] ? -1 : 1));
+}
+async function syncRankRoles(env, t, force) {
+const st = await trackerState(env);
+const members = st.roster?.members_full || [];
+if (!members.length) return "no roster";
+const cfg = await fetch(env.CONFIG_URL || "https://raw.githubusercontent.com/Jcenno/wowforever-guild-bot/main/characters.json", { cf: { cacheTtl: 300 } }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+const names = cfg?.guild?.rank_names || {};
+const all = [...new Set(Object.values(names).filter(Boolean))];
+if (!all.length) return "no rank names";
+const rows = (await env.DB.prepare("SELECT user_id, surname, alt FROM chars").all()).results;
+const plan = rankPlan(members, rows, names);
+const sig = JSON.stringify([plan, all, Math.floor(t / 21600)]); // unchanged plan is re-checked every 6 h
+const last = await env.DB.prepare("SELECT value FROM meta WHERE key='rank_sig'").first().catch(() => null);
+if (!force && last?.value === sig) return "unchanged";
+let roles = await discord(env, "GET", `/guilds/${env.GUILD_ID}/roles`);
+if (!roles) return "no roles";
+for (const n of all) {
+if (roles.find((r) => r.name === n)) continue;
+const made = await discord(env, "POST", `/guilds/${env.GUILD_ID}/roles`, { name: n, permissions: "0", hoist: true, mentionable: false });
+if (!made) return "could not create role";
+roles.push(made);
+}
+const rankIds = Object.fromEntries(all.map((n) => [n, roles.find((r) => r.name === n).id]));
+let ok = true, changed = 0;
+for (const [uid, name] of plan) {
+const member = await discord(env, "GET", `/guilds/${env.GUILD_ID}/members/${uid}`);
+if (!member) continue; // left the server
+for (const [n, id] of Object.entries(rankIds)) {
+const has = member.roles.includes(id);
+if (n === name && !has) { const r = await fetch(`${API}/guilds/${env.GUILD_ID}/members/${uid}/roles/${id}`, { method: "PUT", headers: { Authorization: `Bot ${env.DISCORD_BOT_TOKEN}`, "User-Agent": "GuildBot (gifting, 1.0)" } }); ok = ok && r.ok; changed++; if (!r.ok) console.log(`[rank] add ${n} -> ${r.status}`); }
+if (n !== name && has) { await discord(env, "DELETE", `/guilds/${env.GUILD_ID}/members/${uid}/roles/${id}`); changed++; }
+}
+}
+if (ok) await env.DB.prepare("INSERT INTO meta (key,value) VALUES ('rank_sig',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value").bind(sig).run();
+const res = `${plan.filter((p) => p[1]).length} ranked, ${changed} change${changed === 1 ? "" : "s"}${ok ? "" : ", some failed"} · <t:${t}:R>`;
+await env.DB.prepare("INSERT INTO meta (key,value) VALUES ('rank_last',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value").bind(res).run();
+return res;
+}
+
 // ---------------------------------------------------------------- Weekly Workshop report (Sunday evening, local time)
 const topOf = (rows, k) => { const c = {}; for (const r of rows) if (r[k]) c[r[k]] = (c[r[k]] || 0) + 1; return Object.entries(c).sort((a, b) => b[1] - a[1])[0]?.[0]; };
 async function weeklyReport(env, t) {
@@ -933,7 +983,7 @@ return json({ type: R.MESSAGE, data: { content: (`**${S.stockTitle}**\n` + (line
 async function onStatus(i, env) {
 if (!isOfficer(i)) return json({ type: R.MESSAGE, data: { content: S.officersOnly, flags: FLAGS.EPHEMERAL } });
 const repo = env.GITHUB_REPO || "Jcenno/wowforever-guild-bot";
-const [st, commits, me, roles, openG, openR, linked] = await Promise.all([
+const [st, commits, me, roles, openG, openR, linked, useG, useR, useS, rankRes] = await Promise.all([
 trackerState(env),
 fetch(`https://api.github.com/repos/${repo}/commits?path=state.json&per_page=1`, { headers: { "User-Agent": "GuildBot (status)", Accept: "application/vnd.github+json" } }).then((r) => (r.ok ? r.json() : null)).catch(() => null),
 discord(env, "GET", `/guilds/${env.GUILD_ID}/members/${env.DISCORD_APP_ID}`),
@@ -941,6 +991,10 @@ discord(env, "GET", `/guilds/${env.GUILD_ID}/roles`),
 env.DB.prepare("SELECT COUNT(*) n FROM gifts WHERE status='open'").first(),
 env.DB.prepare("SELECT COUNT(*) n FROM requests WHERE status IN ('open','claimed')").first(),
 env.DB.prepare("SELECT COUNT(*) n FROM chars").first(),
+env.DB.prepare("SELECT COUNT(*) n, COUNT(DISTINCT giver_id) people, SUM(status='received') received, MIN(created_at) first FROM gifts").first().catch(() => null),
+env.DB.prepare("SELECT COUNT(*) n, COUNT(DISTINCT user_id) people, SUM(status='done') done FROM requests").first().catch(() => null),
+env.DB.prepare("SELECT COUNT(*) n, COUNT(DISTINCT user_id) people FROM stock WHERE qty>0").first().catch(() => null),
+env.DB.prepare("SELECT value FROM meta WHERE key='rank_last'").first().then((r) => r?.value || "not run yet").catch(() => "unknown"),
 ]);
 const lastRun = st.saved_at || (commits?.[0]?.commit?.committer?.date ? Math.floor(Date.parse(commits[0].commit.committer.date) / 1000) : null);
 const myRoles = (roles || []).filter((r) => (me?.roles || []).includes(r.id));
@@ -953,6 +1007,8 @@ const lines = [
 `Heartbeat token: ${env.GITHUB_TOKEN ? "set" : "missing (tracker runs only when GitHub feels like it)"}`,
 `Manage Roles: ${canManageRoles ? "yes" : "no (class colors and the Dings button are off)"} · bot role ${myTopPos > topClassPos ? "above" : "below"} the class roles`,
 `Open: ${openG?.n || 0} gift${openG?.n === 1 ? "" : "s"}, ${openR?.n || 0} request${openR?.n === 1 ? "" : "s"} · ${linked?.n || 0} member${linked?.n === 1 ? "" : "s"} linked with /iam`,
+`All time: ${useG?.n || 0} gifts from ${useG?.people || 0} people (${useG?.received || 0} received)${useG?.first ? `, first <t:${useG.first}:d>` : ""} · ${useR?.n || 0} craft requests from ${useR?.people || 0} people (${useR?.done || 0} done) · ${useS?.n || 0} stock lines from ${useS?.people || 0} people`,
+`Rank roles: ${rankRes}`,
 `Weekly report: ${env.REPORT_DAY || "Sun"} ${env.REPORT_HOUR || 19}:00 ${env.TIMEZONE || "America/Chicago"} → <#${env.REPORT_CHANNEL_ID || env.GENERAL_CHANNEL_ID}>`,
 ];
 return json({ type: R.MESSAGE, data: { content: `**${S.statusTitle}**\n` + lines.join("\n"), flags: FLAGS.EPHEMERAL, allowed_mentions: { parse: [] } } });
@@ -1007,6 +1063,7 @@ async scheduled(_ev, env, ctx) {
 const t = now();
 ctx.waitUntil(weeklyReport(env, t).catch((e) => console.log(`[report] ${e}`)));
 ctx.waitUntil(kickTracker(env, t).catch((e) => console.log(`[tracker] ${e}`)));
+ctx.waitUntil(syncRankRoles(env, t).then((r) => r !== "unchanged" && console.log(`[rank] ${r}`)).catch((e) => console.log(`[rank] ${e}`)));
 const due = await env.DB.prepare("SELECT * FROM gifts WHERE status='open' AND expires_at<=? LIMIT 20").bind(t).all();
 for (const g of due.results) ctx.waitUntil(settleNow(env, g).catch((e) => console.log(`[settle] ${e}`)));
 // One reminder to a winner who has not pressed Received two days after the award.
