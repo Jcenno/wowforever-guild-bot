@@ -1192,7 +1192,7 @@ def build_professions_board(entries, settings):
             fields += split_fields(group, lines)
     return [{
         "title": "Professions",
-        "description": "Need something made? Type /need and the crafters who know it get a ping.",
+        "description": "Recipes, mat costs and what sells: open the [AH tracker](https://ah-watcher.jcenno.workers.dev/?tab=craft) and look under **Crafting**.",
         "color": 0x9B59B6,
         "fields": fields[:25] or [{"name": "Nothing yet", "value": "Professions appear here as people learn them.", "inline": False}],
         "timestamp": datetime.now(timezone.utc).isoformat(),
