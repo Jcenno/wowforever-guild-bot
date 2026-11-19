@@ -1195,7 +1195,6 @@ def build_professions_board(entries, settings):
         "description": "Need something made? Type /need and the crafters who know it get a ping.",
         "color": 0x9B59B6,
         "fields": fields[:25] or [{"name": "Nothing yet", "value": "Professions appear here as people learn them.", "inline": False}],
-        "footer": {"text": "Skill out of 300"},
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }]
 
