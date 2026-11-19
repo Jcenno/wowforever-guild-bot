@@ -95,7 +95,7 @@ export const S = {
   dingsNotSet: "The Dings role isn't set up yet. Ask an officer.",
   welcomePosted: "Posted. Pin it from the message menu.",
   officersOnly: "Officers only.",
-  statusTitle: "Guild Bot status",
+  statusTitle: "The Canary status",
   stockTitle: "Spare mats in the guild",
   stockEmpty: "Nobody has listed spare mats yet. `/stock-set` adds yours.",
   stockSet: (item, qty) => (qty > 0 ? `You have **${qty}× ${item}** spare. Listed.` : `**${item}** removed from your spares.`),

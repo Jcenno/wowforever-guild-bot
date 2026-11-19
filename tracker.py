@@ -1221,7 +1221,7 @@ def upsert_roster_board(webhook, embeds_list, state):
                 continue
             print(f"[info] board message {msg_id} not editable (HTTP {status}); posting a new one")
         status, body = http("POST", f"{base}?wait=true", {"Content-Type": "application/json"},
-                            json.dumps({"username": "Guild Bot", "flags": 4096, **payload}).encode())
+                            json.dumps({"username": "The Canary", "flags": 4096, **payload}).encode())
         if status not in (200, 204) or not isinstance(body, dict):
             roster_state["message_ids"] = new_ids + ids[len(new_ids):]
             raise RuntimeError(f"Roster board post failed (HTTP {status}): {body}")
@@ -1512,7 +1512,7 @@ def post_to_discord(webhook, embeds, content=None, ping_role=None):
     """
     for i in range(0, len(embeds), 10):  # Discord allows 10 embeds per message
         payload = {
-            "username": "Guild Bot",
+            "username": "The Canary",
             "embeds": embeds[i:i + 10],
             "flags": 4096,                      # @silent: no push/desktop alerts for anyone
             "allowed_mentions": {"parse": []},  # never ping users, roles or @everyone
@@ -1663,7 +1663,7 @@ def main():
         if not webhook:
             sys.exit("DISCORD_WEBHOOK_URL is not set.")
         post_to_discord(webhook, [{
-            "title": "Guild Bot connected",
+            "title": "The Canary connected",
             "description": "Milestones and progress will post here.",
             "color": DEFAULT_COLOR,
         }])
