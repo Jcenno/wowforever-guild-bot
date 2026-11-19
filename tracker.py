@@ -1108,121 +1108,96 @@ def activity_dot(last_login_ms, now_ts):
     return "🟢" if age < 2 * 86400 else "🟡" if age < 7 * 86400 else "⚫"
 
 
-def level_bar(levels, max_level):
-    """'1-29 ▇▇ 2 · 30-49 ▇▇▇▇ 4 · 50-59 ▇ 1 · 60 ▇▇▇ 3'."""
-    bands = [("1-29", lambda l: l < 30), ("30-49", lambda l: 30 <= l < 50),
-             ("50-59", lambda l: 50 <= l < max_level), (str(max_level), lambda l: l >= max_level)]
-    parts = []
-    for label, test in bands:
-        n = sum(1 for l in levels if test(l))
-        parts.append(f"{label} {'▇' * n if n else '·'} {n}")
-    return "  ".join(parts)
+def idle_note(last_login_ms, now_ts):
+    """'' for anyone seen in the last week, else ' · away 9d'. Only the exceptions get marked."""
+    if not last_login_ms:
+        return ""
+    days = int((now_ts - last_login_ms / 1000) // 86400)
+    return f" · away {days}d" if days >= 7 else ""
+
+
+ROLE_ORDER = [("Tank", "Tanks"), ("Healer", "Healers"), ("DPS", "DPS")]
 
 
 def build_roster_board(entries, settings, max_level):
     """
-    The roster embed: headline numbers, raid composition, level spread, then
-    one field per class. `entries` is [(character config, snapshot)].
+    The roster card: one headline line, then Tanks / Healers / DPS, highest
+    level first. `entries` is [(character config, snapshot)].
     Edited in place in Discord so #roster always shows the current guild.
     """
     now_ts = time.time()
-    by_class = {}
-    for c, snap in entries:
-        by_class.setdefault(snap.get("class") or "Unknown", []).append((c, snap))
-    snaps = [s for _, s in entries]
-    levels = [s.get("level") or 0 for s in snaps]
+    levels = [s.get("level") or 0 for _, s in entries]
     total = len(entries)
     capped = sum(1 for l in levels if l >= max_level)
     avg = round(sum(levels) / total) if total else 0
-    roles = {"Tank": 0, "Healer": 0, "DPS": 0}
-    for s in snaps:
-        roles[raid_role(s)] += 1
-    active = sum(1 for s in snaps if activity_dot(s.get("last_login"), now_ts) == "🟢")
+    head = [f"**{total}** {'character' if total == 1 else 'characters'}", f"average level **{avg}**"]
+    if capped:
+        head.append(f"**{capped}** at {max_level}")
 
-    desc = [
-        f"**{total}** {'character' if total == 1 else 'characters'} · average level **{avg}** · **{capped}** at {max_level} · **{active}** played in the last 2 days",
-        f"Raid comp: **{roles['Tank']}** tank{'s' if roles['Tank'] != 1 else ''} · **{roles['Healer']}** healer{'s' if roles['Healer'] != 1 else ''} · **{roles['DPS']}** DPS",
-        f"`{level_bar(levels, max_level)}`",
-    ]
-
+    by_role = {}
+    for c, s in entries:
+        by_role.setdefault(raid_role(s), []).append((c, s))
+    emojis = settings.get("class_emojis") or {}
     fields = []
-    order = ROSTER_CLASS_ORDER + sorted(k for k in by_class if k not in ROSTER_CLASS_ORDER)
-    for cls in order:
-        rows = by_class.get(cls)
+    for role, label in ROLE_ORDER:
+        rows = by_role.get(role)
         if not rows:
             continue
         rows.sort(key=lambda cs: (-(cs[1].get("level") or 0), display_name(cs[0])))
         lines = []
         for c, s in rows:
-            dot = activity_dot(s.get("last_login"), now_ts)
-            lvl = s.get("level") or "?"
-            bits = [f"{dot} **{lvl}** [{display_name(c)}]({armory_url(c)})"]
-            if s.get("spec"):
-                bits.append(s["spec"])
-            if s.get("ilvl"):
-                bits.append(f"ilvl {s['ilvl']}")
+            cls = s.get("class") or ""
+            icon = emojis.get(cls.lower()) or CLASS_ICON.get(cls, "")
+            what = " ".join(x for x in (s.get("spec"), cls) if x)
+            line = f"{icon} **{s.get('level') or '?'}** [{display_name(c)}]({armory_url(c)})".strip()
+            if what:
+                line += f" · {what}"
             if c.get("rank_name"):
-                bits.append(c["rank_name"])
-            lines.append(" · ".join(bits))
-        emoji = (settings.get("class_emojis") or {}).get(cls.lower()) or CLASS_ICON.get(cls, "")
-        fields += split_fields(f"{emoji} {cls} · {len(rows)}".strip(), lines)
+                line += f" · {c['rank_name']}"
+            lines.append(line + idle_note(s.get("last_login"), now_ts))
+        fields += split_fields(f"{label} · {len(rows)}", lines)
     return {
         "title": "Roster",
-        "description": "\n".join(desc),
+        "description": " · ".join(head),
         "color": ROSTER_COLOR,
         "fields": fields[:25],
-        "footer": {"text": "🟢 last 2 days · 🟡 last week · ⚫ longer · ⚪ not seen yet"},
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
 
 def build_professions_board(entries, settings):
     """
-    Who crafts what, as up to three embeds: Crafting, Gathering, Secondary.
-    Each crafter line: activity dot, name (armory link), skill bar, skill, tier, recipe count.
+    Who can make what, as one card: Crafting, Gathering, Secondary.
+    One line per profession, highest skill first: icon, profession, then name and skill.
     """
-    now_ts = int(time.time())
-    crafting, gathering, secondary = {}, {}, {}
+    groups = {"Crafting": {}, "Gathering": {}, "Secondary": {}}
     for c, snap in entries:
         for prof, skill in (snap.get("professions") or {}).items():
             if not skill or skill < 1 or prof.lower() == "riding":
                 continue
-            bucket = secondary if prof.lower() in SECONDARY_PROFS else gathering if prof.lower() in GATHERING else crafting
-            n_recipes = len(((snap.get("recipes") or {}).get(prof)) or [])
-            bucket.setdefault(prof, []).append((skill, display_name(c), c, activity_dot(snap.get("last_login"), now_ts), n_recipes))
+            group = "Secondary" if prof.lower() in SECONDARY_PROFS else "Gathering" if prof.lower() in GATHERING else "Crafting"
+            groups[group].setdefault(prof, []).append((skill, display_name(c)))
 
-    def line(skill, name, c, dot, n):
-        tail = f" · {n} recipe{'s' if n != 1 else ''}" if n else ""
-        return f"{dot} **{name}** {skill_bar(skill)} {skill} {skill_tier(skill)}{tail}"  # the Roster card carries the links
-
-    def fields_for(bucket):
-        out = []
+    fields = []
+    for group, bucket in groups.items():
+        lines = []
         for prof in sorted(bucket):
-            rows = sorted(bucket[prof], key=lambda r: -r[0])
-            out += split_fields(f"{PROF_ICON.get(prof, '')} {prof} · {len(rows)}".strip(), [line(*r) for r in rows])
-        return out[:25]
-
-    stamp = datetime.now(timezone.utc).isoformat()
-    embeds = []
-    missing = [display_name(c) for c, s in entries if not any(
-        p.lower() not in SECONDARY_PROFS and v for p, v in (s.get("professions") or {}).items())]
-    desc = "Need something made? Type /need and the crafters who know it get a ping."
-    if missing:
-        desc += f"\nNo primary profession yet: {', '.join(missing[:15])}" + (" …" if len(missing) > 15 else "")
-    embeds.append({"title": "Crafting", "description": desc, "color": 0x9B59B6,
-                   "fields": fields_for(crafting) or [{"name": "Nothing yet", "value": "Crafting professions appear here as people learn them.", "inline": False}]})
-    embeds.append({"title": "Gathering", "color": 0x2ECC71,
-                   "fields": fields_for(gathering) or [{"name": "Nothing yet", "value": "Mining, Herbalism and Skinning appear here as people learn them.", "inline": False}]})
-    parts = []
-    for prof in sorted(secondary):
-        rows = sorted(secondary[prof], key=lambda r: -r[0])
-        shown = " · ".join(f"{r[3]} {r[1]} {r[0]}" for r in rows[:6])
-        more = f" · +{len(rows) - 6} more" if len(rows) > 6 else ""
-        parts.append(f"{PROF_ICON.get(prof, '')} **{prof}**\n{shown}{more}")
-    embeds.append({"title": "Secondary", "description": ("\n".join(parts) or "Cooking, First Aid and Fishing appear here as people learn them.")[:4000], "color": 0x95A5A6})
-    embeds[-1]["footer"] = {"text": "🟢 last 2 days · 🟡 last week · ⚫ longer · ⚪ not seen yet · 300 is max skill"}
-    embeds[-1]["timestamp"] = stamp
-    return embeds
+            rows = sorted(bucket[prof], key=lambda r: (-r[0], r[1]))
+            cap = 6 if group == "Secondary" else 12
+            who = ", ".join(f"{name} **{skill}**" for skill, name in rows[:cap])
+            if len(rows) > cap:
+                who += f", +{len(rows) - cap} more"
+            lines.append(f"{PROF_ICON.get(prof, '')} **{prof}** · {who}".strip())
+        if lines:
+            fields += split_fields(group, lines)
+    return [{
+        "title": "Professions",
+        "description": "Need something made? Type /need and the crafters who know it get a ping.",
+        "color": 0x9B59B6,
+        "fields": fields[:25] or [{"name": "Nothing yet", "value": "Professions appear here as people learn them.", "inline": False}],
+        "footer": {"text": "Skill out of 300"},
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }]
 
 
 def upsert_roster_board(webhook, embeds_list, state):
@@ -1679,6 +1654,8 @@ def main():
     parser.add_argument("--recap-now", action="store_true", help="also post the weekly recap on this run")
     parser.add_argument("--preview-ding", action="store_true",
                         help="post a sample ding card per character (live data) to the officers channel and exit")
+    parser.add_argument("--preview-board", action="store_true",
+                        help="post the roster and professions cards (saved data) to the officers channel and exit")
     args = parser.parse_args()
 
     webhook = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
@@ -1715,6 +1692,19 @@ def main():
     owners = state.setdefault("owners", {})
     weekly = state.setdefault("weekly", {})
     weekly.setdefault("baseline", {})
+
+    if args.preview_board:
+        hook = os.environ.get("DISCORD_STAFF_WEBHOOK_URL", "").strip()
+        entries = []
+        for c in characters:
+            key = f"{(c.get('region') or default_region).lower()}:{char_slug(c)}"
+            if key in state["characters"]:
+                entries.append((c, state["characters"][key]))
+        cards = [build_roster_board(entries, settings, settings["max_level"])] + build_professions_board(entries, settings)
+        if hook and cards:
+            post_to_discord(hook, cards)
+        print(json.dumps(cards, indent=1, ensure_ascii=False))
+        return
 
     token = get_token(client_id, client_secret)
     embeds, hype_embeds, digest_items, unavailable = [], [], [], []
