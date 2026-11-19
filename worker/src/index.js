@@ -114,7 +114,7 @@ async function syncClassRole(env, userId, cls) {
     role = await discord(env, "POST", `/guilds/${env.GUILD_ID}/roles`, { name: cls, color: CLASS_COLOR[cls], permissions: "0", hoist: false, mentionable: false });
     if (!role) return false;
     // Discord shows the highest colored role, so new class roles go just above Officer (needs the bot's role above that spot).
-    const officer = roles.find((r) => r.name === "Officer");
+    const officer = roles.find((r) => r.name === "Shaft Master" || r.name === "Officer");
     if (officer) await discord(env, "PATCH", `/guilds/${env.GUILD_ID}/roles`, [{ id: role.id, position: officer.position }]);
   }
   const member = await discord(env, "GET", `/guilds/${env.GUILD_ID}/members/${userId}`);
@@ -517,10 +517,6 @@ const COMMANDS = [
   { name: "workshop", description: "Open gifts and craft requests right now" },
   { name: "post-welcome", description: "Officers: post the How this works card with the Dings button here", default_member_permissions: "8192" },
   { name: "status", description: "Officers: is everything running", default_member_permissions: "8192" },
-  { name: "poll-create", description: "Officers: post a ranked poll (top 4 choices each)", default_member_permissions: "8192", options: [
-    { type: 3, name: "title", description: "What the poll is about", required: true, max_length: 150 },
-    { type: 3, name: "options", description: "Choices separated by ; (semicolon)", required: true, max_length: 4000 },
-    { type: 7, name: "channel", description: "Post it in this channel instead of here", required: false, channel_types: [0] } ] },
   { name: "stock", description: "Spare mats people in the guild can hand over" },
   { name: "stock-set", description: "List spare mats you can hand over (qty 0 removes)", options: [
     { type: 3, name: "item", description: "Item name (pick from the list)", required: true, autocomplete: true },

@@ -46,7 +46,7 @@ needCancelled: "Cancelled.",
 makeBtn: "I'll make it", doneBtn: "Done", cancelBtn: "Cancel",
 needNotOpen: "Someone already took this one.",
 needNotYours: "Only the requester or the crafter can do that.",
-needNobody: (q) => `Nobody in the guild knows **${q}** yet. Ask in #general or try /who-crafts with part of the name.`,
+needNobody: (q) => `Nobody in the guild knows **${q}** yet. Ask in <#1560804753963745392> or try /who-crafts with part of the name.`,
 noRecipes: "No recipes recorded yet. They appear after the next check.",
 nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
 whoCraftsTitle: (q) => `Who can make "${q}"`,
@@ -75,15 +75,14 @@ linkDone: (name, cls, level) => `Linked **${name}**${cls ? ` (${level ? `level $
 linkNotFound: (name) => `Couldn't find **${name}**. Check the spelling, log in with that character once, then try again in a few minutes.`,
 linkTaken: (name) => `**${name}** is already linked to someone else. Ask an officer if that's wrong.`,
 welcome: [
-"**How this server works**",
+"**Welcome to Short Shaft Mining Co**",
 "",
-"**New here?** Press *Link my character* below and type your character's name. That sets your class color and adds you to the roster.",
+"**New here?** Press *Link my character* below and type your character's name. That sets your class color and adds you to <#1568797253680767078>.",
 "",
-"**Dings** post here every 10 levels. Smaller updates (skills, recipes, rep) go to <#1569828382584082603>.",
+"<#1572971002214748210> is guild chat. It runs both ways with the game. To have your in-game messages show up, link your account once in game: Escape, Options, Social, Enable Discord Functionality.",
+"<#1560804753963745392> gets a ding card every 10 levels. Skills, recipes and rep go to <#1569828382584082603>.",
 "<#1568797253680767078> shows who plays what and who can craft what.",
-"**Need something crafted?** `/need` and pick the item. Whoever can make it gets a ping.",
-"**Got something you don't need?** `/give` and pick the item. Others press Need or Greed. When it closes, the winner is named under the card and presses *Received* once it arrives.",
-"<#1568797262065311856> is for gifts, crafting requests and trades.",
+"<#1568797262065311856> is for gifts and crafting requests. `/give` an item you don't need and others press Need or Greed. `/need` something crafted and whoever can make it gets a ping.",
 "",
 "**Tank, Healer, DPS:** press what you play. More than one is fine.",
 "**Dings pings** are off unless you turn them on below.",
@@ -209,7 +208,7 @@ let role = roles.find((r) => r.name === cls);
 if (!role) {
 role = await discord(env, "POST", `/guilds/${env.GUILD_ID}/roles`, { name: cls, color: CLASS_COLOR[cls], permissions: "0", hoist: false, mentionable: false });
 if (!role) return false;
-const officer = roles.find((r) => r.name === "Officer");
+const officer = roles.find((r) => r.name === "Shaft Master" || r.name === "Officer");
 if (officer) await discord(env, "PATCH", `/guilds/${env.GUILD_ID}/roles`, [{ id: role.id, position: officer.position }]);
 }
 const member = await discord(env, "GET", `/guilds/${env.GUILD_ID}/members/${userId}`);
@@ -580,10 +579,6 @@ const COMMANDS = [
 { name: "workshop", description: "Open gifts and craft requests right now" },
 { name: "post-welcome", description: "Officers: post the How this works card with the Dings button here", default_member_permissions: "8192" },
 { name: "status", description: "Officers: is everything running", default_member_permissions: "8192" },
-{ name: "poll-create", description: "Officers: post a ranked poll (top 4 choices each)", default_member_permissions: "8192", options: [
-{ type: 3, name: "title", description: "What the poll is about", required: true, max_length: 150 },
-{ type: 3, name: "options", description: "Choices separated by ; (semicolon)", required: true, max_length: 4000 },
-{ type: 7, name: "channel", description: "Post it in this channel instead of here", required: false, channel_types: [0] } ] },
 { name: "stock", description: "Spare mats people in the guild can hand over" },
 { name: "stock-set", description: "List spare mats you can hand over (qty 0 removes)", options: [
 { type: 3, name: "item", description: "Item name (pick from the list)", required: true, autocomplete: true },
