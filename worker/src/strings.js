@@ -47,7 +47,7 @@ export const S = {
   makeBtn: "I'll make it", doneBtn: "Done", cancelBtn: "Cancel",
   needNotOpen: "Someone already took this one.",
   needNotYours: "Only the requester or the crafter can do that.",
-  needNobody: (q) => `Nobody in the guild knows **${q}** yet. Ask in #general or try /who-crafts with part of the name.`,
+  needNobody: (q) => `Nobody in the guild knows **${q}** yet. Ask in <#1560804753963745392> or try /who-crafts with part of the name.`,
   noRecipes: "No recipes recorded yet. They appear after the next check.",
   nobodyCrafts: (q) => `Nobody in the guild knows a recipe matching "${q}" yet.`,
   whoCraftsTitle: (q) => `Who can make "${q}"`,

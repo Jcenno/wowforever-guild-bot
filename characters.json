@@ -1,17 +1,12 @@
 {
   "region": "us",
   "guild": {
-    "slug": "",
+    "slug": "short-shaft-mining-co",
     "region": "us",
-    "min_level": 1,
+    "min_level": 10,
     "ranks": null,
-    "rank_names": {
-      "0": "Guild Master",
-      "1": "Officer",
-      "2": "Veteran",
-      "3": "Member",
-      "4": "Initiate"
-    }
+    "rank_names": {},
+    "name": "Short Shaft Mining Co"
   },
   "settings": {
     "max_level": 60,

@@ -1735,7 +1735,7 @@ def main():
             print("[warn] guild roster came back empty; keeping the last known roster")
             guild_members = None
             now_members = seen_before
-        if not roster_failed:
+        if not roster_failed and guild_members is not None:
             roster_state["members_full"] = [{k: v for k, v in m.items() if k != "rank_name"} for m in guild_members]
         if guild_members is not None and not roster_failed and seen_before is not None and settings.get("announce_guild_changes"):
             lines = []
