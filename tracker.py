@@ -1027,9 +1027,9 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
         key = detail["key"]
         if key not in order:
             order.append(key)
-        place = order.index(key) + 1
+        place = max(order.index(key) + 1, int(detail.get("ahead") or 0) + 1)
         title = f"Level {level}"
-        if detail.get("first"):
+        if detail.get("first") and place == 1:
             title = f"First to {level}"
             color = HYPE_COLOR
         elif level >= settings["max_level"]:
@@ -1888,6 +1888,10 @@ def main():
             embeds.append(character_embed(c, snap, lines, settings))
         elif loud:
             for ev, d in loud:
+                if isinstance(d, dict) and d.get("level"):
+                    # characters already at or past this level count, even if their own ding was never recorded
+                    d["ahead"] = sum(1 for k2, s2 in state["characters"].items()
+                                     if k2 != key and int((s2 or {}).get("level") or 0) >= int(d["level"]))
                 hype_embeds.append(milestone_embed(c, snap, ev, d, state["group"], snap, settings, now_ts))
             quiet = [l for l in lines if not l.startswith(("Reached", "First in the guild", "Epic", "Learned riding"))]
             if quiet:
