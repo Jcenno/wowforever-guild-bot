@@ -1036,7 +1036,7 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
             color = HYPE_COLOR
         headline = f"**{name}** reached level **{level}**."
         fields.append({"name": "Guild", "value": f"{ordinal(place)} to get there", "inline": True})
-        # time since the previous milestone we saw, else since first tracked
+        # time since the previous milestone we saw; no line when there is none on record
         level_at = state_char.get("level_at") or {}
         prev_levels = sorted(int(k) for k in level_at if int(k) < level)
         since_label, since_ts = None, None
@@ -1044,8 +1044,6 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
             if pl in (settings.get("milestone_levels") or []):
                 since_label, since_ts = f"since {pl}", level_at[str(pl)]
                 break
-        if since_ts is None and state_char.get("first_seen"):
-            since_label, since_ts = "since first tracked", state_char["first_seen"]
         if since_ts:
             fields.append({"name": "Time", "value": f"{human_duration(now_ts - since_ts)} {since_label}", "inline": True})
         fields.extend(ding_fields(snap))
