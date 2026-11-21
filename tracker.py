@@ -101,6 +101,8 @@ DEFAULT_SETTINGS = {
     "track_levels": True,
     "track_professions": True,
     "profession_milestones": [75, 150, 225, 300],
+    "profession_first_skill": 225,     # card for the first in the guild to reach this in each crafting/gathering profession
+    "profession_max_skill": 300,       # card for anyone who reaches this in a crafting/gathering profession
     "track_dungeons": True,
     "track_raids": True,
     "track_achievements": True,
@@ -122,7 +124,7 @@ DEFAULT_SETTINGS = {
     "inactive_days": 7,                # officers-only nudge list threshold
     "epic_mount_names": ["Swift "],    # substrings that mark a mount as epic, in addition to Riding
     "hype_ping_role_id": "",           # Discord role id to ping on hype posts; blank = no ping
-    "hype_events": ["milestone", "max_level", "epic_mount", "first_mount", "guild_first", "guild_join"],
+    "hype_events": ["milestone", "max_level", "epic_mount", "first_mount", "guild_first", "guild_join", "prof_first", "prof_max"],
     "guild_first_min_tracked": 3,
     # Guild-first cards wait for the next morning so everyone in the group shows up:
     # Blizzard only refreshes a profile when that character logs out.
@@ -736,6 +738,19 @@ def find_changes(key, old, new, settings, group, hype=None):
             crossed = [m for m in settings["profession_milestones"] if old_p[prof] < m <= skill]
             if crossed:
                 lines.append(f"🛠️ **{prof}** reached {max(crossed)} skill")
+            # Primary professions only (crafting and gathering): first to 225 in each, and 300 for anyone.
+            if prof.lower() not in SECONDARY_PROFS:
+                first_cap = int(settings.get("profession_first_skill") or 0)
+                max_cap = int(settings.get("profession_max_skill") or 0)
+                pf = group.setdefault("prof_first", {})
+                if first_cap and old_p[prof] < first_cap <= skill and prof not in pf:
+                    pf[prof] = key
+                    hype.append(("prof_first", {"prof": prof, "skill": skill, "cap": first_cap, "key": key}))
+                if max_cap and old_p[prof] < max_cap <= skill:
+                    pm = group.setdefault("prof_max", {})
+                    is_first = prof not in pm
+                    pm.setdefault(prof, key)
+                    hype.append(("prof_max", {"prof": prof, "skill": skill, "cap": max_cap, "key": key, "first": is_first}))
 
     # Item level
     old_i, new_i = old.get("ilvl") or 0, new.get("ilvl") or 0
@@ -1065,6 +1080,23 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
         if key not in order:
             order.append(key)
         fields.append({"name": "Guild", "value": f"{ordinal(order.index(key) + 1)} to get there", "inline": True})
+        fields.append({"name": "Level", "value": str(snap.get("level") or "?"), "inline": True})
+    elif event in ("prof_first", "prof_max"):
+        prof, cap = detail["prof"], detail["cap"]
+        color = HYPE_COLOR
+        if event == "prof_first":
+            title = f"First to {cap}: {prof}"
+            headline = f"**{name}** is the first in the guild to reach **{cap} {prof}**."
+        else:
+            order = group.setdefault("milestone_order", {}).setdefault(f"prof{cap}:{prof}", [])
+            if detail["key"] not in order:
+                order.append(detail["key"])
+            place = order.index(detail["key"]) + 1
+            title = f"First to {cap}: {prof}" if detail.get("first") else f"{prof} {cap}"
+            headline = f"**{name}** maxed **{prof}** at **{cap}**."
+            if place > 1:
+                fields.append({"name": "Guild", "value": f"{ordinal(place)} to max it", "inline": True})
+        fields.append({"name": "Skill", "value": str(detail.get("skill") or cap), "inline": True})
         fields.append({"name": "Level", "value": str(snap.get("level") or "?"), "inline": True})
     elif event == "guild_first":
         kind = detail.get("kind", "dungeon")
@@ -1707,6 +1739,14 @@ def main():
     embeds, hype_embeds, digest_items, unavailable = [], [], [], []
     held_firsts = state["group"].setdefault("firsts_pending", {})  # "kind|what" -> {kind, what, keys, since}
     hype_events = set(settings.get("hype_events") or [])
+    for _k, _s in sorted((state.get("characters") or {}).items()):
+        for _p, _v in ((_s or {}).get("professions") or {}).items():
+            if _p.lower() in SECONDARY_PROFS:
+                continue
+            if settings.get("profession_first_skill") and _v >= int(settings["profession_first_skill"]):
+                state["group"].setdefault("prof_first", {}).setdefault(_p, _k)
+            if settings.get("profession_max_skill") and _v >= int(settings["profession_max_skill"]):
+                state["group"].setdefault("prof_max", {}).setdefault(_p, _k)
     firsts_will_post = "guild_first" in hype_events and len(state.get("characters") or {}) >= int(settings.get("guild_first_min_tracked") or 0)
     ping_role = str(settings.get("hype_ping_role_id") or "").strip() or None
 
@@ -1892,6 +1932,8 @@ def main():
                                      if k2 != key and int((s2 or {}).get("level") or 0) >= int(d["level"]))
                 hype_embeds.append(milestone_embed(c, snap, ev, d, state["group"], snap, settings, now_ts))
             quiet = [l for l in lines if not l.startswith(("Reached", "First in the guild", "Epic", "Learned riding"))]
+            carded = {d["prof"] for ev, d in loud if ev in ("prof_first", "prof_max")}
+            quiet = [l for l in quiet if not any(l.startswith(f"🛠️ **{p}** reached") for p in carded)]
             if quiet:
                 digest_items.append((c, snap, quiet))
         elif lines:

@@ -35,7 +35,9 @@
       "epic_mount",
       "first_mount",
       "guild_first",
-      "guild_join"
+      "guild_join",
+      "prof_first",
+      "prof_max"
     ],
     "roster_board": true,
     "announce_guild_changes": true,
@@ -81,7 +83,9 @@
         "The Deadmines"
       ]
     ],
-    "dungeon_min_level": 30
+    "dungeon_min_level": 30,
+    "profession_first_skill": 225,
+    "profession_max_skill": 300
   },
   "friends": [
     {
