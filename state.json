@@ -979,7 +979,7 @@
       },
       "ilvl": 25,
       "last_explored": "Redridge Mountains",
-      "last_login": 1795214713000,
+      "last_login": 1795276825000,
       "level": 30,
       "level_at": {
         "17": 1794274699,
@@ -996,177 +996,177 @@
         "30": 1795201266
       },
       "professions": {
-        "Alchemy": 190,
+        "Alchemy": 195,
         "Cooking": 157,
         "First Aid": 146,
         "Fishing": 113,
-        "Herbalism": 194
+        "Herbalism": 205
       },
       "race": "Night Elf",
       "raids": {},
       "recipes": {
         "Alchemy": [
           {
-            "id": 1814,
-            "name": "Elixir of Wisdom"
+            "id": 54454,
+            "name": "Magenta Dye"
           },
           {
-            "id": 1816,
-            "name": "Lesser Mana Potion"
-          },
-          {
-            "id": 1819,
-            "name": "Lesser Troll's Blood Elixir"
-          },
-          {
-            "id": 1820,
-            "name": "Elixir of Lesser Defense"
-          },
-          {
-            "id": 1832,
-            "name": "Minor Troll's Blood Elixir"
-          },
-          {
-            "id": 1833,
-            "name": "Elixir of Minor Agility"
-          },
-          {
-            "id": 1931,
-            "name": "Lesser Invisibility Potion"
+            "id": 54211,
+            "name": "Elixir of Minor Force"
           },
           {
             "id": 1933,
             "name": "Elixir of Lesser Fortitude"
           },
           {
-            "id": 1935,
-            "name": "Mana Potion"
-          },
-          {
-            "id": 1378,
-            "name": "Elixir of Minor Strength"
-          },
-          {
-            "id": 1379,
-            "name": "Minor Mana Potion"
-          },
-          {
-            "id": 1380,
-            "name": "Minor Rejuvenation Potion"
-          },
-          {
-            "id": 1382,
-            "name": "Elixir of Minor Fortitude"
+            "id": 4393,
+            "name": "Blackmouth Oil"
           },
           {
             "id": 5997,
             "name": "Elixir of Agility"
           },
           {
-            "id": 4393,
-            "name": "Blackmouth Oil"
-          },
-          {
-            "id": 4394,
-            "name": "Fire Oil"
-          },
-          {
-            "id": 4395,
-            "name": "Swim Speed Potion"
-          },
-          {
-            "id": 4396,
-            "name": "Elixir of Fire Power"
-          },
-          {
-            "id": 4006,
-            "name": "Great Rage Potion"
-          },
-          {
-            "id": 4176,
-            "name": "Draught of Water Breathing"
-          },
-          {
-            "id": 4178,
-            "name": "Elixir of Minor Defense"
-          },
-          {
-            "id": 52646,
-            "name": "Mana Well"
-          },
-          {
-            "id": 54453,
-            "name": "Cerulean Dye"
-          },
-          {
-            "id": 54454,
-            "name": "Magenta Dye"
-          },
-          {
-            "id": 54456,
-            "name": "Sulfuric Acid"
-          },
-          {
             "id": 54537,
             "name": "Minor Cleric's Elixir"
-          },
-          {
-            "id": 54538,
-            "name": "Lesser Cleric's Elixir"
-          },
-          {
-            "id": 54546,
-            "name": "Minor Mageblood Elixir"
           },
           {
             "id": 54547,
             "name": "Lesser Mageblood Elixir"
           },
           {
+            "id": 1814,
+            "name": "Elixir of Wisdom"
+          },
+          {
+            "id": 1378,
+            "name": "Elixir of Minor Strength"
+          },
+          {
+            "id": 54538,
+            "name": "Lesser Cleric's Elixir"
+          },
+          {
+            "id": 1379,
+            "name": "Minor Mana Potion"
+          },
+          {
+            "id": 1816,
+            "name": "Lesser Mana Potion"
+          },
+          {
+            "id": 4178,
+            "name": "Elixir of Minor Defense"
+          },
+          {
+            "id": 1819,
+            "name": "Lesser Troll's Blood Elixir"
+          },
+          {
+            "id": 1380,
+            "name": "Minor Rejuvenation Potion"
+          },
+          {
+            "id": 54546,
+            "name": "Minor Mageblood Elixir"
+          },
+          {
+            "id": 4006,
+            "name": "Great Rage Potion"
+          },
+          {
             "id": 54667,
             "name": "Minor Mender's Potion"
+          },
+          {
+            "id": 1820,
+            "name": "Elixir of Lesser Defense"
+          },
+          {
+            "id": 1931,
+            "name": "Lesser Invisibility Potion"
+          },
+          {
+            "id": 1833,
+            "name": "Elixir of Minor Agility"
+          },
+          {
+            "id": 4396,
+            "name": "Elixir of Fire Power"
+          },
+          {
+            "id": 1382,
+            "name": "Elixir of Minor Fortitude"
           },
           {
             "id": 54210,
             "name": "Minor Arcane Elixir"
           },
           {
-            "id": 54211,
-            "name": "Elixir of Minor Force"
+            "id": 54456,
+            "name": "Sulfuric Acid"
+          },
+          {
+            "id": 4394,
+            "name": "Fire Oil"
+          },
+          {
+            "id": 1832,
+            "name": "Minor Troll's Blood Elixir"
+          },
+          {
+            "id": 4176,
+            "name": "Draught of Water Breathing"
+          },
+          {
+            "id": 54453,
+            "name": "Cerulean Dye"
+          },
+          {
+            "id": 4395,
+            "name": "Swim Speed Potion"
+          },
+          {
+            "id": 1935,
+            "name": "Mana Potion"
+          },
+          {
+            "id": 52646,
+            "name": "Mana Well"
           }
         ],
         "Cooking": [
           {
-            "id": 1871,
-            "name": "Crocolisk Steak"
+            "id": 4786,
+            "name": "Herb Baked Egg"
           },
           {
             "id": 1872,
             "name": "Blood Sausage"
           },
           {
+            "id": 1543,
+            "name": "Crab Cake"
+          },
+          {
             "id": 1873,
             "name": "Murloc Fin Soup"
           },
           {
-            "id": 1901,
-            "name": "Big Bear Steak"
+            "id": 1674,
+            "name": "Beer Basted Boar Ribs"
           },
           {
-            "id": 13344,
-            "name": "Smoked Sagefish"
+            "id": 52640,
+            "name": "Basic Campfire"
           },
           {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
+            "id": 4359,
+            "name": "Bristle Whisker Catfish"
           },
           {
-            "id": 1536,
-            "name": "Spiced Wolf Meat"
-          },
-          {
-            "id": 1537,
-            "name": "Roasted Boar Meat"
+            "id": 4355,
+            "name": "Longjaw Mud Snapper"
           },
           {
             "id": 1538,
@@ -1177,64 +1177,80 @@
             "name": "Goretusk Liver Pie"
           },
           {
-            "id": 1540,
-            "name": "Westfall Stew"
+            "id": 1548,
+            "name": "Seasoned Wolf Kabob"
           },
           {
-            "id": 1543,
-            "name": "Crab Cake"
-          },
-          {
-            "id": 1544,
-            "name": "Cooked Crab Claw"
+            "id": 54481,
+            "name": "Mrrggl Smrrthle"
           },
           {
             "id": 1545,
             "name": "Dry Pork Ribs"
           },
           {
-            "id": 1546,
-            "name": "Redridge Goulash"
-          },
-          {
-            "id": 1548,
-            "name": "Seasoned Wolf Kabob"
-          },
-          {
-            "id": 3926,
-            "name": "Kaldorei Spider Kabob"
-          },
-          {
-            "id": 1674,
-            "name": "Beer Basted Boar Ribs"
-          },
-          {
-            "id": 3930,
-            "name": "Strider Stew"
+            "id": 13344,
+            "name": "Smoked Sagefish"
           },
           {
             "id": 3933,
             "name": "Lean Venison"
           },
           {
+            "id": 3926,
+            "name": "Kaldorei Spider Kabob"
+          },
+          {
+            "id": 1536,
+            "name": "Spiced Wolf Meat"
+          },
+          {
+            "id": 4391,
+            "name": "Rainbow Fin Albacore"
+          },
+          {
+            "id": 1544,
+            "name": "Cooked Crab Claw"
+          },
+          {
+            "id": 1546,
+            "name": "Redridge Goulash"
+          },
+          {
+            "id": 3930,
+            "name": "Strider Stew"
+          },
+          {
             "id": 4353,
             "name": "Brilliant Smallfish"
+          },
+          {
+            "id": 1901,
+            "name": "Big Bear Steak"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
+            "id": 54475,
+            "name": "Root Tea"
+          },
+          {
+            "id": 1540,
+            "name": "Westfall Stew"
           },
           {
             "id": 4354,
             "name": "Slitherskin Mackerel"
           },
           {
-            "id": 4355,
-            "name": "Longjaw Mud Snapper"
-          },
-          {
-            "id": 4359,
-            "name": "Bristle Whisker Catfish"
-          },
-          {
-            "id": 4391,
-            "name": "Rainbow Fin Albacore"
+            "id": 1871,
+            "name": "Crocolisk Steak"
           },
           {
             "id": 3963,
@@ -1243,18 +1259,6 @@
           {
             "id": 3964,
             "name": "Boiled Clams"
-          },
-          {
-            "id": 4786,
-            "name": "Herb Baked Egg"
-          },
-          {
-            "id": 52640,
-            "name": "Basic Campfire"
-          },
-          {
-            "id": 54481,
-            "name": "Mrrggl Smrrthle"
           }
         ],
         "First Aid": [
@@ -1263,67 +1267,67 @@
             "name": "Anti-Venom"
           },
           {
-            "id": 1838,
-            "name": "Linen Bandage"
-          },
-          {
             "id": 1839,
             "name": "Heavy Linen Bandage"
-          },
-          {
-            "id": 1840,
-            "name": "Wool Bandage"
-          },
-          {
-            "id": 1841,
-            "name": "Heavy Wool Bandage"
-          },
-          {
-            "id": 52641,
-            "name": "First Aid Kit"
-          },
-          {
-            "id": 54191,
-            "name": "Minor Healing Potion"
           },
           {
             "id": 54192,
             "name": "Lesser Healing Potion"
           },
           {
+            "id": 54191,
+            "name": "Minor Healing Potion"
+          },
+          {
+            "id": 52641,
+            "name": "First Aid Kit"
+          },
+          {
             "id": 54193,
             "name": "Healing Potion"
+          },
+          {
+            "id": 1840,
+            "name": "Wool Bandage"
+          },
+          {
+            "id": 55747,
+            "name": "Simple Poultice"
+          },
+          {
+            "id": 1838,
+            "name": "Linen Bandage"
           },
           {
             "id": 55743,
             "name": "Woolen Tourniquet"
           },
           {
-            "id": 55747,
-            "name": "Simple Poultice"
+            "id": 1841,
+            "name": "Heavy Wool Bandage"
           }
         ],
         "Fishing": [
           {
-            "id": 4345,
-            "name": "Fishing"
-          },
-          {
             "id": 52639,
             "name": "Fish Bowl"
+          },
+          {
+            "id": 4345,
+            "name": "Fishing"
           }
         ],
         "Herbalism": [
+          {
+            "id": 54116,
+            "name": "Herbalism"
+          },
           {
             "id": 1419,
             "name": "Herbalism"
           },
           {
             "id": 2041,
-            "name": "Herbalism"
-          },
-          {
-            "id": 54116,
             "name": "Herbalism"
           },
           {
@@ -1350,7 +1354,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 15810,
+          "raw": 15847,
           "tier": 5
         },
         "Gadgetzan": {
@@ -1360,23 +1364,23 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 6891,
+          "raw": 6928,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 7078,
+          "raw": 7116,
           "tier": 4
-        },
-        "Kirin Tor": {
-          "name": "Neutral",
-          "raw": 0,
-          "tier": 3
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 8798,
+          "raw": 8948,
           "tier": 4
+        },
+        "The League of Arathor": {
+          "name": "Neutral",
+          "raw": 0,
+          "tier": 3
         }
       },
       "role": "Healer",
@@ -1384,17 +1388,17 @@
       "stats": {
         "critters": 55,
         "deaths": 38,
-        "drinks": 104,
+        "drinks": 106,
         "flights": 51,
-        "food": 58,
-        "health_potions": 50,
-        "hearths": 23,
-        "killing_blows": 981,
+        "food": 59,
+        "health_potions": 54,
+        "hearths": 24,
+        "killing_blows": 994,
         "mana_potions": 48,
-        "mobs": 2813,
-        "quests": 245
+        "mobs": 2831,
+        "quests": 248
       },
-      "xp": 16776
+      "xp": 31645
     },
     "us:ryo-lithandros": {
       "achievements": {
@@ -3285,6 +3289,9 @@
         "us:steel-appeal",
         "us:pwanage-ownage"
       ]
+    },
+    "prof_first": {
+      "Mining": "us:steel-appeal"
     }
   },
   "news_recent": {
@@ -3296,65 +3303,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795275966,
-    "10 11 class incoming tuning": 1795275966,
+    "10 11 balance faction pvp updates": 1795276870,
+    "10 11 class incoming tuning": 1795276870,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795275966,
+    "11 11 balance faction pvp updates": 1795276870,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795275966,
-    "11 14 adjustment dungeon level player xp": 1795275966,
-    "11 15 adjustment dungeon level player xp": 1795275966,
+    "11 13 lost purchase refunds training": 1795276870,
+    "11 14 adjustment dungeon level player xp": 1795276870,
+    "11 15 adjustment dungeon level player xp": 1795276870,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795275966,
+    "11 17 abuse actions blackmaw for hold": 1795276870,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
-    "11 20 2026 forever hotfixes wow": 1795275966,
+    "11 20 2026 forever hotfixes wow": 1795276870,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795275966,
-    "11 8 dungeon enemy increased xp": 1795275966,
-    "60 at for gold quests": 1795275966,
-    "60 at from gold lvl no quests seriously": 1795275966,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795275966,
-    "8 catching classes episode forever on podcast the up wow": 1795275966,
-    "8 city do i inside main maybe people see the why": 1795275966,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795275966,
-    "a explore forever gamepad with wow": 1795275966,
-    "a for friend invite issues players resolved": 1795275966,
-    "about bug category forever report the wow": 1795275966,
+    "11 5 forever issues known updated wow": 1795276870,
+    "11 8 dungeon enemy increased xp": 1795276870,
+    "60 at for gold quests": 1795276870,
+    "60 at from gold lvl no quests seriously": 1795276870,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795276870,
+    "8 catching classes episode forever on podcast the up wow": 1795276870,
+    "8 city do i inside main maybe people see the why": 1795276870,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795276870,
+    "a explore forever gamepad with wow": 1795276870,
+    "a for friend invite issues players resolved": 1795276870,
+    "about bug category forever report the wow": 1795276870,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795275966,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795276870,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795275966,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795275966,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795276870,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795276870,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
     "and language settings social": 1795109468,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795275966,
-    "broken zeppelins": 1795275966,
-    "bug forever forum guidelines report wow": 1795275966,
-    "bugged chaos missing monday s server shaman since totems": 1795275966,
-    "catching classes forever on podcast the up watch wow": 1795275966,
+    "beta from group issues persist phasing still with": 1795276870,
+    "broken zeppelins": 1795276870,
+    "bug forever forum guidelines report wow": 1795276870,
+    "bugged chaos missing monday s server shaman since totems": 1795276870,
+    "catching classes forever on podcast the up watch wow": 1795276870,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1795275966,
+    "cost forever honor of short story the watch wow": 1795276870,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1795275966,
-    "dungeon increased majority the wants xp": 1795275966,
+    "dungeon enough not still xp": 1795276870,
+    "dungeon increased majority the wants xp": 1795276870,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795275966,
+    "episode forever lore podcast the the watch wow": 1795276870,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1795275966,
+    "forever forever forging watch wow": 1795276870,
     "forever guide new of player s starter to warcraft welcome world": 1795197669,
     "forever launch of time warcraft world": 1795108566,
     "forever live now of warcraft world": 1795197669,
@@ -3527,7 +3534,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795275968,
+  "saved_at": 1795276872,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
