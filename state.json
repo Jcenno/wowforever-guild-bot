@@ -2086,7 +2086,7 @@
       },
       "ilvl": 26,
       "last_explored": "Darkshore",
-      "last_login": 1795133790000,
+      "last_login": 1795283903000,
       "level": 32,
       "level_at": {
         "10": 1794152175,
@@ -2114,7 +2114,7 @@
         "Blacksmithing": 169,
         "Cooking": 220,
         "First Aid": 170,
-        "Fishing": 67,
+        "Fishing": 102,
         "Mining": 226
       },
       "race": "Night Elf",
@@ -2122,294 +2122,290 @@
       "recipes": {
         "Blacksmithing": [
           {
-            "id": 1986,
-            "name": "Jade Serpentblade"
-          },
-          {
-            "id": 1988,
-            "name": "Golden Iron Destroyer"
-          },
-          {
-            "id": 1993,
-            "name": "Green Iron Bracers"
-          },
-          {
-            "id": 1995,
-            "name": "Golden Scale Coif"
-          },
-          {
-            "id": 1996,
-            "name": "Green Iron Shoulders"
-          },
-          {
-            "id": 2002,
-            "name": "Polished Steel Boots"
-          },
-          {
-            "id": 4629,
-            "name": "Ironforge Breastplate"
-          },
-          {
-            "id": 7836,
-            "name": "Golden Rod"
-          },
-          {
-            "id": 1798,
-            "name": "Rough Weightstone"
-          },
-          {
-            "id": 1799,
-            "name": "Heavy Weightstone"
-          },
-          {
-            "id": 1800,
-            "name": "Coarse Weightstone"
-          },
-          {
-            "id": 1849,
-            "name": "Heavy Copper Broadsword"
-          },
-          {
-            "id": 1850,
-            "name": "Copper Battle Axe"
-          },
-          {
-            "id": 1851,
-            "name": "Thick War Axe"
-          },
-          {
-            "id": 1853,
-            "name": "Heavy Bronze Mace"
-          },
-          {
-            "id": 1854,
-            "name": "Mighty Iron Hammer"
-          },
-          {
-            "id": 1856,
-            "name": "Rough Grinding Stone"
-          },
-          {
-            "id": 1857,
-            "name": "Copper Chain Vest"
-          },
-          {
-            "id": 1859,
-            "name": "Runed Copper Pants"
-          },
-          {
-            "id": 1860,
-            "name": "Gemmed Copper Gauntlets"
-          },
-          {
-            "id": 1861,
-            "name": "Coarse Grinding Stone"
-          },
-          {
-            "id": 1862,
-            "name": "Rough Bronze Shoulders"
-          },
-          {
-            "id": 1863,
-            "name": "Silvered Bronze Shoulders"
-          },
-          {
-            "id": 1864,
-            "name": "Silvered Bronze Boots"
-          },
-          {
-            "id": 1865,
-            "name": "Silvered Bronze Gauntlets"
-          },
-          {
-            "id": 1866,
-            "name": "Green Iron Boots"
-          },
-          {
-            "id": 1868,
-            "name": "Heavy Grinding Stone"
-          },
-          {
-            "id": 6636,
-            "name": "Rough Copper Vest"
-          },
-          {
-            "id": 1631,
-            "name": "Rough Sharpening Stone"
-          },
-          {
             "id": 1632,
             "name": "Copper Chain Belt"
-          },
-          {
-            "id": 1633,
-            "name": "Copper Chain Pants"
-          },
-          {
-            "id": 1634,
-            "name": "Copper Bracers"
-          },
-          {
-            "id": 1636,
-            "name": "Coarse Sharpening Stone"
-          },
-          {
-            "id": 1637,
-            "name": "Runed Copper Belt"
-          },
-          {
-            "id": 1638,
-            "name": "Runed Copper Breastplate"
-          },
-          {
-            "id": 1639,
-            "name": "Rough Bronze Leggings"
-          },
-          {
-            "id": 1640,
-            "name": "Rough Bronze Cuirass"
-          },
-          {
-            "id": 1642,
-            "name": "Patterned Bronze Bracers"
-          },
-          {
-            "id": 1644,
-            "name": "Heavy Sharpening Stone"
-          },
-          {
-            "id": 1645,
-            "name": "Shining Silver Breastplate"
-          },
-          {
-            "id": 1649,
-            "name": "Bronze Mace"
-          },
-          {
-            "id": 1650,
-            "name": "Bronze Axe"
-          },
-          {
-            "id": 1652,
-            "name": "Copper Shortsword"
-          },
-          {
-            "id": 1653,
-            "name": "Bronze Shortsword"
-          },
-          {
-            "id": 4847,
-            "name": "Iron Buckle"
-          },
-          {
-            "id": 4389,
-            "name": "Rough Bronze Boots"
-          },
-          {
-            "id": 4390,
-            "name": "Silver Rod"
-          },
-          {
-            "id": 11183,
-            "name": "Silver Skeleton Key"
-          },
-          {
-            "id": 11184,
-            "name": "Golden Skeleton Key"
-          },
-          {
-            "id": 3971,
-            "name": "Iridescent Hammer"
-          },
-          {
-            "id": 3972,
-            "name": "Pearl-handled Dagger"
-          },
-          {
-            "id": 4206,
-            "name": "Golden Scale Bracers"
-          },
-          {
-            "id": 4207,
-            "name": "Iron Shield Spike"
-          },
-          {
-            "id": 4208,
-            "name": "Iron Counterweight"
           },
           {
             "id": 4285,
             "name": "Heavy Copper Maul"
           },
           {
-            "id": 52645,
-            "name": "Sharpening Wheel"
+            "id": 11183,
+            "name": "Silver Skeleton Key"
           },
           {
-            "id": 54692,
-            "name": "Gemmed Copper Boots"
-          },
-          {
-            "id": 54693,
-            "name": "Strange Copper Boots"
-          },
-          {
-            "id": 54694,
-            "name": "Glowing Copper Boots"
-          },
-          {
-            "id": 54709,
-            "name": "Crusader's Chain Leggings"
-          },
-          {
-            "id": 54711,
-            "name": "Guard's Chain Helm"
-          },
-          {
-            "id": 54740,
-            "name": "Veteran's Silvered Chain Helm"
+            "id": 1639,
+            "name": "Rough Bronze Leggings"
           },
           {
             "id": 54768,
             "name": "Officer's Belt"
           },
           {
+            "id": 1640,
+            "name": "Rough Bronze Cuirass"
+          },
+          {
+            "id": 1993,
+            "name": "Green Iron Bracers"
+          },
+          {
+            "id": 1653,
+            "name": "Bronze Shortsword"
+          },
+          {
+            "id": 54692,
+            "name": "Gemmed Copper Boots"
+          },
+          {
+            "id": 52645,
+            "name": "Sharpening Wheel"
+          },
+          {
+            "id": 1636,
+            "name": "Coarse Sharpening Stone"
+          },
+          {
+            "id": 1866,
+            "name": "Green Iron Boots"
+          },
+          {
+            "id": 1798,
+            "name": "Rough Weightstone"
+          },
+          {
+            "id": 54694,
+            "name": "Glowing Copper Boots"
+          },
+          {
+            "id": 1642,
+            "name": "Patterned Bronze Bracers"
+          },
+          {
+            "id": 1986,
+            "name": "Jade Serpentblade"
+          },
+          {
+            "id": 1645,
+            "name": "Shining Silver Breastplate"
+          },
+          {
+            "id": 1853,
+            "name": "Heavy Bronze Mace"
+          },
+          {
+            "id": 1633,
+            "name": "Copper Chain Pants"
+          },
+          {
+            "id": 4389,
+            "name": "Rough Bronze Boots"
+          },
+          {
+            "id": 6636,
+            "name": "Rough Copper Vest"
+          },
+          {
+            "id": 1864,
+            "name": "Silvered Bronze Boots"
+          },
+          {
+            "id": 1652,
+            "name": "Copper Shortsword"
+          },
+          {
+            "id": 1799,
+            "name": "Heavy Weightstone"
+          },
+          {
+            "id": 1631,
+            "name": "Rough Sharpening Stone"
+          },
+          {
+            "id": 4208,
+            "name": "Iron Counterweight"
+          },
+          {
+            "id": 2002,
+            "name": "Polished Steel Boots"
+          },
+          {
+            "id": 1650,
+            "name": "Bronze Axe"
+          },
+          {
+            "id": 1865,
+            "name": "Silvered Bronze Gauntlets"
+          },
+          {
+            "id": 1996,
+            "name": "Green Iron Shoulders"
+          },
+          {
+            "id": 54709,
+            "name": "Crusader's Chain Leggings"
+          },
+          {
+            "id": 1862,
+            "name": "Rough Bronze Shoulders"
+          },
+          {
+            "id": 1644,
+            "name": "Heavy Sharpening Stone"
+          },
+          {
+            "id": 1868,
+            "name": "Heavy Grinding Stone"
+          },
+          {
+            "id": 11184,
+            "name": "Golden Skeleton Key"
+          },
+          {
+            "id": 1856,
+            "name": "Rough Grinding Stone"
+          },
+          {
+            "id": 1863,
+            "name": "Silvered Bronze Shoulders"
+          },
+          {
+            "id": 1649,
+            "name": "Bronze Mace"
+          },
+          {
+            "id": 4207,
+            "name": "Iron Shield Spike"
+          },
+          {
+            "id": 1634,
+            "name": "Copper Bracers"
+          },
+          {
+            "id": 1995,
+            "name": "Golden Scale Coif"
+          },
+          {
+            "id": 1988,
+            "name": "Golden Iron Destroyer"
+          },
+          {
+            "id": 1637,
+            "name": "Runed Copper Belt"
+          },
+          {
+            "id": 4629,
+            "name": "Ironforge Breastplate"
+          },
+          {
+            "id": 4206,
+            "name": "Golden Scale Bracers"
+          },
+          {
+            "id": 54693,
+            "name": "Strange Copper Boots"
+          },
+          {
+            "id": 4847,
+            "name": "Iron Buckle"
+          },
+          {
+            "id": 3972,
+            "name": "Pearl-handled Dagger"
+          },
+          {
+            "id": 7836,
+            "name": "Golden Rod"
+          },
+          {
+            "id": 1861,
+            "name": "Coarse Grinding Stone"
+          },
+          {
+            "id": 54740,
+            "name": "Veteran's Silvered Chain Helm"
+          },
+          {
+            "id": 1851,
+            "name": "Thick War Axe"
+          },
+          {
+            "id": 1850,
+            "name": "Copper Battle Axe"
+          },
+          {
+            "id": 1800,
+            "name": "Coarse Weightstone"
+          },
+          {
+            "id": 3971,
+            "name": "Iridescent Hammer"
+          },
+          {
             "id": 54212,
             "name": "Copper Rod"
+          },
+          {
+            "id": 1859,
+            "name": "Runed Copper Pants"
+          },
+          {
+            "id": 54711,
+            "name": "Guard's Chain Helm"
+          },
+          {
+            "id": 1857,
+            "name": "Copper Chain Vest"
+          },
+          {
+            "id": 1849,
+            "name": "Heavy Copper Broadsword"
+          },
+          {
+            "id": 1638,
+            "name": "Runed Copper Breastplate"
+          },
+          {
+            "id": 1854,
+            "name": "Mighty Iron Hammer"
+          },
+          {
+            "id": 4390,
+            "name": "Silver Rod"
+          },
+          {
+            "id": 1860,
+            "name": "Gemmed Copper Gauntlets"
           }
         ],
         "Cooking": [
           {
-            "id": 1871,
-            "name": "Crocolisk Steak"
+            "id": 1876,
+            "name": "Gooey Spider Cake"
+          },
+          {
+            "id": 4786,
+            "name": "Herb Baked Egg"
           },
           {
             "id": 1872,
             "name": "Blood Sausage"
           },
           {
-            "id": 1874,
-            "name": "Crocolisk Gumbo"
+            "id": 1543,
+            "name": "Crab Cake"
           },
           {
-            "id": 1876,
-            "name": "Gooey Spider Cake"
+            "id": 1674,
+            "name": "Beer Basted Boar Ribs"
           },
           {
-            "id": 13344,
-            "name": "Smoked Sagefish"
+            "id": 52640,
+            "name": "Basic Campfire"
           },
           {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
-          },
-          {
-            "id": 1536,
-            "name": "Spiced Wolf Meat"
-          },
-          {
-            "id": 1537,
-            "name": "Roasted Boar Meat"
+            "id": 4359,
+            "name": "Bristle Whisker Catfish"
           },
           {
             "id": 1538,
@@ -2420,32 +2416,32 @@
             "name": "Goretusk Liver Pie"
           },
           {
-            "id": 1540,
-            "name": "Westfall Stew"
-          },
-          {
-            "id": 1543,
-            "name": "Crab Cake"
-          },
-          {
-            "id": 1544,
-            "name": "Cooked Crab Claw"
-          },
-          {
             "id": 1545,
             "name": "Dry Pork Ribs"
           },
           {
-            "id": 1546,
-            "name": "Redridge Goulash"
+            "id": 13344,
+            "name": "Smoked Sagefish"
+          },
+          {
+            "id": 11873,
+            "name": "Mithril Headed Trout"
           },
           {
             "id": 3926,
             "name": "Kaldorei Spider Kabob"
           },
           {
-            "id": 1674,
-            "name": "Beer Basted Boar Ribs"
+            "id": 1536,
+            "name": "Spiced Wolf Meat"
+          },
+          {
+            "id": 1544,
+            "name": "Cooked Crab Claw"
+          },
+          {
+            "id": 1546,
+            "name": "Redridge Goulash"
           },
           {
             "id": 3930,
@@ -2456,8 +2452,28 @@
             "name": "Brilliant Smallfish"
           },
           {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
+            "id": 1874,
+            "name": "Crocolisk Gumbo"
+          },
+          {
+            "id": 1540,
+            "name": "Westfall Stew"
+          },
+          {
             "id": 4354,
             "name": "Slitherskin Mackerel"
+          },
+          {
+            "id": 1871,
+            "name": "Crocolisk Steak"
           },
           {
             "id": 4392,
@@ -2470,120 +2486,116 @@
           {
             "id": 3964,
             "name": "Boiled Clams"
-          },
-          {
-            "id": 4786,
-            "name": "Herb Baked Egg"
-          },
-          {
-            "id": 52640,
-            "name": "Basic Campfire"
           }
         ],
         "First Aid": [
           {
-            "id": 4414,
-            "name": "Silk Bandage"
-          },
-          {
             "id": 4417,
             "name": "Anti-Venom"
-          },
-          {
-            "id": 1838,
-            "name": "Linen Bandage"
           },
           {
             "id": 1839,
             "name": "Heavy Linen Bandage"
           },
           {
-            "id": 1840,
-            "name": "Wool Bandage"
-          },
-          {
-            "id": 1841,
-            "name": "Heavy Wool Bandage"
-          },
-          {
-            "id": 52641,
-            "name": "First Aid Kit"
+            "id": 54192,
+            "name": "Lesser Healing Potion"
           },
           {
             "id": 54191,
             "name": "Minor Healing Potion"
           },
           {
-            "id": 54192,
-            "name": "Lesser Healing Potion"
+            "id": 52641,
+            "name": "First Aid Kit"
           },
           {
             "id": 54193,
             "name": "Healing Potion"
           },
           {
-            "id": 55743,
-            "name": "Woolen Tourniquet"
+            "id": 1840,
+            "name": "Wool Bandage"
+          },
+          {
+            "id": 4414,
+            "name": "Silk Bandage"
           },
           {
             "id": 55747,
             "name": "Simple Poultice"
+          },
+          {
+            "id": 1838,
+            "name": "Linen Bandage"
+          },
+          {
+            "id": 55743,
+            "name": "Woolen Tourniquet"
+          },
+          {
+            "id": 1841,
+            "name": "Heavy Wool Bandage"
           }
         ],
         "Fishing": [
           {
-            "id": 4344,
+            "id": 52639,
+            "name": "Fish Bowl"
+          },
+          {
+            "id": 4345,
             "name": "Fishing"
           }
         ],
         "Mining": [
           {
-            "id": 1846,
-            "name": "Smelt Gold"
-          },
-          {
-            "id": 1847,
-            "name": "Smelt Iron"
-          },
-          {
-            "id": 1848,
-            "name": "Smelt Tin"
+            "id": 3324,
+            "name": "Smelt Copper"
           },
           {
             "id": 1570,
             "name": "Mining"
           },
           {
-            "id": 5487,
-            "name": "Mining"
-          },
-          {
-            "id": 1599,
-            "name": "Smelt Silver"
+            "id": 1847,
+            "name": "Smelt Iron"
           },
           {
             "id": 1600,
             "name": "Smelt Bronze"
           },
           {
-            "id": 2037,
-            "name": "Smelt Steel"
-          },
-          {
-            "id": 3324,
-            "name": "Smelt Copper"
+            "id": 5487,
+            "name": "Mining"
           },
           {
             "id": 5387,
             "name": "Smelt Mithril"
           },
           {
-            "id": 52643,
-            "name": "Lodestone"
+            "id": 1846,
+            "name": "Smelt Gold"
           },
           {
             "id": 57016,
             "name": "Rock Garden"
+          },
+          {
+            "id": 1848,
+            "name": "Smelt Tin"
+          },
+          {
+            "id": 52643,
+            "name": "Lodestone"
+          },
+          {
+            "id": 2037,
+            "name": "Smelt Steel"
+          },
+          {
+            "id": 1599,
+            "name": "Smelt Silver"
           }
         ]
       },
@@ -2654,15 +2666,15 @@
         "critters": 157,
         "deaths": 20,
         "drinks": 2,
-        "flights": 90,
-        "food": 111,
+        "flights": 91,
+        "food": 116,
         "health_potions": 30,
-        "hearths": 49,
-        "killing_blows": 2161,
-        "mobs": 4255,
+        "hearths": 50,
+        "killing_blows": 2185,
+        "mobs": 4280,
         "quests": 273
       },
-      "xp": 7327
+      "xp": 14543
     },
     "us:whizz-aard": {
       "achievements": {
@@ -3304,65 +3316,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795283167,
-    "10 11 class incoming tuning": 1795283167,
+    "10 11 balance faction pvp updates": 1795284066,
+    "10 11 class incoming tuning": 1795284066,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795283167,
+    "11 11 balance faction pvp updates": 1795284066,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795283167,
-    "11 14 adjustment dungeon level player xp": 1795283167,
-    "11 15 adjustment dungeon level player xp": 1795283167,
+    "11 13 lost purchase refunds training": 1795284066,
+    "11 14 adjustment dungeon level player xp": 1795284066,
+    "11 15 adjustment dungeon level player xp": 1795284066,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795283167,
+    "11 17 abuse actions blackmaw for hold": 1795284066,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
-    "11 20 2026 forever hotfixes wow": 1795283167,
+    "11 20 2026 forever hotfixes wow": 1795284066,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795283167,
-    "11 8 dungeon enemy increased xp": 1795283167,
-    "60 at for gold quests": 1795283167,
-    "60 at from gold lvl no quests seriously": 1795283167,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795283167,
-    "8 catching classes episode forever on podcast the up wow": 1795283167,
-    "8 city do i inside main maybe people see the why": 1795283167,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795283167,
-    "a explore forever gamepad with wow": 1795283167,
-    "a for friend invite issues players resolved": 1795283167,
-    "about bug category forever report the wow": 1795283167,
+    "11 5 forever issues known updated wow": 1795284066,
+    "11 8 dungeon enemy increased xp": 1795284066,
+    "60 at for gold quests": 1795284066,
+    "60 at from gold lvl no quests seriously": 1795284066,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795284066,
+    "8 catching classes episode forever on podcast the up wow": 1795284066,
+    "8 city do i inside main maybe people see the why": 1795284066,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795284066,
+    "a explore forever gamepad with wow": 1795284066,
+    "a for friend invite issues players resolved": 1795284066,
+    "about bug category forever report the wow": 1795284066,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795283167,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795284066,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795283167,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795283167,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795284066,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795284066,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
     "and language settings social": 1795109468,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795283167,
-    "broken zeppelins": 1795283167,
-    "bug forever forum guidelines report wow": 1795283167,
-    "bugged chaos missing monday s server shaman since totems": 1795283167,
-    "catching classes forever on podcast the up watch wow": 1795283167,
+    "beta from group issues persist phasing still with": 1795284066,
+    "broken zeppelins": 1795284066,
+    "bug forever forum guidelines report wow": 1795284066,
+    "bugged chaos missing monday s server shaman since totems": 1795284066,
+    "catching classes forever on podcast the up watch wow": 1795284066,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1795283167,
+    "cost forever honor of short story the watch wow": 1795284066,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1795283167,
-    "dungeon increased majority the wants xp": 1795283167,
+    "dungeon enough not still xp": 1795284066,
+    "dungeon increased majority the wants xp": 1795284066,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795283167,
+    "episode forever lore podcast the the watch wow": 1795284066,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1795283167,
+    "forever forever forging watch wow": 1795284066,
     "forever guide new of player s starter to warcraft welcome world": 1795197669,
     "forever launch of time warcraft world": 1795108566,
     "forever live now of warcraft world": 1795197669,
@@ -3535,7 +3547,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795283168,
+  "saved_at": 1795284067,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
