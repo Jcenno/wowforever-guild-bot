@@ -78,7 +78,7 @@
       },
       "ilvl": 23,
       "last_explored": "Wetlands",
-      "last_login": 1795223751000,
+      "last_login": 1795288383000,
       "level": 29,
       "level_at": {
         "24": 1794895272,
@@ -90,50 +90,54 @@
       "professions": {
         "Cooking": 29,
         "Herbalism": 213,
-        "Skinning": 212
+        "Skinning": 215
       },
       "race": "High Order Skyborne",
       "raids": {},
       "recipes": {
         "Cooking": [
           {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
-          },
-          {
-            "id": 1536,
-            "name": "Spiced Wolf Meat"
-          },
-          {
-            "id": 1537,
-            "name": "Roasted Boar Meat"
-          },
-          {
-            "id": 4353,
-            "name": "Brilliant Smallfish"
-          },
-          {
-            "id": 4354,
-            "name": "Slitherskin Mackerel"
-          },
-          {
             "id": 4786,
             "name": "Herb Baked Egg"
-          },
-          {
-            "id": 52640,
-            "name": "Basic Campfire"
           },
           {
             "id": 54504,
             "name": "Tasty Raptor Bites"
           },
           {
+            "id": 52640,
+            "name": "Basic Campfire"
+          },
+          {
+            "id": 1536,
+            "name": "Spiced Wolf Meat"
+          },
+          {
             "id": 56881,
             "name": "Skywall Souffle"
+          },
+          {
+            "id": 4353,
+            "name": "Brilliant Smallfish"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
+            "id": 4354,
+            "name": "Slitherskin Mackerel"
           }
         ],
         "Herbalism": [
+          {
+            "id": 54116,
+            "name": "Herbalism"
+          },
           {
             "id": 1419,
             "name": "Herbalism"
@@ -143,22 +147,18 @@
             "name": "Herbalism"
           },
           {
-            "id": 54116,
-            "name": "Herbalism"
-          },
-          {
             "id": 52642,
             "name": "Incense Candle"
           }
         ],
         "Skinning": [
           {
-            "id": 4768,
-            "name": "Skinning"
-          },
-          {
             "id": 52644,
             "name": "Camp Chair"
+          },
+          {
+            "id": 4768,
+            "name": "Skinning"
           }
         ]
       },
@@ -171,11 +171,6 @@
         "Azeroth Commerce Authority": {
           "name": "Neutral",
           "raw": 2000,
-          "tier": 3
-        },
-        "Booty Bay": {
-          "name": "Neutral",
-          "raw": 500,
           "tier": 3
         },
         "Cenarion Circle": {
@@ -232,18 +227,18 @@
       "spec": "Feral Combat",
       "stats": {
         "critters": 12,
-        "deaths": 37,
-        "drinks": 5,
+        "deaths": 42,
+        "drinks": 9,
         "flights": 36,
-        "food": 8,
-        "health_potions": 18,
-        "hearths": 24,
-        "killing_blows": 1390,
+        "food": 10,
+        "health_potions": 20,
+        "hearths": 26,
+        "killing_blows": 1428,
         "mana_potions": 3,
-        "mobs": 2046,
+        "mobs": 2123,
         "quests": 261
       },
-      "xp": 20050
+      "xp": 29838
     },
     "us:devil-latterday": {
       "achievements": {
@@ -879,6 +874,7 @@
         "62012": "Journeyman Alchemist",
         "62031": "Novice Spelunker",
         "780": "Explore Redridge Mountains",
+        "841": "Explore Wetlands",
         "842": "Explore Teldrassil",
         "844": "Explore Darkshore",
         "855": "Explore Moonglade"
@@ -978,9 +974,9 @@
         }
       },
       "ilvl": 25,
-      "last_explored": "Redridge Mountains",
-      "last_login": 1795276825000,
-      "level": 30,
+      "last_explored": "Wetlands",
+      "last_login": 1795288207000,
+      "level": 31,
       "level_at": {
         "17": 1794274699,
         "18": 1794283267,
@@ -993,14 +989,15 @@
         "27": 1795005067,
         "28": 1795061765,
         "29": 1795096871,
-        "30": 1795201266
+        "30": 1795201266,
+        "31": 1795288501
       },
       "professions": {
         "Alchemy": 195,
         "Cooking": 157,
         "First Aid": 146,
         "Fishing": 113,
-        "Herbalism": 205
+        "Herbalism": 211
       },
       "race": "Night Elf",
       "raids": {},
@@ -1193,6 +1190,10 @@
             "name": "Smoked Sagefish"
           },
           {
+            "id": 1903,
+            "name": "Tasty Lion Steak"
+          },
+          {
             "id": 3933,
             "name": "Lean Venison"
           },
@@ -1354,7 +1355,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 15847,
+          "raw": 15916,
           "tier": 5
         },
         "Gadgetzan": {
@@ -1364,41 +1365,36 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 6928,
+          "raw": 6997,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 7116,
+          "raw": 7185,
           "tier": 4
         },
         "Stormwind": {
-          "name": "Friendly",
-          "raw": 8948,
-          "tier": 4
-        },
-        "The League of Arathor": {
-          "name": "Neutral",
-          "raw": 0,
-          "tier": 3
+          "name": "Honored",
+          "raw": 9223,
+          "tier": 5
         }
       },
       "role": "Healer",
       "spec": "Feral Combat",
       "stats": {
         "critters": 55,
-        "deaths": 38,
-        "drinks": 106,
-        "flights": 51,
-        "food": 59,
-        "health_potions": 54,
+        "deaths": 42,
+        "drinks": 111,
+        "flights": 52,
+        "food": 62,
+        "health_potions": 58,
         "hearths": 24,
-        "killing_blows": 994,
-        "mana_potions": 48,
-        "mobs": 2831,
-        "quests": 248
+        "killing_blows": 1070,
+        "mana_potions": 49,
+        "mobs": 2972,
+        "quests": 254
       },
-      "xp": 31645
+      "xp": 15719
     },
     "us:ryo-lithandros": {
       "achievements": {
@@ -2680,7 +2676,8 @@
       "achievements": {
         "61994": "Novice Mage",
         "62018": "Journeyman Enchanter",
-        "776": "Explore Elwynn Forest"
+        "776": "Explore Elwynn Forest",
+        "841": "Explore Wetlands"
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/151/7402647-avatar.jpg",
       "best_item": {
@@ -2755,9 +2752,9 @@
           "quality": "RARE"
         }
       },
-      "ilvl": 18,
-      "last_explored": "Elwynn Forest",
-      "last_login": 1795231434000,
+      "ilvl": 19,
+      "last_explored": "Wetlands",
+      "last_login": 1795288220000,
       "level": 29,
       "level_at": {
         "18": 1794190280,
@@ -3201,7 +3198,7 @@
         },
         "Darnassus": {
           "name": "Friendly",
-          "raw": 8377,
+          "raw": 8446,
           "tier": 4
         },
         "Everlook": {
@@ -3216,12 +3213,12 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 5845,
+          "raw": 5913,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 7565,
+          "raw": 7802,
           "tier": 4
         },
         "Powderfuse": {
@@ -3236,25 +3233,25 @@
         },
         "Stormwind": {
           "name": "Honored",
-          "raw": 13985,
+          "raw": 14091,
           "tier": 5
         }
       },
       "spec": "Fire",
       "stats": {
         "critters": 68,
-        "deaths": 62,
-        "drinks": 657,
-        "flights": 45,
-        "food": 126,
-        "health_potions": 46,
-        "hearths": 23,
-        "killing_blows": 1641,
-        "mana_potions": 13,
-        "mobs": 3176,
-        "quests": 262
+        "deaths": 64,
+        "drinks": 689,
+        "flights": 46,
+        "food": 128,
+        "health_potions": 48,
+        "hearths": 24,
+        "killing_blows": 1664,
+        "mana_potions": 14,
+        "mobs": 3252,
+        "quests": 266
       },
-      "xp": 20020
+      "xp": 43545
     }
   },
   "group": {
@@ -3316,65 +3313,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795287666,
-    "10 11 class incoming tuning": 1795287666,
+    "10 11 balance faction pvp updates": 1795288501,
+    "10 11 class incoming tuning": 1795288501,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795287666,
+    "11 11 balance faction pvp updates": 1795288501,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795287666,
-    "11 14 adjustment dungeon level player xp": 1795287666,
-    "11 15 adjustment dungeon level player xp": 1795287666,
+    "11 13 lost purchase refunds training": 1795288501,
+    "11 14 adjustment dungeon level player xp": 1795288501,
+    "11 15 adjustment dungeon level player xp": 1795288501,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795287666,
+    "11 17 abuse actions blackmaw for hold": 1795288501,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
-    "11 20 2026 forever hotfixes wow": 1795287666,
+    "11 20 2026 forever hotfixes wow": 1795288501,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795287666,
-    "11 8 dungeon enemy increased xp": 1795287666,
-    "60 at for gold quests": 1795287666,
-    "60 at from gold lvl no quests seriously": 1795287666,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795287666,
-    "8 catching classes episode forever on podcast the up wow": 1795287666,
-    "8 city do i inside main maybe people see the why": 1795287666,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795287666,
-    "a explore forever gamepad with wow": 1795287666,
-    "a for friend invite issues players resolved": 1795287666,
-    "about bug category forever report the wow": 1795287666,
+    "11 5 forever issues known updated wow": 1795288501,
+    "11 8 dungeon enemy increased xp": 1795288501,
+    "60 at for gold quests": 1795288501,
+    "60 at from gold lvl no quests seriously": 1795288501,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795288501,
+    "8 catching classes episode forever on podcast the up wow": 1795288501,
+    "8 city do i inside main maybe people see the why": 1795288501,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795288501,
+    "a explore forever gamepad with wow": 1795288501,
+    "a for friend invite issues players resolved": 1795288501,
+    "about bug category forever report the wow": 1795288501,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795287666,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795288501,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795287666,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795287666,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795288501,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795288501,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
     "and language settings social": 1795109468,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795287666,
-    "broken zeppelins": 1795287666,
-    "bug forever forum guidelines report wow": 1795287666,
-    "bugged chaos missing monday s server shaman since totems": 1795287666,
-    "catching classes forever on podcast the up watch wow": 1795287666,
+    "beta from group issues persist phasing still with": 1795288501,
+    "broken zeppelins": 1795288501,
+    "bug forever forum guidelines report wow": 1795288501,
+    "bugged chaos missing monday s server shaman since totems": 1795288501,
+    "catching classes forever on podcast the up watch wow": 1795288501,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1795287666,
+    "cost forever honor of short story the watch wow": 1795288501,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1795287666,
-    "dungeon increased majority the wants xp": 1795287666,
+    "dungeon enough not still xp": 1795288501,
+    "dungeon increased majority the wants xp": 1795288501,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795287666,
+    "episode forever lore podcast the the watch wow": 1795288501,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1795287666,
+    "forever forever forging watch wow": 1795288501,
     "forever guide new of player s starter to warcraft welcome world": 1795197669,
     "forever launch of time warcraft world": 1795108566,
     "forever live now of warcraft world": 1795197669,
@@ -3547,7 +3544,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795287667,
+  "saved_at": 1795288503,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
