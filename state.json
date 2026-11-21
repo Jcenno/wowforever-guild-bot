@@ -251,11 +251,11 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/43/66228267-avatar.jpg",
       "best_item": {
-        "id": 286977,
-        "ilvl": 23,
-        "name": "Sword of the Fallen",
-        "quality": "RARE",
-        "slot": "Main Hand"
+        "id": 281927,
+        "ilvl": 27,
+        "name": "Boulderheart Band",
+        "quality": "UNCOMMON",
+        "slot": "Ring 1"
       },
       "boss_kills": {
         "15027": {
@@ -295,60 +295,93 @@
           "quality": "RARE"
         }
       },
-      "ilvl": 11,
+      "ilvl": 14,
       "last_explored": "Teldrassil",
-      "last_login": 1795151509000,
-      "level": 20,
+      "last_login": 1795241344000,
+      "level": 22,
       "level_at": {
         "10": 1794895272,
         "12": 1794897066,
         "14": 1794978967,
         "15": 1795051867,
         "18": 1795068967,
-        "20": 1795151766
+        "20": 1795151766,
+        "22": 1795241767
       },
       "professions": {
-        "Cooking": 30,
-        "First Aid": 89,
+        "Cooking": 83,
+        "First Aid": 116,
         "Fishing": 21,
-        "Leatherworking": 58,
-        "Skinning": 130
+        "Leatherworking": 70,
+        "Skinning": 143
       },
       "race": "Night Elf",
       "raids": {},
       "recipes": {
         "Cooking": [
           {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
+            "id": 4786,
+            "name": "Herb Baked Egg"
           },
           {
-            "id": 1536,
-            "name": "Spiced Wolf Meat"
+            "id": 1543,
+            "name": "Crab Cake"
           },
           {
-            "id": 1537,
-            "name": "Roasted Boar Meat"
+            "id": 52640,
+            "name": "Basic Campfire"
+          },
+          {
+            "id": 1538,
+            "name": "Coyote Steak"
+          },
+          {
+            "id": 54505,
+            "name": "Breakfast Omelette"
+          },
+          {
+            "id": 1545,
+            "name": "Dry Pork Ribs"
+          },
+          {
+            "id": 13344,
+            "name": "Smoked Sagefish"
           },
           {
             "id": 3926,
             "name": "Kaldorei Spider Kabob"
           },
           {
+            "id": 1536,
+            "name": "Spiced Wolf Meat"
+          },
+          {
+            "id": 3930,
+            "name": "Strider Stew"
+          },
+          {
             "id": 4353,
             "name": "Brilliant Smallfish"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
+            "id": 1540,
+            "name": "Westfall Stew"
           },
           {
             "id": 4354,
             "name": "Slitherskin Mackerel"
           },
           {
-            "id": 4786,
-            "name": "Herb Baked Egg"
-          },
-          {
-            "id": 52640,
-            "name": "Basic Campfire"
+            "id": 3964,
+            "name": "Boiled Clams"
           }
         ],
         "First Aid": [
@@ -357,28 +390,40 @@
             "name": "Anti-Venom"
           },
           {
-            "id": 1838,
-            "name": "Linen Bandage"
-          },
-          {
             "id": 1839,
             "name": "Heavy Linen Bandage"
           },
           {
-            "id": 1840,
-            "name": "Wool Bandage"
-          },
-          {
-            "id": 52641,
-            "name": "First Aid Kit"
+            "id": 54192,
+            "name": "Lesser Healing Potion"
           },
           {
             "id": 54191,
             "name": "Minor Healing Potion"
           },
           {
-            "id": 54192,
-            "name": "Lesser Healing Potion"
+            "id": 52641,
+            "name": "First Aid Kit"
+          },
+          {
+            "id": 54193,
+            "name": "Healing Potion"
+          },
+          {
+            "id": 1840,
+            "name": "Wool Bandage"
+          },
+          {
+            "id": 55747,
+            "name": "Simple Poultice"
+          },
+          {
+            "id": 1838,
+            "name": "Linen Bandage"
+          },
+          {
+            "id": 1841,
+            "name": "Heavy Wool Bandage"
           }
         ],
         "Fishing": [
@@ -389,56 +434,64 @@
         ],
         "Leatherworking": [
           {
-            "id": 1353,
-            "name": "Handstitched Leather Boots"
-          },
-          {
-            "id": 1355,
-            "name": "Handstitched Leather Pants"
-          },
-          {
             "id": 1356,
             "name": "Light Armor Kit"
-          },
-          {
-            "id": 1362,
-            "name": "Embossed Leather Vest"
-          },
-          {
-            "id": 1364,
-            "name": "Embossed Leather Cloak"
-          },
-          {
-            "id": 1708,
-            "name": "Light Leather"
-          },
-          {
-            "id": 2162,
-            "name": "Handstitched Leather Belt"
-          },
-          {
-            "id": 2164,
-            "name": "Embossed Leather Gloves"
-          },
-          {
-            "id": 4987,
-            "name": "Handstitched Leather Cloak"
-          },
-          {
-            "id": 4988,
-            "name": "Handstitched Leather Bracers"
           },
           {
             "id": 4989,
             "name": "Light Leather Quiver"
           },
           {
-            "id": 4990,
-            "name": "Small Leather Ammo Pouch"
+            "id": 2162,
+            "name": "Handstitched Leather Belt"
+          },
+          {
+            "id": 55207,
+            "name": "Black Whelp Slippers"
+          },
+          {
+            "id": 2172,
+            "name": "Fine Leather Belt"
+          },
+          {
+            "id": 1362,
+            "name": "Embossed Leather Vest"
           },
           {
             "id": 2195,
             "name": "Cured Light Hide"
+          },
+          {
+            "id": 55205,
+            "name": "Murloc Scale Shoes"
+          },
+          {
+            "id": 2170,
+            "name": "Fine Leather Tunic"
+          },
+          {
+            "id": 4987,
+            "name": "Handstitched Leather Cloak"
+          },
+          {
+            "id": 1363,
+            "name": "Embossed Leather Boots"
+          },
+          {
+            "id": 1708,
+            "name": "Light Leather"
+          },
+          {
+            "id": 2167,
+            "name": "Embossed Leather Pants"
+          },
+          {
+            "id": 4993,
+            "name": "Light Leather Pants"
+          },
+          {
+            "id": 4992,
+            "name": "Light Leather Bracers"
           },
           {
             "id": 4156,
@@ -453,42 +506,62 @@
             "name": "Moonglow Boots"
           },
           {
-            "id": 55205,
-            "name": "Murloc Scale Shoes"
+            "id": 58812,
+            "name": "Light Leather Reagent Bag"
+          },
+          {
+            "id": 1360,
+            "name": "Fine Leather Cloak"
+          },
+          {
+            "id": 4990,
+            "name": "Small Leather Ammo Pouch"
+          },
+          {
+            "id": 1353,
+            "name": "Handstitched Leather Boots"
+          },
+          {
+            "id": 1364,
+            "name": "Embossed Leather Cloak"
+          },
+          {
+            "id": 1355,
+            "name": "Handstitched Leather Pants"
+          },
+          {
+            "id": 4988,
+            "name": "Handstitched Leather Bracers"
           },
           {
             "id": 55206,
             "name": "Dark Leather Boots"
           },
           {
-            "id": 55207,
-            "name": "Black Whelp Slippers"
-          },
-          {
-            "id": 58812,
-            "name": "Light Leather Reagent Bag"
+            "id": 2164,
+            "name": "Embossed Leather Gloves"
           }
         ],
         "Skinning": [
           {
-            "id": 4767,
-            "name": "Skinning"
-          },
-          {
             "id": 52644,
             "name": "Camp Chair"
+          },
+          {
+            "id": 4768,
+            "name": "Skinning"
           }
         ]
       },
       "reputations": {
-        "Argent Dawn": {
+        "Azeroth Commerce Authority": {
           "name": "Neutral",
-          "raw": 200,
+          "raw": 0,
           "tier": 3
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 13067,
+          "raw": 13330,
           "tier": 5
         },
         "Gadgetzan": {
@@ -498,36 +571,51 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 4695,
+          "raw": 4957,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 4832,
+          "raw": 5095,
           "tier": 4
+        },
+        "Silverwing Sentinels": {
+          "name": "Neutral",
+          "raw": 150,
+          "tier": 3
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 4257,
+          "raw": 5307,
           "tier": 4
+        },
+        "The League of Arathor": {
+          "name": "Neutral",
+          "raw": 0,
+          "tier": 3
+        },
+        "Theramore Expeditionary Force": {
+          "name": "Neutral",
+          "raw": 0,
+          "tier": 3
         }
       },
       "spec": "Beast Mastery",
       "stats": {
-        "critters": 60,
-        "deaths": 10,
+        "critters": 69,
+        "deaths": 23,
         "drinks": 4,
-        "flights": 12,
-        "food": 23,
-        "health_potions": 6,
-        "hearths": 5,
-        "honorable_kills": 50,
-        "killing_blows": 1301,
+        "flights": 13,
+        "food": 26,
+        "health_potions": 8,
+        "hearths": 6,
+        "honorable_kills": 104,
+        "killing_blows": 1572,
         "mana_potions": 1,
-        "mobs": 1449,
-        "quests": 132
+        "mobs": 1718,
+        "quests": 148
       },
-      "xp": 12785
+      "xp": 7779
     },
     "us:pharaoh-nuff": {
       "achievements": {
@@ -3208,65 +3296,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795240866,
-    "10 11 class incoming tuning": 1795240866,
+    "10 11 balance faction pvp updates": 1795241767,
+    "10 11 class incoming tuning": 1795241767,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795240866,
+    "11 11 balance faction pvp updates": 1795241767,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795240866,
-    "11 14 adjustment dungeon level player xp": 1795240866,
-    "11 15 adjustment dungeon level player xp": 1795240866,
+    "11 13 lost purchase refunds training": 1795241767,
+    "11 14 adjustment dungeon level player xp": 1795241767,
+    "11 15 adjustment dungeon level player xp": 1795241767,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795240866,
+    "11 17 abuse actions blackmaw for hold": 1795241767,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
-    "11 20 2026 forever hotfixes wow": 1795240866,
+    "11 20 2026 forever hotfixes wow": 1795241767,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795240866,
-    "11 8 dungeon enemy increased xp": 1795240866,
-    "60 at for gold quests": 1795240866,
-    "60 at from gold lvl no quests seriously": 1795240866,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795240866,
-    "8 catching classes episode forever on podcast the up wow": 1795240866,
-    "8 city do i inside main maybe people see the why": 1795240866,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795240866,
-    "a explore forever gamepad with wow": 1795240866,
-    "a for friend invite issues players resolved": 1795240866,
-    "about bug category forever report the wow": 1795240866,
+    "11 5 forever issues known updated wow": 1795241767,
+    "11 8 dungeon enemy increased xp": 1795241767,
+    "60 at for gold quests": 1795241767,
+    "60 at from gold lvl no quests seriously": 1795241767,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795241767,
+    "8 catching classes episode forever on podcast the up wow": 1795241767,
+    "8 city do i inside main maybe people see the why": 1795241767,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795241767,
+    "a explore forever gamepad with wow": 1795241767,
+    "a for friend invite issues players resolved": 1795241767,
+    "about bug category forever report the wow": 1795241767,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795240866,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795241767,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795240866,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795240866,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795241767,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795241767,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
     "and language settings social": 1795109468,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795240866,
-    "broken zeppelins": 1795240866,
-    "bug forever forum guidelines report wow": 1795240866,
-    "bugged chaos missing monday s server shaman since totems": 1795240866,
-    "catching classes forever on podcast the up watch wow": 1795240866,
+    "beta from group issues persist phasing still with": 1795241767,
+    "broken zeppelins": 1795241767,
+    "bug forever forum guidelines report wow": 1795241767,
+    "bugged chaos missing monday s server shaman since totems": 1795241767,
+    "catching classes forever on podcast the up watch wow": 1795241767,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1795240866,
+    "cost forever honor of short story the watch wow": 1795241767,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1795240866,
-    "dungeon increased majority the wants xp": 1795240866,
+    "dungeon enough not still xp": 1795241767,
+    "dungeon increased majority the wants xp": 1795241767,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795240866,
+    "episode forever lore podcast the the watch wow": 1795241767,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1795240866,
+    "forever forever forging watch wow": 1795241767,
     "forever guide new of player s starter to warcraft welcome world": 1795197669,
     "forever launch of time warcraft world": 1795108566,
     "forever live now of warcraft world": 1795197669,
@@ -3439,7 +3527,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795240868,
+  "saved_at": 1795241768,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
