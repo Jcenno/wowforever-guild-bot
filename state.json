@@ -842,6 +842,213 @@
       },
       "xp": 1465
     },
+    "us:leo-orion": {
+      "achievements": {
+        "61502": "Novice Druid",
+        "841": "Explore Wetlands",
+        "842": "Explore Teldrassil",
+        "844": "Explore Darkshore",
+        "855": "Explore Moonglade"
+      },
+      "avatar": "https://render.worldofwarcraft.com/forever-us/character/44/65647404-avatar.jpg",
+      "best_item": {
+        "id": 9763,
+        "ilvl": 14,
+        "name": "Cadet Leggings of the Bear",
+        "quality": "UNCOMMON",
+        "slot": "Legs"
+      },
+      "boss_kills": {},
+      "class": "Paladin",
+      "dungeons": {},
+      "first_seen": 1795389369,
+      "gear": {},
+      "ilvl": 3,
+      "last_explored": "Wetlands",
+      "last_login": 1795375327000,
+      "level": 10,
+      "level_at": {
+        "10": 1795389369
+      },
+      "professions": {
+        "Blacksmithing": 68,
+        "Cooking": 1,
+        "Mining": 66
+      },
+      "race": "Human",
+      "raids": {},
+      "recipes": {
+        "Blacksmithing": [
+          {
+            "id": 1632,
+            "name": "Copper Chain Belt"
+          },
+          {
+            "id": 4285,
+            "name": "Heavy Copper Maul"
+          },
+          {
+            "id": 54692,
+            "name": "Gemmed Copper Boots"
+          },
+          {
+            "id": 52645,
+            "name": "Sharpening Wheel"
+          },
+          {
+            "id": 1636,
+            "name": "Coarse Sharpening Stone"
+          },
+          {
+            "id": 1798,
+            "name": "Rough Weightstone"
+          },
+          {
+            "id": 54694,
+            "name": "Glowing Copper Boots"
+          },
+          {
+            "id": 1633,
+            "name": "Copper Chain Pants"
+          },
+          {
+            "id": 6636,
+            "name": "Rough Copper Vest"
+          },
+          {
+            "id": 1652,
+            "name": "Copper Shortsword"
+          },
+          {
+            "id": 1631,
+            "name": "Rough Sharpening Stone"
+          },
+          {
+            "id": 1855,
+            "name": "Copper Chain Boots"
+          },
+          {
+            "id": 1856,
+            "name": "Rough Grinding Stone"
+          },
+          {
+            "id": 4910,
+            "name": "Copper Dagger"
+          },
+          {
+            "id": 1634,
+            "name": "Copper Bracers"
+          },
+          {
+            "id": 1637,
+            "name": "Runed Copper Belt"
+          },
+          {
+            "id": 54693,
+            "name": "Strange Copper Boots"
+          },
+          {
+            "id": 1861,
+            "name": "Coarse Grinding Stone"
+          },
+          {
+            "id": 1858,
+            "name": "Runed Copper Gauntlets"
+          },
+          {
+            "id": 5338,
+            "name": "Copper Claymore"
+          },
+          {
+            "id": 1851,
+            "name": "Thick War Axe"
+          },
+          {
+            "id": 1850,
+            "name": "Copper Battle Axe"
+          },
+          {
+            "id": 1800,
+            "name": "Coarse Weightstone"
+          },
+          {
+            "id": 1646,
+            "name": "Copper Mace"
+          },
+          {
+            "id": 54212,
+            "name": "Copper Rod"
+          },
+          {
+            "id": 1859,
+            "name": "Runed Copper Pants"
+          },
+          {
+            "id": 1651,
+            "name": "Copper Axe"
+          }
+        ],
+        "Cooking": [
+          {
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          }
+        ],
+        "Mining": [
+          {
+            "id": 3324,
+            "name": "Smelt Copper"
+          },
+          {
+            "id": 1569,
+            "name": "Mining"
+          }
+        ]
+      },
+      "reputations": {
+        "Darnassus": {
+          "name": "Friendly",
+          "raw": 3112,
+          "tier": 4
+        },
+        "Gnomeregan Exiles": {
+          "name": "Friendly",
+          "raw": 3112,
+          "tier": 4
+        },
+        "Ironforge": {
+          "name": "Friendly",
+          "raw": 3112,
+          "tier": 4
+        },
+        "Stormwind": {
+          "name": "Friendly",
+          "raw": 6425,
+          "tier": 4
+        }
+      },
+      "spec": null,
+      "stats": {
+        "critters": 3,
+        "hearths": 1,
+        "killing_blows": 231,
+        "mobs": 231,
+        "quests": 47
+      },
+      "xp": 774
+    },
     "us:pharaoh-nuff": {
       "achievements": {
         "61499": "Novice Warrior",
@@ -3626,65 +3833,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795388469,
-    "10 11 class incoming tuning": 1795388469,
+    "10 11 balance faction pvp updates": 1795389369,
+    "10 11 class incoming tuning": 1795389369,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795388469,
+    "11 11 balance faction pvp updates": 1795389369,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795388469,
-    "11 14 adjustment dungeon level player xp": 1795388469,
-    "11 15 adjustment dungeon level player xp": 1795388469,
+    "11 13 lost purchase refunds training": 1795389369,
+    "11 14 adjustment dungeon level player xp": 1795389369,
+    "11 15 adjustment dungeon level player xp": 1795389369,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795388469,
+    "11 17 abuse actions blackmaw for hold": 1795389369,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
-    "11 20 2026 forever hotfixes wow": 1795388469,
+    "11 20 2026 forever hotfixes wow": 1795389369,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795388469,
-    "11 8 dungeon enemy increased xp": 1795388469,
-    "60 at for gold quests": 1795388469,
-    "60 at from gold lvl no quests seriously": 1795388469,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795388469,
-    "8 catching classes episode forever on podcast the up wow": 1795388469,
-    "8 city do i inside main maybe people see the why": 1795388469,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795388469,
-    "a explore forever gamepad with wow": 1795388469,
-    "a for friend invite issues players resolved": 1795388469,
-    "about bug category forever report the wow": 1795388469,
+    "11 5 forever issues known updated wow": 1795389369,
+    "11 8 dungeon enemy increased xp": 1795389369,
+    "60 at for gold quests": 1795389369,
+    "60 at from gold lvl no quests seriously": 1795389369,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795389369,
+    "8 catching classes episode forever on podcast the up wow": 1795389369,
+    "8 city do i inside main maybe people see the why": 1795389369,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795389369,
+    "a explore forever gamepad with wow": 1795389369,
+    "a for friend invite issues players resolved": 1795389369,
+    "about bug category forever report the wow": 1795389369,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795388469,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795389369,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795388469,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795388469,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795389369,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795389369,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
     "and language settings social": 1795109468,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795388469,
-    "broken zeppelins": 1795388469,
-    "bug forever forum guidelines report wow": 1795388469,
-    "bugged chaos missing monday s server shaman since totems": 1795388469,
-    "catching classes forever on podcast the up watch wow": 1795388469,
+    "beta from group issues persist phasing still with": 1795389369,
+    "broken zeppelins": 1795389369,
+    "bug forever forum guidelines report wow": 1795389369,
+    "bugged chaos missing monday s server shaman since totems": 1795389369,
+    "catching classes forever on podcast the up watch wow": 1795389369,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1795388469,
+    "cost forever honor of short story the watch wow": 1795389369,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1795388469,
-    "dungeon increased majority the wants xp": 1795388469,
+    "dungeon enough not still xp": 1795389369,
+    "dungeon increased majority the wants xp": 1795389369,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795388469,
+    "episode forever lore podcast the the watch wow": 1795389369,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1795388469,
+    "forever forever forging watch wow": 1795389369,
     "forever guide new of player s starter to warcraft welcome world": 1795197669,
     "forever launch of time warcraft world": 1795108566,
     "forever live now of warcraft world": 1795197669,
@@ -3747,6 +3954,12 @@
         "3130": "Veteran Adventurer's Loyal Companion"
       }
     },
+    "us:leo-orion": {
+      "mounts": {
+        "3111": "Cerulean Prideclaw",
+        "3130": "Veteran Adventurer's Loyal Companion"
+      }
+    },
     "us:pharaoh-nuff": {
       "mounts": {
         "3111": "Cerulean Prideclaw",
@@ -3778,8 +3991,10 @@
       "aeri-moonglow": "Aeri Moonglow",
       "devil-latterday": "Devil Latterday",
       "jetcar-stormblessed": "Jetcar Stormblessed",
+      "leo-orion": "Leo Orion",
       "pharaoh-nuff": "Pharaoh Nuff",
       "pwanage-ownage": "Pwanage Ownage",
+      "runarii-lithandros": "Runarii Lithandros",
       "ryo-lithandros": "Ryo Lithandros",
       "sparkee-runebrew": "Sparkee Runebrew",
       "steel-appeal": "Steel Appeal",
@@ -3789,7 +4004,7 @@
       {
         "class": null,
         "guild": true,
-        "level": 32,
+        "level": 33,
         "name": "Steel",
         "rank": 0,
         "region": "us",
@@ -3843,6 +4058,15 @@
       {
         "class": null,
         "guild": true,
+        "level": 10,
+        "name": "Runarii",
+        "rank": 2,
+        "region": "us",
+        "surname": "Lithandros"
+      },
+      {
+        "class": null,
+        "guild": true,
         "level": 16,
         "name": "Pharaoh",
         "rank": 2,
@@ -3852,7 +4076,7 @@
       {
         "class": null,
         "guild": true,
-        "level": 23,
+        "level": 25,
         "name": "Devil",
         "rank": 1,
         "region": "us",
@@ -3861,11 +4085,20 @@
       {
         "class": null,
         "guild": true,
-        "level": 10,
+        "level": 12,
         "name": "Jetcar",
         "rank": 2,
         "region": "us",
         "surname": "Stormblessed"
+      },
+      {
+        "class": null,
+        "guild": true,
+        "level": 10,
+        "name": "Leo",
+        "rank": 4,
+        "region": "us",
+        "surname": "Orion"
       }
     ],
     "message_ids": [
@@ -3873,7 +4106,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795388470,
+  "saved_at": 1795389370,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
@@ -3927,6 +4160,16 @@
         "xp": 0
       },
       "us:jetcar-stormblessed": {
+        "achievements": 0,
+        "clears": {},
+        "epics": [],
+        "level": 1,
+        "professions": {},
+        "rep": {},
+        "stats": {},
+        "xp": 0
+      },
+      "us:leo-orion": {
         "achievements": 0,
         "clears": {},
         "epics": [],
