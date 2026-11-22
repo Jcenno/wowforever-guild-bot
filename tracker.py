@@ -95,6 +95,9 @@ CLASS_COLORS = {
 QUALITY_RANK = {"POOR": 0, "COMMON": 1, "UNCOMMON": 2, "RARE": 3, "EPIC": 4, "LEGENDARY": 5, "ARTIFACT": 6}
 DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
+ART_BASE = "https://raw.githubusercontent.com/Jcenno/wowforever-guild-bot/main/art/"
+ART_GUILD_FIRST = ART_BASE + "guild-first.png"
+ART_PROF_BADGE = ART_BASE + "profession-badge.png"
 CANARY_AVATAR = "https://raw.githubusercontent.com/Jcenno/wowforever-guild-bot/main/art/canary-256.png"
 
 DEFAULT_SETTINGS = {
@@ -1038,6 +1041,7 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
     cls = snap.get("class") or ""
     color = CLASS_COLORS.get(cls, DEFAULT_COLOR)
     fields = []
+    badge = None
     if event in ("milestone", "max_level"):
         level = detail["level"]
         order = group.setdefault("milestone_order", {}).setdefault(str(level), [])
@@ -1049,6 +1053,7 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
         if detail.get("first") and place == 1:
             title = f"First to {level}"
             color = HYPE_COLOR
+            badge = ART_GUILD_FIRST
         elif level >= settings["max_level"]:
             color = HYPE_COLOR
         headline = f"**{name}** reached level **{level}**."
@@ -1086,6 +1091,7 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
     elif event in ("prof_first", "prof_max"):
         prof, cap = detail["prof"], detail["cap"]
         color = HYPE_COLOR
+        badge = ART_PROF_BADGE
         if event == "prof_first":
             title = f"First to {cap}: {prof}"
             headline = f"**{name}** is the first in the guild to reach **{cap} {prof}**."
@@ -1104,6 +1110,7 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
         kind = detail.get("kind", "dungeon")
         title = {"dungeon": "Guild First: Dungeon", "boss": "Guild First: Boss Kill", "raid": "Guild First: Raid Clear"}.get(kind, "Guild First")
         color = HYPE_COLOR
+        badge = ART_GUILD_FIRST
         verb = {"dungeon": "cleared", "boss": "killed", "raid": "cleared"}.get(kind, "did")
         names = detail.get("names") or [name]
         who = ("**" + "**, **".join(names[:-1]) + "** and **" + names[-1] + "**") if len(names) > 1 else f"**{names[0]}**"
@@ -1119,7 +1126,12 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "url": armory_url(c),
     }
-    if snap.get("avatar"):
+    if badge:
+        embed["thumbnail"] = {"url": badge}
+        embed["author"] = {"name": name}
+        if snap.get("avatar"):
+            embed["author"]["icon_url"] = snap["avatar"]
+    elif snap.get("avatar"):
         embed["thumbnail"] = {"url": snap["avatar"]}
     return embed
 
