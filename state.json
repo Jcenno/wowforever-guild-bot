@@ -1847,6 +1847,290 @@
       },
       "xp": 38299
     },
+    "us:runarii-lithandros": {
+      "achievements": {
+        "61502": "Novice Druid",
+        "841": "Explore Wetlands",
+        "842": "Explore Teldrassil",
+        "844": "Explore Darkshore",
+        "855": "Explore Moonglade"
+      },
+      "avatar": "https://render.worldofwarcraft.com/forever-us/character/175/30048687-avatar.jpg",
+      "best_item": {
+        "id": 11287,
+        "ilvl": 15,
+        "name": "Lesser Magic Wand",
+        "quality": "UNCOMMON",
+        "slot": "Ranged"
+      },
+      "boss_kills": {},
+      "class": "Priest",
+      "dungeons": {},
+      "first_seen": 1795390270,
+      "gear": {},
+      "ilvl": 4,
+      "last_explored": "Wetlands",
+      "last_login": 1795389460000,
+      "level": 10,
+      "level_at": {
+        "10": 1795390270
+      },
+      "professions": {
+        "Cooking": 5,
+        "Enchanting": 36,
+        "Tailoring": 75
+      },
+      "race": "Night Elf",
+      "raids": {},
+      "recipes": {
+        "Cooking": [
+          {
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          }
+        ],
+        "Enchanting": [
+          {
+            "id": 4290,
+            "name": "Enchant Chest - Inferior Stamina"
+          },
+          {
+            "id": 52649,
+            "name": "Enchanted Lute"
+          },
+          {
+            "id": 7316,
+            "name": "Disenchant"
+          },
+          {
+            "id": 4289,
+            "name": "Enchant Bracer - Inferior Stamina"
+          },
+          {
+            "id": 4291,
+            "name": "Runed Copper Rod"
+          },
+          {
+            "id": 4297,
+            "name": "Enchant Chest - Minor Intellect"
+          },
+          {
+            "id": 7999,
+            "name": "Lesser Magic Wand"
+          },
+          {
+            "id": 54214,
+            "name": "Novice's Practice Wand"
+          },
+          {
+            "id": 54213,
+            "name": "Dust to Motes"
+          },
+          {
+            "id": 4293,
+            "name": "Enchant Bracer - Minor Deflect"
+          },
+          {
+            "id": 13137,
+            "name": "Minor Wizard Oil"
+          }
+        ],
+        "Tailoring": [
+          {
+            "id": 2383,
+            "name": "Soft-soled Linen Boots"
+          },
+          {
+            "id": 3973,
+            "name": "Pearl-clasped Cloak"
+          },
+          {
+            "id": 56361,
+            "name": "Faction Banner"
+          },
+          {
+            "id": 2359,
+            "name": "Bolt of Linen Cloth"
+          },
+          {
+            "id": 2408,
+            "name": "Brown Linen Pants"
+          },
+          {
+            "id": 6578,
+            "name": "Simple Kilt"
+          },
+          {
+            "id": 4848,
+            "name": "Linen Belt"
+          },
+          {
+            "id": 4019,
+            "name": "Red Linen Bag"
+          },
+          {
+            "id": 2381,
+            "name": "Heavy Woolen Gloves"
+          },
+          {
+            "id": 55423,
+            "name": "Novice Arcanist's Sash"
+          },
+          {
+            "id": 2409,
+            "name": "Brown Linen Shirt"
+          },
+          {
+            "id": 2367,
+            "name": "Reinforced Linen Cape"
+          },
+          {
+            "id": 2363,
+            "name": "Linen Boots"
+          },
+          {
+            "id": 2372,
+            "name": "Green Woolen Vest"
+          },
+          {
+            "id": 2369,
+            "name": "Green Linen Shirt"
+          },
+          {
+            "id": 2380,
+            "name": "Handstitched Linen Britches"
+          },
+          {
+            "id": 2360,
+            "name": "Linen Cloak"
+          },
+          {
+            "id": 2373,
+            "name": "Woolen Boots"
+          },
+          {
+            "id": 2370,
+            "name": "Bolt of Woolen Cloth"
+          },
+          {
+            "id": 6577,
+            "name": "Simple Linen Boots"
+          },
+          {
+            "id": 4708,
+            "name": "Simple Dress"
+          },
+          {
+            "id": 4303,
+            "name": "White Linen Robe"
+          },
+          {
+            "id": 4001,
+            "name": "Linen Bag"
+          },
+          {
+            "id": 2365,
+            "name": "White Linen Shirt"
+          },
+          {
+            "id": 2366,
+            "name": "Blue Linen Shirt"
+          },
+          {
+            "id": 55367,
+            "name": "Woolen Reagent Bag"
+          },
+          {
+            "id": 2364,
+            "name": "Red Linen Shirt"
+          },
+          {
+            "id": 2379,
+            "name": "Green Linen Bracers"
+          },
+          {
+            "id": 2368,
+            "name": "Barbaric Linen Vest"
+          },
+          {
+            "id": 55424,
+            "name": "Novice Ardent's Sash"
+          },
+          {
+            "id": 4302,
+            "name": "Brown Linen Robe"
+          },
+          {
+            "id": 2378,
+            "name": "Heavy Linen Gloves"
+          },
+          {
+            "id": 2371,
+            "name": "Woolen Cape"
+          },
+          {
+            "id": 4002,
+            "name": "Woolen Bag"
+          },
+          {
+            "id": 2361,
+            "name": "Brown Linen Vest"
+          },
+          {
+            "id": 6576,
+            "name": "Simple Linen Pants"
+          },
+          {
+            "id": 55366,
+            "name": "Linen Reagent Bag"
+          }
+        ]
+      },
+      "reputations": {
+        "Darnassus": {
+          "name": "Friendly",
+          "raw": 6805,
+          "tier": 4
+        },
+        "Gnomeregan Exiles": {
+          "name": "Friendly",
+          "raw": 3137,
+          "tier": 4
+        },
+        "Ironforge": {
+          "name": "Friendly",
+          "raw": 3137,
+          "tier": 4
+        },
+        "Stormwind": {
+          "name": "Friendly",
+          "raw": 3137,
+          "tier": 4
+        }
+      },
+      "spec": "Discipline",
+      "stats": {
+        "critters": 1,
+        "deaths": 1,
+        "health_potions": 2,
+        "killing_blows": 180,
+        "mobs": 179,
+        "quests": 42
+      },
+      "xp": 2139
+    },
     "us:ryo-lithandros": {
       "achievements": {
         "61502": "Novice Druid",
@@ -3833,65 +4117,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795389369,
-    "10 11 class incoming tuning": 1795389369,
+    "10 11 balance faction pvp updates": 1795390270,
+    "10 11 class incoming tuning": 1795390270,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795389369,
+    "11 11 balance faction pvp updates": 1795390270,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795389369,
-    "11 14 adjustment dungeon level player xp": 1795389369,
-    "11 15 adjustment dungeon level player xp": 1795389369,
+    "11 13 lost purchase refunds training": 1795390270,
+    "11 14 adjustment dungeon level player xp": 1795390270,
+    "11 15 adjustment dungeon level player xp": 1795390270,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795389369,
+    "11 17 abuse actions blackmaw for hold": 1795390270,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
-    "11 20 2026 forever hotfixes wow": 1795389369,
+    "11 20 2026 forever hotfixes wow": 1795390270,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795389369,
-    "11 8 dungeon enemy increased xp": 1795389369,
-    "60 at for gold quests": 1795389369,
-    "60 at from gold lvl no quests seriously": 1795389369,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795389369,
-    "8 catching classes episode forever on podcast the up wow": 1795389369,
-    "8 city do i inside main maybe people see the why": 1795389369,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795389369,
-    "a explore forever gamepad with wow": 1795389369,
-    "a for friend invite issues players resolved": 1795389369,
-    "about bug category forever report the wow": 1795389369,
+    "11 5 forever issues known updated wow": 1795390270,
+    "11 8 dungeon enemy increased xp": 1795390270,
+    "60 at for gold quests": 1795390270,
+    "60 at from gold lvl no quests seriously": 1795390270,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795390270,
+    "8 catching classes episode forever on podcast the up wow": 1795390270,
+    "8 city do i inside main maybe people see the why": 1795390270,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795390270,
+    "a explore forever gamepad with wow": 1795390270,
+    "a for friend invite issues players resolved": 1795390270,
+    "about bug category forever report the wow": 1795390270,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795389369,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795390270,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795389369,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795389369,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795390270,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795390270,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
     "and language settings social": 1795109468,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795389369,
-    "broken zeppelins": 1795389369,
-    "bug forever forum guidelines report wow": 1795389369,
-    "bugged chaos missing monday s server shaman since totems": 1795389369,
-    "catching classes forever on podcast the up watch wow": 1795389369,
+    "beta from group issues persist phasing still with": 1795390270,
+    "broken zeppelins": 1795390270,
+    "bug forever forum guidelines report wow": 1795390270,
+    "bugged chaos missing monday s server shaman since totems": 1795390270,
+    "catching classes forever on podcast the up watch wow": 1795390270,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1795389369,
+    "cost forever honor of short story the watch wow": 1795390270,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1795389369,
-    "dungeon increased majority the wants xp": 1795389369,
+    "dungeon enough not still xp": 1795390270,
+    "dungeon increased majority the wants xp": 1795390270,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795389369,
+    "episode forever lore podcast the the watch wow": 1795390270,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1795389369,
+    "forever forever forging watch wow": 1795390270,
     "forever guide new of player s starter to warcraft welcome world": 1795197669,
     "forever launch of time warcraft world": 1795108566,
     "forever live now of warcraft world": 1795197669,
@@ -3961,6 +4245,12 @@
       }
     },
     "us:pharaoh-nuff": {
+      "mounts": {
+        "3111": "Cerulean Prideclaw",
+        "3130": "Veteran Adventurer's Loyal Companion"
+      }
+    },
+    "us:runarii-lithandros": {
       "mounts": {
         "3111": "Cerulean Prideclaw",
         "3130": "Veteran Adventurer's Loyal Companion"
@@ -4106,7 +4396,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795389370,
+  "saved_at": 1795390271,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
@@ -4248,6 +4538,16 @@
           "quests": 179
         },
         "xp": 24763
+      },
+      "us:runarii-lithandros": {
+        "achievements": 0,
+        "clears": {},
+        "epics": [],
+        "level": 1,
+        "professions": {},
+        "rep": {},
+        "stats": {},
+        "xp": 0
       },
       "us:ryo-lithandros": {
         "achievements": 4,
