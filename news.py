@@ -221,6 +221,14 @@ def build_news(state, now_ts=None, fetcher=fetch):
         if kind == "news" and "forums.blizzard.com" in it["url"] and len(body) < 200:
             seen[key] = now_ts
             continue
+        # One blue reply often lands in two threads on the same subject. Same opening text
+        # within three days: the guild has already read it.
+        bkey = "body:" + re.sub(r"[^a-z0-9]+", " ", (body or "").lower()).strip()[:160]
+        if len(bkey) > 85 and bkey in recent:
+            seen[key] = now_ts
+            continue
+        if len(bkey) > 85:
+            recent[bkey] = {"region": it["region"], "ts": now_ts}
         seen[key] = now_ts
         recent[legacy_key(it["title"])] = {"region": it["region"], "ts": now_ts}
         source = "Blizzard News" if "news.blizzard.com" in it["url"] else f"{it['region'].upper()} forums"

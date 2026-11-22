@@ -1128,9 +1128,11 @@ def milestone_embed(c, snap, event, detail, group, state_char, settings, now_ts)
     }
     if badge:
         embed["thumbnail"] = {"url": badge}
-        embed["author"] = {"name": name}
-        if snap.get("avatar"):
-            embed["author"]["icon_url"] = snap["avatar"]
+        # a shared first names everyone in the headline, so no single portrait on it
+        if not (event == "guild_first" and len(detail.get("names") or []) > 1):
+            embed["author"] = {"name": name}
+            if snap.get("avatar"):
+                embed["author"]["icon_url"] = snap["avatar"]
     elif snap.get("avatar"):
         embed["thumbnail"] = {"url": snap["avatar"]}
     return embed

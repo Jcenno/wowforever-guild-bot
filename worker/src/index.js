@@ -543,6 +543,20 @@ export function rankPlan(members, rows, names) {
     return [r.user_id, name || null];
   }).sort((a, b) => (a[0] < b[0] ? -1 : 1));
 }
+// Rank roles sit above the class roles so the member list groups by rank; class roles keep the name color (ranks have none).
+// -> [{ id, position }] for every role under the bot's top role, or null when the order is already right.
+export function rankOrder(roles, botTop, rankNames) {
+  const below = roles.filter((r) => r.position > 0 && r.position < botTop).sort((a, b) => b.position - a.position);
+  const ranks = rankNames.map((n) => below.find((r) => r.name === n)).filter(Boolean);
+  const classes = below.filter((r) => CLASS_COLOR[r.name]);
+  if (!ranks.length || !classes.length) return null;
+  const topClass = Math.max(...classes.map((r) => r.position));
+  const inOrder = ranks.every((r, i) => i === 0 || ranks[i - 1].position > r.position);
+  if (inOrder && Math.min(...ranks.map((r) => r.position)) > topClass) return null;
+  const rest = below.filter((r) => !ranks.includes(r));
+  const order = [...rest.filter((r) => r.position > topClass), ...ranks, ...rest.filter((r) => r.position <= topClass)];
+  return order.map((r, i) => ({ id: r.id, position: order.length - i }));
+}
 async function syncRankRoles(env, t, force) {
   const st = await trackerState(env);
   const members = st.roster?.members_full || [];
@@ -553,7 +567,7 @@ async function syncRankRoles(env, t, force) {
   if (!all.length) return "no rank names";
   const rows = (await env.DB.prepare("SELECT user_id, surname, alt FROM chars").all()).results;
   const plan = rankPlan(members, rows, names);
-  const sig = JSON.stringify([plan, all, Math.floor(t / 21600)]); // unchanged plan is re-checked every 6 h
+  const sig = JSON.stringify([2, plan, all, Math.floor(t / 21600)]); // unchanged plan is re-checked every 6 h
   const last = await env.DB.prepare("SELECT value FROM meta WHERE key='rank_sig'").first().catch(() => null);
   if (!force && last?.value === sig) return "unchanged";
   let roles = await discord(env, "GET", `/guilds/${env.GUILD_ID}/roles`);
@@ -566,6 +580,11 @@ async function syncRankRoles(env, t, force) {
   }
   const rankIds = Object.fromEntries(all.map((n) => [n, roles.find((r) => r.name === n).id]));
   let ok = true, changed = 0;
+  const me = await discord(env, "GET", `/guilds/${env.GUILD_ID}/members/${env.DISCORD_APP_ID}`);
+  const botTop = Math.max(0, ...roles.filter((r) => (me?.roles || []).includes(r.id)).map((r) => r.position));
+  const ordered = Object.keys(names).sort((a, b) => Number(a) - Number(b)).map((k) => names[k]).filter((n, i, a) => n && a.indexOf(n) === i);
+  const moves = rankOrder(roles, botTop, ordered);
+  if (moves) { const moved = await discord(env, "PATCH", `/guilds/${env.GUILD_ID}/roles`, moves); ok = ok && !!moved; if (moved) changed++; }
   for (const [uid, name] of plan) {
     const member = await discord(env, "GET", `/guilds/${env.GUILD_ID}/members/${uid}`);
     if (!member) continue; // left the server
@@ -895,7 +914,7 @@ async function onStatus(i, env) {
     `Heartbeat token: ${env.GITHUB_TOKEN ? "set" : "missing (tracker runs only when GitHub feels like it)"}`,
     `Manage Roles: ${canManageRoles ? "yes" : "no (class colors and the Dings button are off)"} · bot role ${myTopPos > topClassPos ? "above" : "below"} the class roles`,
     `Open: ${openG?.n || 0} gift${openG?.n === 1 ? "" : "s"}, ${openR?.n || 0} request${openR?.n === 1 ? "" : "s"} · ${linked?.n || 0} member${linked?.n === 1 ? "" : "s"} linked with /iam`,
-    `All time: ${useG?.n || 0} gifts from ${useG?.people || 0} people (${useG?.received || 0} received)${useG?.first ? `, first <t:${useG.first}:d>` : ""} · ${useR?.n || 0} craft requests from ${useR?.people || 0} people (${useR?.done || 0} done) · ${useS?.n || 0} stock lines from ${useS?.people || 0} people`,
+    `All time: ${useG?.n || 0} gift${useG?.n === 1 ? "" : "s"} from ${useG?.people || 0} ${useG?.people === 1 ? "person" : "people"} (${useG?.received || 0} received)${useG?.first ? `, first <t:${useG.first}:d>` : ""} · ${useR?.n || 0} craft request${useR?.n === 1 ? "" : "s"} from ${useR?.people || 0} ${useR?.people === 1 ? "person" : "people"} (${useR?.done || 0} done) · ${useS?.n || 0} stock line${useS?.n === 1 ? "" : "s"} from ${useS?.people || 0} ${useS?.people === 1 ? "person" : "people"}`,
     `Rank roles: ${rankRes}`,
     `Weekly report: ${env.REPORT_DAY || "Sun"} ${env.REPORT_HOUR || 19}:00 ${env.TIMEZONE || "America/Chicago"} → <#${env.REPORT_CHANNEL_ID || env.GENERAL_CHANNEL_ID}>`,
   ];
