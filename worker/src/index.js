@@ -808,7 +808,7 @@ async function linkedList(env) {
 }
 
 function welcomeCard(env) {
-  const container = { type: 17, accent_color: 0xf1c40f, components: [{ type: 10, content: S.welcome }, { type: 14, divider: true, spacing: 1 },
+  const container = { type: 17, accent_color: 0xf1c40f, components: [{ type: 12, items: [{ media: { url: "https://raw.githubusercontent.com/Jcenno/wowforever-guild-bot/main/art/welcome-banner.jpg" } }] }, { type: 10, content: S.welcome }, { type: 14, divider: true, spacing: 1 },
     { type: 1, components: [{ type: 2, style: 3, label: S.linkBtn, custom_id: "link" }] },
     { type: 1, components: [
       ...SPEC_ROLES.map((r) => ({ type: 2, style: 2, label: r, custom_id: `spec:${r}` })),

@@ -95,6 +95,8 @@ CLASS_COLORS = {
 QUALITY_RANK = {"POOR": 0, "COMMON": 1, "UNCOMMON": 2, "RARE": 3, "EPIC": 4, "LEGENDARY": 5, "ARTIFACT": 6}
 DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
+CANARY_AVATAR = "https://raw.githubusercontent.com/Jcenno/wowforever-guild-bot/main/art/canary-256.png"
+
 DEFAULT_SETTINGS = {
     "news_feed": True,  # official Blizzard posts about Forever to DISCORD_NEWS_WEBHOOK_URL
     "max_level": 60,
@@ -1251,7 +1253,7 @@ def upsert_roster_board(webhook, embeds_list, state):
                 continue
             print(f"[info] board message {msg_id} not editable (HTTP {status}); posting a new one")
         status, body = http("POST", f"{base}?wait=true", {"Content-Type": "application/json"},
-                            json.dumps({"username": "The Canary", "flags": 4096, **payload}).encode())
+                            json.dumps({"username": "The Canary", "avatar_url": CANARY_AVATAR, "flags": 4096, **payload}).encode())
         if status not in (200, 204) or not isinstance(body, dict):
             roster_state["message_ids"] = new_ids + ids[len(new_ids):]
             raise RuntimeError(f"Roster board post failed (HTTP {status}): {body}")
@@ -1543,6 +1545,7 @@ def post_to_discord(webhook, embeds, content=None, ping_role=None):
     for i in range(0, len(embeds), 10):  # Discord allows 10 embeds per message
         payload = {
             "username": "The Canary",
+            "avatar_url": CANARY_AVATAR,
             "embeds": embeds[i:i + 10],
             "flags": 4096,                      # @silent: no push/desktop alerts for anyone
             "allowed_mentions": {"parse": []},  # never ping users, roles or @everyone
