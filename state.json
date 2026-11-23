@@ -1511,11 +1511,11 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/49/20858161-avatar.jpg",
       "best_item": {
-        "id": 2805,
-        "ilvl": 34,
-        "name": "Yeti Fur Cloak",
+        "id": 9856,
+        "ilvl": 36,
+        "name": "Archer's Boots of the Monkey",
         "quality": "UNCOMMON",
-        "slot": "Back"
+        "slot": "Feet"
       },
       "boss_kills": {
         "1092": {
@@ -1603,10 +1603,10 @@
           "quality": "RARE"
         }
       },
-      "ilvl": 26,
+      "ilvl": 28,
       "last_explored": "Wetlands",
-      "last_login": 1795314218000,
-      "level": 31,
+      "last_login": 1795436980000,
+      "level": 32,
       "level_at": {
         "17": 1794274699,
         "18": 1794283267,
@@ -1620,14 +1620,15 @@
         "28": 1795061765,
         "29": 1795096871,
         "30": 1795201266,
-        "31": 1795288501
+        "31": 1795288501,
+        "32": 1795437070
       },
       "professions": {
         "Alchemy": 211,
         "Cooking": 187,
         "First Aid": 146,
         "Fishing": 113,
-        "Herbalism": 213
+        "Herbalism": 219
       },
       "race": "Night Elf",
       "raids": {},
@@ -1692,6 +1693,10 @@
           {
             "id": 1380,
             "name": "Minor Rejuvenation Potion"
+          },
+          {
+            "id": 54656,
+            "name": "Lesser Spellblasting Potion"
           },
           {
             "id": 54546,
@@ -1982,6 +1987,16 @@
           "raw": 2000,
           "tier": 3
         },
+        "Bloodsail Buccaneers": {
+          "name": "Hated",
+          "raw": -6525,
+          "tier": 0
+        },
+        "Booty Bay": {
+          "name": "Neutral",
+          "raw": 500,
+          "tier": 3
+        },
         "Cenarion Circle": {
           "name": "Neutral",
           "raw": 2960,
@@ -1989,7 +2004,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 15972,
+          "raw": 15997,
           "tier": 5
         },
         "Gadgetzan": {
@@ -1999,28 +2014,18 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 7053,
+          "raw": 7078,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 7241,
+          "raw": 7266,
           "tier": 4
         },
         "Stormwind": {
           "name": "Honored",
-          "raw": 9448,
+          "raw": 9548,
           "tier": 5
-        },
-        "The League of Arathor": {
-          "name": "Neutral",
-          "raw": 0,
-          "tier": 3
-        },
-        "Theramore Expeditionary Force": {
-          "name": "Neutral",
-          "raw": 0,
-          "tier": 3
         }
       },
       "role": "Healer",
@@ -2029,16 +2034,16 @@
         "critters": 55,
         "deaths": 42,
         "drinks": 112,
-        "flights": 54,
+        "flights": 56,
         "food": 63,
         "health_potions": 62,
         "hearths": 26,
-        "killing_blows": 1131,
+        "killing_blows": 1156,
         "mana_potions": 50,
-        "mobs": 3033,
-        "quests": 260
+        "mobs": 3075,
+        "quests": 265
       },
-      "xp": 38299
+      "xp": 442
     },
     "us:runarii-lithandros": {
       "achievements": {
@@ -4317,58 +4322,58 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795436169,
-    "10 11 class incoming tuning": 1795436169,
+    "10 11 balance faction pvp updates": 1795437070,
+    "10 11 class incoming tuning": 1795437070,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795436169,
+    "11 11 balance faction pvp updates": 1795437070,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795436169,
-    "11 14 adjustment dungeon level player xp": 1795436169,
-    "11 15 adjustment dungeon level player xp": 1795436169,
+    "11 13 lost purchase refunds training": 1795437070,
+    "11 14 adjustment dungeon level player xp": 1795437070,
+    "11 15 adjustment dungeon level player xp": 1795437070,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795436169,
+    "11 17 abuse actions blackmaw for hold": 1795437070,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
-    "11 20 2026 forever hotfixes wow": 1795436169,
+    "11 20 2026 forever hotfixes wow": 1795437070,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795436169,
-    "11 8 dungeon enemy increased xp": 1795436169,
-    "60 at for gold quests": 1795436169,
-    "60 at from gold lvl no quests seriously": 1795436169,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795436169,
-    "8 catching classes episode forever on podcast the up wow": 1795436169,
-    "8 city do i inside main maybe people see the why": 1795436169,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795436169,
-    "a explore forever gamepad with wow": 1795436169,
-    "a for friend invite issues players resolved": 1795436169,
-    "about bug category forever report the wow": 1795436169,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795436169,
+    "11 5 forever issues known updated wow": 1795437070,
+    "11 8 dungeon enemy increased xp": 1795437070,
+    "60 at for gold quests": 1795437070,
+    "60 at from gold lvl no quests seriously": 1795437070,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795437070,
+    "8 catching classes episode forever on podcast the up wow": 1795437070,
+    "8 city do i inside main maybe people see the why": 1795437070,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795437070,
+    "a explore forever gamepad with wow": 1795437070,
+    "a for friend invite issues players resolved": 1795437070,
+    "about bug category forever report the wow": 1795437070,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795437070,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795436169,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795436169,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795437070,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795437070,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
     "and language settings social": 1795109468,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795436169,
-    "broken zeppelins": 1795436169,
-    "bug forever forum guidelines report wow": 1795436169,
-    "bugged chaos missing monday s server shaman since totems": 1795436169,
-    "catching classes forever on podcast the up watch wow": 1795436169,
+    "beta from group issues persist phasing still with": 1795437070,
+    "broken zeppelins": 1795437070,
+    "bug forever forum guidelines report wow": 1795437070,
+    "bugged chaos missing monday s server shaman since totems": 1795437070,
+    "catching classes forever on podcast the up watch wow": 1795437070,
     "choose forever in of ruleset warcraft world your": 1794432680,
-    "cost forever honor of short story the watch wow": 1795436169,
-    "dungeon enough not still xp": 1795436169,
-    "dungeon increased majority the wants xp": 1795436169,
+    "cost forever honor of short story the watch wow": 1795437070,
+    "dungeon enough not still xp": 1795437070,
+    "dungeon increased majority the wants xp": 1795437070,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795436169,
-    "forever forever forging watch wow": 1795436169,
+    "episode forever lore podcast the the watch wow": 1795437070,
+    "forever forever forging watch wow": 1795437070,
     "forever guide new of player s starter to warcraft welcome world": 1795197669,
     "forever launch of time warcraft world": 1795108566,
     "forever live now of warcraft world": 1795197669,
@@ -4583,7 +4588,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795436171,
+  "saved_at": 1795437071,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
