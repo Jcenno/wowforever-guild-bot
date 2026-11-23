@@ -675,11 +675,11 @@
       "achievements": {},
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/133/71602309-avatar.jpg",
       "best_item": {
-        "id": 263332,
-        "ilvl": 13,
-        "name": "Elder's Tunic",
+        "id": 263406,
+        "ilvl": 15,
+        "name": "Empyrean Shoes",
         "quality": "UNCOMMON",
-        "slot": "Chest"
+        "slot": "Feet"
       },
       "boss_kills": {},
       "class": "Mage",
@@ -688,15 +688,16 @@
       "gear": {},
       "ilvl": 6,
       "last_explored": null,
-      "last_login": 1795380960000,
-      "level": 12,
+      "last_login": 1795395453000,
+      "level": 13,
       "level_at": {
-        "12": 1795381268
+        "12": 1795381268,
+        "13": 1795395670
       },
       "professions": {
-        "Alchemy": 25,
+        "Alchemy": 50,
         "Cooking": 10,
-        "First Aid": 28,
+        "First Aid": 41,
         "Fishing": 50,
         "Herbalism": 67
       },
@@ -721,12 +722,28 @@
             "name": "Elixir of Minor Defense"
           },
           {
+            "id": 1380,
+            "name": "Minor Rejuvenation Potion"
+          },
+          {
+            "id": 1382,
+            "name": "Elixir of Minor Fortitude"
+          },
+          {
             "id": 54210,
             "name": "Minor Arcane Elixir"
           },
           {
+            "id": 54456,
+            "name": "Sulfuric Acid"
+          },
+          {
             "id": 1832,
             "name": "Minor Troll's Blood Elixir"
+          },
+          {
+            "id": 54453,
+            "name": "Cerulean Dye"
           },
           {
             "id": 52646,
@@ -803,7 +820,7 @@
         },
         "High Order": {
           "name": "Friendly",
-          "raw": 5460,
+          "raw": 5735,
           "tier": 4
         },
         "Ironforge": {
@@ -817,9 +834,9 @@
           "tier": 4
         },
         "Nightclaw Druids": {
-          "name": "Neutral",
-          "raw": 0,
-          "tier": 3
+          "name": "Friendly",
+          "raw": 4600,
+          "tier": 4
         },
         "Stormwind": {
           "name": "Friendly",
@@ -829,18 +846,18 @@
       },
       "spec": "Frost",
       "stats": {
-        "critters": 1,
-        "deaths": 2,
-        "drinks": 78,
-        "food": 25,
-        "health_potions": 4,
-        "hearths": 5,
-        "killing_blows": 253,
+        "critters": 2,
+        "deaths": 6,
+        "drinks": 113,
+        "food": 42,
+        "health_potions": 7,
+        "hearths": 6,
+        "killing_blows": 319,
         "mana_potions": 3,
-        "mobs": 271,
-        "quests": 74
+        "mobs": 336,
+        "quests": 86
       },
-      "xp": 1465
+      "xp": 4991
     },
     "us:leo-orion": {
       "achievements": {
@@ -4117,65 +4134,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795394767,
-    "10 11 class incoming tuning": 1795394767,
+    "10 11 balance faction pvp updates": 1795395670,
+    "10 11 class incoming tuning": 1795395670,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795394767,
+    "11 11 balance faction pvp updates": 1795395670,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795394767,
-    "11 14 adjustment dungeon level player xp": 1795394767,
-    "11 15 adjustment dungeon level player xp": 1795394767,
+    "11 13 lost purchase refunds training": 1795395670,
+    "11 14 adjustment dungeon level player xp": 1795395670,
+    "11 15 adjustment dungeon level player xp": 1795395670,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795394767,
+    "11 17 abuse actions blackmaw for hold": 1795395670,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
-    "11 20 2026 forever hotfixes wow": 1795394767,
+    "11 20 2026 forever hotfixes wow": 1795395670,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795394767,
-    "11 8 dungeon enemy increased xp": 1795394767,
-    "60 at for gold quests": 1795394767,
-    "60 at from gold lvl no quests seriously": 1795394767,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795394767,
-    "8 catching classes episode forever on podcast the up wow": 1795394767,
-    "8 city do i inside main maybe people see the why": 1795394767,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795394767,
-    "a explore forever gamepad with wow": 1795394767,
-    "a for friend invite issues players resolved": 1795394767,
-    "about bug category forever report the wow": 1795394767,
+    "11 5 forever issues known updated wow": 1795395670,
+    "11 8 dungeon enemy increased xp": 1795395670,
+    "60 at for gold quests": 1795395670,
+    "60 at from gold lvl no quests seriously": 1795395670,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795395670,
+    "8 catching classes episode forever on podcast the up wow": 1795395670,
+    "8 city do i inside main maybe people see the why": 1795395670,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795395670,
+    "a explore forever gamepad with wow": 1795395670,
+    "a for friend invite issues players resolved": 1795395670,
+    "about bug category forever report the wow": 1795395670,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795394767,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795395670,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795394767,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795394767,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795395670,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795395670,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
     "and language settings social": 1795109468,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795394767,
-    "broken zeppelins": 1795394767,
-    "bug forever forum guidelines report wow": 1795394767,
-    "bugged chaos missing monday s server shaman since totems": 1795394767,
-    "catching classes forever on podcast the up watch wow": 1795394767,
+    "beta from group issues persist phasing still with": 1795395670,
+    "broken zeppelins": 1795395670,
+    "bug forever forum guidelines report wow": 1795395670,
+    "bugged chaos missing monday s server shaman since totems": 1795395670,
+    "catching classes forever on podcast the up watch wow": 1795395670,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1795394767,
+    "cost forever honor of short story the watch wow": 1795395670,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1795394767,
-    "dungeon increased majority the wants xp": 1795394767,
+    "dungeon enough not still xp": 1795395670,
+    "dungeon increased majority the wants xp": 1795395670,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795394767,
+    "episode forever lore podcast the the watch wow": 1795395670,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1795394767,
+    "forever forever forging watch wow": 1795395670,
     "forever guide new of player s starter to warcraft welcome world": 1795197669,
     "forever launch of time warcraft world": 1795108566,
     "forever live now of warcraft world": 1795197669,
@@ -4396,168 +4413,268 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795394768,
+  "saved_at": 1795395671,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
-        "achievements": 3,
+        "achievements": 5,
         "clears": {
+          "Blackfathom Deeps": 2,
           "Hall of Thanes": 1,
+          "Shadowfang Keep": 1,
           "The Stockade": 2
         },
         "epics": [],
-        "level": 24,
+        "level": 30,
         "professions": {
           "Cooking": 29,
-          "Herbalism": 168,
-          "Skinning": 171
+          "Herbalism": 216,
+          "Skinning": 215
         },
         "rep": {
+          "Argent Dawn": 700,
           "Azeroth Commerce Authority": 2000,
           "Cenarion Circle": 2885,
-          "Darnassus": 5597,
+          "Darnassus": 7177,
           "Gadgetzan": 600,
-          "Gnomeregan Exiles": 4333,
+          "Gnomeregan Exiles": 5057,
           "High Order": 5885,
-          "Ironforge": 5033,
+          "Ironforge": 7021,
           "Kirin Tor": 3200,
           "Nightclaw Druids": 5700,
-          "Stormwind": 5652
+          "Stormwind": 6796,
+          "Wildhammer Clan": 0
         },
         "stats": {
-          "critters": 2,
-          "deaths": 26,
-          "drinks": 3,
-          "flights": 18,
-          "food": 4,
-          "health_potions": 13,
-          "hearths": 15,
-          "killing_blows": 932,
-          "mana_potions": 2,
-          "mobs": 1298,
-          "quests": 210
+          "critters": 12,
+          "deaths": 43,
+          "drinks": 9,
+          "flights": 40,
+          "food": 11,
+          "health_potions": 21,
+          "hearths": 27,
+          "killing_blows": 1534,
+          "mana_potions": 3,
+          "mobs": 2330,
+          "quests": 267
         },
-        "xp": 16742
+        "xp": 11616
       },
       "us:devil-latterday": {
-        "achievements": 0,
-        "clears": {},
+        "achievements": 2,
+        "clears": {
+          "Blackfathom Deeps": 1,
+          "Hall of Thanes": 1,
+          "Ruins of Lordaeron": 1
+        },
         "epics": [],
-        "level": 1,
-        "professions": {},
-        "rep": {},
-        "stats": {},
-        "xp": 0
+        "level": 23,
+        "professions": {
+          "Cooking": 90,
+          "First Aid": 130,
+          "Fishing": 21,
+          "Leatherworking": 80,
+          "Skinning": 157
+        },
+        "rep": {
+          "Argent Dawn": 350,
+          "Azeroth Commerce Authority": 2000,
+          "Darnassus": 13701,
+          "Gadgetzan": 600,
+          "Gnomeregan Exiles": 5103,
+          "Ironforge": 5241,
+          "Silverwing Sentinels": 150,
+          "Stormwind": 5817
+        },
+        "stats": {
+          "critters": 77,
+          "deaths": 30,
+          "drinks": 5,
+          "flights": 17,
+          "food": 31,
+          "health_potions": 8,
+          "hearths": 7,
+          "honorable_kills": 104,
+          "killing_blows": 1774,
+          "mana_potions": 1,
+          "mobs": 2081,
+          "quests": 162
+        },
+        "xp": 19622
       },
       "us:jetcar-stormblessed": {
         "achievements": 0,
         "clears": {},
         "epics": [],
-        "level": 1,
-        "professions": {},
-        "rep": {},
-        "stats": {},
-        "xp": 0
+        "level": 13,
+        "professions": {
+          "Alchemy": 50,
+          "Cooking": 10,
+          "First Aid": 41,
+          "Fishing": 50,
+          "Herbalism": 67
+        },
+        "rep": {
+          "Darnassus": 500,
+          "Gnomeregan Exiles": 2000,
+          "High Order": 5735,
+          "Ironforge": 2000,
+          "Kirin Tor": 3000,
+          "Nightclaw Druids": 4600,
+          "Stormwind": 3100
+        },
+        "stats": {
+          "critters": 2,
+          "deaths": 6,
+          "drinks": 113,
+          "food": 42,
+          "health_potions": 7,
+          "hearths": 6,
+          "killing_blows": 319,
+          "mana_potions": 3,
+          "mobs": 336,
+          "quests": 86
+        },
+        "xp": 4991
       },
       "us:leo-orion": {
-        "achievements": 0,
+        "achievements": 5,
         "clears": {},
         "epics": [],
-        "level": 1,
-        "professions": {},
-        "rep": {},
-        "stats": {},
-        "xp": 0
+        "level": 10,
+        "professions": {
+          "Blacksmithing": 68,
+          "Cooking": 1,
+          "Mining": 66
+        },
+        "rep": {
+          "Darnassus": 3112,
+          "Gnomeregan Exiles": 3112,
+          "Ironforge": 3112,
+          "Stormwind": 6425
+        },
+        "stats": {
+          "critters": 3,
+          "hearths": 1,
+          "killing_blows": 231,
+          "mobs": 231,
+          "quests": 47
+        },
+        "xp": 774
       },
       "us:pharaoh-nuff": {
         "achievements": 6,
-        "clears": {},
+        "clears": {
+          "Hall of Thanes": 1
+        },
         "epics": [],
-        "level": 14,
+        "level": 16,
         "professions": {
           "Engineering": 150,
           "Mining": 120
         },
         "rep": {
-          "Darnassus": 4810,
-          "Gnomeregan Exiles": 3450,
-          "Ironforge": 3350,
-          "Stormwind": 6740
+          "Darnassus": 5270,
+          "Gadgetzan": 600,
+          "Gnomeregan Exiles": 3721,
+          "Ironforge": 3946,
+          "Stormwind": 6911
         },
         "stats": {
-          "critters": 6,
+          "critters": 21,
           "deaths": 2,
-          "drinks": 1,
-          "flights": 7,
+          "drinks": 2,
+          "flights": 14,
           "food": 6,
           "health_potions": 1,
-          "hearths": 7,
-          "killing_blows": 496,
-          "mobs": 565,
-          "quests": 60
+          "hearths": 11,
+          "killing_blows": 564,
+          "mobs": 769,
+          "quests": 73
         },
-        "xp": 3119
+        "xp": 5492
       },
       "us:pwanage-ownage": {
-        "achievements": 3,
+        "achievements": 8,
         "clears": {
           "Hall of Thanes": 1,
+          "Ruins of Lordaeron": 1,
+          "Shadowfang Keep": 1,
           "The Deadmines": 1,
+          "The Stockade": 2,
           "Wailing Caverns": 1
         },
         "epics": [],
-        "level": 22,
+        "level": 31,
         "professions": {
-          "Alchemy": 138,
-          "Cooking": 144,
-          "First Aid": 62,
-          "Fishing": 109,
-          "Herbalism": 161
+          "Alchemy": 211,
+          "Cooking": 187,
+          "First Aid": 146,
+          "Fishing": 113,
+          "Herbalism": 213
         },
         "rep": {
+          "Argent Dawn": 700,
           "Azeroth Commerce Authority": 2000,
           "Cenarion Circle": 2960,
-          "Darnassus": 12788,
+          "Darnassus": 15972,
           "Gadgetzan": 600,
-          "Gnomeregan Exiles": 5870,
-          "Ironforge": 5776,
-          "Stormwind": 6345
+          "Gnomeregan Exiles": 7053,
+          "Ironforge": 7241,
+          "Stormwind": 9448,
+          "The League of Arathor": 0,
+          "Theramore Expeditionary Force": 0
         },
         "stats": {
-          "critters": 39,
-          "deaths": 25,
-          "drinks": 88,
-          "flights": 31,
-          "food": 47,
-          "health_potions": 22,
-          "hearths": 14,
-          "killing_blows": 609,
-          "mana_potions": 36,
-          "mobs": 1615,
-          "need_rolls": 22,
-          "quests": 179
+          "critters": 55,
+          "deaths": 42,
+          "drinks": 112,
+          "flights": 54,
+          "food": 63,
+          "health_potions": 62,
+          "hearths": 26,
+          "killing_blows": 1131,
+          "mana_potions": 50,
+          "mobs": 3033,
+          "quests": 260
         },
-        "xp": 24763
+        "xp": 38299
       },
       "us:runarii-lithandros": {
-        "achievements": 0,
+        "achievements": 5,
         "clears": {},
         "epics": [],
-        "level": 1,
-        "professions": {},
-        "rep": {},
-        "stats": {},
-        "xp": 0
+        "level": 10,
+        "professions": {
+          "Cooking": 5,
+          "Enchanting": 36,
+          "Tailoring": 75
+        },
+        "rep": {
+          "Darnassus": 6805,
+          "Gnomeregan Exiles": 3137,
+          "Ironforge": 3137,
+          "Stormwind": 3137
+        },
+        "stats": {
+          "critters": 1,
+          "deaths": 1,
+          "health_potions": 2,
+          "killing_blows": 180,
+          "mobs": 179,
+          "quests": 42
+        },
+        "xp": 2139
       },
       "us:ryo-lithandros": {
-        "achievements": 4,
+        "achievements": 5,
         "clears": {},
         "epics": [],
         "level": 19,
         "professions": {
           "Cooking": 1,
           "Fishing": 5,
-          "Leatherworking": 100,
+          "Leatherworking": 122,
           "Skinning": 129
         },
         "rep": {
@@ -4572,7 +4689,7 @@
           "flights": 9,
           "food": 6,
           "health_potions": 5,
-          "hearths": 11,
+          "hearths": 12,
           "killing_blows": 695,
           "mana_potions": 1,
           "mobs": 731,
@@ -4583,144 +4700,147 @@
       "us:sparkee-runebrew": {
         "achievements": 1,
         "clears": {
-          "Hall of Thanes": 1
+          "Hall of Thanes": 1,
+          "The Deadmines": 1
         },
         "epics": [],
-        "level": 19,
+        "level": 22,
         "professions": {
-          "Alchemy": 107,
-          "Cooking": 118,
-          "First Aid": 98,
-          "Fishing": 130,
-          "Herbalism": 120
+          "Alchemy": 130,
+          "Cooking": 136,
+          "First Aid": 113,
+          "Fishing": 170,
+          "Herbalism": 139
         },
         "rep": {
-          "Darnassus": 3437,
+          "Azeroth Commerce Authority": 2000,
+          "Darnassus": 3821,
           "Gadgetzan": 600,
-          "Gnomeregan Exiles": 6453,
-          "Ironforge": 7403,
-          "Silverwing Sentinels": 210,
-          "Stormwind": 5897
+          "Gnomeregan Exiles": 6975,
+          "Ironforge": 8087,
+          "Silverwing Sentinels": 460,
+          "Stormwind": 7415
         },
         "stats": {
-          "critters": 42,
-          "deaths": 25,
-          "drinks": 11,
-          "flights": 4,
-          "food": 22,
-          "health_potions": 15,
-          "hearths": 17,
-          "honorable_kills": 172,
-          "killing_blows": 959,
+          "critters": 53,
+          "deaths": 34,
+          "drinks": 17,
+          "flights": 17,
+          "food": 32,
+          "health_potions": 18,
+          "hearths": 28,
+          "honorable_kills": 175,
+          "killing_blows": 1112,
           "mana_potions": 1,
-          "mobs": 2004,
-          "quests": 103
+          "mobs": 2325,
+          "quests": 143
         },
-        "xp": 6134
+        "xp": 12435
       },
       "us:steel-appeal": {
-        "achievements": 3,
+        "achievements": 6,
+        "clears": {
+          "Blackfathom Deeps": 3,
+          "Hall of Thanes": 1,
+          "Ruins of Lordaeron": 2,
+          "Shadowfang Keep": 2,
+          "The Deadmines": 2,
+          "The Stockade": 2,
+          "Wailing Caverns": 3
+        },
+        "epics": [],
+        "level": 33,
+        "professions": {
+          "Blacksmithing": 169,
+          "Cooking": 225,
+          "First Aid": 180,
+          "Fishing": 205,
+          "Mining": 229
+        },
+        "rep": {
+          "Argent Dawn": 700,
+          "Azeroth Commerce Authority": 2150,
+          "Booty Bay": 793,
+          "Darnassus": 16737,
+          "Everlook": 793,
+          "Gadgetzan": 893,
+          "Gnomeregan Exiles": 6641,
+          "Ironforge": 8052,
+          "Kirin Tor": 10,
+          "Powderfuse": 793,
+          "Ratchet": 1086,
+          "Stormwind": 8836
+        },
+        "stats": {
+          "critters": 157,
+          "deaths": 23,
+          "drinks": 2,
+          "flights": 103,
+          "food": 134,
+          "health_potions": 32,
+          "hearths": 58,
+          "killing_blows": 2245,
+          "mobs": 4490,
+          "quests": 284
+        },
+        "xp": 609
+      },
+      "us:whizz-aard": {
+        "achievements": 4,
         "clears": {
           "Blackfathom Deeps": 1,
           "Hall of Thanes": 1,
           "Ruins of Lordaeron": 1,
-          "Shadowfang Keep": 1,
-          "The Deadmines": 2,
-          "Wailing Caverns": 3
-        },
-        "epics": [],
-        "level": 28,
-        "professions": {
-          "Blacksmithing": 149,
-          "Cooking": 165,
-          "First Aid": 145,
-          "Fishing": 65,
-          "Mining": 187
-        },
-        "rep": {
-          "Argent Dawn": 350,
-          "Azeroth Commerce Authority": 2000,
-          "Booty Bay": 792,
-          "Darnassus": 15537,
-          "Everlook": 792,
-          "Gadgetzan": 892,
-          "Gnomeregan Exiles": 5847,
-          "Ironforge": 6565,
-          "Powderfuse": 792,
-          "Ratchet": 1085,
-          "Stormwind": 6936
-        },
-        "stats": {
-          "critters": 126,
-          "deaths": 17,
-          "drinks": 2,
-          "flights": 55,
-          "food": 87,
-          "health_potions": 25,
-          "hearths": 33,
-          "killing_blows": 1745,
-          "mobs": 3171,
-          "need_rolls": 32,
-          "quests": 222
-        },
-        "xp": 4180
-      },
-      "us:whizz-aard": {
-        "achievements": 3,
-        "clears": {
-          "Blackfathom Deeps": 1,
-          "Hall of Thanes": 1,
           "The Deadmines": 1,
           "Wailing Caverns": 1
         },
         "epics": [],
-        "level": 27,
+        "level": 30,
         "professions": {
-          "Cooking": 58,
-          "Enchanting": 150,
-          "First Aid": 78,
-          "Tailoring": 103
+          "Cooking": 65,
+          "Enchanting": 174,
+          "First Aid": 80,
+          "Tailoring": 130
         },
         "rep": {
-          "Argent Dawn": 350,
+          "Argent Dawn": 700,
           "Booty Bay": 1298,
           "Darkmoon Faire": 50,
-          "Darnassus": 7477,
+          "Darnassus": 8571,
           "Everlook": 1298,
           "Gadgetzan": 1398,
-          "Gnomeregan Exiles": 5576,
-          "Ironforge": 6883,
+          "Gnomeregan Exiles": 6038,
+          "Ironforge": 8115,
           "Powderfuse": 1298,
           "Ratchet": 2096,
-          "Stormwind": 13603
+          "Stormwind": 14403
         },
         "stats": {
-          "critters": 63,
-          "deaths": 61,
-          "drinks": 554,
-          "flights": 38,
-          "food": 123,
-          "health_potions": 46,
-          "hearths": 20,
-          "killing_blows": 1508,
-          "mana_potions": 13,
-          "mobs": 2624,
-          "need_rolls": 35,
-          "quests": 243
+          "critters": 69,
+          "deaths": 67,
+          "drinks": 713,
+          "flights": 48,
+          "food": 132,
+          "health_potions": 48,
+          "hearths": 26,
+          "killing_blows": 1677,
+          "mana_potions": 14,
+          "mobs": 3317,
+          "quests": 279
         },
-        "xp": 6641
+        "xp": 30547
       }
     },
     "last_awards": [
-      "snacks",
-      "crafter",
-      "hearths",
-      "clears",
-      "flights",
-      "critters"
+      "honorable_kills",
+      "potions",
+      "killing_blows",
+      "rep",
+      "critters",
+      "flights"
     ],
-    "last_recap": "2026-11-16T01:01:11.473936+00:00",
-    "mounts_baseline": 6,
-    "recaps_posted": 2
+    "last_recap": "2026-11-23T01:01:10.397027+00:00",
+    "mounts_baseline": 20,
+    "recaps_posted": 3
   }
 }
