@@ -2905,9 +2905,9 @@
           "quality": "RARE"
         }
       },
-      "ilvl": 26,
+      "ilvl": 27,
       "last_explored": "Darkshore",
-      "last_login": 1795398897000,
+      "last_login": 1795402727000,
       "level": 33,
       "level_at": {
         "10": 1794152175,
@@ -2936,7 +2936,7 @@
         "Blacksmithing": 169,
         "Cooking": 225,
         "First Aid": 180,
-        "Fishing": 205,
+        "Fishing": 207,
         "Mining": 229
       },
       "race": "Night Elf",
@@ -3443,7 +3443,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 16737,
+          "raw": 16850,
           "tier": 5
         },
         "Everlook": {
@@ -3458,12 +3458,12 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 6641,
+          "raw": 6753,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 8052,
+          "raw": 8165,
           "tier": 4
         },
         "Kirin Tor": {
@@ -3482,9 +3482,9 @@
           "tier": 3
         },
         "Stormwind": {
-          "name": "Friendly",
-          "raw": 8836,
-          "tier": 4
+          "name": "Honored",
+          "raw": 9286,
+          "tier": 5
         }
       },
       "spec": "Protection",
@@ -3495,13 +3495,13 @@
         "flights": 104,
         "food": 137,
         "health_potions": 34,
-        "hearths": 60,
+        "hearths": 61,
         "honorable_kills": 1,
-        "killing_blows": 2348,
-        "mobs": 4797,
-        "quests": 284
+        "killing_blows": 2389,
+        "mobs": 4936,
+        "quests": 287
       },
-      "xp": 13132
+      "xp": 19815
     },
     "us:whizz-aard": {
       "achievements": {
@@ -4158,65 +4158,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795401969,
-    "10 11 class incoming tuning": 1795401969,
+    "10 11 balance faction pvp updates": 1795402870,
+    "10 11 class incoming tuning": 1795402870,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795401969,
+    "11 11 balance faction pvp updates": 1795402870,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795401969,
-    "11 14 adjustment dungeon level player xp": 1795401969,
-    "11 15 adjustment dungeon level player xp": 1795401969,
+    "11 13 lost purchase refunds training": 1795402870,
+    "11 14 adjustment dungeon level player xp": 1795402870,
+    "11 15 adjustment dungeon level player xp": 1795402870,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795401969,
+    "11 17 abuse actions blackmaw for hold": 1795402870,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
-    "11 20 2026 forever hotfixes wow": 1795401969,
+    "11 20 2026 forever hotfixes wow": 1795402870,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795401969,
-    "11 8 dungeon enemy increased xp": 1795401969,
-    "60 at for gold quests": 1795401969,
-    "60 at from gold lvl no quests seriously": 1795401969,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795401969,
-    "8 catching classes episode forever on podcast the up wow": 1795401969,
-    "8 city do i inside main maybe people see the why": 1795401969,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795401969,
-    "a explore forever gamepad with wow": 1795401969,
-    "a for friend invite issues players resolved": 1795401969,
-    "about bug category forever report the wow": 1795401969,
+    "11 5 forever issues known updated wow": 1795402870,
+    "11 8 dungeon enemy increased xp": 1795402870,
+    "60 at for gold quests": 1795402870,
+    "60 at from gold lvl no quests seriously": 1795402870,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795402870,
+    "8 catching classes episode forever on podcast the up wow": 1795402870,
+    "8 city do i inside main maybe people see the why": 1795402870,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795402870,
+    "a explore forever gamepad with wow": 1795402870,
+    "a for friend invite issues players resolved": 1795402870,
+    "about bug category forever report the wow": 1795402870,
     "about the wow forever bug report category": 1794195649,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795401969,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795402870,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795401969,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795401969,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795402870,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795402870,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
     "and familiar feels forever new s what what wow": 1794619867,
     "and language settings social": 1795109468,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795401969,
-    "broken zeppelins": 1795401969,
-    "bug forever forum guidelines report wow": 1795401969,
-    "bugged chaos missing monday s server shaman since totems": 1795401969,
-    "catching classes forever on podcast the up watch wow": 1795401969,
+    "beta from group issues persist phasing still with": 1795402870,
+    "broken zeppelins": 1795402870,
+    "bug forever forum guidelines report wow": 1795402870,
+    "bugged chaos missing monday s server shaman since totems": 1795402870,
+    "catching classes forever on podcast the up watch wow": 1795402870,
     "choose forever in of ruleset warcraft world your": 1794432680,
     "choose your ruleset in world of warcraft forever": 1794195649,
     "class tuning incoming": 1794195649,
-    "cost forever honor of short story the watch wow": 1795401969,
+    "cost forever honor of short story the watch wow": 1795402870,
     "dive into wow forever the gods of zul aman hallow s end and more in wow weekly": 1794195649,
     "dungeon enemy xp increased": 1794195649,
-    "dungeon enough not still xp": 1795401969,
-    "dungeon increased majority the wants xp": 1795401969,
+    "dungeon enough not still xp": 1795402870,
+    "dungeon increased majority the wants xp": 1795402870,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795401969,
+    "episode forever lore podcast the the watch wow": 1795402870,
     "explore the new dungeons of world of warcraft forever": 1794195649,
     "explore wow forever with a gamepad": 1794195649,
-    "forever forever forging watch wow": 1795401969,
+    "forever forever forging watch wow": 1795402870,
     "forever guide new of player s starter to warcraft welcome world": 1795197669,
     "forever launch of time warcraft world": 1795108566,
     "forever live now of warcraft world": 1795197669,
@@ -4437,7 +4437,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795401971,
+  "saved_at": 1795402873,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
