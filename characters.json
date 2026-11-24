@@ -134,5 +134,26 @@
         }
       ]
     }
+  ],
+  "rewards": [
+    {
+      "id": "pouch-of-violet-dust",
+      "name": "Pouch of Violet Dust",
+      "publish": false,
+      "what": "A launch toy. Throw it into a campfire to turn the flames purple and stretch the camp buffs from 1 hour to 2. Everyone resting at that fire gets the extra hour.",
+      "how": "Twitch drop for watching 4 hours of WoW streams between 4 and 12 November. The drop is over.",
+      "status": "If you got it, use it while you can. It leaves your collection when the Launch Celebration ends in early December.",
+      "url": "https://news.blizzard.com/en-us/article/24317678"
+    },
+    {
+      "id": "forever-subscription-bonus",
+      "name": "Subscription bonus: Eternal Explorer set and Azurky",
+      "publish": false,
+      "what": "Eternal Explorer's Backpack and Tabard of Eternal Exploration (transmog) and the Azurky pet, plus a 6-month bonus.",
+      "how": "Comes with the 6 or 12 month subscription offer, or with 12-month auto-renew already on in the Battle.net app.",
+      "status": "Redeem it by 30 April 2027.",
+      "ends": "2027-04-30",
+      "url": "https://www.warcrafttavern.com/forever/news/12-month-subscription-rewards-revealed-for-wow-forever/"
+    }
   ]
 }

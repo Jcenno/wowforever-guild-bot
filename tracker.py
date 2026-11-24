@@ -1624,6 +1624,9 @@ def post_queue_item(item, kind, webhook, staff_hook, news_hook):
     elif kind == "news":
         if news_hook:
             post_to_discord(news_hook, item["embeds"])
+    elif kind == "staff":
+        if staff_hook:
+            post_to_discord(staff_hook, item["embeds"])
 
 
 def save_state(state):
@@ -2063,6 +2066,11 @@ def main():
             news_embeds, _ = news_mod.build_news(state)
             for e in news_embeds:  # one card per message so each has its own link preview
                 queue.append({"kind": "news", "embeds": [e]})
+            pub, prev = news_mod.build_rewards(config.get("rewards"), state)
+            for e in pub:
+                queue.append({"kind": "news", "embeds": [e]})
+            for e in prev:
+                queue.append({"kind": "staff", "embeds": [e]})
         except Exception as err:  # news is a nicety; never block guild posts
             print(f"[warn] news: {err}")
     elif settings.get("news_feed"):
@@ -2071,7 +2079,7 @@ def main():
     save_state(state)
 
     staff_hook = os.environ.get("DISCORD_STAFF_WEBHOOK_URL", "").strip()
-    posted = {"hype": 0, "updates": 0, "recap": 0, "inactive": 0, "news": 0}
+    posted = {"hype": 0, "updates": 0, "recap": 0, "inactive": 0, "news": 0, "staff": 0}
     while state["pending"]:
         item = state["pending"][0]
         kind = item.get("kind")

@@ -12,6 +12,8 @@ Rules:
   title and under 200 characters of body). "We're looking into it" is not news.
 - Links point at Blizzard, never Wowhead: forum topics to us/eu.forums.blizzard.com, articles to
   news.blizzard.com.
+- Rewards earned outside the game (Twitch drops, Prime Gaming, subscription bonuses) post as
+  "Free reward" cards even when the title reads like a promo.
 - Promotional posts (podcasts, short stories, videos, weekly roundups, streams, contests, merch)
   are skipped by title: #announcements is for things that change the game or the servers.
 - At most MAX_PER_RUN cards per run; the rest wait for the next run. Seen titles are kept 14 days.
@@ -49,6 +51,80 @@ PROMO = re.compile(
 
 def is_promo(title):
     return bool(PROMO.search(title or ""))
+
+
+# Rewards earned outside the game (Twitch drops, Prime Gaming, subscription bonuses, Recruit-a-Friend,
+# BlizzCon). These often have promo-sounding titles ("Twitch Drops", "Get the Drop on ..."), so they are
+# checked before the promo skip. The title has to point at a reward, and the post has to say how to get it.
+REWARD_TITLE = re.compile(
+    r"twitch drops?|\bdrops?\b|prime gaming|reward|\btoy\b|\bmount\b|\bpet\b|subscription (offer|bonus)"
+    r"|recruit-?a-?friend|blizzcon|free\b|get the drop|campfire",
+    re.I)
+REWARD_HOW = re.compile(
+    r"\bwatch(ing)?\b.*\bhours?\b|link your|account\.battle\.net/connections|drops inventory|\bclaim\b"
+    r"|\bredeem\b|prime gaming|subscription|recruit|eligible stream",
+    re.I | re.S)
+
+
+def is_reward(title, body=""):
+    return bool(REWARD_TITLE.search(title or "")) and bool(REWARD_HOW.search(f"{title} {body or ''}"))
+
+
+REWARD_COLOR = 0xF1C40F
+
+
+def reward_embed(r):
+    """Card for one curated reward from characters.json "rewards"."""
+    lines = [r.get("what", "").strip()]
+    if r.get("how"):
+        lines.append(f"**How to get it:** {r['how'].strip()}")
+    if r.get("status"):
+        lines.append(f"**Status:** {r['status'].strip()}")
+    e = {"title": f"Free reward: {r['name']}"[:256], "description": "\n\n".join(x for x in lines if x)[:4000],
+         "color": REWARD_COLOR, "footer": {"text": "Reward outside the game"}}
+    if r.get("url"):
+        e["url"] = r["url"]
+    if r.get("image"):
+        e["thumbnail"] = {"url": r["image"]}
+    return e
+
+
+def build_rewards(rewards, state, now_ts=None):
+    """Curated rewards from characters.json. Returns (public, officers) embed lists.
+
+    Each reward posts once. "publish": false sends it to the officers channel first as a preview;
+    flipping it to true posts it publicly. "ends" (YYYY-MM-DD) adds one reminder 3 days before.
+    """
+    now_ts = now_ts or int(time.time())
+    done = state.setdefault("rewards_posted", {})
+    public, officers = [], []
+    for r in rewards or []:
+        rid = r.get("id")
+        if not rid or not r.get("name"):
+            continue
+        rec = done.setdefault(rid, {})
+        if r.get("publish"):
+            if not rec.get("public"):
+                public.append(reward_embed(r))
+                rec["public"] = now_ts
+        elif not rec.get("preview"):
+            e = reward_embed(r)
+            e["footer"] = {"text": "Preview for officers. Publish it by setting \"publish\": true."}
+            officers.append(e)
+            rec["preview"] = now_ts
+        ends = r.get("ends")
+        if ends and r.get("publish") and rec.get("public") and not rec.get("reminded"):
+            try:
+                end_ts = int(time.mktime(time.strptime(ends, "%Y-%m-%d")))
+            except ValueError:
+                continue
+            if 0 < end_ts - now_ts <= 3 * 86400:
+                e = reward_embed(r)
+                e["title"] = f"Last call: {r['name']}"[:256]
+                e["description"] = f"Ends {time.strftime('%A %d %B', time.localtime(end_ts))}.\n\n" + e["description"]
+                public.append(e)
+                rec["reminded"] = now_ts
+    return public, officers
 
 
 def fetch(url, timeout=20):
@@ -202,7 +278,9 @@ def build_news(state, now_ts=None, fetcher=fetch):
         if key in seen:
             seen[key] = now_ts  # still in the feed: keep it remembered so it cannot come back as new
             continue
-        if is_promo(it["title"]):
+        body, author = strip_author(it["description"])
+        reward = is_reward(it["title"], body)
+        if is_promo(it["title"]) and not reward:
             seen[key] = now_ts
             continue
         # The EU forum often reposts a US notice a day later with its own date in the title
@@ -212,12 +290,13 @@ def build_news(state, now_ts=None, fetcher=fetch):
         if twin and twin["region"] != it["region"] and now_ts - twin["ts"] < 36 * 3600:
             seen[key] = now_ts
             continue
-        body, author = strip_author(it["description"])
         forum = forum_bodies.get(it["bid"] or "")
         if forum and "forums.blizzard.com" in it["url"]:
             body = html_to_text(forum["description"]) or body
             author = re.sub(r"^@\S+\s*", "", forum["creator"]) or author
         kind, label, color = classify(it["title"], body)
+        if reward:
+            kind, label, color = "reward", "Free reward", REWARD_COLOR
         if kind == "news" and "forums.blizzard.com" in it["url"] and len(body) < 200:
             seen[key] = now_ts
             continue
@@ -233,7 +312,7 @@ def build_news(state, now_ts=None, fetcher=fetch):
         recent[legacy_key(it["title"])] = {"region": it["region"], "ts": now_ts}
         source = "Blizzard News" if "news.blizzard.com" in it["url"] else f"{it['region'].upper()} forums"
         embeds.append({
-            "title": clean_title(it["title"])[:256],
+            "title": (("Free reward: " if reward else "") + clean_title(it["title"]))[:256],
             "url": it["url"],
             "description": trim(body) if body else None,
             "color": color,
