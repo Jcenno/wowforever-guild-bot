@@ -1558,6 +1558,18 @@ def post_to_discord(webhook, embeds, content=None, ping_role=None):
     the first message mentions that role (and only that role) and is not
     silent, so a big ding reaches phones.
     """
+    # Discord folds embeds that share a url into one card (the second only adds its image),
+    # so two cards for the same character would show as one. Keep each url unique.
+    seen_urls, fixed = {}, []
+    for e in embeds:
+        u = e.get("url")
+        if u:
+            n = seen_urls.get(u, 0)
+            seen_urls[u] = n + 1
+            if n:
+                e = {**e, "url": f"{u}{'&' if '?' in u else '?'}card={n + 1}"}
+        fixed.append(e)
+    embeds = fixed
     for i in range(0, len(embeds), 10):  # Discord allows 10 embeds per message
         payload = {
             "username": "The Canary",
