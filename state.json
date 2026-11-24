@@ -108,7 +108,7 @@
       },
       "ilvl": 31,
       "last_explored": "Wetlands",
-      "last_login": 1795546503000,
+      "last_login": 1795563975000,
       "level": 34,
       "level_at": {
         "24": 1794895272,
@@ -208,11 +208,6 @@
           "raw": 2075,
           "tier": 3
         },
-        "Booty Bay": {
-          "name": "Neutral",
-          "raw": 500,
-          "tier": 3
-        },
         "Cenarion Circle": {
           "name": "Neutral",
           "raw": 2885,
@@ -267,18 +262,18 @@
       "spec": "Feral Combat",
       "stats": {
         "critters": 18,
-        "deaths": 48,
+        "deaths": 49,
         "drinks": 14,
         "flights": 55,
         "food": 12,
         "health_potions": 22,
         "hearths": 35,
-        "killing_blows": 2021,
+        "killing_blows": 2022,
         "mana_potions": 4,
-        "mobs": 3487,
-        "quests": 321
+        "mobs": 3488,
+        "quests": 322
       },
-      "xp": 33269
+      "xp": 35961
     },
     "us:devil-latterday": {
       "achievements": {
@@ -2430,11 +2425,11 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/140/13854092-avatar.jpg",
       "best_item": {
-        "id": 2850,
-        "ilvl": 24,
-        "name": "Bronze Shortsword",
+        "id": 4243,
+        "ilvl": null,
+        "name": "Fine Leather Tunic",
         "quality": "UNCOMMON",
-        "slot": "Main Hand"
+        "slot": "Chest"
       },
       "boss_kills": {},
       "class": "Hunter",
@@ -2443,7 +2438,7 @@
       "gear": {},
       "ilvl": 11,
       "last_explored": "Wetlands",
-      "last_login": 1795493011000,
+      "last_login": 1795563996000,
       "level": 19,
       "level_at": {
         "19": 1795096871
@@ -2459,56 +2454,44 @@
       "recipes": {
         "Cooking": [
           {
-            "id": 4786,
-            "name": "Herb Baked Egg"
-          },
-          {
-            "id": 1543,
-            "name": "Crab Cake"
-          },
-          {
-            "id": 56882,
-            "name": "Pincer Bites"
-          },
-          {
-            "id": 52640,
-            "name": "Basic Campfire"
-          },
-          {
-            "id": 1538,
-            "name": "Coyote Steak"
-          },
-          {
-            "id": 1545,
-            "name": "Dry Pork Ribs"
+            "id": 1874,
+            "name": "Crocolisk Gumbo"
           },
           {
             "id": 1875,
             "name": "Curiously Tasty Omelet"
           },
           {
-            "id": 3926,
-            "name": "Kaldorei Spider Kabob"
+            "id": 1535,
+            "name": "Charred Wolf Meat"
           },
           {
             "id": 1536,
             "name": "Spiced Wolf Meat"
           },
           {
-            "id": 1544,
-            "name": "Cooked Crab Claw"
-          },
-          {
             "id": 1537,
             "name": "Roasted Boar Meat"
           },
           {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
+            "id": 1538,
+            "name": "Coyote Steak"
           },
           {
-            "id": 1874,
-            "name": "Crocolisk Gumbo"
+            "id": 1543,
+            "name": "Crab Cake"
+          },
+          {
+            "id": 1544,
+            "name": "Cooked Crab Claw"
+          },
+          {
+            "id": 1545,
+            "name": "Dry Pork Ribs"
+          },
+          {
+            "id": 3926,
+            "name": "Kaldorei Spider Kabob"
           },
           {
             "id": 4354,
@@ -2521,6 +2504,18 @@
           {
             "id": 3964,
             "name": "Boiled Clams"
+          },
+          {
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
+          },
+          {
+            "id": 56882,
+            "name": "Pincer Bites"
           }
         ],
         "Fishing": [
@@ -2531,72 +2526,68 @@
         ],
         "Leatherworking": [
           {
-            "id": 55184,
-            "name": "Forceful Medium Armor Kit"
+            "id": 1353,
+            "name": "Handstitched Leather Boots"
+          },
+          {
+            "id": 1355,
+            "name": "Handstitched Leather Pants"
           },
           {
             "id": 1356,
             "name": "Light Armor Kit"
           },
           {
-            "id": 4989,
-            "name": "Light Leather Quiver"
-          },
-          {
-            "id": 2162,
-            "name": "Handstitched Leather Belt"
-          },
-          {
-            "id": 11756,
-            "name": "Medium Leather"
-          },
-          {
-            "id": 1370,
-            "name": "Dark Leather Cloak"
-          },
-          {
-            "id": 55207,
-            "name": "Black Whelp Slippers"
-          },
-          {
-            "id": 2172,
-            "name": "Fine Leather Belt"
-          },
-          {
-            "id": 2197,
-            "name": "Cured Heavy Hide"
-          },
-          {
-            "id": 5030,
-            "name": "Heavy Earthen Gloves"
-          },
-          {
-            "id": 4589,
-            "name": "Moonglow Vest"
-          },
-          {
-            "id": 2179,
-            "name": "Toughened Leather Gloves"
-          },
-          {
-            "id": 55185,
-            "name": "Mystic Medium Armor Kit"
+            "id": 1360,
+            "name": "Fine Leather Cloak"
           },
           {
             "id": 1362,
             "name": "Embossed Leather Vest"
           },
           {
-            "id": 2195,
-            "name": "Cured Light Hide"
+            "id": 1363,
+            "name": "Embossed Leather Boots"
           },
           {
-            "id": 5048,
-            "name": "Heavy Leather Ammo Pouch"
+            "id": 1364,
+            "name": "Embossed Leather Cloak"
           },
           {
-            "id": 55205,
-            "name": "Murloc Scale Shoes"
+            "id": 1367,
+            "name": "Medium Armor Kit"
+          },
+          {
+            "id": 1368,
+            "name": "Toughened Leather Armor"
+          },
+          {
+            "id": 1369,
+            "name": "Gray Leather Boots"
+          },
+          {
+            "id": 1370,
+            "name": "Dark Leather Cloak"
+          },
+          {
+            "id": 1708,
+            "name": "Light Leather"
+          },
+          {
+            "id": 2162,
+            "name": "Handstitched Leather Belt"
+          },
+          {
+            "id": 2164,
+            "name": "Embossed Leather Gloves"
+          },
+          {
+            "id": 2167,
+            "name": "Embossed Leather Pants"
+          },
+          {
+            "id": 2168,
+            "name": "Hillman's Cloak"
           },
           {
             "id": 2170,
@@ -2607,48 +2598,48 @@
             "name": "Handstitched Leather Cloak"
           },
           {
-            "id": 2177,
-            "name": "Hillman's Shoulders"
+            "id": 4988,
+            "name": "Handstitched Leather Bracers"
           },
           {
-            "id": 1363,
-            "name": "Embossed Leather Boots"
+            "id": 4989,
+            "name": "Light Leather Quiver"
           },
           {
-            "id": 2196,
-            "name": "Cured Medium Hide"
-          },
-          {
-            "id": 1368,
-            "name": "Toughened Leather Armor"
-          },
-          {
-            "id": 2168,
-            "name": "Hillman's Cloak"
-          },
-          {
-            "id": 1708,
-            "name": "Light Leather"
-          },
-          {
-            "id": 2167,
-            "name": "Embossed Leather Pants"
-          },
-          {
-            "id": 4993,
-            "name": "Light Leather Pants"
+            "id": 4990,
+            "name": "Small Leather Ammo Pouch"
           },
           {
             "id": 4992,
             "name": "Light Leather Bracers"
           },
           {
-            "id": 4156,
-            "name": "Handstitched Leather Vest"
+            "id": 4993,
+            "name": "Light Leather Pants"
           },
           {
-            "id": 52647,
-            "name": "Camp Tent"
+            "id": 4996,
+            "name": "Nimble Leather Gloves"
+          },
+          {
+            "id": 5026,
+            "name": "Fletcher's Gloves"
+          },
+          {
+            "id": 5030,
+            "name": "Heavy Earthen Gloves"
+          },
+          {
+            "id": 5047,
+            "name": "Heavy Quiver"
+          },
+          {
+            "id": 5048,
+            "name": "Heavy Leather Ammo Pouch"
+          },
+          {
+            "id": 2172,
+            "name": "Fine Leather Belt"
           },
           {
             "id": 2173,
@@ -2659,86 +2650,90 @@
             "name": "Dark Leather Belt"
           },
           {
-            "id": 5047,
-            "name": "Heavy Quiver"
+            "id": 2177,
+            "name": "Hillman's Shoulders"
           },
           {
-            "id": 55204,
-            "name": "Moonglow Boots"
+            "id": 2179,
+            "name": "Toughened Leather Gloves"
           },
           {
-            "id": 1369,
-            "name": "Gray Leather Boots"
+            "id": 2195,
+            "name": "Cured Light Hide"
           },
           {
-            "id": 58812,
-            "name": "Light Leather Reagent Bag"
+            "id": 2196,
+            "name": "Cured Medium Hide"
           },
           {
-            "id": 4159,
-            "name": "Dark Leather Pants"
-          },
-          {
-            "id": 1360,
-            "name": "Fine Leather Cloak"
-          },
-          {
-            "id": 11757,
-            "name": "Heavy Leather"
-          },
-          {
-            "id": 4990,
-            "name": "Small Leather Ammo Pouch"
-          },
-          {
-            "id": 1353,
-            "name": "Handstitched Leather Boots"
-          },
-          {
-            "id": 4996,
-            "name": "Nimble Leather Gloves"
-          },
-          {
-            "id": 1364,
-            "name": "Embossed Leather Cloak"
-          },
-          {
-            "id": 1355,
-            "name": "Handstitched Leather Pants"
+            "id": 2197,
+            "name": "Cured Heavy Hide"
           },
           {
             "id": 2199,
             "name": "Heavy Armor Kit"
           },
           {
-            "id": 1367,
-            "name": "Medium Armor Kit"
+            "id": 11756,
+            "name": "Medium Leather"
           },
           {
-            "id": 4988,
-            "name": "Handstitched Leather Bracers"
+            "id": 11757,
+            "name": "Heavy Leather"
+          },
+          {
+            "id": 4589,
+            "name": "Moonglow Vest"
+          },
+          {
+            "id": 4156,
+            "name": "Handstitched Leather Vest"
+          },
+          {
+            "id": 4159,
+            "name": "Dark Leather Pants"
+          },
+          {
+            "id": 52647,
+            "name": "Camp Tent"
+          },
+          {
+            "id": 55184,
+            "name": "Forceful Medium Armor Kit"
+          },
+          {
+            "id": 55185,
+            "name": "Mystic Medium Armor Kit"
+          },
+          {
+            "id": 55204,
+            "name": "Moonglow Boots"
+          },
+          {
+            "id": 55205,
+            "name": "Murloc Scale Shoes"
           },
           {
             "id": 55206,
             "name": "Dark Leather Boots"
           },
           {
-            "id": 5026,
-            "name": "Fletcher's Gloves"
+            "id": 55207,
+            "name": "Black Whelp Slippers"
           },
           {
-            "id": 2164,
-            "name": "Embossed Leather Gloves"
+            "id": 58812,
+            "name": "Light Leather Reagent Bag"
           }
         ],
         "Skinning": [
           {
-            "id": 52644,
-            "name": "Camp Chair"
-          },
-          {
             "id": 4768,
             "name": "Skinning"
+          },
+          {
+            "id": 52644,
+            "name": "Camp Chair"
           }
         ]
       },
@@ -4709,65 +4704,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795563975,
+    "10 11 balance faction pvp updates": 1795564417,
     "10 11 class incoming tuning": 1795549574,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795563975,
+    "11 11 balance faction pvp updates": 1795564417,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795563975,
-    "11 14 adjustment dungeon level player xp": 1795563975,
-    "11 15 adjustment dungeon level player xp": 1795563975,
+    "11 13 lost purchase refunds training": 1795564417,
+    "11 14 adjustment dungeon level player xp": 1795564417,
+    "11 15 adjustment dungeon level player xp": 1795564417,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795563975,
+    "11 17 abuse actions blackmaw for hold": 1795564417,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
-    "11 2026 23 forever hotfixes wow": 1795563975,
+    "11 2026 23 forever hotfixes wow": 1795564417,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "60 at for gold quests": 1795563975,
-    "60 at from gold lvl no quests seriously": 1795563975,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795563975,
-    "8 catching classes episode forever on podcast the up wow": 1795563975,
+    "60 at for gold quests": 1795564417,
+    "60 at from gold lvl no quests seriously": 1795564417,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795564417,
+    "8 catching classes episode forever on podcast the up wow": 1795564417,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795563975,
-    "a explore forever gamepad with wow": 1795563975,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795564417,
+    "a explore forever gamepad with wow": 1795564417,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795563975,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795563975,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795564417,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795564417,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795563975,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795563975,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795563975,
-    "and economy exploit heuristic hold lockbox": 1795563975,
-    "and familiar feels forever new s what what wow": 1795563975,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795564417,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795564417,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795564417,
+    "and economy exploit heuristic hold lockbox": 1795564417,
+    "and familiar feels forever new s what what wow": 1795564417,
     "and language settings social": 1795109468,
-    "another exploit": 1795563975,
+    "another exploit": 1795564417,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "azeroth forever in of return to warcraft world": 1795563975,
+    "azeroth forever in of return to warcraft world": 1795564417,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795563975,
+    "bug epic mount riding skill": 1795564417,
     "bug forever forum guidelines report wow": 1795549574,
-    "bugged chaos missing monday s server shaman since totems": 1795563975,
-    "catching classes forever on podcast the up watch wow": 1795563975,
+    "bugged chaos missing monday s server shaman since totems": 1795564417,
+    "catching classes forever on podcast the up watch wow": 1795564417,
     "choose forever in of ruleset warcraft world your": 1794432680,
-    "cost forever honor of short story the watch wow": 1795563975,
-    "dungeon enough not still xp": 1795563975,
-    "dungeon increased majority the wants xp": 1795563975,
+    "cost forever honor of short story the watch wow": 1795564417,
+    "dungeon enough not still xp": 1795564417,
+    "dungeon increased majority the wants xp": 1795564417,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795563975,
+    "episode forever lore podcast the the watch wow": 1795564417,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795563975,
+    "forever guide new of player s starter to warcraft welcome world": 1795564417,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795563975,
+    "forever live now of warcraft world": 1795564417,
     "forever short story the unbowed watch wow": 1794358867
   },
   "news_started": true,
@@ -4987,7 +4982,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795563976,
+  "saved_at": 1795564418,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
