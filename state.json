@@ -1534,16 +1534,16 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/49/20858161-avatar.jpg",
       "best_item": {
-        "id": 9856,
-        "ilvl": 36,
-        "name": "Archer's Boots of the Monkey",
-        "quality": "UNCOMMON",
-        "slot": "Feet"
+        "id": 271767,
+        "ilvl": 33,
+        "name": "Healer's Staff",
+        "quality": "RARE",
+        "slot": "Main Hand"
       },
       "boss_kills": {
         "1092": {
           "boss": "Archmage Arugal",
-          "count": 1,
+          "count": 2,
           "instance": "Shadowfang Keep"
         },
         "15027": {
@@ -1570,6 +1570,11 @@
           "boss": "Rath'mael",
           "count": 1,
           "instance": "Ruins of Lordaeron"
+        },
+        "63572": {
+          "boss": "Shade of the Archmage",
+          "count": 1,
+          "instance": "City of Dalaran"
         },
         "63573": {
           "boss": "Durgen Dirgehammer",
@@ -1609,6 +1614,14 @@
           "name": "Glinteye Slippers",
           "quality": "RARE"
         },
+        "273031": {
+          "name": "Runemender's Seal",
+          "quality": "RARE"
+        },
+        "273045": {
+          "name": "Drape of Shifting Energy",
+          "quality": "RARE"
+        },
         "273804": {
           "name": "Executioner Mantle",
           "quality": "RARE"
@@ -1628,7 +1641,7 @@
       },
       "ilvl": 28,
       "last_explored": "Wetlands",
-      "last_login": 1795436980000,
+      "last_login": 1795497736000,
       "level": 32,
       "level_at": {
         "17": 1794274699,
@@ -1650,7 +1663,7 @@
         "Alchemy": 211,
         "Cooking": 187,
         "First Aid": 146,
-        "Fishing": 113,
+        "Fishing": 115,
         "Herbalism": 219
       },
       "race": "Night Elf",
@@ -1732,6 +1745,10 @@
           {
             "id": 54667,
             "name": "Minor Mender's Potion"
+          },
+          {
+            "id": 1822,
+            "name": "Elixir of Ogre Strength"
           },
           {
             "id": 1820,
@@ -2015,11 +2032,6 @@
           "raw": -6525,
           "tier": 0
         },
-        "Booty Bay": {
-          "name": "Neutral",
-          "raw": 500,
-          "tier": 3
-        },
         "Cenarion Circle": {
           "name": "Neutral",
           "raw": 2960,
@@ -2045,6 +2057,11 @@
           "raw": 7266,
           "tier": 4
         },
+        "Kirin Tor": {
+          "name": "Neutral",
+          "raw": 1100,
+          "tier": 3
+        },
         "Stormwind": {
           "name": "Honored",
           "raw": 9548,
@@ -2054,19 +2071,19 @@
       "role": "Healer",
       "spec": "Feral Combat",
       "stats": {
-        "critters": 55,
-        "deaths": 42,
-        "drinks": 112,
-        "flights": 56,
+        "critters": 67,
+        "deaths": 44,
+        "drinks": 118,
+        "flights": 59,
         "food": 63,
         "health_potions": 62,
         "hearths": 26,
-        "killing_blows": 1156,
-        "mana_potions": 50,
-        "mobs": 3075,
-        "quests": 265
+        "killing_blows": 1161,
+        "mana_potions": 58,
+        "mobs": 3406,
+        "quests": 267
       },
-      "xp": 442
+      "xp": 20925
     },
     "us:runarii-lithandros": {
       "achievements": {
@@ -4453,7 +4470,11 @@
   },
   "group": {
     "firsts": {
-      "boss": {},
+      "boss": {
+        "Shade of the Archmage (City of Dalaran)": [
+          "us:pwanage-ownage"
+        ]
+      },
       "dungeon": {
         "Blackfathom Deeps": [
           "us:steel-appeal",
@@ -4490,6 +4511,14 @@
       "raid": {}
     },
     "firsts_pending": {
+      "boss|Shade of the Archmage (City of Dalaran)": {
+        "keys": [
+          "us:pwanage-ownage"
+        ],
+        "kind": "boss",
+        "since": 1795498270,
+        "what": "Shade of the Archmage (City of Dalaran)"
+      },
       "dungeon|Gnomeregan": {
         "keys": [
           "us:steel-appeal",
@@ -4566,62 +4595,62 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795497368,
-    "10 11 class incoming tuning": 1795497368,
+    "10 11 balance faction pvp updates": 1795498270,
+    "10 11 class incoming tuning": 1795498270,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795497368,
+    "11 11 balance faction pvp updates": 1795498270,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795497368,
-    "11 14 adjustment dungeon level player xp": 1795497368,
-    "11 15 adjustment dungeon level player xp": 1795497368,
+    "11 13 lost purchase refunds training": 1795498270,
+    "11 14 adjustment dungeon level player xp": 1795498270,
+    "11 15 adjustment dungeon level player xp": 1795498270,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795497368,
+    "11 17 abuse actions blackmaw for hold": 1795498270,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
-    "11 2026 23 forever hotfixes wow": 1795497368,
+    "11 2026 23 forever hotfixes wow": 1795498270,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
-    "11 5 forever issues known updated wow": 1795497368,
-    "11 8 dungeon enemy increased xp": 1795497368,
-    "60 at for gold quests": 1795497368,
-    "60 at from gold lvl no quests seriously": 1795497368,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795497368,
-    "8 catching classes episode forever on podcast the up wow": 1795497368,
-    "8 city do i inside main maybe people see the why": 1795497368,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795497368,
+    "11 5 forever issues known updated wow": 1795498270,
+    "11 8 dungeon enemy increased xp": 1795498270,
+    "60 at for gold quests": 1795498270,
+    "60 at from gold lvl no quests seriously": 1795498270,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795498270,
+    "8 catching classes episode forever on podcast the up wow": 1795498270,
+    "8 city do i inside main maybe people see the why": 1795498270,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795498270,
     "a explore forever gamepad with wow": 1795451471,
     "a for friend invite issues players resolved": 1795459570,
-    "about bug category forever report the wow": 1795497368,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795497368,
+    "about bug category forever report the wow": 1795498270,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795498270,
     "aman and dive end forever gods hallow in into more of s the weekly wow wow zul": 1794347719,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795497368,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795497368,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795498270,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795498270,
     "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1794592867,
-    "and economy exploit heuristic hold lockbox": 1795497368,
+    "and economy exploit heuristic hold lockbox": 1795498270,
     "and familiar feels forever new s what what wow": 1794619867,
     "and language settings social": 1795109468,
-    "another exploit": 1795497368,
+    "another exploit": 1795498270,
     "are early forever live name now of reservations warcraft world": 1794347719,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "beta from group issues persist phasing still with": 1795497368,
-    "broken zeppelins": 1795497368,
-    "bug epic mount riding skill": 1795497368,
-    "bug forever forum guidelines report wow": 1795497368,
-    "bugged chaos missing monday s server shaman since totems": 1795497368,
-    "catching classes forever on podcast the up watch wow": 1795497368,
+    "beta from group issues persist phasing still with": 1795498270,
+    "broken zeppelins": 1795498270,
+    "bug epic mount riding skill": 1795498270,
+    "bug forever forum guidelines report wow": 1795498270,
+    "bugged chaos missing monday s server shaman since totems": 1795498270,
+    "catching classes forever on podcast the up watch wow": 1795498270,
     "choose forever in of ruleset warcraft world your": 1794432680,
-    "cost forever honor of short story the watch wow": 1795497368,
-    "dungeon enough not still xp": 1795497368,
-    "dungeon increased majority the wants xp": 1795497368,
+    "cost forever honor of short story the watch wow": 1795498270,
+    "dungeon enough not still xp": 1795498270,
+    "dungeon increased majority the wants xp": 1795498270,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795497368,
-    "forever forever forging watch wow": 1795497368,
+    "episode forever lore podcast the the watch wow": 1795498270,
+    "forever forever forging watch wow": 1795498270,
     "forever guide new of player s starter to warcraft welcome world": 1795197669,
     "forever launch of time warcraft world": 1795108566,
     "forever live now of warcraft world": 1795197669,
@@ -4836,7 +4865,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795497369,
+  "saved_at": 1795498271,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
