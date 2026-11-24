@@ -81,6 +81,14 @@
       [
         "dungeon",
         "The Deadmines"
+      ],
+      [
+        "dungeon",
+        "Gnomeregan"
+      ],
+      [
+        "boss",
+        "Shade of the Archmage (City of Dalaran)"
       ]
     ],
     "dungeon_min_level": 30,

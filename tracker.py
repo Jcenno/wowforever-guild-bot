@@ -810,6 +810,8 @@ def find_changes(key, old, new, settings, group, hype=None):
                 lines.append(f"🗝️ Cleared **{dungeon}** for the first time")
                 hype.append(("clear", dungeon))
             elif kind == "boss" and quiet_dungeons and new_k[sid]["instance"] not in (new.get("raids") or {}):
+                # no line of their own, but they still join a guild-first card for this kill
+                hype.append(("boss_quiet", f"{new_k[sid]['boss']} ({new_k[sid]['instance']})"))
                 continue
             elif kind == "boss":
                 lines.append(f"⚔️ First kill: **{new_k[sid]['boss']}** ({new_k[sid]['instance']})")
@@ -1919,8 +1921,17 @@ def main():
         else:
             mine = set()
             for ev, what in list(hype):
-                if ev == "clear_quiet":
-                    firsts["dungeon"].setdefault(what, [key])  # remembered, never announced
+                if ev in ("clear_quiet", "boss_quiet"):
+                    # Below the dungeon level: never starts a card, but joins one still waiting to post.
+                    qkind = "dungeon" if ev == "clear_quiet" else "boss"
+                    qpk = f"{qkind}|{what}"
+                    if qpk in held_firsts:
+                        if key not in held_firsts[qpk]["keys"]:
+                            held_firsts[qpk]["keys"].append(key)
+                            cur = firsts[qkind].get(what) or []
+                            firsts[qkind][what] = (cur if isinstance(cur, list) else [cur]) + [key]
+                    else:
+                        firsts[qkind].setdefault(what, [key])  # remembered, never announced
                     continue
                 kind = {"clear": "dungeon", "boss": "boss", "raid_clear": "raid"}.get(ev)
                 if not kind:
@@ -1977,9 +1988,12 @@ def main():
         if pk in done or pk in held_firsts:
             continue
         keys = [k for k, sn in state["characters"].items()
-                if kind == "dungeon" and what in cleared_dungeons(sn)]
+                if (kind == "dungeon" and what in cleared_dungeons(sn))
+                or (kind == "boss" and any(f"{b.get('boss')} ({b.get('instance')})" == what
+                                           for b in (sn.get("boss_kills") or {}).values()))]
         if keys:
-            held_firsts[pk] = {"kind": kind, "what": what, "keys": keys, "since": now_i}
+            # A correction posts on this run, not the next morning.
+            held_firsts[pk] = {"kind": kind, "what": what, "keys": keys, "since": now_i - 3 * 86400}
             state["group"].setdefault("firsts", {}).setdefault(kind, {})[what] = keys
         done.append(pk)
     tracked = len(state["characters"])
