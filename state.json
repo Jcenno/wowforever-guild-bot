@@ -411,7 +411,7 @@
       },
       "ilvl": 23,
       "last_explored": "Redridge Mountains",
-      "last_login": 1795589533000,
+      "last_login": 1795616567000,
       "level": 30,
       "level_at": {
         "10": 1794895272,
@@ -772,11 +772,6 @@
           "raw": 2142,
           "tier": 3
         },
-        "Ratchet": {
-          "name": "Neutral",
-          "raw": 500,
-          "tier": 3
-        },
         "Silverwing Sentinels": {
           "name": "Neutral",
           "raw": 150,
@@ -796,7 +791,7 @@
         "flights": 28,
         "food": 46,
         "health_potions": 13,
-        "hearths": 11,
+        "hearths": 12,
         "honorable_kills": 108,
         "killing_blows": 2310,
         "mana_potions": 1,
@@ -3462,7 +3457,7 @@
       },
       "ilvl": 29,
       "last_explored": "Arathi Highlands",
-      "last_login": 1795588396000,
+      "last_login": 1795616470000,
       "level": 36,
       "level_at": {
         "10": 1794152175,
@@ -3494,8 +3489,8 @@
         "Blacksmithing": 169,
         "Cooking": 300,
         "First Aid": 216,
-        "Fishing": 216,
-        "Mining": 239
+        "Fishing": 225,
+        "Mining": 240
       },
       "race": "Night Elf",
       "raids": {},
@@ -4017,7 +4012,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 17350,
+          "raw": 17356,
           "tier": 5
         },
         "Everlook": {
@@ -4037,17 +4032,17 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 7616,
+          "raw": 7622,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 8665,
+          "raw": 8671,
           "tier": 4
         },
         "Kirin Tor": {
           "name": "Neutral",
-          "raw": 1716,
+          "raw": 1816,
           "tier": 3
         },
         "Magram Clan Centaur": {
@@ -4067,7 +4062,7 @@
         },
         "Stormwind": {
           "name": "Honored",
-          "raw": 10236,
+          "raw": 10261,
           "tier": 5
         }
       },
@@ -4076,16 +4071,16 @@
         "critters": 184,
         "deaths": 28,
         "drinks": 2,
-        "flights": 129,
-        "food": 169,
+        "flights": 133,
+        "food": 173,
         "health_potions": 42,
-        "hearths": 77,
+        "hearths": 79,
         "honorable_kills": 1,
-        "killing_blows": 2858,
-        "mobs": 6340,
-        "quests": 332
+        "killing_blows": 2866,
+        "mobs": 6347,
+        "quests": 336
       },
-      "xp": 38513
+      "xp": 50971
     },
     "us:whizz-aard": {
       "achievements": {
@@ -4860,63 +4855,63 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795616172,
+    "10 11 balance faction pvp updates": 1795617070,
     "10 11 class incoming tuning": 1795549574,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795616172,
+    "11 11 balance faction pvp updates": 1795617070,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795616172,
-    "11 14 adjustment dungeon level player xp": 1795616172,
-    "11 15 adjustment dungeon level player xp": 1795616172,
+    "11 13 lost purchase refunds training": 1795617070,
+    "11 14 adjustment dungeon level player xp": 1795617070,
+    "11 15 adjustment dungeon level player xp": 1795617070,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795616172,
+    "11 17 abuse actions blackmaw for hold": 1795617070,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
-    "11 2026 23 forever hotfixes wow": 1795616172,
+    "11 2026 23 forever hotfixes wow": 1795617070,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "60 at for gold quests": 1795616172,
-    "60 at from gold lvl no quests seriously": 1795616172,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795616172,
-    "8 catching classes episode forever on podcast the up wow": 1795616172,
+    "60 at for gold quests": 1795617070,
+    "60 at from gold lvl no quests seriously": 1795617070,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795617070,
+    "8 catching classes episode forever on podcast the up wow": 1795617070,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795616172,
-    "a explore forever gamepad with wow": 1795616172,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795617070,
+    "a explore forever gamepad with wow": 1795617070,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795616172,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795616172,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795617070,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795617070,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795616172,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795616172,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795616172,
-    "and economy exploit heuristic hold lockbox": 1795616172,
-    "and familiar feels forever new s what what wow": 1795616172,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795617070,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795617070,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795617070,
+    "and economy exploit heuristic hold lockbox": 1795617070,
+    "and familiar feels forever new s what what wow": 1795617070,
     "and language settings social": 1795109468,
-    "another exploit": 1795616172,
+    "another exploit": 1795617070,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "azeroth forever in of return to warcraft world": 1795616172,
+    "azeroth forever in of return to warcraft world": 1795617070,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795616172,
+    "bug epic mount riding skill": 1795617070,
     "bug forever forum guidelines report wow": 1795549574,
-    "bugged chaos missing monday s server shaman since totems": 1795616172,
-    "catching classes forever on podcast the up watch wow": 1795616172,
+    "bugged chaos missing monday s server shaman since totems": 1795617070,
+    "catching classes forever on podcast the up watch wow": 1795617070,
     "choose forever in of ruleset warcraft world your": 1794432680,
-    "cost forever honor of short story the watch wow": 1795616172,
-    "dungeon enough not still xp": 1795616172,
-    "dungeon increased majority the wants xp": 1795616172,
+    "cost forever honor of short story the watch wow": 1795617070,
+    "dungeon enough not still xp": 1795617070,
+    "dungeon increased majority the wants xp": 1795617070,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795616172,
+    "episode forever lore podcast the the watch wow": 1795617070,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795616172,
+    "forever guide new of player s starter to warcraft welcome world": 1795617070,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795616172
+    "forever live now of warcraft world": 1795617070
   },
   "news_started": true,
   "owners": {
@@ -5135,7 +5130,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795616173,
+  "saved_at": 1795617072,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
