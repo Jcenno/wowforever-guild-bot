@@ -4093,11 +4093,11 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/151/7402647-avatar.jpg",
       "best_item": {
-        "id": 251962,
-        "ilvl": 36,
-        "name": "Violet Sash",
-        "quality": "UNCOMMON",
-        "slot": "Waist"
+        "id": 281321,
+        "ilvl": null,
+        "name": "Giantstone Medallion",
+        "quality": "RARE",
+        "slot": "Neck"
       },
       "boss_kills": {
         "1092": {
@@ -4162,6 +4162,10 @@
           "name": "Novice Ardent's Sash",
           "quality": "RARE"
         },
+        "270036": {
+          "name": "Magistrate's Pantaloons",
+          "quality": "RARE"
+        },
         "270261": {
           "name": "Robes of the Disgraced Thane",
           "quality": "RARE"
@@ -4193,7 +4197,7 @@
       },
       "ilvl": 25,
       "last_explored": "Redridge Mountains",
-      "last_login": 1795498462000,
+      "last_login": 1795629900000,
       "level": 32,
       "level_at": {
         "18": 1794190280,
@@ -4214,7 +4218,7 @@
       },
       "professions": {
         "Cooking": 65,
-        "Enchanting": 177,
+        "Enchanting": 182,
         "First Aid": 80,
         "Tailoring": 133
       },
@@ -4223,24 +4227,8 @@
       "recipes": {
         "Cooking": [
           {
-            "id": 4786,
-            "name": "Herb Baked Egg"
-          },
-          {
-            "id": 54504,
-            "name": "Tasty Raptor Bites"
-          },
-          {
-            "id": 52640,
-            "name": "Basic Campfire"
-          },
-          {
-            "id": 1538,
-            "name": "Coyote Steak"
-          },
-          {
-            "id": 1539,
-            "name": "Goretusk Liver Pie"
+            "id": 1535,
+            "name": "Charred Wolf Meat"
           },
           {
             "id": 1536,
@@ -4251,410 +4239,426 @@
             "name": "Roasted Boar Meat"
           },
           {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
+            "id": 1538,
+            "name": "Coyote Steak"
+          },
+          {
+            "id": 1539,
+            "name": "Goretusk Liver Pie"
           },
           {
             "id": 3964,
             "name": "Boiled Clams"
+          },
+          {
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
+          },
+          {
+            "id": 54504,
+            "name": "Tasty Raptor Bites"
           }
         ],
         "Enchanting": [
           {
-            "id": 4401,
-            "name": "Enchant Cloak - Lesser Fire Resistance"
-          },
-          {
-            "id": 4368,
-            "name": "Enchant 2H Weapon - Minor Impact"
-          },
-          {
-            "id": 7456,
-            "name": "Enchant Bracer - Lesser Strength"
-          },
-          {
-            "id": 7500,
-            "name": "Enchant Bracer - Lesser Intellect"
+            "id": 4402,
+            "name": "Enchant Boots - Minor Stamina"
           },
           {
             "id": 7422,
             "name": "Enchant Shield - Lesser Spirit"
           },
           {
-            "id": 4290,
-            "name": "Enchant Chest - Inferior Stamina"
-          },
-          {
-            "id": 52649,
-            "name": "Enchanted Lute"
-          },
-          {
-            "id": 7316,
-            "name": "Disenchant"
-          },
-          {
             "id": 7425,
             "name": "Enchant Bracer - Lesser Stamina"
-          },
-          {
-            "id": 4289,
-            "name": "Enchant Bracer - Inferior Stamina"
-          },
-          {
-            "id": 7513,
-            "name": "Enchant Cloak - Fire Resistance"
-          },
-          {
-            "id": 4291,
-            "name": "Runed Copper Rod"
           },
           {
             "id": 7437,
             "name": "Enchant 2H Weapon - Lesser Impact"
           },
           {
-            "id": 7499,
-            "name": "Enchant Gloves - Fishing"
-          },
-          {
-            "id": 7377,
-            "name": "Enchant Cloak - Lesser Protection"
-          },
-          {
-            "id": 13138,
-            "name": "Minor Mana Oil"
-          },
-          {
-            "id": 7356,
-            "name": "Enchant Shield - Minor Stamina"
-          },
-          {
-            "id": 8002,
-            "name": "Greater Mystic Wand"
-          },
-          {
-            "id": 7426,
-            "name": "Enchant Weapon - Lesser Striking"
-          },
-          {
-            "id": 8000,
-            "name": "Greater Magic Wand"
-          },
-          {
-            "id": 4300,
-            "name": "Enchant Cloak - Minor Resistance"
-          },
-          {
-            "id": 4292,
-            "name": "Enchant Chest - Minor Absorption"
-          },
-          {
-            "id": 7999,
-            "name": "Lesser Magic Wand"
-          },
-          {
-            "id": 7507,
-            "name": "Enchant Bracer - Spirit"
-          },
-          {
-            "id": 4370,
-            "name": "Runed Silver Rod"
-          },
-          {
-            "id": 54214,
-            "name": "Novice's Practice Wand"
-          },
-          {
-            "id": 7501,
-            "name": "Enchant Chest - Minor Stats"
-          },
-          {
-            "id": 4399,
-            "name": "Enchant Chest - Stamina"
+            "id": 7457,
+            "name": "Enchant Chest - Lesser Absorption"
           },
           {
             "id": 7496,
             "name": "Enchant Chest - Intellect"
           },
           {
-            "id": 4360,
-            "name": "Enchant Bracer - Minor Spirit"
+            "id": 7499,
+            "name": "Enchant Gloves - Fishing"
           },
           {
-            "id": 4301,
-            "name": "Enchant Bracer - Minor Stamina"
+            "id": 7500,
+            "name": "Enchant Bracer - Lesser Intellect"
+          },
+          {
+            "id": 7501,
+            "name": "Enchant Chest - Minor Stats"
           },
           {
             "id": 7502,
             "name": "Runed Golden Rod"
           },
           {
-            "id": 4364,
-            "name": "Enchant Bracer - Minor Agility"
-          },
-          {
-            "id": 4402,
-            "name": "Enchant Boots - Minor Stamina"
-          },
-          {
-            "id": 4352,
-            "name": "Enchant Chest - Lesser Stamina"
+            "id": 7507,
+            "name": "Enchant Bracer - Spirit"
           },
           {
             "id": 7508,
             "name": "Enchant Boots - Lesser Stamina"
           },
           {
-            "id": 4362,
-            "name": "Enchant Cloak - Minor Protection"
+            "id": 7513,
+            "name": "Enchant Cloak - Fire Resistance"
           },
           {
-            "id": 4367,
-            "name": "Enchant Weapon - Minor Striking"
+            "id": 7426,
+            "name": "Enchant Weapon - Lesser Striking"
           },
           {
-            "id": 54213,
-            "name": "Dust to Motes"
+            "id": 7999,
+            "name": "Lesser Magic Wand"
           },
           {
-            "id": 4293,
-            "name": "Enchant Bracer - Minor Deflect"
+            "id": 8000,
+            "name": "Greater Magic Wand"
           },
           {
-            "id": 7457,
-            "name": "Enchant Chest - Lesser Absorption"
-          },
-          {
-            "id": 7416,
-            "name": "Enchant Shield - Lesser Protection"
+            "id": 8002,
+            "name": "Greater Mystic Wand"
           },
           {
             "id": 13137,
             "name": "Minor Wizard Oil"
           },
           {
+            "id": 13138,
+            "name": "Minor Mana Oil"
+          },
+          {
+            "id": 4352,
+            "name": "Enchant Chest - Lesser Stamina"
+          },
+          {
+            "id": 4360,
+            "name": "Enchant Bracer - Minor Spirit"
+          },
+          {
+            "id": 4362,
+            "name": "Enchant Cloak - Minor Protection"
+          },
+          {
+            "id": 4364,
+            "name": "Enchant Bracer - Minor Agility"
+          },
+          {
+            "id": 4367,
+            "name": "Enchant Weapon - Minor Striking"
+          },
+          {
+            "id": 4368,
+            "name": "Enchant 2H Weapon - Minor Impact"
+          },
+          {
             "id": 4369,
             "name": "Enchant 2H Weapon - Lesser Intellect"
+          },
+          {
+            "id": 4370,
+            "name": "Runed Silver Rod"
+          },
+          {
+            "id": 4399,
+            "name": "Enchant Chest - Stamina"
+          },
+          {
+            "id": 4401,
+            "name": "Enchant Cloak - Lesser Fire Resistance"
+          },
+          {
+            "id": 7456,
+            "name": "Enchant Bracer - Lesser Strength"
+          },
+          {
+            "id": 7316,
+            "name": "Disenchant"
+          },
+          {
+            "id": 7356,
+            "name": "Enchant Shield - Minor Stamina"
+          },
+          {
+            "id": 7377,
+            "name": "Enchant Cloak - Lesser Protection"
+          },
+          {
+            "id": 7416,
+            "name": "Enchant Shield - Lesser Protection"
+          },
+          {
+            "id": 4289,
+            "name": "Enchant Bracer - Inferior Stamina"
+          },
+          {
+            "id": 4290,
+            "name": "Enchant Chest - Inferior Stamina"
+          },
+          {
+            "id": 4291,
+            "name": "Runed Copper Rod"
+          },
+          {
+            "id": 4292,
+            "name": "Enchant Chest - Minor Absorption"
+          },
+          {
+            "id": 4293,
+            "name": "Enchant Bracer - Minor Deflect"
+          },
+          {
+            "id": 4300,
+            "name": "Enchant Cloak - Minor Resistance"
+          },
+          {
+            "id": 4301,
+            "name": "Enchant Bracer - Minor Stamina"
+          },
+          {
+            "id": 52649,
+            "name": "Enchanted Lute"
+          },
+          {
+            "id": 54213,
+            "name": "Dust to Motes"
+          },
+          {
+            "id": 54214,
+            "name": "Novice's Practice Wand"
           }
         ],
         "First Aid": [
           {
+            "id": 1838,
+            "name": "Linen Bandage"
+          },
+          {
             "id": 1839,
             "name": "Heavy Linen Bandage"
-          },
-          {
-            "id": 54192,
-            "name": "Lesser Healing Potion"
-          },
-          {
-            "id": 54191,
-            "name": "Minor Healing Potion"
           },
           {
             "id": 52641,
             "name": "First Aid Kit"
           },
           {
-            "id": 1838,
-            "name": "Linen Bandage"
+            "id": 54191,
+            "name": "Minor Healing Potion"
+          },
+          {
+            "id": 54192,
+            "name": "Lesser Healing Potion"
           }
         ],
         "Tailoring": [
           {
-            "id": 2387,
-            "name": "Heavy Woolen Pants"
-          },
-          {
-            "id": 55433,
-            "name": "Filigreed Flame Gown"
-          },
-          {
-            "id": 3973,
-            "name": "Pearl-clasped Cloak"
-          },
-          {
-            "id": 56361,
-            "name": "Faction Banner"
-          },
-          {
-            "id": 2359,
-            "name": "Bolt of Linen Cloth"
-          },
-          {
-            "id": 2408,
-            "name": "Brown Linen Pants"
-          },
-          {
-            "id": 4849,
-            "name": "Azure Silk Pants"
+            "id": 6577,
+            "name": "Simple Linen Boots"
           },
           {
             "id": 6578,
             "name": "Simple Kilt"
           },
           {
-            "id": 2388,
-            "name": "Phoenix Pants"
-          },
-          {
-            "id": 2376,
-            "name": "Bolt of Silk Cloth"
-          },
-          {
-            "id": 4848,
-            "name": "Linen Belt"
-          },
-          {
-            "id": 4019,
-            "name": "Red Linen Bag"
-          },
-          {
             "id": 55423,
             "name": "Novice Arcanist's Sash"
-          },
-          {
-            "id": 2409,
-            "name": "Brown Linen Shirt"
-          },
-          {
-            "id": 2367,
-            "name": "Reinforced Linen Cape"
-          },
-          {
-            "id": 2363,
-            "name": "Linen Boots"
-          },
-          {
-            "id": 2372,
-            "name": "Green Woolen Vest"
-          },
-          {
-            "id": 2369,
-            "name": "Green Linen Shirt"
-          },
-          {
-            "id": 2391,
-            "name": "Spidersilk Boots"
-          },
-          {
-            "id": 2380,
-            "name": "Handstitched Linen Britches"
-          },
-          {
-            "id": 2360,
-            "name": "Linen Cloak"
-          },
-          {
-            "id": 2370,
-            "name": "Bolt of Woolen Cloth"
-          },
-          {
-            "id": 6577,
-            "name": "Simple Linen Boots"
-          },
-          {
-            "id": 4708,
-            "name": "Simple Dress"
-          },
-          {
-            "id": 4303,
-            "name": "White Linen Robe"
-          },
-          {
-            "id": 4001,
-            "name": "Linen Bag"
-          },
-          {
-            "id": 2365,
-            "name": "White Linen Shirt"
-          },
-          {
-            "id": 4850,
-            "name": "Azure Silk Hood"
-          },
-          {
-            "id": 4020,
-            "name": "Red Woolen Bag"
-          },
-          {
-            "id": 2366,
-            "name": "Blue Linen Shirt"
-          },
-          {
-            "id": 55367,
-            "name": "Woolen Reagent Bag"
-          },
-          {
-            "id": 2364,
-            "name": "Red Linen Shirt"
-          },
-          {
-            "id": 4021,
-            "name": "Lesser Wizard's Robe"
-          },
-          {
-            "id": 2379,
-            "name": "Green Linen Bracers"
-          },
-          {
-            "id": 4305,
-            "name": "Red Linen Vest"
-          },
-          {
-            "id": 2368,
-            "name": "Barbaric Linen Vest"
-          },
-          {
-            "id": 2385,
-            "name": "Double-stitched Woolen Shoulders"
-          },
-          {
-            "id": 55424,
-            "name": "Novice Ardent's Sash"
-          },
-          {
-            "id": 4851,
-            "name": "Silk Headband"
-          },
-          {
-            "id": 2395,
-            "name": "Azure Silk Vest"
-          },
-          {
-            "id": 4302,
-            "name": "Brown Linen Robe"
-          },
-          {
-            "id": 55470,
-            "name": "Filigreed Flame Circlet"
-          },
-          {
-            "id": 2378,
-            "name": "Heavy Linen Gloves"
-          },
-          {
-            "id": 2371,
-            "name": "Woolen Cape"
-          },
-          {
-            "id": 55435,
-            "name": "Filigreed Pearly Gown"
-          },
-          {
-            "id": 4002,
-            "name": "Woolen Bag"
-          },
-          {
-            "id": 2361,
-            "name": "Brown Linen Vest"
           },
           {
             "id": 6576,
             "name": "Simple Linen Pants"
           },
           {
+            "id": 2408,
+            "name": "Brown Linen Pants"
+          },
+          {
+            "id": 2409,
+            "name": "Brown Linen Shirt"
+          },
+          {
+            "id": 4848,
+            "name": "Linen Belt"
+          },
+          {
+            "id": 4849,
+            "name": "Azure Silk Pants"
+          },
+          {
+            "id": 4850,
+            "name": "Azure Silk Hood"
+          },
+          {
+            "id": 4851,
+            "name": "Silk Headband"
+          },
+          {
+            "id": 2359,
+            "name": "Bolt of Linen Cloth"
+          },
+          {
+            "id": 2360,
+            "name": "Linen Cloak"
+          },
+          {
+            "id": 2361,
+            "name": "Brown Linen Vest"
+          },
+          {
+            "id": 2363,
+            "name": "Linen Boots"
+          },
+          {
+            "id": 2364,
+            "name": "Red Linen Shirt"
+          },
+          {
+            "id": 2365,
+            "name": "White Linen Shirt"
+          },
+          {
+            "id": 2366,
+            "name": "Blue Linen Shirt"
+          },
+          {
+            "id": 2367,
+            "name": "Reinforced Linen Cape"
+          },
+          {
+            "id": 2368,
+            "name": "Barbaric Linen Vest"
+          },
+          {
+            "id": 2369,
+            "name": "Green Linen Shirt"
+          },
+          {
+            "id": 2370,
+            "name": "Bolt of Woolen Cloth"
+          },
+          {
+            "id": 2371,
+            "name": "Woolen Cape"
+          },
+          {
+            "id": 2372,
+            "name": "Green Woolen Vest"
+          },
+          {
+            "id": 2376,
+            "name": "Bolt of Silk Cloth"
+          },
+          {
+            "id": 2378,
+            "name": "Heavy Linen Gloves"
+          },
+          {
+            "id": 2379,
+            "name": "Green Linen Bracers"
+          },
+          {
+            "id": 2380,
+            "name": "Handstitched Linen Britches"
+          },
+          {
+            "id": 2385,
+            "name": "Double-stitched Woolen Shoulders"
+          },
+          {
+            "id": 2387,
+            "name": "Heavy Woolen Pants"
+          },
+          {
+            "id": 2388,
+            "name": "Phoenix Pants"
+          },
+          {
+            "id": 2391,
+            "name": "Spidersilk Boots"
+          },
+          {
+            "id": 2395,
+            "name": "Azure Silk Vest"
+          },
+          {
+            "id": 3973,
+            "name": "Pearl-clasped Cloak"
+          },
+          {
+            "id": 4001,
+            "name": "Linen Bag"
+          },
+          {
+            "id": 4002,
+            "name": "Woolen Bag"
+          },
+          {
+            "id": 4019,
+            "name": "Red Linen Bag"
+          },
+          {
+            "id": 4020,
+            "name": "Red Woolen Bag"
+          },
+          {
+            "id": 4021,
+            "name": "Lesser Wizard's Robe"
+          },
+          {
+            "id": 4708,
+            "name": "Simple Dress"
+          },
+          {
+            "id": 4302,
+            "name": "Brown Linen Robe"
+          },
+          {
+            "id": 4303,
+            "name": "White Linen Robe"
+          },
+          {
+            "id": 4305,
+            "name": "Red Linen Vest"
+          },
+          {
+            "id": 56361,
+            "name": "Faction Banner"
+          },
+          {
+            "id": 55424,
+            "name": "Novice Ardent's Sash"
+          },
+          {
+            "id": 55433,
+            "name": "Filigreed Flame Gown"
+          },
+          {
+            "id": 55435,
+            "name": "Filigreed Pearly Gown"
+          },
+          {
+            "id": 55470,
+            "name": "Filigreed Flame Circlet"
+          },
+          {
             "id": 55366,
             "name": "Linen Reagent Bag"
+          },
+          {
+            "id": 55367,
+            "name": "Woolen Reagent Bag"
           }
         ]
       },
@@ -4676,7 +4680,7 @@
         },
         "Darnassus": {
           "name": "Friendly",
-          "raw": 8707,
+          "raw": 8776,
           "tier": 4
         },
         "Everlook": {
@@ -4691,17 +4695,17 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 6175,
+          "raw": 6243,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 8266,
+          "raw": 8447,
           "tier": 4
         },
         "Kirin Tor": {
           "name": "Neutral",
-          "raw": 1112,
+          "raw": 1250,
           "tier": 3
         },
         "Powderfuse": {
@@ -4716,7 +4720,7 @@
         },
         "Stormwind": {
           "name": "Honored",
-          "raw": 14933,
+          "raw": 15096,
           "tier": 5
         }
       },
@@ -4724,17 +4728,17 @@
       "stats": {
         "critters": 80,
         "deaths": 72,
-        "drinks": 779,
-        "flights": 51,
-        "food": 133,
+        "drinks": 785,
+        "flights": 53,
+        "food": 134,
         "health_potions": 48,
         "hearths": 26,
-        "killing_blows": 1792,
+        "killing_blows": 1794,
         "mana_potions": 16,
-        "mobs": 3759,
-        "quests": 292
+        "mobs": 3774,
+        "quests": 295
       },
-      "xp": 987
+      "xp": 12111
     }
   },
   "group": {
@@ -4855,63 +4859,63 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795629670,
+    "10 11 balance faction pvp updates": 1795630567,
     "10 11 class incoming tuning": 1795549574,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795629670,
+    "11 11 balance faction pvp updates": 1795630567,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795629670,
-    "11 14 adjustment dungeon level player xp": 1795629670,
-    "11 15 adjustment dungeon level player xp": 1795629670,
+    "11 13 lost purchase refunds training": 1795630567,
+    "11 14 adjustment dungeon level player xp": 1795630567,
+    "11 15 adjustment dungeon level player xp": 1795630567,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795629670,
+    "11 17 abuse actions blackmaw for hold": 1795630567,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
-    "11 2026 23 forever hotfixes wow": 1795629670,
+    "11 2026 23 forever hotfixes wow": 1795630567,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "60 at for gold quests": 1795629670,
-    "60 at from gold lvl no quests seriously": 1795629670,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795629670,
-    "8 catching classes episode forever on podcast the up wow": 1795629670,
+    "60 at for gold quests": 1795630567,
+    "60 at from gold lvl no quests seriously": 1795630567,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795630567,
+    "8 catching classes episode forever on podcast the up wow": 1795630567,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795629670,
-    "a explore forever gamepad with wow": 1795629670,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795630567,
+    "a explore forever gamepad with wow": 1795630567,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795629670,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795629670,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795630567,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795630567,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795629670,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795629670,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795629670,
-    "and economy exploit heuristic hold lockbox": 1795629670,
-    "and familiar feels forever new s what what wow": 1795629670,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795630567,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795630567,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795630567,
+    "and economy exploit heuristic hold lockbox": 1795630567,
+    "and familiar feels forever new s what what wow": 1795630567,
     "and language settings social": 1795109468,
-    "another exploit": 1795629670,
+    "another exploit": 1795630567,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "azeroth forever in of return to warcraft world": 1795629670,
+    "azeroth forever in of return to warcraft world": 1795630567,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795629670,
+    "bug epic mount riding skill": 1795630567,
     "bug forever forum guidelines report wow": 1795549574,
-    "bugged chaos missing monday s server shaman since totems": 1795629670,
-    "catching classes forever on podcast the up watch wow": 1795629670,
+    "bugged chaos missing monday s server shaman since totems": 1795630567,
+    "catching classes forever on podcast the up watch wow": 1795630567,
     "choose forever in of ruleset warcraft world your": 1794432680,
-    "cost forever honor of short story the watch wow": 1795629670,
-    "dungeon enough not still xp": 1795629670,
-    "dungeon increased majority the wants xp": 1795629670,
+    "cost forever honor of short story the watch wow": 1795630567,
+    "dungeon enough not still xp": 1795630567,
+    "dungeon increased majority the wants xp": 1795630567,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795629670,
+    "episode forever lore podcast the the watch wow": 1795630567,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795629670,
+    "forever guide new of player s starter to warcraft welcome world": 1795630567,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795629670
+    "forever live now of warcraft world": 1795630567
   },
   "news_started": true,
   "owners": {
@@ -5130,7 +5134,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795629672,
+  "saved_at": 1795630568,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
