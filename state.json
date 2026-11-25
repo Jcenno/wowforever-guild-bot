@@ -108,7 +108,7 @@
       },
       "ilvl": 31,
       "last_explored": "Wetlands",
-      "last_login": 1795563975000,
+      "last_login": 1795567979000,
       "level": 34,
       "level_at": {
         "24": 1794895272,
@@ -1314,31 +1314,40 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/21/55984661-avatar.jpg",
       "best_item": {
-        "id": 4381,
-        "ilvl": 28,
-        "name": "Minor Recombobulator",
-        "quality": "UNCOMMON",
-        "slot": "Trinket 1"
+        "id": 270230,
+        "ilvl": null,
+        "name": "Kindlegem Girdle",
+        "quality": "RARE",
+        "slot": "Waist"
       },
       "boss_kills": {
         "15027": {
           "boss": "Bazzalan",
-          "count": 1,
+          "count": 2,
           "instance": "Ragefire Chasm"
         },
         "63573": {
           "boss": "Durgen Dirgehammer",
-          "count": 1,
+          "count": 2,
           "instance": "Hall of Thanes"
         }
       },
       "class": "Paladin",
       "dungeons": {},
       "first_seen": 1795096871,
-      "gear": {},
+      "gear": {
+        "270230": {
+          "name": "Kindlegem Girdle",
+          "quality": "RARE"
+        },
+        "270260": {
+          "name": "Direhammer Leggings",
+          "quality": "RARE"
+        }
+      },
       "ilvl": 12,
       "last_explored": "Arathi Highlands",
-      "last_login": 1795521084000,
+      "last_login": 1795567955000,
       "level": 16,
       "level_at": {
         "14": 1795096871,
@@ -1354,20 +1363,16 @@
       "recipes": {
         "Engineering": [
           {
-            "id": 2421,
-            "name": "Crude Scope"
-          },
-          {
-            "id": 2432,
-            "name": "Large Copper Bomb"
-          },
-          {
             "id": 2437,
             "name": "Shadow Goggles"
           },
           {
-            "id": 2413,
-            "name": "Rough Blasting Powder"
+            "id": 2439,
+            "name": "Whirring Bronze Gizmo"
+          },
+          {
+            "id": 2441,
+            "name": "Heavy Blasting Powder"
           },
           {
             "id": 2442,
@@ -1378,80 +1383,8 @@
             "name": "Crafted Solid Shot"
           },
           {
-            "id": 2435,
-            "name": "Standard Scope"
-          },
-          {
-            "id": 52650,
-            "name": "Reagent Bot"
-          },
-          {
-            "id": 4606,
-            "name": "Practice Lock"
-          },
-          {
-            "id": 3945,
-            "name": "Ornate Spyglass"
-          },
-          {
-            "id": 2420,
-            "name": "Rough Boomstick"
-          },
-          {
-            "id": 2425,
-            "name": "Coarse Blasting Powder"
-          },
-          {
-            "id": 2427,
-            "name": "Coarse Dynamite"
-          },
-          {
-            "id": 2439,
-            "name": "Whirring Bronze Gizmo"
-          },
-          {
-            "id": 2428,
-            "name": "Target Dummy"
-          },
-          {
             "id": 2445,
             "name": "Big Bronze Bomb"
-          },
-          {
-            "id": 2426,
-            "name": "Crafted Heavy Shot"
-          },
-          {
-            "id": 6857,
-            "name": "Gold Power Core"
-          },
-          {
-            "id": 2422,
-            "name": "Silver Contact"
-          },
-          {
-            "id": 2430,
-            "name": "Flying Tiger Goggles"
-          },
-          {
-            "id": 2433,
-            "name": "Bronze Tube"
-          },
-          {
-            "id": 2423,
-            "name": "Copper Modulator"
-          },
-          {
-            "id": 2415,
-            "name": "Crafted Light Shot"
-          },
-          {
-            "id": 2431,
-            "name": "Deadly Blunderbuss"
-          },
-          {
-            "id": 2418,
-            "name": "Rough Copper Bomb"
           },
           {
             "id": 2447,
@@ -1466,54 +1399,130 @@
             "name": "Green Tinted Goggles"
           },
           {
+            "id": 2413,
+            "name": "Rough Blasting Powder"
+          },
+          {
             "id": 2414,
             "name": "Rough Dynamite"
           },
           {
-            "id": 2419,
-            "name": "Copper Tube"
+            "id": 2415,
+            "name": "Crafted Light Shot"
           },
           {
             "id": 2417,
             "name": "Handful of Copper Bolts"
           },
           {
-            "id": 4294,
-            "name": "Arclight Spanner"
+            "id": 2418,
+            "name": "Rough Copper Bomb"
+          },
+          {
+            "id": 2419,
+            "name": "Copper Tube"
+          },
+          {
+            "id": 2420,
+            "name": "Rough Boomstick"
+          },
+          {
+            "id": 2421,
+            "name": "Crude Scope"
+          },
+          {
+            "id": 2422,
+            "name": "Silver Contact"
+          },
+          {
+            "id": 2423,
+            "name": "Copper Modulator"
+          },
+          {
+            "id": 2425,
+            "name": "Coarse Blasting Powder"
+          },
+          {
+            "id": 2426,
+            "name": "Crafted Heavy Shot"
+          },
+          {
+            "id": 2427,
+            "name": "Coarse Dynamite"
+          },
+          {
+            "id": 2428,
+            "name": "Target Dummy"
+          },
+          {
+            "id": 2430,
+            "name": "Flying Tiger Goggles"
+          },
+          {
+            "id": 2431,
+            "name": "Deadly Blunderbuss"
+          },
+          {
+            "id": 2432,
+            "name": "Large Copper Bomb"
+          },
+          {
+            "id": 2433,
+            "name": "Bronze Tube"
+          },
+          {
+            "id": 2435,
+            "name": "Standard Scope"
+          },
+          {
+            "id": 4606,
+            "name": "Practice Lock"
           },
           {
             "id": 5067,
             "name": "Aquadynamic Fish Attractor"
           },
           {
-            "id": 2441,
-            "name": "Heavy Blasting Powder"
+            "id": 3945,
+            "name": "Ornate Spyglass"
+          },
+          {
+            "id": 4294,
+            "name": "Arclight Spanner"
+          },
+          {
+            "id": 6857,
+            "name": "Gold Power Core"
+          },
+          {
+            "id": 52650,
+            "name": "Reagent Bot"
           }
         ],
         "Mining": [
           {
-            "id": 3324,
-            "name": "Smelt Copper"
+            "id": 1848,
+            "name": "Smelt Tin"
           },
           {
             "id": 1570,
             "name": "Mining"
           },
           {
+            "id": 1599,
+            "name": "Smelt Silver"
+          },
+          {
             "id": 1600,
             "name": "Smelt Bronze"
           },
           {
-            "id": 1848,
-            "name": "Smelt Tin"
+            "id": 3324,
+            "name": "Smelt Copper"
           },
           {
             "id": 52643,
             "name": "Lodestone"
-          },
-          {
-            "id": 1599,
-            "name": "Smelt Silver"
           }
         ]
       },
@@ -1546,18 +1555,18 @@
       },
       "spec": "Retribution",
       "stats": {
-        "critters": 21,
+        "critters": 27,
         "deaths": 2,
         "drinks": 2,
         "flights": 14,
-        "food": 6,
+        "food": 8,
         "health_potions": 1,
         "hearths": 11,
-        "killing_blows": 564,
-        "mobs": 769,
+        "killing_blows": 599,
+        "mobs": 905,
         "quests": 73
       },
-      "xp": 5492
+      "xp": 15498
     },
     "us:pwanage-ownage": {
       "achievements": {
@@ -2133,11 +2142,11 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/175/30048687-avatar.jpg",
       "best_item": {
-        "id": 10047,
-        "ilvl": 15,
-        "name": "Simple Kilt",
+        "id": 6242,
+        "ilvl": null,
+        "name": "Blue Linen Robe",
         "quality": "UNCOMMON",
-        "slot": "Legs"
+        "slot": "Chest"
       },
       "boss_kills": {},
       "class": "Priest",
@@ -2146,7 +2155,7 @@
       "gear": {},
       "ilvl": 4,
       "last_explored": "Wetlands",
-      "last_login": 1795488861000,
+      "last_login": 1795568036000,
       "level": 10,
       "level_at": {
         "10": 1795390270
@@ -2161,30 +2170,30 @@
       "recipes": {
         "Cooking": [
           {
-            "id": 4786,
-            "name": "Herb Baked Egg"
-          },
-          {
-            "id": 52640,
-            "name": "Basic Campfire"
+            "id": 1535,
+            "name": "Charred Wolf Meat"
           },
           {
             "id": 1537,
             "name": "Roasted Boar Meat"
           },
           {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
           }
         ],
         "Enchanting": [
           {
-            "id": 4290,
-            "name": "Enchant Chest - Inferior Stamina"
+            "id": 7999,
+            "name": "Lesser Magic Wand"
           },
           {
-            "id": 52649,
-            "name": "Enchanted Lute"
+            "id": 13137,
+            "name": "Minor Wizard Oil"
           },
           {
             "id": 7316,
@@ -2195,35 +2204,135 @@
             "name": "Enchant Bracer - Inferior Stamina"
           },
           {
+            "id": 4290,
+            "name": "Enchant Chest - Inferior Stamina"
+          },
+          {
             "id": 4291,
             "name": "Runed Copper Rod"
-          },
-          {
-            "id": 4297,
-            "name": "Enchant Chest - Minor Intellect"
-          },
-          {
-            "id": 7999,
-            "name": "Lesser Magic Wand"
-          },
-          {
-            "id": 54214,
-            "name": "Novice's Practice Wand"
-          },
-          {
-            "id": 54213,
-            "name": "Dust to Motes"
           },
           {
             "id": 4293,
             "name": "Enchant Bracer - Minor Deflect"
           },
           {
-            "id": 13137,
-            "name": "Minor Wizard Oil"
+            "id": 4297,
+            "name": "Enchant Chest - Minor Intellect"
+          },
+          {
+            "id": 52649,
+            "name": "Enchanted Lute"
+          },
+          {
+            "id": 54213,
+            "name": "Dust to Motes"
+          },
+          {
+            "id": 54214,
+            "name": "Novice's Practice Wand"
           }
         ],
         "Tailoring": [
+          {
+            "id": 6577,
+            "name": "Simple Linen Boots"
+          },
+          {
+            "id": 6578,
+            "name": "Simple Kilt"
+          },
+          {
+            "id": 55423,
+            "name": "Novice Arcanist's Sash"
+          },
+          {
+            "id": 6576,
+            "name": "Simple Linen Pants"
+          },
+          {
+            "id": 2408,
+            "name": "Brown Linen Pants"
+          },
+          {
+            "id": 2409,
+            "name": "Brown Linen Shirt"
+          },
+          {
+            "id": 4848,
+            "name": "Linen Belt"
+          },
+          {
+            "id": 2359,
+            "name": "Bolt of Linen Cloth"
+          },
+          {
+            "id": 2360,
+            "name": "Linen Cloak"
+          },
+          {
+            "id": 2361,
+            "name": "Brown Linen Vest"
+          },
+          {
+            "id": 2363,
+            "name": "Linen Boots"
+          },
+          {
+            "id": 2364,
+            "name": "Red Linen Shirt"
+          },
+          {
+            "id": 2365,
+            "name": "White Linen Shirt"
+          },
+          {
+            "id": 2366,
+            "name": "Blue Linen Shirt"
+          },
+          {
+            "id": 2367,
+            "name": "Reinforced Linen Cape"
+          },
+          {
+            "id": 2368,
+            "name": "Barbaric Linen Vest"
+          },
+          {
+            "id": 2369,
+            "name": "Green Linen Shirt"
+          },
+          {
+            "id": 2370,
+            "name": "Bolt of Woolen Cloth"
+          },
+          {
+            "id": 2371,
+            "name": "Woolen Cape"
+          },
+          {
+            "id": 2372,
+            "name": "Green Woolen Vest"
+          },
+          {
+            "id": 2373,
+            "name": "Woolen Boots"
+          },
+          {
+            "id": 2378,
+            "name": "Heavy Linen Gloves"
+          },
+          {
+            "id": 2379,
+            "name": "Green Linen Bracers"
+          },
+          {
+            "id": 2380,
+            "name": "Handstitched Linen Britches"
+          },
+          {
+            "id": 2381,
+            "name": "Heavy Woolen Gloves"
+          },
           {
             "id": 2383,
             "name": "Soft-soled Linen Boots"
@@ -2233,152 +2342,52 @@
             "name": "Pearl-clasped Cloak"
           },
           {
-            "id": 56361,
-            "name": "Faction Banner"
-          },
-          {
-            "id": 2359,
-            "name": "Bolt of Linen Cloth"
-          },
-          {
-            "id": 2408,
-            "name": "Brown Linen Pants"
-          },
-          {
-            "id": 6578,
-            "name": "Simple Kilt"
-          },
-          {
-            "id": 4848,
-            "name": "Linen Belt"
-          },
-          {
-            "id": 4019,
-            "name": "Red Linen Bag"
-          },
-          {
-            "id": 2381,
-            "name": "Heavy Woolen Gloves"
-          },
-          {
-            "id": 55423,
-            "name": "Novice Arcanist's Sash"
-          },
-          {
-            "id": 2409,
-            "name": "Brown Linen Shirt"
-          },
-          {
-            "id": 2367,
-            "name": "Reinforced Linen Cape"
-          },
-          {
-            "id": 2363,
-            "name": "Linen Boots"
-          },
-          {
-            "id": 2372,
-            "name": "Green Woolen Vest"
-          },
-          {
-            "id": 2369,
-            "name": "Green Linen Shirt"
-          },
-          {
-            "id": 2380,
-            "name": "Handstitched Linen Britches"
-          },
-          {
-            "id": 2360,
-            "name": "Linen Cloak"
-          },
-          {
-            "id": 2373,
-            "name": "Woolen Boots"
-          },
-          {
-            "id": 2370,
-            "name": "Bolt of Woolen Cloth"
-          },
-          {
-            "id": 6577,
-            "name": "Simple Linen Boots"
-          },
-          {
-            "id": 4708,
-            "name": "Simple Dress"
-          },
-          {
-            "id": 4303,
-            "name": "White Linen Robe"
-          },
-          {
             "id": 4001,
             "name": "Linen Bag"
-          },
-          {
-            "id": 2365,
-            "name": "White Linen Shirt"
-          },
-          {
-            "id": 4020,
-            "name": "Red Woolen Bag"
-          },
-          {
-            "id": 2366,
-            "name": "Blue Linen Shirt"
-          },
-          {
-            "id": 55367,
-            "name": "Woolen Reagent Bag"
-          },
-          {
-            "id": 2364,
-            "name": "Red Linen Shirt"
-          },
-          {
-            "id": 2379,
-            "name": "Green Linen Bracers"
-          },
-          {
-            "id": 2368,
-            "name": "Barbaric Linen Vest"
-          },
-          {
-            "id": 55424,
-            "name": "Novice Ardent's Sash"
-          },
-          {
-            "id": 4302,
-            "name": "Brown Linen Robe"
-          },
-          {
-            "id": 2378,
-            "name": "Heavy Linen Gloves"
-          },
-          {
-            "id": 2371,
-            "name": "Woolen Cape"
-          },
-          {
-            "id": 4306,
-            "name": "Blue Linen Robe"
           },
           {
             "id": 4002,
             "name": "Woolen Bag"
           },
           {
-            "id": 2361,
-            "name": "Brown Linen Vest"
+            "id": 4019,
+            "name": "Red Linen Bag"
           },
           {
-            "id": 6576,
-            "name": "Simple Linen Pants"
+            "id": 4020,
+            "name": "Red Woolen Bag"
+          },
+          {
+            "id": 4708,
+            "name": "Simple Dress"
+          },
+          {
+            "id": 4302,
+            "name": "Brown Linen Robe"
+          },
+          {
+            "id": 4303,
+            "name": "White Linen Robe"
+          },
+          {
+            "id": 4306,
+            "name": "Blue Linen Robe"
+          },
+          {
+            "id": 56361,
+            "name": "Faction Banner"
+          },
+          {
+            "id": 55424,
+            "name": "Novice Ardent's Sash"
           },
           {
             "id": 55366,
             "name": "Linen Reagent Bag"
+          },
+          {
+            "id": 55367,
+            "name": "Woolen Reagent Bag"
           }
         ]
       },
@@ -2431,17 +2440,29 @@
         "quality": "UNCOMMON",
         "slot": "Chest"
       },
-      "boss_kills": {},
+      "boss_kills": {
+        "15027": {
+          "boss": "Bazzalan",
+          "count": 1,
+          "instance": "Ragefire Chasm"
+        },
+        "63573": {
+          "boss": "Durgen Dirgehammer",
+          "count": 1,
+          "instance": "Hall of Thanes"
+        }
+      },
       "class": "Hunter",
       "dungeons": {},
       "first_seen": 1795096871,
       "gear": {},
       "ilvl": 11,
       "last_explored": "Wetlands",
-      "last_login": 1795563996000,
-      "level": 19,
+      "last_login": 1795567942000,
+      "level": 20,
       "level_at": {
-        "19": 1795096871
+        "19": 1795096871,
+        "20": 1795568473
       },
       "professions": {
         "Cooking": 150,
@@ -2743,14 +2764,19 @@
           "raw": 13686,
           "tier": 5
         },
+        "Gadgetzan": {
+          "name": "Neutral",
+          "raw": 600,
+          "tier": 3
+        },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 4763,
+          "raw": 4863,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 4707,
+          "raw": 4907,
           "tier": 4
         },
         "Stormwind": {
@@ -2761,18 +2787,18 @@
       },
       "spec": "Marksmanship",
       "stats": {
-        "critters": 3,
+        "critters": 6,
         "deaths": 17,
-        "flights": 12,
-        "food": 6,
+        "flights": 13,
+        "food": 7,
         "health_potions": 6,
         "hearths": 13,
-        "killing_blows": 702,
+        "killing_blows": 743,
         "mana_potions": 1,
-        "mobs": 740,
-        "quests": 133
+        "mobs": 851,
+        "quests": 137
       },
-      "xp": 7252
+      "xp": 1032
     },
     "us:sparkee-runebrew": {
       "achievements": {
@@ -4644,7 +4670,8 @@
     "milestone_order": {
       "20": [
         "us:sparkee-runebrew",
-        "us:devil-latterday"
+        "us:devil-latterday",
+        "us:ryo-lithandros"
       ],
       "30": [
         "us:steel-appeal",
@@ -4704,66 +4731,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795567569,
+    "10 11 balance faction pvp updates": 1795568473,
     "10 11 class incoming tuning": 1795549574,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795567569,
+    "11 11 balance faction pvp updates": 1795568473,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795567569,
-    "11 14 adjustment dungeon level player xp": 1795567569,
-    "11 15 adjustment dungeon level player xp": 1795567569,
+    "11 13 lost purchase refunds training": 1795568473,
+    "11 14 adjustment dungeon level player xp": 1795568473,
+    "11 15 adjustment dungeon level player xp": 1795568473,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795567569,
+    "11 17 abuse actions blackmaw for hold": 1795568473,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
-    "11 2026 23 forever hotfixes wow": 1795567569,
+    "11 2026 23 forever hotfixes wow": 1795568473,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "60 at for gold quests": 1795567569,
-    "60 at from gold lvl no quests seriously": 1795567569,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795567569,
-    "8 catching classes episode forever on podcast the up wow": 1795567569,
+    "60 at for gold quests": 1795568473,
+    "60 at from gold lvl no quests seriously": 1795568473,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795568473,
+    "8 catching classes episode forever on podcast the up wow": 1795568473,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795567569,
-    "a explore forever gamepad with wow": 1795567569,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795568473,
+    "a explore forever gamepad with wow": 1795568473,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795567569,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795567569,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795568473,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795568473,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795567569,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795567569,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795567569,
-    "and economy exploit heuristic hold lockbox": 1795567569,
-    "and familiar feels forever new s what what wow": 1795567569,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795568473,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795568473,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795568473,
+    "and economy exploit heuristic hold lockbox": 1795568473,
+    "and familiar feels forever new s what what wow": 1795568473,
     "and language settings social": 1795109468,
-    "another exploit": 1795567569,
+    "another exploit": 1795568473,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "azeroth forever in of return to warcraft world": 1795567569,
+    "azeroth forever in of return to warcraft world": 1795568473,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795567569,
+    "bug epic mount riding skill": 1795568473,
     "bug forever forum guidelines report wow": 1795549574,
-    "bugged chaos missing monday s server shaman since totems": 1795567569,
-    "catching classes forever on podcast the up watch wow": 1795567569,
+    "bugged chaos missing monday s server shaman since totems": 1795568473,
+    "catching classes forever on podcast the up watch wow": 1795568473,
     "choose forever in of ruleset warcraft world your": 1794432680,
-    "cost forever honor of short story the watch wow": 1795567569,
-    "dungeon enough not still xp": 1795567569,
-    "dungeon increased majority the wants xp": 1795567569,
+    "cost forever honor of short story the watch wow": 1795568473,
+    "dungeon enough not still xp": 1795568473,
+    "dungeon increased majority the wants xp": 1795568473,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795567569,
+    "episode forever lore podcast the the watch wow": 1795568473,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795567569,
+    "forever guide new of player s starter to warcraft welcome world": 1795568473,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795567569,
-    "forever short story the unbowed watch wow": 1794358867
+    "forever live now of warcraft world": 1795568473
   },
   "news_started": true,
   "owners": {
@@ -4982,7 +5008,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795567571,
+  "saved_at": 1795568475,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
