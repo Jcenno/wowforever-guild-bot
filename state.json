@@ -775,42 +775,50 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/189/86038973-avatar.jpg",
       "best_item": {
-        "id": 2905,
-        "ilvl": 10,
-        "name": "Goat Fur Cloak",
-        "quality": "COMMON",
-        "slot": "Back"
+        "id": 279897,
+        "ilvl": null,
+        "name": "Dusty Belt",
+        "quality": "UNCOMMON",
+        "slot": "Waist"
       },
-      "boss_kills": {},
+      "boss_kills": {
+        "15027": {
+          "boss": "Bazzalan",
+          "count": 1,
+          "instance": "Ragefire Chasm"
+        },
+        "63573": {
+          "boss": "Durgen Dirgehammer",
+          "count": 1,
+          "instance": "Hall of Thanes"
+        }
+      },
       "class": "Shaman",
       "dungeons": {},
       "first_seen": 1795418167,
       "gear": {},
       "ilvl": 3,
       "last_explored": "Redridge Mountains",
-      "last_login": 1795501264000,
-      "level": 12,
+      "last_login": 1795572304000,
+      "level": 13,
       "level_at": {
         "11": 1795418167,
-        "12": 1795488371
+        "12": 1795488371,
+        "13": 1795572970
       },
       "professions": {
         "Cooking": 12,
-        "Engineering": 17,
+        "Engineering": 21,
         "First Aid": 38,
-        "Mining": 17
+        "Mining": 30
       },
       "race": "Dwarf",
       "raids": {},
       "recipes": {
         "Cooking": [
           {
-            "id": 4786,
-            "name": "Herb Baked Egg"
-          },
-          {
-            "id": 52640,
-            "name": "Basic Campfire"
+            "id": 1535,
+            "name": "Charred Wolf Meat"
           },
           {
             "id": 1536,
@@ -821,8 +829,12 @@
             "name": "Roasted Boar Meat"
           },
           {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
+            "id": 4786,
+            "name": "Herb Baked Egg"
+          },
+          {
+            "id": 52640,
+            "name": "Basic Campfire"
           }
         ],
         "Engineering": [
@@ -831,32 +843,40 @@
             "name": "Rough Blasting Powder"
           },
           {
+            "id": 2414,
+            "name": "Rough Dynamite"
+          },
+          {
             "id": 2415,
             "name": "Crafted Light Shot"
           },
           {
-            "id": 2414,
-            "name": "Rough Dynamite"
+            "id": 52650,
+            "name": "Reagent Bot"
           }
         ],
         "First Aid": [
           {
-            "id": 52641,
-            "name": "First Aid Kit"
-          },
-          {
             "id": 1838,
             "name": "Linen Bandage"
+          },
+          {
+            "id": 52641,
+            "name": "First Aid Kit"
           }
         ],
         "Mining": [
+          {
+            "id": 1569,
+            "name": "Mining"
+          },
           {
             "id": 3324,
             "name": "Smelt Copper"
           },
           {
-            "id": 1569,
-            "name": "Mining"
+            "id": 52643,
+            "name": "Lodestone"
           }
         ]
       },
@@ -866,14 +886,19 @@
           "raw": 3137,
           "tier": 4
         },
+        "Gadgetzan": {
+          "name": "Neutral",
+          "raw": 600,
+          "tier": 3
+        },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 6503,
+          "raw": 6778,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 7403,
+          "raw": 7778,
           "tier": 4
         },
         "Stormwind": {
@@ -884,14 +909,15 @@
       },
       "spec": "Elemental Combat",
       "stats": {
-        "critters": 24,
-        "deaths": 5,
-        "food": 9,
-        "killing_blows": 342,
-        "mobs": 330,
-        "quests": 55
+        "critters": 30,
+        "deaths": 8,
+        "drinks": 1,
+        "food": 12,
+        "killing_blows": 369,
+        "mobs": 442,
+        "quests": 66
       },
-      "xp": 552
+      "xp": 9926
     },
     "us:jetcar-stormblessed": {
       "achievements": {},
@@ -2443,12 +2469,12 @@
       "boss_kills": {
         "15027": {
           "boss": "Bazzalan",
-          "count": 1,
+          "count": 2,
           "instance": "Ragefire Chasm"
         },
         "63573": {
           "boss": "Durgen Dirgehammer",
-          "count": 1,
+          "count": 2,
           "instance": "Hall of Thanes"
         }
       },
@@ -2458,7 +2484,7 @@
       "gear": {},
       "ilvl": 11,
       "last_explored": "Wetlands",
-      "last_login": 1795567942000,
+      "last_login": 1795572484000,
       "level": 20,
       "level_at": {
         "19": 1795096871,
@@ -2468,7 +2494,7 @@
         "Cooking": 150,
         "Fishing": 5,
         "Leatherworking": 126,
-        "Skinning": 129
+        "Skinning": 131
       },
       "race": "Night Elf",
       "raids": {},
@@ -2787,18 +2813,19 @@
       },
       "spec": "Marksmanship",
       "stats": {
-        "critters": 6,
-        "deaths": 17,
+        "critters": 9,
+        "deaths": 18,
+        "drinks": 3,
         "flights": 13,
-        "food": 7,
+        "food": 9,
         "health_potions": 6,
         "hearths": 13,
-        "killing_blows": 743,
+        "killing_blows": 797,
         "mana_potions": 1,
-        "mobs": 851,
+        "mobs": 948,
         "quests": 137
       },
-      "xp": 1032
+      "xp": 5928
     },
     "us:sparkee-runebrew": {
       "achievements": {
@@ -4726,65 +4753,65 @@
   "news_seen": {
     "1 12 5 and forever highlights midnight more weekly worldcore wow wow": 1794504668,
     "10 11 2026 forever hotfixes wow": 1794444367,
-    "10 11 balance faction pvp updates": 1795572067,
+    "10 11 balance faction pvp updates": 1795572970,
     "10 11 class incoming tuning": 1795549574,
     "10 16 forever join of stress test the updated warcraft world": 1794505572,
     "11 11 2026 forever hotfixes wow": 1794881767,
-    "11 11 balance faction pvp updates": 1795572067,
+    "11 11 balance faction pvp updates": 1795572970,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795572067,
-    "11 14 adjustment dungeon level player xp": 1795572067,
-    "11 15 adjustment dungeon level player xp": 1795572067,
+    "11 13 lost purchase refunds training": 1795572970,
+    "11 14 adjustment dungeon level player xp": 1795572970,
+    "11 15 adjustment dungeon level player xp": 1795572970,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795572067,
+    "11 17 abuse actions blackmaw for hold": 1795572970,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
-    "11 2026 23 forever hotfixes wow": 1795572067,
+    "11 2026 23 forever hotfixes wow": 1795572970,
     "11 2026 6 forever hotfixes wow": 1794367867,
     "11 2026 9 forever hotfixes wow": 1794367867,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "60 at for gold quests": 1795572067,
-    "60 at from gold lvl no quests seriously": 1795572067,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795572067,
-    "8 catching classes episode forever on podcast the up wow": 1795572067,
+    "60 at for gold quests": 1795572970,
+    "60 at from gold lvl no quests seriously": 1795572970,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795572970,
+    "8 catching classes episode forever on podcast the up wow": 1795572970,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795572067,
-    "a explore forever gamepad with wow": 1795572067,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795572970,
+    "a explore forever gamepad with wow": 1795572970,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795572067,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795572067,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795572970,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795572970,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795572067,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795572067,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795572067,
-    "and economy exploit heuristic hold lockbox": 1795572067,
-    "and familiar feels forever new s what what wow": 1795572067,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795572970,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795572970,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795572970,
+    "and economy exploit heuristic hold lockbox": 1795572970,
+    "and familiar feels forever new s what what wow": 1795572970,
     "and language settings social": 1795109468,
-    "another exploit": 1795572067,
+    "another exploit": 1795572970,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "azeroth forever in of return to warcraft world": 1795572067,
+    "azeroth forever in of return to warcraft world": 1795572970,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795572067,
+    "bug epic mount riding skill": 1795572970,
     "bug forever forum guidelines report wow": 1795549574,
-    "bugged chaos missing monday s server shaman since totems": 1795572067,
-    "catching classes forever on podcast the up watch wow": 1795572067,
+    "bugged chaos missing monday s server shaman since totems": 1795572970,
+    "catching classes forever on podcast the up watch wow": 1795572970,
     "choose forever in of ruleset warcraft world your": 1794432680,
-    "cost forever honor of short story the watch wow": 1795572067,
-    "dungeon enough not still xp": 1795572067,
-    "dungeon increased majority the wants xp": 1795572067,
+    "cost forever honor of short story the watch wow": 1795572970,
+    "dungeon enough not still xp": 1795572970,
+    "dungeon increased majority the wants xp": 1795572970,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795572067,
+    "episode forever lore podcast the the watch wow": 1795572970,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795572067,
+    "forever guide new of player s starter to warcraft welcome world": 1795572970,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795572067
+    "forever live now of warcraft world": 1795572970
   },
   "news_started": true,
   "owners": {
@@ -5003,7 +5030,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795572068,
+  "saved_at": 1795572974,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
