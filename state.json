@@ -112,7 +112,7 @@
       },
       "ilvl": 31,
       "last_explored": "Wetlands",
-      "last_login": 1795673568000,
+      "last_login": 1795674488000,
       "level": 35,
       "level_at": {
         "24": 1794895272,
@@ -305,6 +305,7 @@
         "61989": "Novice Hunter",
         "776": "Explore Elwynn Forest",
         "780": "Explore Redridge Mountains",
+        "841": "Explore Wetlands",
         "842": "Explore Teldrassil"
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/43/66228267-avatar.jpg",
@@ -335,6 +336,11 @@
           "boss": "Aku'mai",
           "count": 2,
           "instance": "Blackfathom Deeps"
+        },
+        "6140": {
+          "boss": "Mekgineer Thermaplugg",
+          "count": 1,
+          "instance": "Gnomeregan"
         },
         "63571": {
           "boss": "Rath'mael",
@@ -392,6 +398,10 @@
           "name": "Fallenroot Longbow",
           "quality": "RARE"
         },
+        "281320": {
+          "name": "Rune-Etched Ring",
+          "quality": "RARE"
+        },
         "286977": {
           "name": "Sword of the Fallen",
           "quality": "RARE"
@@ -403,12 +413,16 @@
         "6633": {
           "name": "Butcher's Slicer",
           "quality": "RARE"
+        },
+        "9624": {
+          "name": "Triprunner Dungarees",
+          "quality": "RARE"
         }
       },
       "ilvl": 23,
-      "last_explored": "Redridge Mountains",
-      "last_login": 1795616567000,
-      "level": 30,
+      "last_explored": "Wetlands",
+      "last_login": 1795674555000,
+      "level": 32,
       "level_at": {
         "10": 1794895272,
         "12": 1794897066,
@@ -421,14 +435,15 @@
         "27": 1795398370,
         "28": 1795487471,
         "29": 1795500971,
-        "30": 1795582871
+        "30": 1795582871,
+        "32": 1795674671
       },
       "professions": {
         "Cooking": 96,
         "First Aid": 150,
         "Fishing": 40,
-        "Leatherworking": 85,
-        "Skinning": 201
+        "Leatherworking": 92,
+        "Skinning": 220
       },
       "race": "Night Elf",
       "raids": {},
@@ -505,6 +520,10 @@
           {
             "id": 52640,
             "name": "Basic Campfire"
+          },
+          {
+            "id": 54504,
+            "name": "Tasty Raptor Bites"
           },
           {
             "id": 54505,
@@ -743,9 +762,14 @@
           "raw": 2000,
           "tier": 3
         },
+        "Booty Bay": {
+          "name": "Neutral",
+          "raw": 500,
+          "tier": 3
+        },
         "Darnassus": {
           "name": "Honored",
-          "raw": 15338,
+          "raw": 15803,
           "tier": 5
         },
         "Gadgetzan": {
@@ -755,12 +779,12 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 5997,
+          "raw": 6912,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 6791,
+          "raw": 8051,
           "tier": 4
         },
         "Kirin Tor": {
@@ -775,26 +799,26 @@
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 8080,
+          "raw": 8695,
           "tier": 4
         }
       },
       "spec": "Beast Mastery",
       "stats": {
-        "critters": 114,
-        "deaths": 33,
-        "drinks": 11,
-        "flights": 28,
-        "food": 46,
-        "health_potions": 13,
-        "hearths": 12,
+        "critters": 117,
+        "deaths": 37,
+        "drinks": 16,
+        "flights": 30,
+        "food": 48,
+        "health_potions": 14,
+        "hearths": 13,
         "honorable_kills": 108,
-        "killing_blows": 2310,
+        "killing_blows": 2547,
         "mana_potions": 1,
-        "mobs": 3466,
-        "quests": 221
+        "mobs": 3973,
+        "quests": 243
       },
-      "xp": 26947
+      "xp": 24211
     },
     "us:heretic-latterday": {
       "achievements": {
@@ -1432,7 +1456,7 @@
       },
       "ilvl": 12,
       "last_explored": "Arathi Highlands",
-      "last_login": 1795673411000,
+      "last_login": 1795674263000,
       "level": 17,
       "level_at": {
         "14": 1795096871,
@@ -1664,7 +1688,7 @@
         "critters": 30,
         "deaths": 3,
         "drinks": 2,
-        "flights": 18,
+        "flights": 19,
         "food": 11,
         "health_potions": 1,
         "hearths": 12,
@@ -2289,9 +2313,9 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/175/30048687-avatar.jpg",
       "best_item": {
-        "id": 6242,
+        "id": 3310,
         "ilvl": null,
-        "name": "Blue Linen Robe",
+        "name": "Barbaric Cloth Vest",
         "quality": "UNCOMMON",
         "slot": "Chest"
       },
@@ -2302,7 +2326,7 @@
       "gear": {},
       "ilvl": 4,
       "last_explored": "Wetlands",
-      "last_login": 1795589922000,
+      "last_login": 1795674395000,
       "level": 13,
       "level_at": {
         "10": 1795390270,
@@ -2311,7 +2335,7 @@
       },
       "professions": {
         "Cooking": 5,
-        "Enchanting": 49,
+        "Enchanting": 50,
         "Tailoring": 99
       },
       "race": "Night Elf",
@@ -2616,7 +2640,7 @@
       "gear": {},
       "ilvl": 11,
       "last_explored": "Wetlands",
-      "last_login": 1795582294000,
+      "last_login": 1795674522000,
       "level": 20,
       "level_at": {
         "19": 1795096871,
@@ -3492,7 +3516,7 @@
       },
       "ilvl": 29,
       "last_explored": "Arathi Highlands",
-      "last_login": 1795663652000,
+      "last_login": 1795674163000,
       "level": 37,
       "level_at": {
         "10": 1794152175,
@@ -4973,60 +4997,60 @@
     "11 11 2026 forever hotfixes wow": 1794881767,
     "11 11 balance faction pvp updates": 1795631469,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795673769,
-    "11 14 adjustment dungeon level player xp": 1795673769,
-    "11 15 adjustment dungeon level player xp": 1795673769,
+    "11 13 lost purchase refunds training": 1795674671,
+    "11 14 adjustment dungeon level player xp": 1795674671,
+    "11 15 adjustment dungeon level player xp": 1795674671,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795673769,
+    "11 17 abuse actions blackmaw for hold": 1795674671,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
     "11 2026 23 forever hotfixes wow": 1795649473,
-    "11 2026 25 forever hotfixes wow": 1795673769,
-    "11 25 adjustments alterac valley": 1795673769,
-    "11 25 adjustments balance druid": 1795673769,
+    "11 2026 25 forever hotfixes wow": 1795674671,
+    "11 25 adjustments alterac valley": 1795674671,
+    "11 25 adjustments balance druid": 1795674671,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795673769,
+    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795674671,
     "60 at for gold quests": 1795631469,
     "60 at from gold lvl no quests seriously": 1795635066,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795673769,
-    "8 catching classes episode forever on podcast the up wow": 1795673769,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795674671,
+    "8 catching classes episode forever on podcast the up wow": 1795674671,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795673769,
-    "a explore forever gamepad with wow": 1795673769,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795674671,
+    "a explore forever gamepad with wow": 1795674671,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795673769,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795673769,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795674671,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795674671,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795673769,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795673769,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795673769,
-    "and economy exploit heuristic hold lockbox": 1795673769,
-    "and familiar feels forever new s what what wow": 1795673769,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795674671,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795674671,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795674671,
+    "and economy exploit heuristic hold lockbox": 1795674671,
+    "and familiar feels forever new s what what wow": 1795674671,
     "and language settings social": 1795109468,
-    "another exploit": 1795673769,
+    "another exploit": 1795674671,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "azeroth forever in of return to warcraft world": 1795673769,
+    "azeroth forever in of return to warcraft world": 1795674671,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795673769,
+    "bug epic mount riding skill": 1795674671,
     "bug forever forum guidelines report wow": 1795549574,
     "bugged chaos missing monday s server shaman since totems": 1795635066,
-    "catching classes forever on podcast the up watch wow": 1795673769,
-    "cost forever honor of short story the watch wow": 1795673769,
+    "catching classes forever on podcast the up watch wow": 1795674671,
+    "cost forever honor of short story the watch wow": 1795674671,
     "dungeon enough not still xp": 1795631469,
-    "dungeon increased majority the wants xp": 1795673769,
+    "dungeon increased majority the wants xp": 1795674671,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795673769,
+    "episode forever lore podcast the the watch wow": 1795674671,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795673769,
+    "forever guide new of player s starter to warcraft welcome world": 1795674671,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795673769
+    "forever live now of warcraft world": 1795674671
   },
   "news_started": true,
   "owners": {
@@ -5245,7 +5269,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795673770,
+  "saved_at": 1795674672,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
