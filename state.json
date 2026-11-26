@@ -863,20 +863,21 @@
       },
       "ilvl": 3,
       "last_explored": "Dun Morogh",
-      "last_login": 1795705578000,
-      "level": 15,
+      "last_login": 1795712713000,
+      "level": 16,
       "level_at": {
         "11": 1795418167,
         "12": 1795488371,
         "13": 1795572970,
         "14": 1795681869,
-        "15": 1795687272
+        "15": 1795687272,
+        "16": 1795713369
       },
       "professions": {
-        "Cooking": 19,
-        "Engineering": 21,
+        "Cooking": 23,
+        "Engineering": 31,
         "First Aid": 38,
-        "Mining": 33
+        "Mining": 35
       },
       "race": "Dwarf",
       "raids": {},
@@ -917,6 +918,14 @@
             "name": "Crafted Light Shot"
           },
           {
+            "id": 2417,
+            "name": "Handful of Copper Bolts"
+          },
+          {
+            "id": 2418,
+            "name": "Rough Copper Bomb"
+          },
+          {
             "id": 52650,
             "name": "Reagent Bot"
           }
@@ -949,7 +958,7 @@
       "reputations": {
         "Darnassus": {
           "name": "Friendly",
-          "raw": 3212,
+          "raw": 3387,
           "tier": 4
         },
         "Gadgetzan": {
@@ -959,31 +968,31 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 7228,
+          "raw": 7478,
           "tier": 4
         },
         "Ironforge": {
-          "name": "Friendly",
-          "raw": 8528,
-          "tier": 4
+          "name": "Honored",
+          "raw": 9153,
+          "tier": 5
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 3212,
+          "raw": 3387,
           "tier": 4
         }
       },
       "spec": "Elemental Combat",
       "stats": {
-        "critters": 48,
-        "deaths": 10,
-        "drinks": 7,
-        "food": 12,
-        "killing_blows": 507,
-        "mobs": 649,
-        "quests": 76
+        "critters": 56,
+        "deaths": 11,
+        "drinks": 11,
+        "food": 17,
+        "killing_blows": 623,
+        "mobs": 790,
+        "quests": 86
       },
-      "xp": 5938
+      "xp": 9771
     },
     "us:jetcar-stormblessed": {
       "achievements": {},
@@ -5042,59 +5051,59 @@
     "11 11 2026 forever hotfixes wow": 1794881767,
     "11 11 balance faction pvp updates": 1795631469,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795712470,
-    "11 14 adjustment dungeon level player xp": 1795712470,
-    "11 15 adjustment dungeon level player xp": 1795712470,
+    "11 13 lost purchase refunds training": 1795713369,
+    "11 14 adjustment dungeon level player xp": 1795713369,
+    "11 15 adjustment dungeon level player xp": 1795713369,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795712470,
+    "11 17 abuse actions blackmaw for hold": 1795713369,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
     "11 2026 23 forever hotfixes wow": 1795649473,
-    "11 2026 25 forever hotfixes wow": 1795712470,
-    "11 25 adjustments alterac valley": 1795712470,
-    "11 25 adjustments balance druid": 1795712470,
+    "11 2026 25 forever hotfixes wow": 1795713369,
+    "11 25 adjustments alterac valley": 1795713369,
+    "11 25 adjustments balance druid": 1795713369,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795712470,
+    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795713369,
     "60 at for gold quests": 1795631469,
     "60 at from gold lvl no quests seriously": 1795635066,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795712470,
-    "8 catching classes episode forever on podcast the up wow": 1795712470,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795713369,
+    "8 catching classes episode forever on podcast the up wow": 1795713369,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795712470,
-    "a explore forever gamepad with wow": 1795712470,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795713369,
+    "a explore forever gamepad with wow": 1795713369,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795712470,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795712470,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795713369,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795713369,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795712470,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795712470,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795712470,
-    "and economy exploit heuristic hold lockbox": 1795712470,
-    "and familiar feels forever new s what what wow": 1795712470,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795713369,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795713369,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795713369,
+    "and economy exploit heuristic hold lockbox": 1795713369,
+    "and familiar feels forever new s what what wow": 1795713369,
     "and language settings social": 1795109468,
-    "another exploit": 1795712470,
-    "azeroth forever in of return to warcraft world": 1795712470,
+    "another exploit": 1795713369,
+    "azeroth forever in of return to warcraft world": 1795713369,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795712470,
+    "bug epic mount riding skill": 1795713369,
     "bug forever forum guidelines report wow": 1795549574,
     "bugged chaos missing monday s server shaman since totems": 1795635066,
-    "catching classes forever on podcast the up watch wow": 1795712470,
-    "cost forever honor of short story the watch wow": 1795712470,
+    "catching classes forever on podcast the up watch wow": 1795713369,
+    "cost forever honor of short story the watch wow": 1795713369,
     "dungeon enough not still xp": 1795631469,
-    "dungeon increased majority the wants xp": 1795712470,
+    "dungeon increased majority the wants xp": 1795713369,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795712470,
+    "episode forever lore podcast the the watch wow": 1795713369,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795712470,
+    "forever guide new of player s starter to warcraft welcome world": 1795713369,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795712470
+    "forever live now of warcraft world": 1795713369
   },
   "news_started": true,
   "owners": {
@@ -5313,7 +5322,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795712471,
+  "saved_at": 1795713371,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
