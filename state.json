@@ -1237,11 +1237,11 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/44/65647404-avatar.jpg",
       "best_item": {
-        "id": 9763,
-        "ilvl": 14,
-        "name": "Cadet Leggings of the Bear",
+        "id": 10421,
+        "ilvl": null,
+        "name": "Rough Copper Vest",
         "quality": "UNCOMMON",
-        "slot": "Legs"
+        "slot": "Chest"
       },
       "boss_kills": {},
       "class": "Paladin",
@@ -1250,7 +1250,7 @@
       "gear": {},
       "ilvl": 3,
       "last_explored": "Wetlands",
-      "last_login": 1795483050000,
+      "last_login": 1795735267000,
       "level": 10,
       "level_at": {
         "10": 1795389369
@@ -1265,48 +1265,20 @@
       "recipes": {
         "Blacksmithing": [
           {
-            "id": 1632,
-            "name": "Copper Chain Belt"
-          },
-          {
-            "id": 4285,
-            "name": "Heavy Copper Maul"
-          },
-          {
-            "id": 54692,
-            "name": "Gemmed Copper Boots"
-          },
-          {
-            "id": 52645,
-            "name": "Sharpening Wheel"
-          },
-          {
-            "id": 1636,
-            "name": "Coarse Sharpening Stone"
-          },
-          {
             "id": 1798,
             "name": "Rough Weightstone"
           },
           {
-            "id": 54694,
-            "name": "Glowing Copper Boots"
+            "id": 1800,
+            "name": "Coarse Weightstone"
           },
           {
-            "id": 1633,
-            "name": "Copper Chain Pants"
+            "id": 1850,
+            "name": "Copper Battle Axe"
           },
           {
-            "id": 6636,
-            "name": "Rough Copper Vest"
-          },
-          {
-            "id": 1652,
-            "name": "Copper Shortsword"
-          },
-          {
-            "id": 1631,
-            "name": "Rough Sharpening Stone"
+            "id": 1851,
+            "name": "Thick War Axe"
           },
           {
             "id": 1855,
@@ -1317,63 +1289,99 @@
             "name": "Rough Grinding Stone"
           },
           {
-            "id": 4910,
-            "name": "Copper Dagger"
-          },
-          {
-            "id": 1634,
-            "name": "Copper Bracers"
-          },
-          {
-            "id": 1637,
-            "name": "Runed Copper Belt"
-          },
-          {
-            "id": 54693,
-            "name": "Strange Copper Boots"
-          },
-          {
-            "id": 1861,
-            "name": "Coarse Grinding Stone"
-          },
-          {
             "id": 1858,
             "name": "Runed Copper Gauntlets"
-          },
-          {
-            "id": 5338,
-            "name": "Copper Claymore"
-          },
-          {
-            "id": 1851,
-            "name": "Thick War Axe"
-          },
-          {
-            "id": 1850,
-            "name": "Copper Battle Axe"
-          },
-          {
-            "id": 1800,
-            "name": "Coarse Weightstone"
-          },
-          {
-            "id": 1646,
-            "name": "Copper Mace"
-          },
-          {
-            "id": 54212,
-            "name": "Copper Rod"
           },
           {
             "id": 1859,
             "name": "Runed Copper Pants"
           },
           {
+            "id": 1861,
+            "name": "Coarse Grinding Stone"
+          },
+          {
+            "id": 6636,
+            "name": "Rough Copper Vest"
+          },
+          {
+            "id": 1631,
+            "name": "Rough Sharpening Stone"
+          },
+          {
+            "id": 1632,
+            "name": "Copper Chain Belt"
+          },
+          {
+            "id": 1633,
+            "name": "Copper Chain Pants"
+          },
+          {
+            "id": 1634,
+            "name": "Copper Bracers"
+          },
+          {
+            "id": 1636,
+            "name": "Coarse Sharpening Stone"
+          },
+          {
+            "id": 1637,
+            "name": "Runed Copper Belt"
+          },
+          {
+            "id": 1646,
+            "name": "Copper Mace"
+          },
+          {
             "id": 1651,
             "name": "Copper Axe"
+          },
+          {
+            "id": 1652,
+            "name": "Copper Shortsword"
+          },
+          {
+            "id": 4910,
+            "name": "Copper Dagger"
+          },
+          {
+            "id": 5338,
+            "name": "Copper Claymore"
+          },
+          {
+            "id": 4285,
+            "name": "Heavy Copper Maul"
+          },
+          {
+            "id": 52645,
+            "name": "Sharpening Wheel"
+          },
+          {
+            "id": 54692,
+            "name": "Gemmed Copper Boots"
+          },
+          {
+            "id": 54693,
+            "name": "Strange Copper Boots"
+          },
+          {
+            "id": 54694,
+            "name": "Glowing Copper Boots"
+          },
+          {
+            "id": 54212,
+            "name": "Copper Rod"
           }
         ],
         "Cooking": [
+          {
+            "id": 1535,
+            "name": "Charred Wolf Meat"
+          },
+          {
+            "id": 1537,
+            "name": "Roasted Boar Meat"
+          },
           {
             "id": 4786,
             "name": "Herb Baked Egg"
@@ -1381,24 +1389,16 @@
           {
             "id": 52640,
             "name": "Basic Campfire"
-          },
-          {
-            "id": 1537,
-            "name": "Roasted Boar Meat"
-          },
-          {
-            "id": 1535,
-            "name": "Charred Wolf Meat"
           }
         ],
         "Mining": [
           {
-            "id": 3324,
-            "name": "Smelt Copper"
-          },
-          {
             "id": 1569,
             "name": "Mining"
+          },
+          {
+            "id": 3324,
+            "name": "Smelt Copper"
           }
         ]
       },
@@ -2382,7 +2382,7 @@
       },
       "ilvl": 4,
       "last_explored": "Teldrassil",
-      "last_login": 1795684048000,
+      "last_login": 1795735498000,
       "level": 15,
       "level_at": {
         "10": 1795390270,
@@ -2674,9 +2674,9 @@
         "hearths": 3,
         "killing_blows": 314,
         "mobs": 406,
-        "quests": 89
+        "quests": 90
       },
-      "xp": 4304
+      "xp": 4929
     },
     "us:ryo-lithandros": {
       "achievements": {
@@ -2712,7 +2712,7 @@
       "gear": {},
       "ilvl": 11,
       "last_explored": "Wetlands",
-      "last_login": 1795674522000,
+      "last_login": 1795735217000,
       "level": 20,
       "level_at": {
         "19": 1795096871,
@@ -5051,57 +5051,57 @@
     "11 11 2026 forever hotfixes wow": 1794881767,
     "11 11 balance faction pvp updates": 1795631469,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795734971,
-    "11 14 adjustment dungeon level player xp": 1795734971,
-    "11 15 adjustment dungeon level player xp": 1795734971,
+    "11 13 lost purchase refunds training": 1795735867,
+    "11 14 adjustment dungeon level player xp": 1795735867,
+    "11 15 adjustment dungeon level player xp": 1795735867,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795734971,
+    "11 17 abuse actions blackmaw for hold": 1795735867,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
     "11 2026 23 forever hotfixes wow": 1795649473,
-    "11 2026 25 forever hotfixes wow": 1795734971,
-    "11 25 adjustments alterac valley": 1795734971,
-    "11 25 adjustments balance druid": 1795734971,
+    "11 2026 25 forever hotfixes wow": 1795735867,
+    "11 25 adjustments alterac valley": 1795735867,
+    "11 25 adjustments balance druid": 1795735867,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795734971,
+    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795735867,
     "60 at for gold quests": 1795631469,
     "60 at from gold lvl no quests seriously": 1795635066,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795734971,
-    "8 catching classes episode forever on podcast the up wow": 1795734971,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795735867,
+    "8 catching classes episode forever on podcast the up wow": 1795735867,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795734971,
-    "a explore forever gamepad with wow": 1795734971,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795735867,
+    "a explore forever gamepad with wow": 1795735867,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795734971,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795734971,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795734971,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795734971,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795734971,
-    "and economy exploit heuristic hold lockbox": 1795734971,
-    "and familiar feels forever new s what what wow": 1795734971,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795735867,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795735867,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795735867,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795735867,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795735867,
+    "and economy exploit heuristic hold lockbox": 1795735867,
+    "and familiar feels forever new s what what wow": 1795735867,
     "and language settings social": 1795109468,
-    "another exploit": 1795734971,
-    "azeroth forever in of return to warcraft world": 1795734971,
+    "another exploit": 1795735867,
+    "azeroth forever in of return to warcraft world": 1795735867,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795734971,
+    "bug epic mount riding skill": 1795735867,
     "bug forever forum guidelines report wow": 1795549574,
     "bugged chaos missing monday s server shaman since totems": 1795635066,
-    "catching classes forever on podcast the up watch wow": 1795734971,
-    "cost forever honor of short story the watch wow": 1795734971,
+    "catching classes forever on podcast the up watch wow": 1795735867,
+    "cost forever honor of short story the watch wow": 1795735867,
     "dungeon enough not still xp": 1795631469,
-    "dungeon increased majority the wants xp": 1795734971,
-    "episode forever lore podcast the the watch wow": 1795734971,
+    "dungeon increased majority the wants xp": 1795735867,
+    "episode forever lore podcast the the watch wow": 1795735867,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795734971,
+    "forever guide new of player s starter to warcraft welcome world": 1795735867,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795734971
+    "forever live now of warcraft world": 1795735867
   },
   "news_started": true,
   "owners": {
@@ -5320,7 +5320,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795734972,
+  "saved_at": 1795735867,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
