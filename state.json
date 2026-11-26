@@ -421,7 +421,7 @@
       },
       "ilvl": 23,
       "last_explored": "Wetlands",
-      "last_login": 1795678056000,
+      "last_login": 1795681547000,
       "level": 32,
       "level_at": {
         "10": 1794895272,
@@ -825,21 +825,21 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/189/86038973-avatar.jpg",
       "best_item": {
-        "id": 279895,
+        "id": 270260,
         "ilvl": null,
-        "name": "Ironforge Greathammer",
+        "name": "Direhammer Leggings",
         "quality": "RARE",
-        "slot": "Main Hand"
+        "slot": "Legs"
       },
       "boss_kills": {
         "15027": {
           "boss": "Bazzalan",
-          "count": 1,
+          "count": 2,
           "instance": "Ragefire Chasm"
         },
         "63573": {
           "boss": "Durgen Dirgehammer",
-          "count": 1,
+          "count": 2,
           "instance": "Hall of Thanes"
         }
       },
@@ -847,6 +847,10 @@
       "dungeons": {},
       "first_seen": 1795418167,
       "gear": {
+        "270260": {
+          "name": "Direhammer Leggings",
+          "quality": "RARE"
+        },
         "279895": {
           "name": "Ironforge Greathammer",
           "quality": "RARE"
@@ -854,12 +858,13 @@
       },
       "ilvl": 3,
       "last_explored": "Wetlands",
-      "last_login": 1795677995000,
-      "level": 13,
+      "last_login": 1795681147000,
+      "level": 14,
       "level_at": {
         "11": 1795418167,
         "12": 1795488371,
-        "13": 1795572970
+        "13": 1795572970,
+        "14": 1795681869
       },
       "professions": {
         "Cooking": 12,
@@ -964,15 +969,15 @@
       },
       "spec": "Elemental Combat",
       "stats": {
-        "critters": 31,
-        "deaths": 8,
-        "drinks": 1,
+        "critters": 39,
+        "deaths": 10,
+        "drinks": 4,
         "food": 12,
-        "killing_blows": 375,
-        "mobs": 452,
+        "killing_blows": 390,
+        "mobs": 545,
         "quests": 66
       },
-      "xp": 10523
+      "xp": 3566
     },
     "us:jetcar-stormblessed": {
       "achievements": {},
@@ -1429,12 +1434,12 @@
       "boss_kills": {
         "15027": {
           "boss": "Bazzalan",
-          "count": 3,
+          "count": 4,
           "instance": "Ragefire Chasm"
         },
         "63573": {
           "boss": "Durgen Dirgehammer",
-          "count": 3,
+          "count": 4,
           "instance": "Hall of Thanes"
         }
       },
@@ -1453,11 +1458,15 @@
         "270260": {
           "name": "Direhammer Leggings",
           "quality": "RARE"
+        },
+        "279895": {
+          "name": "Ironforge Greathammer",
+          "quality": "RARE"
         }
       },
       "ilvl": 12,
       "last_explored": "Arathi Highlands",
-      "last_login": 1795677656000,
+      "last_login": 1795681432000,
       "level": 18,
       "level_at": {
         "14": 1795096871,
@@ -1639,11 +1648,6 @@
         ]
       },
       "reputations": {
-        "Argent Dawn": {
-          "name": "Neutral",
-          "raw": 200,
-          "tier": 3
-        },
         "Booty Bay": {
           "name": "Neutral",
           "raw": 502,
@@ -1666,12 +1670,12 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 3821,
+          "raw": 3921,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 4046,
+          "raw": 4146,
           "tier": 4
         },
         "Powderfuse": {
@@ -1692,19 +1696,19 @@
       },
       "spec": "Retribution",
       "stats": {
-        "critters": 31,
-        "deaths": 3,
+        "critters": 38,
+        "deaths": 4,
         "drinks": 2,
         "flights": 20,
-        "food": 11,
+        "food": 14,
         "health_potions": 1,
         "hearths": 12,
-        "killing_blows": 665,
+        "killing_blows": 700,
         "mana_potions": 1,
-        "mobs": 1108,
-        "quests": 85
+        "mobs": 1209,
+        "quests": 86
       },
-      "xp": 822
+      "xp": 8460
     },
     "us:pwanage-ownage": {
       "achievements": {
@@ -2320,25 +2324,46 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/175/30048687-avatar.jpg",
       "best_item": {
-        "id": 3310,
+        "id": 270227,
         "ilvl": null,
-        "name": "Barbaric Cloth Vest",
-        "quality": "UNCOMMON",
-        "slot": "Chest"
+        "name": "Ephemeral Choker",
+        "quality": "RARE",
+        "slot": "Neck"
       },
-      "boss_kills": {},
+      "boss_kills": {
+        "15027": {
+          "boss": "Bazzalan",
+          "count": 1,
+          "instance": "Ragefire Chasm"
+        },
+        "63573": {
+          "boss": "Durgen Dirgehammer",
+          "count": 1,
+          "instance": "Hall of Thanes"
+        }
+      },
       "class": "Priest",
       "dungeons": {},
       "first_seen": 1795390270,
-      "gear": {},
+      "gear": {
+        "270227": {
+          "name": "Ephemeral Choker",
+          "quality": "RARE"
+        },
+        "279896": {
+          "name": "Deepblaze",
+          "quality": "RARE"
+        }
+      },
       "ilvl": 4,
-      "last_explored": "Wetlands",
-      "last_login": 1795674395000,
-      "level": 13,
+      "last_explored": "Teldrassil",
+      "last_login": 1795681546000,
+      "level": 15,
       "level_at": {
         "10": 1795390270,
         "11": 1795576571,
-        "13": 1795590070
+        "13": 1795590070,
+        "15": 1795681869
       },
       "professions": {
         "Cooking": 5,
@@ -2582,36 +2607,43 @@
       "reputations": {
         "Darnassus": {
           "name": "Honored",
-          "raw": 9135,
+          "raw": 9235,
           "tier": 5
+        },
+        "Gadgetzan": {
+          "name": "Neutral",
+          "raw": 600,
+          "tier": 3
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 3223,
+          "raw": 3898,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 3223,
+          "raw": 4073,
           "tier": 4
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 3223,
+          "raw": 3248,
           "tier": 4
         }
       },
       "spec": "Discipline",
       "stats": {
-        "critters": 1,
-        "deaths": 2,
+        "critters": 9,
+        "deaths": 3,
+        "drinks": 1,
+        "flights": 2,
         "health_potions": 2,
         "hearths": 2,
-        "killing_blows": 277,
-        "mobs": 279,
-        "quests": 70
+        "killing_blows": 312,
+        "mobs": 404,
+        "quests": 86
       },
-      "xp": 99
+      "xp": 2414
     },
     "us:ryo-lithandros": {
       "achievements": {
@@ -3523,7 +3555,7 @@
       },
       "ilvl": 29,
       "last_explored": "Arathi Highlands",
-      "last_login": 1795678059000,
+      "last_login": 1795681636000,
       "level": 37,
       "level_at": {
         "10": 1794152175,
@@ -4079,7 +4111,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 17431,
+          "raw": 17456,
           "tier": 5
         },
         "Everlook": {
@@ -4099,12 +4131,12 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 7641,
+          "raw": 7666,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 8690,
+          "raw": 8790,
           "tier": 4
         },
         "Kirin Tor": {
@@ -4129,7 +4161,7 @@
         },
         "Stormwind": {
           "name": "Honored",
-          "raw": 10280,
+          "raw": 10305,
           "tier": 5
         }
       },
@@ -4143,11 +4175,11 @@
         "health_potions": 43,
         "hearths": 85,
         "honorable_kills": 2,
-        "killing_blows": 3094,
-        "mobs": 7255,
-        "quests": 338
+        "killing_blows": 3095,
+        "mobs": 7256,
+        "quests": 339
       },
-      "xp": 6134
+      "xp": 9629
     },
     "us:whizz-aard": {
       "achievements": {
@@ -5004,60 +5036,60 @@
     "11 11 2026 forever hotfixes wow": 1794881767,
     "11 11 balance faction pvp updates": 1795631469,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795680967,
-    "11 14 adjustment dungeon level player xp": 1795680967,
-    "11 15 adjustment dungeon level player xp": 1795680967,
+    "11 13 lost purchase refunds training": 1795681869,
+    "11 14 adjustment dungeon level player xp": 1795681869,
+    "11 15 adjustment dungeon level player xp": 1795681869,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795680967,
+    "11 17 abuse actions blackmaw for hold": 1795681869,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
     "11 2026 23 forever hotfixes wow": 1795649473,
-    "11 2026 25 forever hotfixes wow": 1795680967,
-    "11 25 adjustments alterac valley": 1795680967,
-    "11 25 adjustments balance druid": 1795680967,
+    "11 2026 25 forever hotfixes wow": 1795681869,
+    "11 25 adjustments alterac valley": 1795681869,
+    "11 25 adjustments balance druid": 1795681869,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795680967,
+    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795681869,
     "60 at for gold quests": 1795631469,
     "60 at from gold lvl no quests seriously": 1795635066,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795680967,
-    "8 catching classes episode forever on podcast the up wow": 1795680967,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795681869,
+    "8 catching classes episode forever on podcast the up wow": 1795681869,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795680967,
-    "a explore forever gamepad with wow": 1795680967,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795681869,
+    "a explore forever gamepad with wow": 1795681869,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795680967,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795680967,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795681869,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795681869,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795680967,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795680967,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795680967,
-    "and economy exploit heuristic hold lockbox": 1795680967,
-    "and familiar feels forever new s what what wow": 1795680967,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795681869,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795681869,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795681869,
+    "and economy exploit heuristic hold lockbox": 1795681869,
+    "and familiar feels forever new s what what wow": 1795681869,
     "and language settings social": 1795109468,
-    "another exploit": 1795680967,
+    "another exploit": 1795681869,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "azeroth forever in of return to warcraft world": 1795680967,
+    "azeroth forever in of return to warcraft world": 1795681869,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795680967,
+    "bug epic mount riding skill": 1795681869,
     "bug forever forum guidelines report wow": 1795549574,
     "bugged chaos missing monday s server shaman since totems": 1795635066,
-    "catching classes forever on podcast the up watch wow": 1795680967,
-    "cost forever honor of short story the watch wow": 1795680967,
+    "catching classes forever on podcast the up watch wow": 1795681869,
+    "cost forever honor of short story the watch wow": 1795681869,
     "dungeon enough not still xp": 1795631469,
-    "dungeon increased majority the wants xp": 1795680967,
+    "dungeon increased majority the wants xp": 1795681869,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795680967,
+    "episode forever lore podcast the the watch wow": 1795681869,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795680967,
+    "forever guide new of player s starter to warcraft welcome world": 1795681869,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795680967
+    "forever live now of warcraft world": 1795681869
   },
   "news_started": true,
   "owners": {
@@ -5276,7 +5308,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795680968,
+  "saved_at": 1795681870,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
