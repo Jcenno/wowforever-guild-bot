@@ -818,6 +818,7 @@
     "us:heretic-latterday": {
       "achievements": {
         "61989": "Novice Hunter",
+        "627": "Explore Dun Morogh",
         "776": "Explore Elwynn Forest",
         "780": "Explore Redridge Mountains",
         "841": "Explore Wetlands",
@@ -847,6 +848,10 @@
       "dungeons": {},
       "first_seen": 1795418167,
       "gear": {
+        "270256": {
+          "name": "Durgen's Crescent Axe",
+          "quality": "RARE"
+        },
         "270260": {
           "name": "Direhammer Leggings",
           "quality": "RARE"
@@ -857,20 +862,21 @@
         }
       },
       "ilvl": 3,
-      "last_explored": "Wetlands",
-      "last_login": 1795681147000,
-      "level": 14,
+      "last_explored": "Dun Morogh",
+      "last_login": 1795686533000,
+      "level": 15,
       "level_at": {
         "11": 1795418167,
         "12": 1795488371,
         "13": 1795572970,
-        "14": 1795681869
+        "14": 1795681869,
+        "15": 1795687272
       },
       "professions": {
         "Cooking": 12,
         "Engineering": 21,
         "First Aid": 38,
-        "Mining": 30
+        "Mining": 33
       },
       "race": "Dwarf",
       "raids": {},
@@ -943,7 +949,7 @@
       "reputations": {
         "Darnassus": {
           "name": "Friendly",
-          "raw": 3137,
+          "raw": 3187,
           "tier": 4
         },
         "Gadgetzan": {
@@ -953,31 +959,31 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 6778,
+          "raw": 7053,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 7778,
+          "raw": 8278,
           "tier": 4
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 3137,
+          "raw": 3187,
           "tier": 4
         }
       },
       "spec": "Elemental Combat",
       "stats": {
-        "critters": 39,
+        "critters": 47,
         "deaths": 10,
-        "drinks": 4,
+        "drinks": 7,
         "food": 12,
-        "killing_blows": 390,
-        "mobs": 545,
-        "quests": 66
+        "killing_blows": 493,
+        "mobs": 636,
+        "quests": 72
       },
-      "xp": 3566
+      "xp": 645
     },
     "us:jetcar-stormblessed": {
       "achievements": {},
@@ -5048,60 +5054,60 @@
     "11 11 2026 forever hotfixes wow": 1794881767,
     "11 11 balance faction pvp updates": 1795631469,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795686371,
-    "11 14 adjustment dungeon level player xp": 1795686371,
-    "11 15 adjustment dungeon level player xp": 1795686371,
+    "11 13 lost purchase refunds training": 1795687272,
+    "11 14 adjustment dungeon level player xp": 1795687272,
+    "11 15 adjustment dungeon level player xp": 1795687272,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795686371,
+    "11 17 abuse actions blackmaw for hold": 1795687272,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
     "11 2026 23 forever hotfixes wow": 1795649473,
-    "11 2026 25 forever hotfixes wow": 1795686371,
-    "11 25 adjustments alterac valley": 1795686371,
-    "11 25 adjustments balance druid": 1795686371,
+    "11 2026 25 forever hotfixes wow": 1795687272,
+    "11 25 adjustments alterac valley": 1795687272,
+    "11 25 adjustments balance druid": 1795687272,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795686371,
+    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795687272,
     "60 at for gold quests": 1795631469,
     "60 at from gold lvl no quests seriously": 1795635066,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795686371,
-    "8 catching classes episode forever on podcast the up wow": 1795686371,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795687272,
+    "8 catching classes episode forever on podcast the up wow": 1795687272,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795686371,
-    "a explore forever gamepad with wow": 1795686371,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795687272,
+    "a explore forever gamepad with wow": 1795687272,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795686371,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795686371,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795687272,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795687272,
     "and attunement forever locations of overview raid raid sizes warcraft world": 1794504668,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795686371,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795686371,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795686371,
-    "and economy exploit heuristic hold lockbox": 1795686371,
-    "and familiar feels forever new s what what wow": 1795686371,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795687272,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795687272,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795687272,
+    "and economy exploit heuristic hold lockbox": 1795687272,
+    "and familiar feels forever new s what what wow": 1795687272,
     "and language settings social": 1795109468,
-    "another exploit": 1795686371,
+    "another exploit": 1795687272,
     "around campfire forever gather in of the warcraft world": 1794499269,
-    "azeroth forever in of return to warcraft world": 1795686371,
+    "azeroth forever in of return to warcraft world": 1795687272,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795686371,
+    "bug epic mount riding skill": 1795687272,
     "bug forever forum guidelines report wow": 1795549574,
     "bugged chaos missing monday s server shaman since totems": 1795635066,
-    "catching classes forever on podcast the up watch wow": 1795686371,
-    "cost forever honor of short story the watch wow": 1795686371,
+    "catching classes forever on podcast the up watch wow": 1795687272,
+    "cost forever honor of short story the watch wow": 1795687272,
     "dungeon enough not still xp": 1795631469,
-    "dungeon increased majority the wants xp": 1795686371,
+    "dungeon increased majority the wants xp": 1795687272,
     "dungeons explore forever new of of the warcraft world": 1794505572,
-    "episode forever lore podcast the the watch wow": 1795686371,
+    "episode forever lore podcast the the watch wow": 1795687272,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795686371,
+    "forever guide new of player s starter to warcraft welcome world": 1795687272,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795686371
+    "forever live now of warcraft world": 1795687272
   },
   "news_started": true,
   "owners": {
@@ -5320,7 +5326,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795686372,
+  "saved_at": 1795687273,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
