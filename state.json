@@ -1529,6 +1529,11 @@
           "count": 4,
           "instance": "Ragefire Chasm"
         },
+        "63570": {
+          "boss": "Edwin VanCleef",
+          "count": 1,
+          "instance": "Deadmines"
+        },
         "63573": {
           "boss": "Durgen Dirgehammer",
           "count": 4,
@@ -1554,22 +1559,27 @@
         "279895": {
           "name": "Ironforge Greathammer",
           "quality": "RARE"
+        },
+        "286977": {
+          "name": "Sword of the Fallen",
+          "quality": "RARE"
         }
       },
       "ilvl": 12,
       "last_explored": "Arathi Highlands",
-      "last_login": 1795793733000,
-      "level": 18,
+      "last_login": 1795819597000,
+      "level": 19,
       "level_at": {
         "14": 1795096871,
         "15": 1795145468,
         "16": 1795171572,
         "17": 1795574766,
-        "18": 1795678266
+        "18": 1795678266,
+        "19": 1795820469
       },
       "professions": {
         "Engineering": 150,
-        "Mining": 120
+        "Mining": 121
       },
       "race": "Human",
       "raids": {},
@@ -1788,19 +1798,19 @@
       },
       "spec": "Retribution",
       "stats": {
-        "critters": 38,
+        "critters": 39,
         "deaths": 4,
         "drinks": 2,
-        "flights": 20,
-        "food": 14,
+        "flights": 21,
+        "food": 18,
         "health_potions": 1,
-        "hearths": 13,
-        "killing_blows": 700,
+        "hearths": 14,
+        "killing_blows": 751,
         "mana_potions": 1,
-        "mobs": 1209,
+        "mobs": 1452,
         "quests": 87
       },
-      "xp": 9360
+      "xp": 4293
     },
     "us:pwanage-ownage": {
       "achievements": {
@@ -4364,9 +4374,9 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/151/7402647-avatar.jpg",
       "best_item": {
-        "id": 281321,
+        "id": 7746,
         "ilvl": null,
-        "name": "Giantstone Medallion",
+        "name": "Explorers' League Commendation",
         "quality": "RARE",
         "slot": "Neck"
       },
@@ -4375,6 +4385,11 @@
           "boss": "Archmage Arugal",
           "count": 1,
           "instance": "Shadowfang Keep"
+        },
+        "1093": {
+          "boss": "Scarlet Commander Mograine",
+          "count": 1,
+          "instance": "Scarlet Monastery"
         },
         "15027": {
           "boss": "Bazzalan",
@@ -4425,6 +4440,11 @@
           "boss": "Durgen Dirgehammer",
           "count": 1,
           "instance": "Hall of Thanes"
+        },
+        "6786": {
+          "boss": "High Inquisitor Whitemane",
+          "count": 1,
+          "instance": "Scarlet Monastery"
         }
       },
       "class": "Mage",
@@ -4471,6 +4491,10 @@
           "name": "Thornweaver Drape",
           "quality": "RARE"
         },
+        "276898": {
+          "name": "Salve and Salvation",
+          "quality": "RARE"
+        },
         "281312": {
           "name": "Fallen Dragon's Scepter",
           "quality": "RARE"
@@ -4495,6 +4519,14 @@
           "name": "Bloodmage Mantle",
           "quality": "RARE"
         },
+        "7714": {
+          "name": "Hypnotic Blade",
+          "quality": "RARE"
+        },
+        "7746": {
+          "name": "Explorers' League Commendation",
+          "quality": "RARE"
+        },
         "9448": {
           "name": "Spidertank Oilrag",
           "quality": "RARE"
@@ -4502,8 +4534,8 @@
       },
       "ilvl": 25,
       "last_explored": "Redridge Mountains",
-      "last_login": 1795802944000,
-      "level": 34,
+      "last_login": 1795820230000,
+      "level": 35,
       "level_at": {
         "18": 1794190280,
         "19": 1794193265,
@@ -4521,13 +4553,14 @@
         "31": 1795489271,
         "32": 1795499170,
         "33": 1795649473,
-        "34": 1795668371
+        "34": 1795668371,
+        "35": 1795820469
       },
       "professions": {
         "Cooking": 65,
-        "Enchanting": 201,
+        "Enchanting": 205,
         "First Aid": 80,
-        "Tailoring": 134
+        "Tailoring": 143
       },
       "race": "Human",
       "raids": {},
@@ -4642,6 +4675,14 @@
           {
             "id": 7426,
             "name": "Enchant Weapon - Lesser Striking"
+          },
+          {
+            "id": 7530,
+            "name": "Enchant 2H Weapon - Impact"
+          },
+          {
+            "id": 7532,
+            "name": "Enchant Chest - Lesser Stats"
           },
           {
             "id": 7999,
@@ -4916,6 +4957,10 @@
             "name": "Azure Silk Vest"
           },
           {
+            "id": 2396,
+            "name": "Boots of the Enchanter"
+          },
+          {
             "id": 3973,
             "name": "Pearl-clasped Cloak"
           },
@@ -4986,6 +5031,10 @@
           {
             "id": 55367,
             "name": "Woolen Reagent Bag"
+          },
+          {
+            "id": 57018,
+            "name": "Spinning Wheel"
           }
         ]
       },
@@ -5006,9 +5055,9 @@
           "tier": 3
         },
         "Darnassus": {
-          "name": "Friendly",
-          "raw": 8976,
-          "tier": 4
+          "name": "Honored",
+          "raw": 9038,
+          "tier": 5
         },
         "Everlook": {
           "name": "Neutral",
@@ -5022,17 +5071,17 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 7068,
+          "raw": 7131,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 8647,
+          "raw": 8822,
           "tier": 4
         },
         "Kirin Tor": {
           "name": "Friendly",
-          "raw": 3465,
+          "raw": 3565,
           "tier": 4
         },
         "Powderfuse": {
@@ -5047,26 +5096,26 @@
         },
         "Stormwind": {
           "name": "Honored",
-          "raw": 15371,
+          "raw": 15508,
           "tier": 5
         }
       },
       "spec": "Fire",
       "stats": {
-        "critters": 85,
-        "deaths": 75,
-        "drinks": 949,
-        "flights": 59,
-        "food": 139,
-        "health_potions": 50,
+        "critters": 86,
+        "deaths": 78,
+        "drinks": 1019,
+        "flights": 61,
+        "food": 143,
+        "health_potions": 51,
         "hearths": 28,
         "honorable_kills": 1,
-        "killing_blows": 2038,
-        "mana_potions": 19,
-        "mobs": 4891,
-        "quests": 311
+        "killing_blows": 2092,
+        "mana_potions": 21,
+        "mobs": 5012,
+        "quests": 315
       },
-      "xp": 23937
+      "xp": 1267
     }
   },
   "group": {
@@ -5101,7 +5150,8 @@
           "us:steel-appeal"
         ],
         "Scarlet Monastery: Cathedral": [
-          "us:steel-appeal"
+          "us:steel-appeal",
+          "us:whizz-aard"
         ],
         "Shadowfang Keep": "us:steel-appeal",
         "The Deadmines": [
@@ -5121,7 +5171,8 @@
     "firsts_pending": {
       "dungeon|Scarlet Monastery: Cathedral": {
         "keys": [
-          "us:steel-appeal"
+          "us:steel-appeal",
+          "us:whizz-aard"
         ],
         "kind": "dungeon",
         "since": 1795788971,
@@ -5186,57 +5237,57 @@
     "11 11 2026 forever hotfixes wow": 1794881767,
     "11 11 balance faction pvp updates": 1795631469,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795819567,
-    "11 14 adjustment dungeon level player xp": 1795819567,
-    "11 15 adjustment dungeon level player xp": 1795819567,
+    "11 13 lost purchase refunds training": 1795820469,
+    "11 14 adjustment dungeon level player xp": 1795820469,
+    "11 15 adjustment dungeon level player xp": 1795820469,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795819567,
+    "11 17 abuse actions blackmaw for hold": 1795820469,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
     "11 2026 23 forever hotfixes wow": 1795649473,
-    "11 2026 25 forever hotfixes wow": 1795819567,
-    "11 25 adjustments alterac valley": 1795819567,
-    "11 25 adjustments balance druid": 1795819567,
+    "11 2026 25 forever hotfixes wow": 1795820469,
+    "11 25 adjustments alterac valley": 1795820469,
+    "11 25 adjustments balance druid": 1795820469,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795819567,
+    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795820469,
     "60 at for gold quests": 1795631469,
     "60 at from gold lvl no quests seriously": 1795635066,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795819567,
-    "8 catching classes episode forever on podcast the up wow": 1795819567,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795820469,
+    "8 catching classes episode forever on podcast the up wow": 1795820469,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795819567,
-    "a explore forever gamepad with wow": 1795819567,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795820469,
+    "a explore forever gamepad with wow": 1795820469,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795819567,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795819567,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795819567,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795819567,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795819567,
-    "and economy exploit heuristic hold lockbox": 1795819567,
-    "and familiar feels forever new s what what wow": 1795819567,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795820469,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795820469,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795820469,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795820469,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795820469,
+    "and economy exploit heuristic hold lockbox": 1795820469,
+    "and familiar feels forever new s what what wow": 1795820469,
     "and language settings social": 1795109468,
-    "another exploit": 1795819567,
-    "azeroth forever in of return to warcraft world": 1795819567,
+    "another exploit": 1795820469,
+    "azeroth forever in of return to warcraft world": 1795820469,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795819567,
+    "bug epic mount riding skill": 1795820469,
     "bug forever forum guidelines report wow": 1795549574,
     "bugged chaos missing monday s server shaman since totems": 1795635066,
-    "catching classes forever on podcast the up watch wow": 1795819567,
-    "cost forever honor of short story the watch wow": 1795819567,
+    "catching classes forever on podcast the up watch wow": 1795820469,
+    "cost forever honor of short story the watch wow": 1795820469,
     "dungeon enough not still xp": 1795631469,
-    "dungeon increased majority the wants xp": 1795819567,
-    "episode forever lore podcast the the watch wow": 1795819567,
+    "dungeon increased majority the wants xp": 1795820469,
+    "episode forever lore podcast the the watch wow": 1795820469,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795819567,
+    "forever guide new of player s starter to warcraft welcome world": 1795820469,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795819567
+    "forever live now of warcraft world": 1795820469
   },
   "news_started": true,
   "owners": {
@@ -5344,7 +5395,7 @@
       {
         "class": null,
         "guild": true,
-        "level": 38,
+        "level": 39,
         "name": "Steel",
         "rank": 0,
         "region": "us",
@@ -5353,9 +5404,9 @@
       {
         "class": null,
         "guild": true,
-        "level": 34,
+        "level": 35,
         "name": "Whizz",
-        "rank": 1,
+        "rank": 2,
         "region": "us",
         "surname": "Aard"
       },
@@ -5364,7 +5415,7 @@
         "guild": true,
         "level": 20,
         "name": "Ryo",
-        "rank": 2,
+        "rank": 3,
         "region": "us",
         "surname": "Lithandros"
       },
@@ -5373,16 +5424,16 @@
         "guild": true,
         "level": 22,
         "name": "Sparkee",
-        "rank": 2,
+        "rank": 3,
         "region": "us",
         "surname": "Runebrew"
       },
       {
         "class": null,
         "guild": true,
-        "level": 34,
+        "level": 35,
         "name": "Pwanage",
-        "rank": 1,
+        "rank": 2,
         "region": "us",
         "surname": "Ownage"
       },
@@ -5391,7 +5442,7 @@
         "guild": true,
         "level": 36,
         "name": "Aeri",
-        "rank": 1,
+        "rank": 2,
         "region": "us",
         "surname": "Moonglow"
       },
@@ -5400,16 +5451,16 @@
         "guild": true,
         "level": 15,
         "name": "Runarii",
-        "rank": 2,
+        "rank": 3,
         "region": "us",
         "surname": "Lithandros"
       },
       {
         "class": null,
         "guild": true,
-        "level": 18,
+        "level": 19,
         "name": "Pharaoh",
-        "rank": 2,
+        "rank": 3,
         "region": "us",
         "surname": "Nuff"
       },
@@ -5418,7 +5469,7 @@
         "guild": true,
         "level": 10,
         "name": "Leo",
-        "rank": 4,
+        "rank": 5,
         "region": "us",
         "surname": "Orion"
       },
@@ -5434,18 +5485,18 @@
       {
         "class": null,
         "guild": true,
-        "level": 17,
+        "level": 19,
         "name": "Jetcar",
-        "rank": 1,
+        "rank": 2,
         "region": "us",
         "surname": "Stormblessed"
       },
       {
         "class": null,
         "guild": true,
-        "level": 17,
+        "level": 18,
         "name": "Heretic",
-        "rank": 2,
+        "rank": 3,
         "region": "us",
         "surname": "Latterday"
       }
@@ -5455,7 +5506,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795819568,
+  "saved_at": 1795820471,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
