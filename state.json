@@ -113,7 +113,7 @@
       },
       "ilvl": 31,
       "last_explored": "Wetlands",
-      "last_login": 1795750964000,
+      "last_login": 1795762104000,
       "level": 36,
       "level_at": {
         "24": 1794895272,
@@ -131,7 +131,7 @@
       },
       "professions": {
         "Cooking": 29,
-        "Herbalism": 225,
+        "Herbalism": 228,
         "Skinning": 235
       },
       "race": "High Order Skyborne",
@@ -288,23 +288,24 @@
       },
       "spec": "Feral Combat",
       "stats": {
-        "critters": 20,
+        "critters": 31,
         "deaths": 58,
         "drinks": 17,
-        "flights": 62,
-        "food": 15,
+        "flights": 63,
+        "food": 19,
         "health_potions": 24,
-        "hearths": 40,
-        "killing_blows": 2318,
+        "hearths": 41,
+        "killing_blows": 2425,
         "mana_potions": 4,
-        "mobs": 3947,
+        "mobs": 4191,
         "quests": 339
       },
-      "xp": 977
+      "xp": 23919
     },
     "us:devil-latterday": {
       "achievements": {
         "61989": "Novice Hunter",
+        "627": "Explore Dun Morogh",
         "776": "Explore Elwynn Forest",
         "780": "Explore Redridge Mountains",
         "841": "Explore Wetlands",
@@ -416,15 +417,19 @@
           "name": "Butcher's Slicer",
           "quality": "RARE"
         },
+        "7756": {
+          "name": "Dog Training Gloves",
+          "quality": "RARE"
+        },
         "9624": {
           "name": "Triprunner Dungarees",
           "quality": "RARE"
         }
       },
       "ilvl": 23,
-      "last_explored": "Wetlands",
-      "last_login": 1795681547000,
-      "level": 32,
+      "last_explored": "Dun Morogh",
+      "last_login": 1795762178000,
+      "level": 33,
       "level_at": {
         "10": 1794895272,
         "12": 1794897066,
@@ -438,7 +443,8 @@
         "28": 1795487471,
         "29": 1795500971,
         "30": 1795582871,
-        "32": 1795674671
+        "32": 1795674671,
+        "33": 1795762870
       },
       "professions": {
         "Cooking": 96,
@@ -451,6 +457,14 @@
       "raids": {},
       "recipes": {
         "Cooking": [
+          {
+            "id": 1871,
+            "name": "Crocolisk Steak"
+          },
+          {
+            "id": 1872,
+            "name": "Blood Sausage"
+          },
           {
             "id": 1873,
             "name": "Murloc Fin Soup"
@@ -476,12 +490,20 @@
             "name": "Coyote Steak"
           },
           {
+            "id": 1539,
+            "name": "Goretusk Liver Pie"
+          },
+          {
             "id": 1540,
             "name": "Westfall Stew"
           },
           {
             "id": 1543,
             "name": "Crab Cake"
+          },
+          {
+            "id": 1544,
+            "name": "Cooked Crab Claw"
           },
           {
             "id": 1545,
@@ -533,6 +555,10 @@
           }
         ],
         "First Aid": [
+          {
+            "id": 4414,
+            "name": "Silk Bandage"
+          },
           {
             "id": 4417,
             "name": "Anti-Venom"
@@ -622,6 +648,10 @@
             "name": "Medium Armor Kit"
           },
           {
+            "id": 1368,
+            "name": "Toughened Leather Armor"
+          },
+          {
             "id": 1369,
             "name": "Gray Leather Boots"
           },
@@ -682,8 +712,20 @@
             "name": "Black Whelp Cloak"
           },
           {
+            "id": 4996,
+            "name": "Nimble Leather Gloves"
+          },
+          {
+            "id": 5026,
+            "name": "Fletcher's Gloves"
+          },
+          {
             "id": 2172,
             "name": "Fine Leather Belt"
+          },
+          {
+            "id": 2175,
+            "name": "Dark Leather Belt"
           },
           {
             "id": 2195,
@@ -710,8 +752,16 @@
             "name": "Fine Leather Pants"
           },
           {
+            "id": 4159,
+            "name": "Dark Leather Pants"
+          },
+          {
             "id": 52647,
             "name": "Camp Tent"
+          },
+          {
+            "id": 55173,
+            "name": "Totemic Leather Pants"
           },
           {
             "id": 55184,
@@ -766,7 +816,7 @@
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 15803,
+          "raw": 15853,
           "tier": 5
         },
         "Gadgetzan": {
@@ -776,12 +826,12 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 6912,
+          "raw": 7162,
           "tier": 4
         },
         "Ironforge": {
           "name": "Friendly",
-          "raw": 8051,
+          "raw": 8101,
           "tier": 4
         },
         "Kirin Tor": {
@@ -796,26 +846,26 @@
         },
         "Stormwind": {
           "name": "Friendly",
-          "raw": 8695,
+          "raw": 8995,
           "tier": 4
         }
       },
       "spec": "Beast Mastery",
       "stats": {
-        "critters": 117,
+        "critters": 127,
         "deaths": 37,
-        "drinks": 16,
-        "flights": 30,
-        "food": 48,
+        "drinks": 21,
+        "flights": 31,
+        "food": 52,
         "health_potions": 14,
         "hearths": 13,
         "honorable_kills": 108,
-        "killing_blows": 2547,
+        "killing_blows": 2622,
         "mana_potions": 1,
-        "mobs": 3973,
-        "quests": 243
+        "mobs": 4214,
+        "quests": 251
       },
-      "xp": 24211
+      "xp": 4297
     },
     "us:heretic-latterday": {
       "achievements": {
@@ -3400,9 +3450,9 @@
       },
       "avatar": "https://render.worldofwarcraft.com/forever-us/character/15/5623311-avatar.jpg",
       "best_item": {
-        "id": 6686,
+        "id": 274291,
         "ilvl": null,
-        "name": "Tusken Helm",
+        "name": "Polished Skullcap",
         "quality": "RARE",
         "slot": "Head"
       },
@@ -3467,6 +3517,10 @@
       "dungeons": {},
       "first_seen": 1794152175,
       "gear": {
+        "10329": {
+          "name": "Scarlet Belt",
+          "quality": "RARE"
+        },
         "13245": {
           "name": "Kresh's Back",
           "quality": "RARE"
@@ -3531,6 +3585,10 @@
           "name": "Quillord Mail Leggings",
           "quality": "RARE"
         },
+        "274291": {
+          "name": "Polished Skullcap",
+          "quality": "RARE"
+        },
         "274292": {
           "name": "Houndmaster Boomerang",
           "quality": "RARE"
@@ -3545,6 +3603,10 @@
         },
         "2933": {
           "name": "Seal of Wrynn",
+          "quality": "RARE"
+        },
+        "3456": {
+          "name": "Dog Whistle",
           "quality": "RARE"
         },
         "5191": {
@@ -3610,8 +3672,8 @@
       },
       "ilvl": 29,
       "last_explored": "Arathi Highlands",
-      "last_login": 1795730327000,
-      "level": 37,
+      "last_login": 1795762056000,
+      "level": 38,
       "level_at": {
         "10": 1794152175,
         "12": 1794167884,
@@ -3637,14 +3699,15 @@
         "34": 1795419070,
         "35": 1795472170,
         "36": 1795525276,
-        "37": 1795663867
+        "37": 1795663867,
+        "38": 1795762870
       },
       "professions": {
         "Blacksmithing": 169,
         "Cooking": 300,
         "First Aid": 216,
         "Fishing": 227,
-        "Mining": 242
+        "Mining": 243
       },
       "race": "Night Elf",
       "raids": {},
@@ -3903,6 +3966,10 @@
             "name": "Veteran's Silvered Chain Helm"
           },
           {
+            "id": 54748,
+            "name": "Hard Gold Leggings"
+          },
+          {
             "id": 54768,
             "name": "Officer's Belt"
           },
@@ -4156,27 +4223,32 @@
         },
         "Azeroth Commerce Authority": {
           "name": "Neutral",
-          "raw": 2225,
+          "raw": 2350,
           "tier": 3
+        },
+        "Bloodsail Buccaneers": {
+          "name": "Hated",
+          "raw": -7275,
+          "tier": 0
         },
         "Booty Bay": {
           "name": "Neutral",
-          "raw": 943,
+          "raw": 1094,
           "tier": 3
         },
         "Darnassus": {
           "name": "Honored",
-          "raw": 17581,
+          "raw": 17668,
           "tier": 5
         },
         "Everlook": {
           "name": "Neutral",
-          "raw": 943,
+          "raw": 1018,
           "tier": 3
         },
         "Gadgetzan": {
           "name": "Neutral",
-          "raw": 1043,
+          "raw": 1118,
           "tier": 3
         },
         "Gelkis Clan Centaur": {
@@ -4186,12 +4258,12 @@
         },
         "Gnomeregan Exiles": {
           "name": "Friendly",
-          "raw": 8016,
+          "raw": 8103,
           "tier": 4
         },
         "Ironforge": {
           "name": "Honored",
-          "raw": 9015,
+          "raw": 9102,
           "tier": 5
         },
         "Kirin Tor": {
@@ -4206,35 +4278,35 @@
         },
         "Powderfuse": {
           "name": "Neutral",
-          "raw": 943,
+          "raw": 1018,
           "tier": 3
         },
         "Ratchet": {
           "name": "Neutral",
-          "raw": 1386,
+          "raw": 1461,
           "tier": 3
         },
         "Stormwind": {
           "name": "Honored",
-          "raw": 10580,
+          "raw": 10930,
           "tier": 5
         }
       },
       "spec": "Protection",
       "stats": {
-        "critters": 188,
+        "critters": 199,
         "deaths": 31,
         "drinks": 2,
-        "flights": 150,
-        "food": 196,
-        "health_potions": 45,
-        "hearths": 89,
+        "flights": 159,
+        "food": 213,
+        "health_potions": 46,
+        "hearths": 93,
         "honorable_kills": 2,
-        "killing_blows": 3179,
-        "mobs": 7505,
-        "quests": 347
+        "killing_blows": 3350,
+        "mobs": 7926,
+        "quests": 358
       },
-      "xp": 56552
+      "xp": 56809
     },
     "us:whizz-aard": {
       "achievements": {
@@ -5061,57 +5133,57 @@
     "11 11 2026 forever hotfixes wow": 1794881767,
     "11 11 balance faction pvp updates": 1795631469,
     "11 13 2026 forever hotfixes wow": 1794881767,
-    "11 13 lost purchase refunds training": 1795761969,
-    "11 14 adjustment dungeon level player xp": 1795761969,
-    "11 15 adjustment dungeon level player xp": 1795761969,
+    "11 13 lost purchase refunds training": 1795762870,
+    "11 14 adjustment dungeon level player xp": 1795762870,
+    "11 15 adjustment dungeon level player xp": 1795762870,
     "11 16 2026 forever hotfixes wow": 1794971772,
     "11 17 2026 blizzard forever hotfixes news wow": 1795038373,
     "11 17 2026 forever hotfixes wow": 1795148167,
-    "11 17 abuse actions blackmaw for hold": 1795761969,
+    "11 17 abuse actions blackmaw for hold": 1795762870,
     "11 19 2026 forever hotfixes wow": 1795221067,
     "11 2 beta development forever notes updated wow": 1794941175,
     "11 20 2026 forever hotfixes wow": 1795486569,
     "11 2026 23 forever hotfixes wow": 1795649473,
-    "11 2026 25 forever hotfixes wow": 1795761969,
-    "11 25 adjustments alterac valley": 1795761969,
-    "11 25 adjustments balance druid": 1795761969,
+    "11 2026 25 forever hotfixes wow": 1795762870,
+    "11 25 adjustments alterac valley": 1795762870,
+    "11 25 adjustments balance druid": 1795762870,
     "11 3 beta development forever notes updated wow": 1794941175,
     "11 5 forever issues known updated wow": 1795549574,
     "11 8 dungeon enemy increased xp": 1795549574,
-    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795761969,
+    "12 aketh al and celebration comic forever in more pass post rising s trading weekly wow wow wow": 1795762870,
     "60 at for gold quests": 1795631469,
     "60 at from gold lvl no quests seriously": 1795635066,
-    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795761969,
-    "8 catching classes episode forever on podcast the up wow": 1795761969,
+    "7 episode forever ft ing lore nerds nobbel87 out platinum podcast the turbo wow wow": 1795762870,
+    "8 catching classes episode forever on podcast the up wow": 1795762870,
     "8 city do i inside main maybe people see the why": 1795543270,
-    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795761969,
-    "a explore forever gamepad with wow": 1795761969,
+    "a and forever highlights more new podcast s short story the this videos week weekly wow wow": 1795762870,
+    "a explore forever gamepad with wow": 1795762870,
     "a for friend invite issues players resolved": 1795459570,
     "about bug category forever report the wow": 1795549574,
-    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795761969,
-    "aketh al comic don forever miss of rising t the warcraft world": 1795761969,
-    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795761969,
-    "and class design echoes forever in more of the weekly worldcore wow wow": 1795761969,
-    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795761969,
-    "and economy exploit heuristic hold lockbox": 1795761969,
-    "and familiar feels forever new s what what wow": 1795761969,
+    "adventure and begins connected discord forever in in shape stay takes taldramir the weekly with wow wow": 1795762870,
+    "aketh al comic don forever miss of rising t the warcraft world": 1795762870,
+    "and azeroth begin forever in journey next of purchase upgrades warcraft world your": 1795762870,
+    "and class design echoes forever in more of the weekly worldcore wow wow": 1795762870,
+    "and discover for forever in midnight prepare s sweet talebound treats try weekly wow": 1795762870,
+    "and economy exploit heuristic hold lockbox": 1795762870,
+    "and familiar feels forever new s what what wow": 1795762870,
     "and language settings social": 1795109468,
-    "another exploit": 1795761969,
-    "azeroth forever in of return to warcraft world": 1795761969,
+    "another exploit": 1795762870,
+    "azeroth forever in of return to warcraft world": 1795762870,
     "beta from group issues persist phasing still with": 1795549574,
     "broken zeppelins": 1795543270,
-    "bug epic mount riding skill": 1795761969,
+    "bug epic mount riding skill": 1795762870,
     "bug forever forum guidelines report wow": 1795549574,
     "bugged chaos missing monday s server shaman since totems": 1795635066,
-    "catching classes forever on podcast the up watch wow": 1795761969,
-    "cost forever honor of short story the watch wow": 1795761969,
+    "catching classes forever on podcast the up watch wow": 1795762870,
+    "cost forever honor of short story the watch wow": 1795762870,
     "dungeon enough not still xp": 1795631469,
-    "dungeon increased majority the wants xp": 1795761969,
-    "episode forever lore podcast the the watch wow": 1795761969,
+    "dungeon increased majority the wants xp": 1795762870,
+    "episode forever lore podcast the the watch wow": 1795762870,
     "forever forever forging watch wow": 1795549574,
-    "forever guide new of player s starter to warcraft welcome world": 1795761969,
+    "forever guide new of player s starter to warcraft welcome world": 1795762870,
     "forever launch of time warcraft world": 1795108566,
-    "forever live now of warcraft world": 1795761969
+    "forever live now of warcraft world": 1795762870
   },
   "news_started": true,
   "owners": {
@@ -5330,7 +5402,7 @@
       "1569216357805989971"
     ]
   },
-  "saved_at": 1795761970,
+  "saved_at": 1795762872,
   "weekly": {
     "baseline": {
       "us:aeri-moonglow": {
